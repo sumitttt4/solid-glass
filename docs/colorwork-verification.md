@@ -21,7 +21,7 @@ Actions: Explore the library / Get started.
 - Theme choice survives reload.
 - Installation page loads its own theme instructions.
 - No page runtime errors during this flow.
-- 12 sampled text/background combinations in each theme measured at >=4.5:1; lowest sampled ratio 6.58:1. Includes hero body, secondary text, action, setting/input labels, success message and five tone badge pairs. This is a targeted sample, not a whole-site accessibility certification.
+- 12 sampled text/background combinations in each theme measured at >=4.5:1; lowest sampled ratio 5.28:1. Includes hero body, secondary text, action, setting/input labels, success message and five tone badge pairs. This is a targeted sample, not a whole-site accessibility certification.
 
 ## Code checks
 
@@ -34,3 +34,11 @@ Registry source points to sumitttt4/solid-glass with own dependencies pinned to 
 ## Limits
 
 Demos keep state in memory and make no backend calls. Color scoping does not automatically follow a portal outside its parent subtree; global theme roles do. Original component APIs and inherited CSS hooks remain. The full inherited component catalog needs continuing visual and accessibility review. This is an alpha foundation, not a claim of superiority across every component.
+
+## Button, color and typography revision
+
+Kumo official button documentation/source informed the emphasis finish (tonal fill, edge, restrained highlight, pressed response); Kumo's runtime package and skill were not installed in this environment. The implementation retains Base UI and adds an explicit tone prop. Reference: https://github.com/cloudflare/kumo/blob/main/packages/kumo/src/components/button/button.tsx
+
+Global presets/custom color affect component tones and primary controls, with reset and local persistence. Success remains a separate semantic color. Custom solid-label contrast chooses black or white; arbitrary custom palettes still need contextual review. Manrope is the main face; Plus Jakarta Sans supports navigation and labels. Both use Regular 400.
+
+Global preset selection, arbitrary hex input, black/white label choice, reset and reload persistence passed browser checks. Manrope/Plus Jakarta font-family checks passed. Regular 400 was inspected in the rendered page. Button gradient contrast is checked against its lighter hover endpoint; arbitrary user-selected gradients are not covered by the original palette sample.

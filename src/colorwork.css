@@ -1,6 +1,12 @@
 /* Colorwork: opaque, color-led theme. Built on Solid Glass and shadcn/ui; see LICENSE and NOTICE.md.
    Legacy glass hooks are retained for component compatibility. */
 @import "./solid-glass.css";
+@theme inline {
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+}
+:root { --font-secondary: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif; }
+
 :root {
   --study-hue: 265;
   --study-support: 75;
@@ -102,7 +108,7 @@ html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmt
 :root :is(.glass-panel,.glass-control,.bg-card) { box-shadow: 0 0 0 1px var(--border); }
 :root .bg-popover { box-shadow: 0 0 0 1px var(--border), 0 12px 30px -12px var(--glass-shade); }
 :root .glass-chosen { background: var(--accent); color: var(--accent-foreground); box-shadow: inset 3px 0 var(--primary); }
-:root [data-slot="panel-row"][aria-current] { font-weight: 600; }
+:root [data-slot="panel-row"][aria-current] { font-weight: 400; }
 :root :is(button,a,input,textarea,[tabindex]):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
 :root :is(button,[role="button"]):disabled { opacity: .45; cursor: not-allowed; }
 :root [data-slot="composer"]:focus-within { box-shadow: 0 0 0 2px var(--ring); }
@@ -125,6 +131,85 @@ html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmt
 .dark [data-tone="ocean"] { --tone-solid: #9ad5e7; --tone-soft: #203c46; --tone-ink: #c7eaf3; --tone-edge: #6e9da9; --tone-on: #16323b; }
 [data-tone] { --primary: var(--tone-solid); --primary-foreground: var(--tone-on); --ring: var(--tone-solid); }
 .cw-tone-soft { background: var(--tone-soft); color: var(--tone-ink); border-color: var(--tone-edge); }
-[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: var(--tone-soft); color: var(--tone-ink); padding: 4px 9px; font-size: 12px; font-weight: 500; line-height: 1.3; }
+[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: var(--tone-soft); color: var(--tone-ink); padding: 4px 9px; font-size: 12px; font-weight: 400; line-height: 1.3; }
 [data-slot="color-surface"] { background: var(--tone-soft); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: var(--radius); padding: 24px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Button finish informed by Kumo's emphasis/secondary treatment, adapted to Colorwork tones.
+   Keep Base UI semantics and the existing component API; no Kumo runtime dependency. */
+:root [data-slot="button"] {
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
+}
+:root [data-slot="button"][data-variant="default"] {
+  background: linear-gradient(to bottom, color-mix(in oklch,var(--primary),white 8%),var(--primary));
+  color: var(--primary-foreground);
+  border: 1px solid color-mix(in oklch,var(--primary),black 15%);
+  box-shadow: inset 0 1px 0 color-mix(in oklch,var(--primary),white 26%), 0 1px 2px #00000016, 0 2px 0 color-mix(in oklch,var(--primary),black 18%);
+}
+:root [data-slot="button"][data-variant="default"]:not(:disabled):hover {
+  background: linear-gradient(to bottom,color-mix(in oklch,var(--primary),white 14%),color-mix(in oklch,var(--primary),white 3%));
+}
+:root [data-slot="button"][data-variant="secondary"] {
+  background: linear-gradient(to bottom,color-mix(in oklch,var(--tone-soft),var(--card) 32%),var(--tone-soft));
+  color: var(--tone-ink);
+  border: 1px solid var(--tone-edge);
+  box-shadow: inset 0 1px 0 color-mix(in srgb,var(--card) 70%,transparent),0 1px 2px #0000000c;
+}
+:root [data-slot="button"][data-variant="outline"] {
+  background: transparent;
+  color: var(--tone-ink);
+  border: 1px solid var(--tone-edge);
+  box-shadow: 0 1px 2px #00000008;
+}
+:root [data-slot="button"]:is([data-variant="secondary"],[data-variant="outline"]):not(:disabled):hover {
+  background: color-mix(in oklch,var(--tone-soft),var(--tone-solid) 7%);
+  border-color: var(--tone-solid);
+}
+:root [data-slot="button"]:not(:disabled):active {
+  transform: translateY(1px);
+  box-shadow: inset 0 1px 2px #00000020;
+}
+:root [data-slot="button"]:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+:root [data-slot="button"]:disabled { cursor: not-allowed; opacity: .45; box-shadow: none; }
+
+/* Public theme hook: set these two custom variables and the data attribute on html.
+   The site derives the on-solid text color from the selected hex value. */
+html[data-colorwork-accent] {
+  --primary: color-mix(in srgb,var(--cw-custom-solid) 60%,black);
+  --primary-foreground: #fff;
+  --ring: var(--primary);
+  --secondary: color-mix(in srgb,var(--cw-custom-solid) 12%,white);
+  --secondary-foreground: color-mix(in srgb,var(--cw-custom-solid) 65%,black);
+}
+html[data-colorwork-accent] [data-tone]:not([data-semantic]) {
+  --tone-solid: var(--cw-custom-solid);
+  --tone-on: var(--cw-custom-on);
+  --tone-soft: color-mix(in srgb,var(--cw-custom-solid) 11%,white);
+  --tone-ink: color-mix(in srgb,var(--cw-custom-solid) 60%,black);
+  --tone-edge: color-mix(in srgb,var(--cw-custom-solid) 60%,white);
+  --ring: var(--tone-ink);
+}
+html.dark[data-colorwork-accent] {
+  --primary: color-mix(in srgb,var(--cw-custom-solid) 25%,white);
+  --primary-foreground: #000;
+  --secondary: color-mix(in srgb,var(--cw-custom-solid) 25%,#13161e);
+  --secondary-foreground: color-mix(in srgb,var(--cw-custom-solid) 25%,white);
+}
+html.dark[data-colorwork-accent] [data-tone]:not([data-semantic]) {
+  --tone-soft: color-mix(in srgb,var(--cw-custom-solid) 22%,#13161e);
+  --tone-ink: color-mix(in srgb,var(--cw-custom-solid) 25%,white);
+  --tone-edge: color-mix(in srgb,var(--cw-custom-solid) 45%,#60646b);
+}
+html[data-colorwork-accent] [data-semantic="success"] {
+  --tone-soft: #e6f1df; --tone-ink: #265333; --tone-edge: #7fa675;
+}
+html.dark[data-colorwork-accent] [data-semantic="success"] {
+  --tone-soft: #263d2a; --tone-ink: #d3ebc5; --tone-edge: #769b6a;
+}
+
+/* Regular is the type contract, including inherited component weight utilities. */
+:root :is([data-slot="button"],[data-slot="panel-header"], [data-slot="dialog-title"], [data-slot="tone-badge"]) { font-weight: 400; }

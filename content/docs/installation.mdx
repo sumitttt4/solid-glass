@@ -44,6 +44,14 @@ npx shadcn@latest add sumitttt4/solid-glass/color-surface#color-language
 
 The generated registry files were checked locally; installation into an independent app still needs a compatibility check. There is no npm package release. The Pages-hosted registry is not claimed live before deployment.
 
+## Install the modified button
+
+```bash
+npx shadcn@latest add sumitttt4/solid-glass/button#color-language
+```
+
+The button retains Base UI behavior and supports an optional tone prop (iris, fern, clay, sun, ocean). It uses a Kumo-informed emphasis treatment rather than the Kumo runtime package.
+
 ## Add a color role
 
 ```tsx
@@ -60,6 +68,6 @@ import { ColorSurface } from "@/components/ui/color-surface"
 
 ## Typography and themes
 
-The theme uses Geist and Geist Mono with system fallbacks. To load the fonts, install @fontsource-variable/geist and @fontsource-variable/geist-mono and import them in your application stylesheet.
+The theme uses Geist with Manrope and Plus Jakarta Sans Mono with system fallbacks. To load the fonts, install @fontsource-variable/manrope, @fontsource-variable/plus-jakarta-sans and @fontsource-variable/geist-mono and import them in your application stylesheet.
 
 Light is the default. Add the dark class to html to use the dark theme. Use your app's theme manager to persist preferences; the library website's toggle persists its own choice locally.

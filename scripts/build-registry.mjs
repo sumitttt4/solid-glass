@@ -34,6 +34,8 @@ const own = readdirSync(join(root, "content/solid"))
   .map((file) => file.replace(/\.mdx$/, ""))
   .sort()
 
+const registryOwn = new Set([...own, "button"])
+
 /** What a file needs: the packages it imports, and the components, its own by address and shadcn/ui's by name. */
 function needs(content) {
   const packages = new Set()
@@ -41,7 +43,7 @@ function needs(content) {
   for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
     if (source === "react" || source === "@/lib/utils") continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
-    if (used) others.add(own.includes(used) ? `${repo}/${used}#${ref}` : used)
+    if (used) others.add(registryOwn.has(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
   }
   return { dependencies: [...packages].sort(), registryDependencies: [...others].sort() }
@@ -74,7 +76,7 @@ const components = own.map((name) => {
     if (source === "react" || source === "@/lib/utils") continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
     // One of Solid Glass's own is named by its GitHub address; one of shadcn/ui's by its name.
-    if (used) others.add(own.includes(used) ? `${repo}/${used}#${ref}` : used)
+    if (used) others.add(registryOwn.has(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
   }
   return {
@@ -110,6 +112,12 @@ const registry = {
       description:
         "The stylesheet: the whole material in one file. Thick, smoky glass for every shadcn/ui component you already have.",
       files: [{ path: "src/solid-glass.css", type: "registry:file", target: "src/solid-glass.css" }],
+    },
+    {
+      name: "button", type: "registry:ui", title: "Colorwork Button",
+      description: "Kumo-informed button finish with inherited or explicit Colorwork tones.",
+      ...needs(read("src/components/ui/button.tsx")),
+      files: [{ path: "src/components/ui/button.tsx", type: "registry:ui" }],
     },
     ...components,
     ...blocks,

@@ -33,7 +33,7 @@ Stop dev before preview; both use port 5191. Build output is `dist/`. Use a stat
 
 ## Reuse
 
-Copy `src/colorwork.css` and `src/solid-glass.css` together; import colorwork.css after your Tailwind/shadcn styles. The source uses React 19, Tailwind 4, Base UI and Geist. Copy TSX plus helpers/dependencies when using the new ToneBadge and ColorSurface components.
+Copy `src/colorwork.css` and `src/solid-glass.css` together; import colorwork.css after your Tailwind/shadcn styles. The source uses React 19, Tailwind 4, Base UI with Manrope and Plus Jakarta Sans. Copy TSX plus helpers/dependencies when using the new ToneBadge and ColorSurface components.
 
 Current branch registry (until merged):
 

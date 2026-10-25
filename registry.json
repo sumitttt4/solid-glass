@@ -35,6 +35,24 @@
       ]
     },
     {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Colorwork Button",
+      "description": "Kumo-informed button finish with inherited or explicit Colorwork tones.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "ask-card",
       "type": "registry:ui",
       "title": "Ask Card",
@@ -73,8 +91,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "button",
-        "dropdown-menu"
+        "dropdown-menu",
+        "sumitttt4/solid-glass/button#color-language"
       ],
       "files": [
         {
@@ -138,7 +156,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "button"
+        "sumitttt4/solid-glass/button#color-language"
       ],
       "files": [
         {
@@ -266,9 +284,9 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "button",
         "kbd",
         "sumitttt4/solid-glass/ask-card#color-language",
+        "sumitttt4/solid-glass/button#color-language",
         "sumitttt4/solid-glass/composer#color-language",
         "sumitttt4/solid-glass/context-ring#color-language",
         "sumitttt4/solid-glass/panel#color-language",

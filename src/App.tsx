@@ -9,6 +9,7 @@ import { DevBanner } from "@/pages/dev-banner"
 import { DevExamples } from "@/pages/dev-examples"
 import { ComponentsIndex, DocPage, DocsLayout } from "@/site/docs"
 import { SiteFooter } from "@/site/site-footer"
+import { ACCENT_KEY, applyAccent } from "@/site/accent"
 import { SiteHeader } from "@/site/site-header"
 
 // The preview on the Create page is a few dozen cards and every icon by name: fetched when the page is.
@@ -29,6 +30,9 @@ function ScrollToTop() {
 
 export function App() {
   const { pathname } = useLocation()
+  React.useLayoutEffect(() => {
+    try { applyAccent(localStorage.getItem(ACCENT_KEY) ?? "") } catch { /* use original palette */ }
+  }, [])
   if (pathname === "/") return <TooltipProvider><React.Suspense fallback={null}><Library /></React.Suspense></TooltipProvider>
   if (pathname === "/color-study") return (
     <TooltipProvider><React.Suspense fallback={null}><ColorStudy /></React.Suspense></TooltipProvider>
