@@ -326,7 +326,7 @@ function IconButton({ label, pressed, className, ...props }: React.ComponentProp
   )
 }
 
-export default function AgentWorkspace() {
+export default function AgentWorkspace({ previewError = false }: { previewError?: boolean } = {}) {
   const [sessions, setSessions] = React.useState(SESSIONS)
   const [current, setCurrent] = React.useState("survey")
   const [sidebar, setSidebar] = React.useState(true)
@@ -425,7 +425,7 @@ export default function AgentWorkspace() {
   const over = tasks.filter((task) => !task.running)
 
   return (
-    <div className="flex h-svh min-h-[640px] overflow-hidden bg-background text-[13px] text-foreground">
+    <div data-slot="agent-workspace" className="flex h-svh min-h-[640px] overflow-hidden bg-background text-[13px] text-foreground">
       {/* what is behind a drawer, dimmed; pressed, the drawer goes back in */}
       {drawer && (
         <button
@@ -563,6 +563,7 @@ export default function AgentWorkspace() {
 
         <div className="flex shrink-0 justify-center px-4 pb-4 md:px-6">
           <div className="w-full max-w-[600px]">
+            {previewError && <p role="alert" className="study-error mb-3 rounded-md border px-3 py-2 text-sm"><strong>Message couldn’t be sent.</strong> Example error state. Your draft is still here.</p>}
             <Composer
               textareaProps={{ "aria-label": "Message" }}
               value={value}
