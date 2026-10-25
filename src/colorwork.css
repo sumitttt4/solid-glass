@@ -2,8 +2,8 @@
    Legacy glass hooks are retained for component compatibility. */
 @import "./solid-glass.css";
 @theme inline {
-  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
 }
 :root { --font-secondary: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif; }
 
