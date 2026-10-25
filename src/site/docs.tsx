@@ -198,7 +198,7 @@ function Install({ block }: { block: Extract<Block, { type: "install" }> }) {
         ))}
       </div>
       {tab === "cli" ? (
-        block.cli && <CommandBlock command={block.cli} />
+        block.cli && <CommandBlock command={block.cli.replace(/deeplethe\/solid-glass\/([a-z-]+)/g, "sumitttt4/solid-glass/$1#color-language")} />
       ) : (
         <div className="ml-3.5 border-l pb-1 pl-7 [counter-reset:step]">
           {block.packages && (
@@ -402,7 +402,7 @@ export function ComponentsIndex() {
   return (
     <DocShell
       title="Components"
-      description="Here you can find all the components available in the library, each one in Solid Glass."
+      description="Here you can find all the components available in the library, with the Colorwork theme."
       url="/docs/components"
     >
       <h2 id="all-components" className="mt-10 mb-6 scroll-m-28 text-xl font-medium tracking-tight first:mt-0">

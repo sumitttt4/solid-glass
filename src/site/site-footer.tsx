@@ -1,29 +1,3 @@
 export function SiteFooter() {
-  return (
-    <footer>
-      <div className="container-wrapper px-4 xl:px-6">
-        <div className="flex h-(--footer-height) items-center justify-between">
-          <div className="w-full px-1 text-center text-xs leading-loose text-muted-foreground sm:text-sm">
-            By{" "}
-            <a href="https://deeplethe.com" target="_blank" rel="noreferrer" className="font-logo tracking-[0.12em] text-foreground underline-offset-4 hover:underline">
-              DeepLethe
-            </a>
-            . Built on{" "}
-            <a href="https://ui.shadcn.com" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              shadcn/ui
-            </a>{" "}
-            and{" "}
-            <a href="https://base-ui.com" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              Base UI
-            </a>
-            . The source is on{" "}
-            <a href="https://github.com/deeplethe/solid-glass" target="_blank" rel="noreferrer" className="font-medium underline underline-offset-4">
-              GitHub
-            </a>
-            .
-          </div>
-        </div>
-      </div>
-    </footer>
-  )
+  return <footer className="border-t px-6 py-6 text-center text-xs leading-6 text-muted-foreground">Colorwork by Sumit Sharma. Built on <a className="underline" href="https://github.com/deeplethe/solid-glass">Solid Glass</a>, shadcn/ui and Base UI. MIT licensed. <a className="underline" href="https://github.com/sumitttt4/solid-glass">Source on GitHub</a>.</footer>
 }

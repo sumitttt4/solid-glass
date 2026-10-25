@@ -1,36 +1,19 @@
 ---
 title: Theming
-description: Dark is the material as designed. Light is the same panes in daylight.
-order: 4
+description: Adapt the roles without changing component structure.
+order: 5
 ---
 
-## Dark and light
+## Start with paired values
 
-Solid Glass was designed for a dark interface: an even, unlit, dark grey page with smoky glass on it. There is no ambient light in dark. On a dark page it reads as a bright patch and a vignette, and uneven ground behind long text is tiring to work on.
+Change surface and text values together. Colorwork keeps the familiar shadcn variable names for background, foreground, primary, secondary, accent, border and ring.
 
-Light uses the same names and the same edge. The glass turns white, and three very faint sources of light sit under the page. Both sets of values are at the top of the stylesheet, in `:root` and `.dark`. The switch in the corner of this site changes between them.
+The five tone roles use --tone-solid, --tone-on, --tone-soft, --tone-ink and --tone-edge. Put data-tone="fern" on a subtree, or use the tone prop on a ColorSurface or ToneBadge. The surface's primary action inherits the tone's solid/on pair.
 
-## Colour
+## Compatibility
 
-The interface has no colour of its own. Primary is the ink: white on the dark page, black on the light one. Charts are drawn in greys. Hue is kept for the few things that mean something:
+colorwork.css imports solid-glass.css first, then replaces color roles, blur, highlights and selected states. Keep both files when copying. Removing inherited selectors without auditing every component can break states.
 
-| Variable | What it is for |
-| --- | --- |
-| `--brand` | The brand. A green-teal by default, used sparingly. |
-| `--status-done` | Finished. |
-| `--success` | Succeeded. |
-| `--status-interrupted` | Interrupted, or waiting for a decision. |
-| `--destructive` | Failed, or about to delete. |
-| `--link` | A link in an answer. |
-| `--code-inline` | A name in running text: a file, a command, a field. |
-| `--syn-*` | The four colours code is set in: keyword, string, number, name. |
+## Verify the result
 
-To change the brand, set `--brand`, `--brand-foreground` and `--brand-muted`, once in each theme.
-
-## Radius
-
-Every corner is worked out from `--radius`, 0.875rem by default. Panels and code use `rounded-md`, floating things `rounded-lg`, cards and the composer `rounded-xl`, and small controls `rounded-sm`.
-
-## Type
-
-Body text is 14px with generous leading. The small text of the interface sits between 11 and 13px. Figures that change use tabular numerals, so they do not shift as they count.
+Inspect light and dark at desktop and mobile widths. Check normal text, hover, focus, disabled controls, open menus, errors and long labels. A successful build is not proof of readable color.

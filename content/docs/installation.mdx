@@ -1,73 +1,65 @@
 ---
 title: Installation
-description: Add the stylesheet to a shadcn/ui project, then add components as you need them.
+description: Add the Colorwork theme and components to a compatible React project.
 order: 2
 ---
 
-## Start with shadcn/ui
+## Run the library
 
-Solid Glass is a theme for shadcn/ui, so it starts from a shadcn/ui project: React 19, Tailwind CSS 4, and the Base UI flavour of the components. If you do not have one yet:
-
-```bash
-npx shadcn@latest init
-```
-
-## Add the stylesheet
-
-The whole material is one file. Put it beside your own styles; the command reads it straight from the [GitHub repository](https://github.com/deeplethe/solid-glass):
+The current work is on the color-language branch of your fork. Use Node 22.12+ and npm.
 
 ```bash
-npx shadcn@latest add deeplethe/solid-glass/solid-glass
+git clone --branch color-language https://github.com/sumitttt4/solid-glass.git
+cd solid-glass
+npm ci
+npm run dev
 ```
 
-Add `#` and a tag or a commit to pin a version, as in `deeplethe/solid-glass/solid-glass#<commit>`. The same items are also served from this site, at `{origin}/r/<item>.json`, for a command line too old to read from GitHub.
+Open http://localhost:5191. Build with npm run build; publish the dist directory to a static host. Configure a single-page-app fallback for nested routes. The GitHub Pages workflow uses your account's origin; Pages must still be enabled in repository settings before it can publish.
 
-Then import it after Tailwind and shadcn's stylesheet, and delete the `:root` and `.dark` colour variables that `shadcn init` wrote. Solid Glass defines the same names.
+## Copy the theme
 
-```css title="src/index.css"
+Copy BOTH src/colorwork.css and src/solid-glass.css into your app's styles directory. The first imports the second for its compatible component selectors, then replaces the material and color roles.
+
+Import Colorwork after Tailwind and shadcn styles. Reconcile duplicate theme variables in your app; later overrides win.
+
+```css
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "./solid-glass.css";
+@import "./colorwork.css";
 ```
 
-Dark is the material as designed. It follows the `dark` class on `<html>`. A project made by `shadcn init` has a `ThemeProvider` that sets that class from the system's setting; to start in dark whatever the system says:
+This source uses React 19, Tailwind 4 and Base UI. Do not assume an older Radix-based shadcn project has matching slots or component APIs.
 
-```tsx title="src/main.tsx"
-<ThemeProvider defaultTheme="dark">
-```
+## Install from this branch
 
-Without a provider, put the class on the element yourself:
-
-```tsx title="index.html"
-<html lang="en" class="dark">
-```
-
-That's it. Every shadcn/ui component you already have is now Solid Glass, as shadcn/ui wrote it: the stylesheet finds each part by the `data-slot` and the classes it already carries, so there is nothing to edit and nothing to re-install.
-
-## Add components
-
-Stock components are installed the usual way, from shadcn/ui:
+The registry generator now points to this fork. Until the PR is merged, pin the color-language branch rather than the default branch:
 
 ```bash
-npx shadcn@latest add button
+npx shadcn@latest add sumitttt4/solid-glass/colorwork#color-language
+npx shadcn@latest add sumitttt4/solid-glass/tone-badge#color-language
+npx shadcn@latest add sumitttt4/solid-glass/color-surface#color-language
 ```
 
-Solid Glass's own components are installed with the same command, from the repository:
+The generated registry files were checked locally; installation into an independent app still needs a compatibility check. There is no npm package release. The Pages-hosted registry is not claimed live before deployment.
 
-```bash
-npx shadcn@latest add deeplethe/solid-glass/status-glyph
+## Add a color role
+
+```tsx
+import { Button } from "@/components/ui/button"
+import { ToneBadge } from "@/components/ui/tone-badge"
+import { ColorSurface } from "@/components/ui/color-surface"
+
+<ColorSurface tone="fern" aria-label="Project summary">
+  <ToneBadge tone="fern">Design</ToneBadge>
+  <h2>A space for your next idea.</h2>
+  <Button>Start building</Button>
+</ColorSurface>
 ```
 
-## Fonts
+## Typography and themes
 
-The stylesheet sets `--font-sans` to Geist and `--font-mono` to Geist Mono, and falls back to the system's. To use them, add the font files yourself:
+The theme uses Geist and Geist Mono with system fallbacks. To load the fonts, install @fontsource-variable/geist and @fontsource-variable/geist-mono and import them in your application stylesheet.
 
-```bash
-npm install @fontsource-variable/geist @fontsource-variable/geist-mono
-```
-
-```css title="src/index.css"
-@import "@fontsource-variable/geist";
-@import "@fontsource-variable/geist-mono";
-```
+Light is the default. Add the dark class to html to use the dark theme. Use your app's theme manager to persist preferences; the library website's toggle persists its own choice locally.

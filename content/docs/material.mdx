@@ -1,103 +1,19 @@
 ---
 title: Material
-description: How a pane of Solid Glass is made. Three thicknesses, one edge, one state.
-order: 3
+description: Opaque color, deliberate boundaries and quiet depth.
+order: 4
 ---
 
-## Thickness
+## A solid foundation
 
-Depth is not said with lighter and darker fills. It is said with how thick the glass is. The further something floats above the page, the thicker it is, and the thicker it is the less shows through. All three below lie over the same lines of text:
+Colorwork uses opaque surfaces rather than frosted glass. Background, card, panel and popover roles are distinct; tint, border and spacing establish their hierarchy.
 
-<Widget name="Thickness" />
+Legacy class names such as glass-panel remain in the inherited components for compatibility. The imported Colorwork theme replaces the effects behind those names.
 
-The material hangs off the colour utilities themselves. An element that uses `bg-card`, `bg-popover` or `bg-sidebar` has the blur, the rim, the hairline and the shadow, and needs nothing else. This is why stock shadcn/ui components need no changes. The rules sit outside Tailwind's layers on purpose, so a utility written later cannot switch them off. A panel has no shadcn/ui colour of its own, so it is a class: `glass-panel`.
+## Related content, related color
 
-```tsx
-<div className="glass-panel rounded-md p-3">Panel</div>
-<div className="rounded-xl bg-card p-4">Card</div>
-<div className="rounded-lg bg-popover p-1">Popover</div>
-```
+Use a tinted surface when it groups meaningful content. Avoid giving every item a competing saturated fill. Keep actions easy to distinguish from passive content.
 
-## The edge
+## Read more
 
-Everything that reads as glass is one of three things at the edge. Nothing is done to the face.
-
-<Widget name="Finish" />
-
-| Variable | What it is |
-| --- | --- |
-| `--glass-rim` | The line of light on the top edge. Light comes from above, so only the top has it. |
-| `--glass-inner` | A fainter line just inside the rim, which gives the edge some thickness. |
-| `--glass-edge` | The hairline round the outside, which cuts the pane out of the page. |
-| `--glass-shade` | The shadow underneath: narrow, and pulled downward, as if the pane rests on the page. |
-| `--glass-blur` | The blur. In dark it adds no saturation: the glass has no colour of its own. |
-
-## One state
-
-Hovered, chosen and held open are all the same small pane of clear glass: a faint tint, a line of light along the top, a hairline round it. No gradient and no shadow, or a row in a list starts to look like a raised button.
-
-<Widget name="OneState" />
-
-| Class | When |
-| --- | --- |
-| `glass-chosen` | This one is chosen. Put it on the element. |
-| `glass-held` | This control's menu is open. Put it on the trigger; it lights itself while open. |
-| `glass-control` | A small pane of clear glass on its own: a message bubble, a glass button. |
-| `glass-armed` | One step brighter than chosen: the tag the next Backspace will remove. |
-
-The row under the pointer in a menu and the current item in a sidebar need no class. The stylesheet recognises them by the attributes Base UI puts on them.
-
-## Solid panes, fields and grooves
-
-The primary button is glass too, and the most solid there is: a pane the colour of the ink, with a line of light along its top edge, a line of shade along its bottom one, a hairline round it and a shadow to stand on. Smaller things filled with the ink are the same pane without the shadow: a badge, the filled part of a progress bar or a slider, a switch that is on, a box that is ticked.
-
-<ComponentPreview name="button-default" />
-
-A field is a pane of clear glass to type on: a faint fill, a line of light along its top and a hairline round it, both drawn inside its edge so the corners stay one colour. It is the same glass as an outline button, so a form reads as one material. While it is being typed into, its line is brighter, and that is all: no ring three pixels wide.
-
-<ComponentPreview name="input-demo" />
-
-The track a knob runs in, and a box not yet ticked, are grooves cut into the surface, so the light falls the other way: a shade under the upper lip, a line of light along the lower one.
-
-In a chart, a bar is a pane standing on its edge: the series' own colour let through a little, a hairline, and the line of light along its top. What the chart says under the pointer is a popover like any other.
-
-| Variable | What it is |
-| --- | --- |
-| `--primary-solid` | How much of the ink a solid pane is. The rest is what is behind it. |
-| `--primary-rim`, `--primary-under` | The line of light on top of a solid pane, and the line of shade under it. |
-| `--field`, `--field-rim`, `--field-edge` | A field: its fill, the line of light along its top, and the hairline round it. |
-| `--glass-state`, `--glass-state-rim`, `--glass-state-edge` | The one state. Clear glass on a dark page; smoked on a light one, where clear glass on a white pane would not show. |
-| `--hover`, `--hover-faint` | Under the pointer, for a ghost button and for a row in a table. |
-| `--radius-control` | What a button or a field is rounded by: a step down from a pane. |
-| `--focus-line` | The line a field is drawn in while it is being typed into, and the line round whatever the keyboard is on. |
-| `--well-shade`, `--well-rim` | A groove: the shade under its upper lip, the light on its lower one. |
-| `--mark-solid`, `--mark-rim`, `--mark-edge` | A bar in a chart. |
-
-One thing decides how an edge is drawn. The lines of light and shade are inset shadows, which sit inside an element's border. So a pane gives up its border (`bg-card`, `bg-popover` and `glass-panel` set it to nothing), and where a component has to keep one, a button in a group or a tab or a switch, the border itself is the hairline and its top side the line of light. A border left between the two shows as a second ring.
-
-All of it hangs off what the components already are (`data-slot`, and the `bg-primary` on anything pressed), so none of them had to change.
-
-## Glass button
-
-The one change to a stock component: `Button` has a `glass` variant, a small pane of clear glass. `data-strong` is the same pane lit a step brighter, for the one button in a group that asks to be pressed.
-
-<ComponentPreview name="button-glass" />
-
-```tsx
-<Button variant="glass">Later</Button>
-<Button variant="glass" data-strong>Rerun now</Button>
-```
-
-## Motion
-
-Motion means something is running. Hue means it has finished or stopped. Nothing moves to decorate: what moves is the [status glyph](/docs/components/status-glyph), the slow glint across the words on a [status line](/docs/components/turn-status), and a [tag](/docs/components/tag) while it uploads. What has ended stands still, with a dot for how it went.
-
-## Without transparency
-
-Blur costs the browser work and puts text over whatever shows through. When the reader's system asks for reduced transparency, the stylesheet drops the blur and makes the panes opaque. You can do the same for a part of the page:
-
-```tsx
-<aside data-glass="opaque">…</aside>
-```
-
-The rim, the hairline and the shadow stay. They were most of the material to begin with.
+The Color language page explains component tones and foreground pairing. Installation explains the two-file theme import and branch-specific registry commands.

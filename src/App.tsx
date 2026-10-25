@@ -12,8 +12,8 @@ import { SiteFooter } from "@/site/site-footer"
 import { SiteHeader } from "@/site/site-header"
 
 // The preview on the Create page is a few dozen cards and every icon by name: fetched when the page is.
+const Library = React.lazy(() => import("@/pages/library"))
 const ColorStudy = React.lazy(() => import("@/pages/color-study"))
-const Create = React.lazy(() => import("@/pages/create"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
 const Blocks = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.Blocks })))
 const BlockView = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.BlockView })))
@@ -29,7 +29,8 @@ function ScrollToTop() {
 
 export function App() {
   const { pathname } = useLocation()
-  if (pathname === "/color-study" || pathname === "/") return (
+  if (pathname === "/") return <TooltipProvider><React.Suspense fallback={null}><Library /></React.Suspense></TooltipProvider>
+  if (pathname === "/color-study") return (
     <TooltipProvider><React.Suspense fallback={null}><ColorStudy /></React.Suspense></TooltipProvider>
   )
   // The README's banner is a picture of the material and nothing else: no header, no footer behind it.
@@ -64,7 +65,7 @@ export function App() {
               path="create"
               element={
                 <React.Suspense fallback={null}>
-                  <Create />
+                  <Navigate to="/color-study" replace />
                 </React.Suspense>
               }
             />

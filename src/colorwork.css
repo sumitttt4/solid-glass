@@ -1,0 +1,130 @@
+/* Colorwork: opaque, color-led theme. Built on Solid Glass and shadcn/ui; see LICENSE and NOTICE.md.
+   Legacy glass hooks are retained for component compatibility. */
+@import "./solid-glass.css";
+:root {
+  --study-hue: 265;
+  --study-support: 75;
+  --study-warmth: 85;
+  --background: oklch(.96 .014 var(--study-warmth));
+  --foreground: oklch(.24 .025 var(--study-hue));
+  --panel: oklch(.94 .025 var(--study-support));
+  --card: oklch(.99 .008 var(--study-warmth));
+  --card-foreground: var(--foreground);
+  --popover: oklch(.99 .008 var(--study-warmth));
+  --popover-foreground: var(--foreground);
+  --primary: oklch(.40 .10 var(--study-hue));
+  --primary-foreground: #fff;
+  --secondary: oklch(.90 .045 var(--study-hue));
+  --secondary-foreground: oklch(.29 .055 var(--study-hue));
+  --muted: oklch(.92 .018 var(--study-warmth));
+  --muted-foreground: oklch(.44 .025 var(--study-hue));
+  --accent: oklch(.88 .05 var(--study-hue));
+  --accent-foreground: var(--secondary-foreground);
+  --border: oklch(.78 .025 var(--study-hue));
+  --input: oklch(.56 .025 var(--study-hue));
+  --ring: var(--primary);
+  --sidebar: oklch(.93 .025 var(--study-hue));
+  --sidebar-foreground: var(--foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-ring: var(--ring);
+  --sidebar-border: var(--border);
+  --destructive: oklch(.43 .16 25);
+  --study-error: oklch(.95 .025 25);
+  --success: oklch(.39 .10 155);
+  --status-done: var(--success);
+  --status-running: oklch(.42 .09 260);
+  --status-interrupted: oklch(.43 .10 65);
+  --brand: var(--primary);
+  --brand-foreground: var(--primary-foreground);
+  --brand-muted: var(--secondary);
+  --link: var(--primary);
+  --glass-blur: none;
+  --glass-blur-control: none;
+  --glass-control: var(--card);
+  --glass-state: var(--accent);
+  --glass-state-edge: var(--border);
+  --glass-state-armed: var(--primary);
+  --glass-rim: transparent;
+  --glass-inner: transparent;
+  --glass-control-rim: transparent;
+  --glass-state-rim: transparent;
+  --glass-edge: var(--border);
+  --glass-shade: oklch(.2 .02 var(--study-hue) / 10%);
+  --glass-contact: transparent;
+  --glass-lift: transparent;
+  --popover-edge: var(--border);
+  --popover-under: transparent;
+  --primary-solid: 100%;
+  --primary-rim: transparent;
+  --primary-under: transparent;
+  --primary-inner: transparent;
+  --primary-edge: transparent;
+  --field: var(--card);
+  --field-rim: transparent;
+  --field-edge: var(--input);
+  --focus-line: var(--primary);
+  --hover: var(--accent);
+  --hover-faint: var(--secondary);
+  --light-1: transparent;
+  --light-2: transparent;
+  --light-3: transparent;
+  color-scheme: light;
+  background: var(--background);
+}
+html[data-palette="ink"] { --study-hue: 265; --study-support: 75; --study-warmth: 250; }
+html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmth: 85; }
+.dark {
+  color-scheme: dark;
+  --background: oklch(.18 .014 var(--study-hue));
+  --foreground: oklch(.95 .01 var(--study-warmth));
+  --panel: oklch(.245 .025 var(--study-support));
+  --card: oklch(.23 .018 var(--study-hue));
+  --popover: oklch(.27 .023 var(--study-hue));
+  --primary: oklch(.82 .10 var(--study-hue));
+  --primary-foreground: oklch(.19 .025 var(--study-hue));
+  --secondary: oklch(.31 .04 var(--study-hue));
+  --secondary-foreground: oklch(.93 .025 var(--study-hue));
+  --muted: oklch(.28 .02 var(--study-hue));
+  --muted-foreground: oklch(.76 .025 var(--study-warmth));
+  --accent: oklch(.36 .05 var(--study-hue));
+  --border: oklch(.45 .025 var(--study-hue));
+  --input: oklch(.65 .025 var(--study-hue));
+  --sidebar: oklch(.215 .025 var(--study-hue));
+  --destructive: oklch(.85 .08 25);
+  --study-error: oklch(.27 .05 25);
+  --success: oklch(.80 .10 155);
+  --status-running: oklch(.80 .09 260);
+  --status-interrupted: oklch(.83 .10 65);
+}
+:root :is(.glass-panel,.glass-control,.bg-card) { box-shadow: 0 0 0 1px var(--border); }
+:root .bg-popover { box-shadow: 0 0 0 1px var(--border), 0 12px 30px -12px var(--glass-shade); }
+:root .glass-chosen { background: var(--accent); color: var(--accent-foreground); box-shadow: inset 3px 0 var(--primary); }
+:root [data-slot="panel-row"][aria-current] { font-weight: 600; }
+:root :is(button,a,input,textarea,[tabindex]):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+:root :is(button,[role="button"]):disabled { opacity: .45; cursor: not-allowed; }
+:root [data-slot="composer"]:focus-within { box-shadow: 0 0 0 2px var(--ring); }
+:root [data-slot="composer"] button[aria-label="Send"]:not(:disabled) { background: var(--primary); color: var(--primary-foreground); }
+:root [data-slot="ask-card"] { background: var(--secondary); }
+:root .study-error { color: var(--destructive); background: var(--study-error); border-color: currentColor; }
+
+/* Color roles are reusable on any component subtree, not hardcoded to the catalog. */
+:root { --tone-solid: #374fc3; --tone-soft: #e9edff; --tone-ink: #293c98; --tone-edge: #8494df; --tone-on: #fff; }
+[data-tone="iris"] { --tone-solid: #5943af; --tone-soft: #efebfc; --tone-ink: #4f369b; --tone-edge: #aa96d4; --tone-on: #fff; }
+[data-tone="fern"] { --tone-solid: #286343; --tone-soft: #e6f1df; --tone-ink: #265333; --tone-edge: #7fa675; --tone-on: #fff; }
+[data-tone="clay"] { --tone-solid: #9b402e; --tone-soft: #fae9df; --tone-ink: #893a2a; --tone-edge: #cb8f79; --tone-on: #fff; }
+[data-tone="sun"] { --tone-solid: #745000; --tone-soft: #fbefc5; --tone-ink: #684600; --tone-edge: #b69b42; --tone-on: #fff; }
+[data-tone="ocean"] { --tone-solid: #176078; --tone-soft: #e0f0f5; --tone-ink: #15566d; --tone-edge: #78a8b6; --tone-on: #fff; }
+.dark { --tone-solid: #b5c2ff; --tone-soft: #252e50; --tone-ink: #d6ddff; --tone-edge: #687ab1; --tone-on: #172047; }
+.dark [data-tone="iris"] { --tone-solid: #cfbdff; --tone-soft: #36294d; --tone-ink: #e5d9ff; --tone-edge: #937aaf; --tone-on: #2d1a48; }
+.dark [data-tone="fern"] { --tone-solid: #b6dca2; --tone-soft: #263d2a; --tone-ink: #d3ebc5; --tone-edge: #769b6a; --tone-on: #203323; }
+.dark [data-tone="clay"] { --tone-solid: #f3b29a; --tone-soft: #4a2c27; --tone-ink: #ffdacb; --tone-edge: #b07967; --tone-on: #3b201c; }
+.dark [data-tone="sun"] { --tone-solid: #edcf79; --tone-soft: #433b22; --tone-ink: #fae6a5; --tone-edge: #ab985d; --tone-on: #322b16; }
+.dark [data-tone="ocean"] { --tone-solid: #9ad5e7; --tone-soft: #203c46; --tone-ink: #c7eaf3; --tone-edge: #6e9da9; --tone-on: #16323b; }
+[data-tone] { --primary: var(--tone-solid); --primary-foreground: var(--tone-on); --ring: var(--tone-solid); }
+.cw-tone-soft { background: var(--tone-soft); color: var(--tone-ink); border-color: var(--tone-edge); }
+[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: var(--tone-soft); color: var(--tone-ink); padding: 4px 9px; font-size: 12px; font-weight: 500; line-height: 1.3; }
+[data-slot="color-surface"] { background: var(--tone-soft); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: var(--radius); padding: 24px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }

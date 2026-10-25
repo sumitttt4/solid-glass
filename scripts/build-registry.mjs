@@ -26,8 +26,9 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const out = join(root, "public/r")
 const read = (path) => readFileSync(join(root, path), "utf8")
 // Where the site is served from, and the repository on GitHub.
-const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://deeplethe.github.io/solid-glass").replace(/\/$/, "")
-const repo = "deeplethe/solid-glass"
+const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://sumitttt4.github.io/solid-glass").replace(/\/$/, "")
+const repo = "sumitttt4/solid-glass"
+const ref = process.env.COLORWORK_REF ?? "color-language"
 
 const own = readdirSync(join(root, "content/solid"))
   .map((file) => file.replace(/\.mdx$/, ""))
@@ -40,7 +41,7 @@ function needs(content) {
   for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
     if (source === "react" || source === "@/lib/utils") continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
-    if (used) others.add(own.includes(used) ? `${repo}/${used}` : used)
+    if (used) others.add(own.includes(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
   }
   return { dependencies: [...packages].sort(), registryDependencies: [...others].sort() }
@@ -73,7 +74,7 @@ const components = own.map((name) => {
     if (source === "react" || source === "@/lib/utils") continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
     // One of Solid Glass's own is named by its GitHub address; one of shadcn/ui's by its name.
-    if (used) others.add(own.includes(used) ? `${repo}/${used}` : used)
+    if (used) others.add(own.includes(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
   }
   return {
@@ -89,9 +90,19 @@ const components = own.map((name) => {
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
-  name: "solid-glass",
+  name: "colorwork",
   homepage: origin,
   items: [
+    {
+      name: "colorwork",
+      type: "registry:file",
+      title: "Colorwork",
+      description: "Opaque surfaces, five expressive color roles, paired themes and visible interaction states.",
+      files: [
+        { path: "src/colorwork.css", type: "registry:file", target: "src/colorwork.css" },
+        { path: "src/solid-glass.css", type: "registry:file", target: "src/solid-glass.css" },
+      ],
+    },
     {
       name: "solid-glass",
       type: "registry:file",
@@ -113,10 +124,11 @@ execFileSync("npx", ["shadcn", "build", "registry.json", "--output", "public/r"]
 for (const file of readdirSync(out).filter((file) => file.endsWith(".json"))) {
   const path = join(out, file)
   const text = readFileSync(path, "utf8")
-  const served = text.replaceAll(new RegExp(`"${repo}/([a-z0-9-]+)"`, "g"), (_, name) => JSON.stringify(`${origin}/r/${name}.json`))
+  const served = text.replaceAll(new RegExp(`"${repo}/([a-z0-9-]+)(?:#[^\"]+)?"`, "g"), (_, name) => JSON.stringify(`${origin}/r/${name}.json`))
   if (served !== text) writeFileSync(path, served)
 }
 // The stylesheet as it is, for whoever would rather copy one file than run a command.
 copyFileSync(join(root, "src/solid-glass.css"), join(out, "solid-glass.css"))
+copyFileSync(join(root, "src/colorwork.css"), join(out, "colorwork.css"))
 
 console.log(`registry: ${components.length} components, ${blocks.length} block and the stylesheet -> registry.json, public/r/`)

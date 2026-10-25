@@ -3,22 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Color language — Workspace study</title>
-    <meta name="description" content="An experimental color-led design system. Compare three directions on one interactive workspace." />
+    <title>Colorwork — Build your site with more color</title>
+    <meta name="description" content="Explore a growing library of expressive React components. Pick a starting point, copy the code, and make it yours." />
     <link rel="icon" type="image/svg+xml" href="/color-study.svg" />
     <!-- The page's colour before the stylesheet arrives, so a page that is still loading is not white:
          the same two values as --background in src/solid-glass.css. -->
     <style>
-      html { background: oklch(0.925 0.007 265); }
-      html.dark { background: oklch(0.16 0 0); color-scheme: dark; }
+      html { background: oklch(.96 .014 85); }
+      html.dark { background: oklch(.18 .014 265); color-scheme: dark; }
     </style>
     <script>
       // Before first paint: the saved choice, otherwise dark, which is the material as designed.
       (function () {
         // ?theme=light or ?theme=dark shows that one for this visit, without saving it.
         var saved = new URLSearchParams(location.search).get("theme")
-        try { saved = saved || localStorage.getItem("solid-glass:theme") } catch (e) {}
-        document.documentElement.classList.toggle("dark", saved !== "light")
+        try { saved = saved || localStorage.getItem("colorwork:theme") } catch (e) {}
+        document.documentElement.classList.toggle("dark", saved === "dark")
       })()
     </script>
   </head>
