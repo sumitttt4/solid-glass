@@ -1,0 +1,136 @@
+/* Phase 1 only. Keep these experimental roles out of the shared theme until a direction is chosen.
+   Set roles on html so Base UI's portalled menus receive the same opaque material. */
+html[data-color-study] {
+  --study-hue: 155;
+  --study-support: 300;
+  --study-warmth: 85;
+  --background: oklch(.96 .014 var(--study-warmth));
+  --foreground: oklch(.24 .025 var(--study-hue));
+  --panel: oklch(.94 .025 var(--study-support));
+  --card: oklch(.99 .008 var(--study-warmth));
+  --card-foreground: var(--foreground);
+  --popover: oklch(.99 .008 var(--study-warmth));
+  --popover-foreground: var(--foreground);
+  --primary: oklch(.40 .10 var(--study-hue));
+  --primary-foreground: #fff;
+  --secondary: oklch(.90 .045 var(--study-hue));
+  --secondary-foreground: oklch(.29 .055 var(--study-hue));
+  --muted: oklch(.92 .018 var(--study-warmth));
+  --muted-foreground: oklch(.44 .025 var(--study-hue));
+  --accent: oklch(.88 .05 var(--study-hue));
+  --accent-foreground: var(--secondary-foreground);
+  --border: oklch(.78 .025 var(--study-hue));
+  --input: var(--border);
+  --ring: var(--primary);
+  --sidebar: oklch(.93 .025 var(--study-hue));
+  --sidebar-foreground: var(--foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-ring: var(--ring);
+  --sidebar-border: var(--border);
+  --destructive: oklch(.43 .16 25);
+  --study-error: oklch(.95 .025 25);
+  --success: oklch(.39 .10 155);
+  --status-done: var(--success);
+  --status-running: oklch(.42 .09 260);
+  --status-interrupted: oklch(.43 .10 65);
+  --brand: var(--primary);
+  --brand-foreground: var(--primary-foreground);
+  --brand-muted: var(--secondary);
+  --link: var(--primary);
+  --glass-blur: none;
+  --glass-blur-control: none;
+  --glass-control: var(--card);
+  --glass-state: var(--accent);
+  --glass-state-edge: var(--border);
+  --glass-state-armed: var(--primary);
+  --glass-rim: transparent;
+  --glass-inner: transparent;
+  --glass-control-rim: transparent;
+  --glass-state-rim: transparent;
+  --glass-edge: var(--border);
+  --glass-shade: oklch(.2 .02 var(--study-hue) / 10%);
+  --glass-contact: transparent;
+  --glass-lift: transparent;
+  --popover-edge: var(--border);
+  --popover-under: transparent;
+  --primary-solid: 100%;
+  --primary-rim: transparent;
+  --primary-under: transparent;
+  --primary-inner: transparent;
+  --primary-edge: transparent;
+  --field: var(--card);
+  --field-rim: transparent;
+  --field-edge: var(--border);
+  --focus-line: var(--primary);
+  --hover: var(--accent);
+  --hover-faint: var(--secondary);
+  --light-1: transparent;
+  --light-2: transparent;
+  --light-3: transparent;
+  color-scheme: light;
+  background: var(--background);
+}
+html[data-color-study][data-direction="ink"] { --study-hue: 265; --study-support: 75; --study-warmth: 250; }
+html[data-color-study][data-direction="clay"] { --study-hue: 35; --study-support: 150; --study-warmth: 85; }
+html[data-color-study].dark {
+  color-scheme: dark;
+  --background: oklch(.18 .014 var(--study-hue));
+  --foreground: oklch(.95 .01 var(--study-warmth));
+  --panel: oklch(.245 .025 var(--study-support));
+  --card: oklch(.23 .018 var(--study-hue));
+  --popover: oklch(.27 .023 var(--study-hue));
+  --primary: oklch(.82 .10 var(--study-hue));
+  --primary-foreground: oklch(.19 .025 var(--study-hue));
+  --secondary: oklch(.31 .04 var(--study-hue));
+  --secondary-foreground: oklch(.93 .025 var(--study-hue));
+  --muted: oklch(.28 .02 var(--study-hue));
+  --muted-foreground: oklch(.76 .025 var(--study-warmth));
+  --accent: oklch(.36 .05 var(--study-hue));
+  --border: oklch(.45 .025 var(--study-hue));
+  --sidebar: oklch(.215 .025 var(--study-hue));
+  --destructive: oklch(.85 .08 25);
+  --study-error: oklch(.27 .05 25);
+  --success: oklch(.80 .10 155);
+  --status-running: oklch(.80 .09 260);
+  --status-interrupted: oklch(.83 .10 65);
+}
+html[data-color-study] :is(.glass-panel,.glass-control,.bg-card) { box-shadow: 0 0 0 1px var(--border); }
+html[data-color-study] .bg-popover { box-shadow: 0 0 0 1px var(--border), 0 12px 30px -12px var(--glass-shade); }
+html[data-color-study] .glass-chosen { background: var(--accent); color: var(--accent-foreground); box-shadow: inset 3px 0 var(--primary); }
+html[data-color-study] [data-slot="panel-row"][aria-current] { font-weight: 600; }
+html[data-color-study] :is(button,a,input,textarea,[tabindex]):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+html[data-color-study] :is(button,[role="button"]):disabled { opacity: .45; cursor: not-allowed; }
+html[data-color-study] [data-slot="composer"]:focus-within { box-shadow: 0 0 0 2px var(--ring); }
+html[data-color-study] [data-slot="composer"] button[aria-label="Send"]:not(:disabled) { background: var(--primary); color: var(--primary-foreground); }
+html[data-color-study] [data-slot="ask-card"] { background: var(--secondary); }
+html[data-color-study] .study-error { color: var(--destructive); background: var(--study-error); border-color: currentColor; }
+.study-shell { padding: 28px 32px 20px; max-width: 1700px; margin: auto; }
+.study-header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.study-title { display: flex; gap: 12px; align-items: center; }
+.study-title h1 { font-size: 18px; font-weight: 600; letter-spacing: -.6px; }
+.study-title p { font-size: 12px; color: var(--muted-foreground); margin-top: 2px; }
+.study-mark { font-size: 40px; color: var(--primary); line-height: 1; }
+.study-directions { display: flex; gap: 5px; border: 1px solid var(--border); padding: 4px; border-radius: 12px; }
+.study-directions button { font-size: 13px; }
+.study-directions [aria-pressed="true"] { background: var(--accent); color: var(--accent-foreground); }
+.study-swatch { width: 10px; height: 10px; border-radius: 50%; }
+.study-swatch-garden { background: #30764c; }.study-swatch-ink { background: #526bc2; }.study-swatch-clay { background: #a65837; }
+.study-controls { display: flex; align-items: center; gap: 18px; }
+.study-controls label { display: flex; gap: 7px; align-items: center; font-size: 12px; color: var(--muted-foreground); }
+.study-controls input { accent-color: var(--primary); }
+.study-caption { margin: 24px 0 16px; display: flex; align-items: center; justify-content: space-between; gap: 20px; font-size: 13px; color: var(--muted-foreground); }
+.study-caption span { font-size: 11px; white-space: nowrap; }
+.study-frame { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.study-frame [data-slot="agent-workspace"] { height: calc(100svh - 220px); min-height: 640px; }
+.study-frame [data-slot="agent-workspace"] > main > div:first-child { border-bottom: 1px solid var(--border); }
+.study-frame [data-slot="panel-header"] { height: 40px; }
+.study-legend { display: flex; gap: 24px; align-items: center; margin-top: 18px; color: var(--muted-foreground); font-size: 11px; }
+.study-legend span { display: flex; gap: 7px; align-items: center; }
+.study-legend i { width: 8px; height: 8px; border-radius: 2px; }.study-key-action { background: var(--primary); }.study-key-structure { background: oklch(.65 .08 var(--study-support)); }.study-key-status { background: var(--success); }
+.study-legend p { margin-left: auto; }
+@media(max-width: 800px) {
+  .study-shell { padding: 18px 12px; }.study-header { flex-wrap: wrap; gap: 16px; }.study-controls { margin-left: auto; gap: 10px; }.study-directions { order: 3; width: 100%; }.study-directions button { flex: 1; }.study-caption { margin-top: 16px; }.study-caption span { display: none; }.study-legend { flex-wrap: wrap; gap: 12px; }.study-legend p { margin: 0; width: 100%; }.study-frame [data-slot="agent-workspace"] { height: 76svh; min-height: 580px; }
+}
