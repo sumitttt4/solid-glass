@@ -1,3 +1,5 @@
+"use client"
+
 import { useId, type ReactNode } from "react"
 import type { ColorTone } from "@/components/ui/tone-badge"
 /** Native radio behavior preserves keyboard navigation inside a shared name. */

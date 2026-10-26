@@ -914,12 +914,16 @@
       "name": "palette-picker",
       "type": "registry:ui",
       "title": "Palette Picker",
-      "description": "A controlled palette selector with presets and a custom color input.",
+      "description": "A Tailwind-style palette with color families, 50–950 shades, keyboard navigation and validated custom hex input.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
         {
           "path": "src/components/ui/palette-picker.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/components/ui/tailwind-palette.ts",
           "type": "registry:ui"
         }
       ]

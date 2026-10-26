@@ -790,7 +790,7 @@
   {
     "slug": "palette-picker",
     "title": "Palette Picker",
-    "description": "A controlled palette selector with presets and a custom color input.",
+    "description": "A Tailwind-style palette with color families, 50–950 shades, keyboard navigation and validated custom hex input.",
     "origin": "Colorwork",
     "examples": [
       "palette-picker-demo"

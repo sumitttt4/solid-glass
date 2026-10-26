@@ -8,7 +8,7 @@ import { CodeBlock } from "@/site/code"
 // Every example, loaded when its preview is first shown, and its source as text.
 const modules = import.meta.glob<{ default?: React.ComponentType } & Record<string, unknown>>("/src/examples/*.tsx")
 const sources = import.meta.glob<string>("/src/examples/*.tsx", { query: "?raw", import: "default" })
-const uiSources = import.meta.glob<string>("/src/components/ui/*.tsx", { query: "?raw", import: "default" })
+const uiSources = import.meta.glob<string>("/src/components/ui/*.{tsx,ts}", { query: "?raw", import: "default" })
 
 const lazies = new Map<string, React.LazyExoticComponent<React.ComponentType>>()
 function exampleOf(name: string) {
@@ -107,7 +107,7 @@ export function ComponentPreview({
 
 /** A component's own source, as it is installed. */
 export function ComponentSource({ name, title }: { name: string; title?: string }) {
-  const source = useSource(uiSources[`/src/components/ui/${name}.tsx`])
+  const source = useSource(uiSources[`/src/components/ui/${name}.tsx`] ?? uiSources[`/src/components/ui/${name}.ts`])
   if (!source) return null
   return <CodeBlock code={source} title={title ?? `components/ui/${name}.tsx`} />
 }

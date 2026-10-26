@@ -1,0 +1,8 @@
+import { createRequire } from "node:module"
+import { writeFileSync } from "node:fs"
+const require=createRequire(import.meta.url), colors=require("tailwindcss/colors")
+function hex(color){const [,light,chroma,hue]=color.match(/oklch\(([\d.]+)% ([\d.]+) ([\d.]+|none)\)/);const L=Number(light)/100,C=Number(chroma),h=hue==="none"?0:Number(hue),a=C*Math.cos(h*Math.PI/180),b=C*Math.sin(h*Math.PI/180),l=(L+.3963377774*a+.2158037573*b)**3,m=(L-.1055613458*a-.0638541728*b)**3,s=(L-.0894841775*a-1.291485548*b)**3;return '#'+[4.0767416621*l-3.3077115913*m+.2309699292*s,-1.2684380046*l+2.6097574011*m-.3413193965*s,-.0041960863*l-.7034186147*m+1.707614701*s].map(v=>Math.round(Math.min(1,Math.max(0,v<=.0031308?12.92*v:1.055*Math.pow(v,1/2.4)-.055))*255).toString(16).padStart(2,'0')).join('')}
+const order=["red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose","slate","gray","zinc","neutral","stone","mauve","olive","mist","taupe"]
+const data=Object.entries(colors).sort(([a],[b])=>order.indexOf(a)-order.indexOf(b)).filter(([,v])=>typeof v==='object'&&v[50]&&v[950]).map(([name,shades])=>({name,shades:Object.entries(shades).map(([shade,color])=>({shade:Number(shade),color:hex(color)}))}))
+writeFileSync(new URL('../src/components/ui/tailwind-palette.ts',import.meta.url),'// Generated from installed Tailwind CSS tokens, rounded/clipped to sRGB hex.\nexport const TAILWIND_PALETTES = '+JSON.stringify(data,null,2)+' as const\n')
+console.log(`palette: ${data.length} Tailwind families, ${data.reduce((n,p)=>n+p.shades.length,0)} shades`)

@@ -1,5 +1,4 @@
 export const ACCENT_KEY = "colorwork:accent:v1"
-export const ACCENT_COLORS = ["#5943af", "#246344", "#a3422e", "#176078", "#a53574"]
 export function applyAccent(value: string) {
   const root = document.documentElement
   if (!/^#[\da-f]{6}$/i.test(value)) {
