@@ -10,7 +10,7 @@
  * live figures in Solid Glass's own pages. Anything else that is JSX is left out.
  */
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs"
-import { dirname, join } from "node:path"
+import { basename, dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
@@ -25,7 +25,7 @@ const slug = (text) =>
 const attr = (tag, name) => tag.match(new RegExp(`(?:^|[\\s<])${name}="([^"]*)"`))?.[1]
 
 function parse(file, section) {
-  const raw = readFileSync(file, "utf8")
+  const raw = readFileSync(file, "utf8").replace(/\r\n/g, "\n")
   const front = raw.match(/^---\n([\s\S]*?)\n---\n/)
   const meta = Object.fromEntries(
     (front?.[1] ?? "")
@@ -171,7 +171,7 @@ function parse(file, section) {
     if (n) block.id = `${block.id}-${n}`
   }
 
-  const name = file.split("/").pop().replace(/\.mdx$/, "")
+  const name = basename(file, ".mdx")
   return { slug: name, section, group: meta.group, title: meta.title ?? name, description: meta.description ?? "", order: Number(meta.order ?? 0), blocks: kept }
 }
 
