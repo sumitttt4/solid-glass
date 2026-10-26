@@ -1,0 +1,1216 @@
+[
+  {
+    "slug": "accordion",
+    "title": "Accordion",
+    "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "accordion-demo",
+      "accordion-basic",
+      "accordion-multiple",
+      "accordion-disabled",
+      "accordion-borders",
+      "accordion-card"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "alert",
+    "title": "Alert",
+    "description": "Displays a callout for user attention.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "alert-demo",
+      "alert-basic",
+      "alert-destructive",
+      "alert-action",
+      "alert-colors",
+      "alert-dialog-basic",
+      "alert-dialog-demo",
+      "alert-dialog-destructive",
+      "alert-dialog-media",
+      "alert-dialog-small-media",
+      "alert-dialog-small"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "alert-dialog",
+    "title": "Alert Dialog",
+    "description": "A modal dialog that interrupts the user with important content and expects a response.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "alert-dialog-demo",
+      "alert-dialog-basic",
+      "alert-dialog-small",
+      "alert-dialog-media",
+      "alert-dialog-small-media",
+      "alert-dialog-destructive"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "ask-card",
+    "title": "Ask Card",
+    "description": "A decision the agent has put to the user, with its choices as buttons.",
+    "origin": "Solid Glass",
+    "examples": [
+      "ask-card-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "aspect-ratio",
+    "title": "Aspect Ratio",
+    "description": "Displays content within a desired ratio.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "aspect-ratio-demo",
+      "aspect-ratio-square",
+      "aspect-ratio-portrait"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "attachment",
+    "title": "Attachment",
+    "description": "Displays a file or image attachment with media, metadata, upload state, and actions.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "attachment-demo",
+      "attachment-image",
+      "attachment-states",
+      "attachment-sizes",
+      "attachment-group",
+      "attachment-trigger"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "avatar",
+    "title": "Avatar",
+    "description": "An image element with a fallback for representing the user.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "avatar-demo",
+      "avatar-basic",
+      "avatar-badge",
+      "avatar-badge-icon",
+      "avatar-group",
+      "avatar-group-count",
+      "avatar-group-count-icon",
+      "avatar-size",
+      "avatar-dropdown"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "badge",
+    "title": "Badge",
+    "description": "Displays a badge or a component that looks like a badge.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "badge-demo",
+      "badge-variants",
+      "badge-icon",
+      "badge-spinner",
+      "badge-link",
+      "badge-colors"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "breadcrumb",
+    "title": "Breadcrumb",
+    "description": "Displays the path to the current resource using a hierarchy of links.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "breadcrumb-demo",
+      "breadcrumb-basic",
+      "breadcrumb-separator",
+      "breadcrumb-dropdown",
+      "breadcrumb-ellipsis",
+      "breadcrumb-link"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "bubble",
+    "title": "Bubble",
+    "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "bubble-demo",
+      "bubble-alignment",
+      "bubble-group-demo",
+      "bubble-link-button",
+      "bubble-reactions",
+      "bubble-collapsible",
+      "bubble-tooltip",
+      "bubble-popover"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "button",
+    "title": "Button",
+    "description": "Displays a button or a component that looks like a button.",
+    "origin": "Adapted",
+    "examples": [
+      "button-demo",
+      "button-size",
+      "button-default",
+      "button-outline",
+      "button-secondary",
+      "button-ghost",
+      "button-destructive",
+      "button-link",
+      "button-icon",
+      "button-with-icon",
+      "button-rounded",
+      "button-spinner",
+      "button-group-demo",
+      "button-render",
+      "button-glass",
+      "button-group-dropdown",
+      "button-group-input-group",
+      "button-group-input",
+      "button-group-nested",
+      "button-group-orientation",
+      "button-group-popover",
+      "button-group-select",
+      "button-group-separator",
+      "button-group-size",
+      "button-group-split"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "button-group",
+    "title": "Button Group",
+    "description": "A container that groups related buttons together with consistent styling.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "button-group-demo",
+      "button-group-orientation",
+      "button-group-size",
+      "button-group-nested",
+      "button-group-separator",
+      "button-group-split",
+      "button-group-input",
+      "button-group-input-group",
+      "button-group-dropdown",
+      "button-group-select",
+      "button-group-popover"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "calendar",
+    "title": "Calendar",
+    "description": "A calendar component that allows users to select a date or a range of dates.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "calendar-demo",
+      "calendar-basic",
+      "calendar-range",
+      "calendar-caption",
+      "calendar-presets",
+      "calendar-time",
+      "calendar-booked-dates",
+      "calendar-custom-days",
+      "calendar-week-numbers",
+      "calendar-multiple"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "card",
+    "title": "Card",
+    "description": "Displays a card with header, content, and footer.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "card-demo",
+      "card-small",
+      "card-spacing",
+      "card-edge-to-edge",
+      "card-image"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "carousel",
+    "title": "Carousel",
+    "description": "A carousel with motion and swipe built using Embla.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "carousel-demo",
+      "carousel-size",
+      "carousel-spacing",
+      "carousel-orientation",
+      "carousel-api",
+      "carousel-plugin"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "chart",
+    "title": "Chart",
+    "description": "Beautiful charts. Built using Recharts. Copy and paste into your apps.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "chart-demo",
+      "chart-example",
+      "chart-example-grid",
+      "chart-example-axis",
+      "chart-example-tooltip",
+      "chart-example-legend",
+      "chart-tooltip"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "checkbox",
+    "title": "Checkbox",
+    "description": "A control that allows the user to toggle between checked and not checked.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "checkbox-demo",
+      "checkbox-invalid",
+      "checkbox-basic",
+      "checkbox-description",
+      "checkbox-disabled",
+      "checkbox-group",
+      "checkbox-table"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "collapsible",
+    "title": "Collapsible",
+    "description": "An interactive component which expands/collapses a panel.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "collapsible-demo",
+      "collapsible-basic",
+      "collapsible-settings",
+      "collapsible-file-tree"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "color-surface",
+    "title": "Color Surface",
+    "description": "Group content on an opaque tinted surface with a paired foreground.",
+    "origin": "Colorwork",
+    "examples": [
+      "color-surface-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "combobox",
+    "title": "Combobox",
+    "description": "Autocomplete input with a list of suggestions.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "combobox-demo",
+      "combobox-basic",
+      "combobox-multiple",
+      "combobox-clear",
+      "combobox-groups",
+      "combobox-custom",
+      "combobox-invalid",
+      "combobox-disabled",
+      "combobox-auto-highlight",
+      "combobox-popup",
+      "combobox-input-group"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "command",
+    "title": "Command",
+    "description": "Command menu for search and quick actions.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "command-demo",
+      "command-basic",
+      "command-shortcuts",
+      "command-groups",
+      "command-scrollable",
+      "command-dialog"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "composer",
+    "title": "Composer",
+    "description": "Where a message is written: a pane of glass holding its tags, its text and the mark that sends it.",
+    "origin": "Solid Glass",
+    "examples": [
+      "composer-demo",
+      "composer-running"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "context-menu",
+    "title": "Context Menu",
+    "description": "Displays a menu of actions triggered by a right click.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "context-menu-demo",
+      "context-menu-basic",
+      "context-menu-submenu",
+      "context-menu-shortcuts",
+      "context-menu-groups",
+      "context-menu-icons",
+      "context-menu-checkboxes",
+      "context-menu-radio",
+      "context-menu-destructive",
+      "context-menu-sides"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "context-ring",
+    "title": "Context Ring",
+    "description": "How full the context window is, as a ring. Opened, the numbers and what it is full of.",
+    "origin": "Solid Glass",
+    "examples": [
+      "context-ring-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "copy-snippet",
+    "title": "Copy Snippet",
+    "description": "Selectable code with truthful asynchronous clipboard feedback.",
+    "origin": "Colorwork",
+    "examples": [
+      "copy-snippet-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "dialog",
+    "title": "Dialog",
+    "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "dialog-demo",
+      "dialog-close-button",
+      "dialog-no-close-button",
+      "dialog-sticky-footer",
+      "dialog-scrollable-content"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "diff-view",
+    "title": "Diff View",
+    "description": "A patch as a diff: added and removed lines coloured, file headers dropped.",
+    "origin": "Solid Glass",
+    "examples": [
+      "diff-view-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "direction",
+    "title": "Direction",
+    "description": "Editable direction component source.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "direction-demo"
+    ],
+    "hasDocs": false
+  },
+  {
+    "slug": "dot-loader",
+    "title": "Dot Loader",
+    "description": "Three dots flashing in turn: the smallest sign that something is still running.",
+    "origin": "Solid Glass",
+    "examples": [
+      "dot-loader-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "drawer",
+    "title": "Drawer",
+    "description": "A drawer component for React.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "drawer-demo",
+      "drawer-sides",
+      "drawer-swipe-handle",
+      "drawer-nested",
+      "drawer-non-modal",
+      "drawer-snap-points",
+      "drawer-dialog"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "dropdown-menu",
+    "title": "Dropdown Menu",
+    "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "dropdown-menu-demo",
+      "dropdown-menu-basic",
+      "dropdown-menu-submenu",
+      "dropdown-menu-shortcuts",
+      "dropdown-menu-icons",
+      "dropdown-menu-checkboxes",
+      "dropdown-menu-checkboxes-icons",
+      "dropdown-menu-radio-group",
+      "dropdown-menu-radio-icons",
+      "dropdown-menu-destructive",
+      "dropdown-menu-avatar",
+      "dropdown-menu-complex"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "empty",
+    "title": "Empty",
+    "description": "Use the Empty component to display an empty state.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "empty-demo",
+      "empty-outline",
+      "empty-background",
+      "empty-avatar",
+      "empty-avatar-group",
+      "empty-input-group",
+      "empty-card"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "field",
+    "title": "Field",
+    "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "field-demo",
+      "field-input",
+      "field-textarea",
+      "field-select",
+      "field-slider",
+      "field-fieldset",
+      "field-checkbox",
+      "field-radio",
+      "field-switch",
+      "field-choice-card",
+      "field-group",
+      "field-responsive"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "hover-card",
+    "title": "Hover Card",
+    "description": "For sighted users to preview content available behind a link.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "hover-card-demo",
+      "hover-card-sides"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "input",
+    "title": "Input",
+    "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "input-demo",
+      "input-basic",
+      "input-field",
+      "input-fieldgroup",
+      "input-disabled",
+      "input-invalid",
+      "input-file",
+      "input-inline",
+      "input-grid",
+      "input-required",
+      "input-badge",
+      "input-input-group",
+      "input-button-group",
+      "input-form",
+      "input-group-basic",
+      "input-group-block-end",
+      "input-group-block-start",
+      "input-group-button-group",
+      "input-group-button",
+      "input-group-custom",
+      "input-group-demo",
+      "input-group-dropdown",
+      "input-group-icon",
+      "input-group-in-card",
+      "input-group-inline-end",
+      "input-group-inline-start",
+      "input-group-kbd",
+      "input-group-label",
+      "input-group-spinner",
+      "input-group-text",
+      "input-group-textarea-examples",
+      "input-group-textarea",
+      "input-group-tooltip",
+      "input-group-with-addons",
+      "input-group-with-buttons",
+      "input-group-with-kbd",
+      "input-group-with-tooltip",
+      "input-otp-alphanumeric",
+      "input-otp-controlled",
+      "input-otp-demo",
+      "input-otp-disabled",
+      "input-otp-form",
+      "input-otp-four-digits",
+      "input-otp-invalid",
+      "input-otp-pattern",
+      "input-otp-separator"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "input-group",
+    "title": "Input Group",
+    "description": "Add addons, buttons, and helper content to inputs.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "input-group-demo",
+      "input-group-inline-start",
+      "input-group-inline-end",
+      "input-group-block-start",
+      "input-group-block-end",
+      "input-group-icon",
+      "input-group-text",
+      "input-group-button",
+      "input-group-kbd",
+      "input-group-dropdown",
+      "input-group-spinner",
+      "input-group-textarea",
+      "input-group-custom",
+      "input-group-basic",
+      "input-group-button-group",
+      "input-group-in-card",
+      "input-group-label",
+      "input-group-textarea-examples",
+      "input-group-tooltip",
+      "input-group-with-addons",
+      "input-group-with-buttons",
+      "input-group-with-kbd",
+      "input-group-with-tooltip"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "input-otp",
+    "title": "Input OTP",
+    "description": "Accessible one-time password component with copy-paste functionality.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "input-otp-demo",
+      "input-otp-pattern",
+      "input-otp-separator",
+      "input-otp-disabled",
+      "input-otp-controlled",
+      "input-otp-invalid",
+      "input-otp-four-digits",
+      "input-otp-alphanumeric",
+      "input-otp-form"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "item",
+    "title": "Item",
+    "description": "A versatile component for displaying content with media, title, description, and actions.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "item-demo",
+      "item-variant",
+      "item-size",
+      "item-icon",
+      "item-avatar",
+      "item-image",
+      "item-group",
+      "item-header",
+      "item-link",
+      "item-dropdown"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "kbd",
+    "title": "Kbd",
+    "description": "Used to display textual user input from keyboard.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "kbd-demo",
+      "kbd-group",
+      "kbd-button",
+      "kbd-tooltip",
+      "kbd-input-group"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "label",
+    "title": "Label",
+    "description": "Renders an accessible label associated with controls.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "label-demo",
+      "field-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "markdown",
+    "title": "Markdown",
+    "description": "Editable markdown component source.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "markdown-demo"
+    ],
+    "hasDocs": false
+  },
+  {
+    "slug": "marker",
+    "title": "Marker",
+    "description": "Displays an inline status, system note, bordered row, or labeled separator in a conversation.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "marker-demo",
+      "marker-variants",
+      "marker-status",
+      "marker-shimmer",
+      "marker-separator",
+      "marker-border",
+      "marker-icon",
+      "marker-link-button"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "menubar",
+    "title": "Menubar",
+    "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "menubar-demo",
+      "menubar-checkbox",
+      "menubar-radio",
+      "menubar-submenu",
+      "menubar-icons"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "message",
+    "title": "Message",
+    "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "message-demo",
+      "message-avatar",
+      "message-group",
+      "message-header-footer",
+      "message-actions",
+      "message-attachment",
+      "message-scroller-group-chat",
+      "message-scroller-opening-position",
+      "message-scroller-state"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "message-scroller",
+    "title": "Message Scroller",
+    "description": "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "message-scroller-group-chat",
+      "message-scroller-opening-position",
+      "message-scroller-state"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "native-select",
+    "title": "Native Select",
+    "description": "A styled native HTML select element with consistent design system integration.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "native-select-demo",
+      "native-select-groups",
+      "native-select-disabled",
+      "native-select-invalid"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "navigation-menu",
+    "title": "Navigation Menu",
+    "description": "A collection of links for navigating websites.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "navigation-menu-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "option-card",
+    "title": "Option Card",
+    "description": "A selectable content card with native radio-group keyboard behavior.",
+    "origin": "Colorwork",
+    "examples": [
+      "option-card-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "pagination",
+    "title": "Pagination",
+    "description": "Pagination with page navigation, next and previous links.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "pagination-demo",
+      "pagination-simple",
+      "pagination-icons-only"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "palette-picker",
+    "title": "Palette Picker",
+    "description": "A controlled palette selector with presets and a custom color input.",
+    "origin": "Colorwork",
+    "examples": [
+      "palette-picker-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "panel",
+    "title": "Panel",
+    "description": "The thinnest pane of glass, with a title bar: what a page is laid out in.",
+    "origin": "Solid Glass",
+    "examples": [
+      "panel-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "popover",
+    "title": "Popover",
+    "description": "Displays rich content in a portal, triggered by a button.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "popover-demo",
+      "popover-basic",
+      "popover-alignments",
+      "popover-form"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "progress",
+    "title": "Progress",
+    "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "progress-demo",
+      "progress-label",
+      "progress-controlled"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "questionnaire",
+    "title": "Questionnaire",
+    "description": "A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "questionnaire-demo",
+      "questionnaire-multiple",
+      "questionnaire-freeform",
+      "questionnaire-skip",
+      "questionnaire-shortcuts",
+      "questionnaire-validation",
+      "questionnaire-controlled",
+      "questionnaire-resume",
+      "questionnaire-conditional",
+      "questionnaire-navigation-state",
+      "questionnaire-progress",
+      "questionnaire-animated",
+      "questionnaire-card",
+      "questionnaire-dialog"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "radio-group",
+    "title": "Radio Group",
+    "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "radio-group-demo",
+      "radio-group-description",
+      "radio-group-choice-card",
+      "radio-group-fieldset",
+      "radio-group-disabled",
+      "radio-group-invalid"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "reasoning",
+    "title": "Reasoning",
+    "description": "The model's thinking, folded away by default.",
+    "origin": "Solid Glass",
+    "examples": [
+      "reasoning-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "resizable",
+    "title": "Resizable",
+    "description": "Accessible resizable panel groups and layouts with keyboard support.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "resizable-demo",
+      "resizable-vertical",
+      "resizable-handle"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "scroll-area",
+    "title": "Scroll Area",
+    "description": "Augments native scroll functionality for custom, cross-browser styling.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "scroll-area-demo",
+      "scroll-area-horizontal-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "select",
+    "title": "Select",
+    "description": "Displays a list of options for the user to pick from—triggered by a button.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "select-demo",
+      "select-align-item",
+      "select-groups",
+      "select-scrollable",
+      "select-disabled",
+      "select-invalid"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "separator",
+    "title": "Separator",
+    "description": "Visually or semantically separates content.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "separator-demo",
+      "separator-vertical",
+      "separator-menu",
+      "separator-list"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "sheet",
+    "title": "Sheet",
+    "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "sheet-demo",
+      "sheet-side",
+      "sheet-no-close-button"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "sidebar",
+    "title": "Sidebar",
+    "description": "A composable, themeable and customizable sidebar component.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "sidebar-controlled",
+      "sidebar-demo",
+      "sidebar-footer",
+      "sidebar-group-action",
+      "sidebar-group-collapsible",
+      "sidebar-group",
+      "sidebar-header",
+      "sidebar-menu-action",
+      "sidebar-menu-badge",
+      "sidebar-menu-collapsible",
+      "sidebar-menu-sub",
+      "sidebar-menu",
+      "sidebar-rsc"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "skeleton",
+    "title": "Skeleton",
+    "description": "Use to show a placeholder while content is loading.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "skeleton-demo",
+      "skeleton-avatar",
+      "skeleton-card",
+      "skeleton-text",
+      "skeleton-form",
+      "skeleton-table"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "slider",
+    "title": "Slider",
+    "description": "An input where the user selects a value from within a given range.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "slider-demo",
+      "slider-range",
+      "slider-multiple",
+      "slider-vertical",
+      "slider-controlled",
+      "slider-disabled"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "sonner",
+    "title": "Sonner",
+    "description": "Editable sonner component source.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "sonner-demo"
+    ],
+    "hasDocs": false
+  },
+  {
+    "slug": "spinner",
+    "title": "Spinner",
+    "description": "An indicator that can be used to show a loading state.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "spinner-demo",
+      "spinner-custom",
+      "spinner-size",
+      "spinner-button",
+      "spinner-badge",
+      "spinner-input-group",
+      "spinner-empty"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "status-callout",
+    "title": "Status Callout",
+    "description": "A semantic message with an icon, text and optional dismissal.",
+    "origin": "Colorwork",
+    "examples": [
+      "status-callout-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "status-glyph",
+    "title": "Status Glyph",
+    "description": "Three points of light that say a turn is going, and what it is doing.",
+    "origin": "Solid Glass",
+    "examples": [
+      "status-glyph-demo",
+      "status-glyph-figures",
+      "status-glyph-inline"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "switch",
+    "title": "Switch",
+    "description": "A control that allows the user to toggle between checked and not checked.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "switch-demo",
+      "switch-description",
+      "switch-choice-card",
+      "switch-disabled",
+      "switch-invalid",
+      "switch-sizes"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "table",
+    "title": "Table",
+    "description": "A responsive table component.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "table-demo",
+      "table-footer",
+      "table-actions"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "tabs",
+    "title": "Tabs",
+    "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "tabs-demo",
+      "tabs-line",
+      "tabs-vertical",
+      "tabs-disabled",
+      "tabs-icons"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "tag",
+    "title": "Tag",
+    "description": "Something attached to what is being written. While it uploads, the tag is its own progress bar.",
+    "origin": "Solid Glass",
+    "examples": [
+      "tag-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "task-notice",
+    "title": "Task Notice",
+    "description": "News of something ending behind the conversation: a dot for how it went, a line for what it was.",
+    "origin": "Solid Glass",
+    "examples": [
+      "task-notice-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "textarea",
+    "title": "Textarea",
+    "description": "Displays a form textarea or a component that looks like a textarea.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "textarea-demo",
+      "textarea-field",
+      "textarea-disabled",
+      "textarea-invalid",
+      "textarea-button"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "toast",
+    "title": "Toast",
+    "description": "A succinct message that is displayed temporarily.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "toast-demo",
+      "toast-types",
+      "toast-promise"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "toggle",
+    "title": "Toggle",
+    "description": "A two-state button that can be either on or off.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "toggle-demo",
+      "toggle-outline",
+      "toggle-text",
+      "toggle-sizes",
+      "toggle-disabled",
+      "toggle-group-demo",
+      "toggle-group-disabled",
+      "toggle-group-font-weight-selector",
+      "toggle-group-outline",
+      "toggle-group-sizes",
+      "toggle-group-spacing",
+      "toggle-group-vertical"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "toggle-group",
+    "title": "Toggle Group",
+    "description": "A set of two-state buttons that can be toggled on or off.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "toggle-group-demo",
+      "toggle-group-outline",
+      "toggle-group-sizes",
+      "toggle-group-spacing",
+      "toggle-group-vertical",
+      "toggle-group-disabled",
+      "toggle-group-font-weight-selector"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "tone-badge",
+    "title": "Tone Badge",
+    "description": "Label a category with a named color role and a paired foreground.",
+    "origin": "Colorwork",
+    "examples": [
+      "tone-badge-demo"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "tool-steps",
+    "title": "Tool Steps",
+    "description": "A run of tool calls folded into one line, which opens to what each one did.",
+    "origin": "Solid Glass",
+    "examples": [
+      "tool-steps-demo",
+      "tool-steps-list"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "tooltip",
+    "title": "Tooltip",
+    "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    "origin": "shadcn/ui",
+    "examples": [
+      "tooltip-demo",
+      "tooltip-sides",
+      "tooltip-keyboard",
+      "tooltip-disabled"
+    ],
+    "hasDocs": true
+  },
+  {
+    "slug": "turn-status",
+    "title": "Turn Status",
+    "description": "The line a turn ends on for as long as it is going: what it is doing, for how long, and how much it has written.",
+    "origin": "Solid Glass",
+    "examples": [
+      "turn-status-demo",
+      "turn-status-steps",
+      "turn-status-waiting"
+    ],
+    "hasDocs": true
+  }
+]

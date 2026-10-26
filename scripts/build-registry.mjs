@@ -17,7 +17,7 @@
  * content/solid/. Everything else in src/components/ui is shadcn/ui's and is installed from there.
  */
 import { execFileSync } from "node:child_process"
-import { copyFileSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { blockMetadata } from "./block-metadata.mjs"
@@ -26,21 +26,25 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const out = join(root, "public/r")
 const read = (path) => readFileSync(join(root, path), "utf8")
 // Where the site is served from, and the repository on GitHub.
-const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://deeplethe.github.io/solid-glass").replace(/\/$/, "")
-const repo = "deeplethe/solid-glass"
+const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://sumitttt4.github.io/solid-glass").replace(/\/$/, "")
+const repo = "sumitttt4/solid-glass"
+const ref = process.env.COLORWORK_REF ?? "color-language"
 
 const own = readdirSync(join(root, "content/solid"))
   .map((file) => file.replace(/\.mdx$/, ""))
   .sort()
+
+const registryNames = readdirSync(join(root, "src/components/ui")).filter(file => file.endsWith(".tsx")).map(file => file.replace(/\.tsx$/, "")).sort()
+const registryOwn = new Set(registryNames)
 
 /** What a file needs: the packages it imports, and the components, its own by address and shadcn/ui's by name. */
 function needs(content) {
   const packages = new Set()
   const others = new Set()
   for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
-    if (source === "react" || source === "@/lib/utils") continue
+    if (source === "react" || source === "@/lib/utils" || source.startsWith("@/hooks/")) continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
-    if (used) others.add(own.includes(used) ? `${repo}/${used}` : used)
+    if (used) others.add(registryOwn.has(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
   }
   return { dependencies: [...packages].sort(), registryDependencies: [...others].sort() }
@@ -64,34 +68,38 @@ const blocks = readdirSync(join(root, "src/blocks"))
     }
   })
 
-const components = own.map((name) => {
+const components = registryNames.map((name) => {
   const content = read(`src/components/ui/${name}.tsx`)
-  const front = read(`content/solid/${name}.mdx`)
-  const packages = new Set()
-  const others = new Set()
-  for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
-    if (source === "react" || source === "@/lib/utils") continue
-    const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
-    // One of Solid Glass's own is named by its GitHub address; one of shadcn/ui's by its name.
-    if (used) others.add(own.includes(used) ? `${repo}/${used}` : used)
-    else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
-  }
+  const doc = [`content/solid/${name}.mdx`, `content/components/${name}.mdx`].find(path => existsSync(join(root,path)))
+  const front = doc ? read(doc) : ""
+  const hooks = [...content.matchAll(/from "@\/hooks\/([^"]+)"/g)].map(([,hook]) => hook)
   return {
-    name,
-    type: "registry:ui",
-    title: front.match(/^title:\s*(.*)$/m)?.[1],
-    description: front.match(/^description:\s*(.*)$/m)?.[1],
-    dependencies: [...packages].sort(),
-    registryDependencies: [...others].sort(),
-    files: [{ path: `src/components/ui/${name}.tsx`, type: "registry:ui" }],
+    name, type: "registry:ui",
+    title: front.match(/^title:\s*(.*)$/m)?.[1] ?? name.replaceAll("-", " "),
+    description: front.match(/^description:\s*(.*)$/m)?.[1] ?? `Editable ${name} source with the Colorwork theme.`,
+    ...needs(content),
+    files: [
+      { path: `src/components/ui/${name}.tsx`, type: "registry:ui" },
+      ...hooks.map(hook => ({ path: `src/hooks/${hook}.ts`, type: "registry:hook" })),
+    ],
   }
 })
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
-  name: "solid-glass",
+  name: "colorwork",
   homepage: origin,
   items: [
+    {
+      name: "colorwork",
+      type: "registry:file",
+      title: "Colorwork",
+      description: "Opaque surfaces, five expressive color roles, paired themes and visible interaction states.",
+      files: [
+        { path: "src/colorwork.css", type: "registry:file", target: "src/colorwork.css" },
+        { path: "src/solid-glass.css", type: "registry:file", target: "src/solid-glass.css" },
+      ],
+    },
     {
       name: "solid-glass",
       type: "registry:file",
@@ -113,10 +121,11 @@ execFileSync("npx", ["shadcn", "build", "registry.json", "--output", "public/r"]
 for (const file of readdirSync(out).filter((file) => file.endsWith(".json"))) {
   const path = join(out, file)
   const text = readFileSync(path, "utf8")
-  const served = text.replaceAll(new RegExp(`"${repo}/([a-z0-9-]+)"`, "g"), (_, name) => JSON.stringify(`${origin}/r/${name}.json`))
+  const served = text.replaceAll(new RegExp(`"${repo}/([a-z0-9-]+)(?:#[^\"]+)?"`, "g"), (_, name) => JSON.stringify(`${origin}/r/${name}.json`))
   if (served !== text) writeFileSync(path, served)
 }
 // The stylesheet as it is, for whoever would rather copy one file than run a command.
 copyFileSync(join(root, "src/solid-glass.css"), join(out, "solid-glass.css"))
+copyFileSync(join(root, "src/colorwork.css"), join(out, "colorwork.css"))
 
 console.log(`registry: ${components.length} components, ${blocks.length} block and the stylesheet -> registry.json, public/r/`)

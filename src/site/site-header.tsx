@@ -24,8 +24,8 @@ const NAV = [
   { href: "/docs", label: "Docs" },
   { href: "/docs/components", label: "Components" },
   { href: "/blocks", label: "Blocks" },
-  { href: "/docs/material", label: "Material" },
-  { href: "/create", label: "Create" },
+  { href: "/docs/color-language", label: "Color" },
+  { href: "/color-study", label: "Workbench" },
 ]
 
 /**
@@ -44,7 +44,7 @@ function MainNav({ className }: { className?: string }) {
       {/* the mark stands still: one that never stops moving reads as a page that shakes */}
       <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mr-1 -ml-3 h-8 gap-2 px-2.5 text-sm")}>
         <SolidGlassMark className="size-5 -translate-y-px" />
-        <span className="font-semibold tracking-tight">Solid Glass</span>
+        <span className="font-semibold tracking-tight">Colorwork</span>
       </Link>
       {NAV.map((item) => (
         <Link
@@ -238,7 +238,7 @@ function MobileNav() {
 function GitHubLink() {
   return (
     <a
-      href="https://github.com/deeplethe/solid-glass"
+      href="https://github.com/sumitttt4/solid-glass"
       target="_blank"
       rel="noreferrer"
       title="GitHub"

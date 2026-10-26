@@ -1,7 +1,7 @@
 import { useCallback, useSyncExternalStore } from "react"
 
 type Theme = "dark" | "light"
-const KEY = "solid-glass:theme"
+const KEY = "colorwork:theme"
 const listeners = new Set<() => void>()
 const read = (): Theme => (document.documentElement.classList.contains("dark") ? "dark" : "light")
 

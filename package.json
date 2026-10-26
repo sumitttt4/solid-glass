@@ -2,16 +2,16 @@
   "name": "solid-glass",
   "private": true,
   "version": "0.1.0",
-  "description": "A design system for AI applications. Material, physical, tactile, technical.",
+  "description": "A colorful React component library by Sumit Sharma, built on Solid Glass.",
   "license": "MIT",
-  "homepage": "https://deeplethe.github.io/solid-glass",
+  "homepage": "https://sumitttt4.github.io/solid-glass",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/deeplethe/solid-glass.git"
+    "url": "git+https://github.com/sumitttt4/solid-glass.git"
   },
   "type": "module",
   "scripts": {
-    "docs": "node scripts/build-docs.mjs && node scripts/build-registry.mjs",
+    "docs": "node scripts/build-docs.mjs && node scripts/build-catalog.mjs && node scripts/build-registry.mjs",
     "dev": "npm run docs && vite",
     "build": "npm run docs && vite build",
     "typecheck": "tsc -b",

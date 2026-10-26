@@ -40,3 +40,18 @@ The interaction and accessibility of the components come from [Base UI](https://
 Icons are [Lucide](https://lucide.dev) (ISC), with [Tabler](https://tabler.io/icons) (MIT) and
 [Hugeicons](https://hugeicons.com) in some of shadcn/ui's examples. The typefaces are
 [Geist and Geist Mono](https://vercel.com/font) (SIL Open Font License).
+
+## Colorwork additions
+
+This fork retains the upstream notices above. The upstream Solid Glass-specific component list
+referred to by its original README comprises ask-card, composer, context-ring, diff-view,
+dot-loader, panel, reasoning, status-glyph, tag, task-notice, tool-steps and turn-status.
+The upstream history and original README remain available in Git.
+
+Colorwork adds its own theme, catalog, Tone Badge, Color Surface, Palette Picker, Option Card,
+Status Callout and Copy Snippet. The Button is an adaptation of the inherited implementation,
+with its finish informed by Cloudflare Kumo's published button patterns. It does not include
+the Kumo runtime package.
+
+Figtree and Plus Jakarta Sans are loaded through Fontsource under the SIL Open Font License;
+Geist Mono is retained for code. The font packages include their respective license texts.

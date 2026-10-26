@@ -32,6 +32,6 @@ jobs:
       - name: The registry is as committed
         # registry.json is written by scripts/build-registry.mjs and is what shadcn add reads from
         # GitHub; a component added without rebuilding it would be missing from the registry.
-        run: git diff --exit-code registry.json
+        run: git diff --exit-code registry.json src/site/catalog.generated.json
       - run: npm run typecheck
       - run: npm run build

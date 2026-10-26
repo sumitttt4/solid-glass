@@ -1,0 +1,27 @@
+---
+title: Color language
+description: Expressive color, with a clear role for every choice.
+order: 3
+---
+
+## Five jobs for color
+
+Character is the overall feeling of the workspace. Structure groups related sections or categories. Hierarchy makes the next action clear. Interaction marks hover, focus, selection and disabled states. Status describes outcomes with words or icons as well as color.
+
+## Named tones
+
+Iris supports creative actions. Fern gives grouped content a calmer character. Clay is warm and editorial. Sun brings emphasis to a summary or empty state. Ocean is a cooler alternative for controls and research content. These are starting points, not fixed semantic meanings.
+
+Use data-tone on a component subtree, or the tone prop on ToneBadge and ColorSurface. Each tone supplies solid, soft, ink, edge and on-solid values. A nested primary button inherits the same role.
+
+## Opaque material
+
+Surfaces are solid fills. Fine borders define grouping. Menus retain a restrained shadow; rim highlights and backdrop blur are removed from the theme. Legacy glass class names are compatibility hooks, not the intended material.
+
+## Light and dark
+
+Dark mode uses brighter actions and quieter tinted surfaces; it is not a CSS inversion. Test both themes in your product. Portalled menus inherit the global theme; a locally scoped tone will not automatically follow a portal outside that subtree.
+
+## Readability before decoration
+
+Keep normal text at least 4.5:1 against its actual background; large text and applicable essential graphics have different thresholds. Consider opacity, nested surfaces, hover, focus and error states. The current library is an alpha, not a claim of full WCAG conformance.
