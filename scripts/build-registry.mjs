@@ -44,6 +44,7 @@ function needs(content) {
   for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
     if (source === "react" || source === "@/lib/utils" || source.startsWith("@/hooks/")) continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
+    if (used === "tailwind-palette") continue
     if (used) others.add(registryOwn.has(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
   }
@@ -80,6 +81,7 @@ const components = registryNames.map((name) => {
     ...needs(content),
     files: [
       { path: `src/components/ui/${name}.tsx`, type: "registry:ui" },
+      ...(name === "palette-picker" ? [{ path: "src/components/ui/tailwind-palette.ts", type: "registry:ui" }] : []),
       ...hooks.map(hook => ({ path: `src/hooks/${hook}.ts`, type: "registry:hook" })),
     ],
   }

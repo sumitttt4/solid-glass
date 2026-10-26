@@ -55,3 +55,5 @@ the Kumo runtime package.
 
 Figtree and Plus Jakarta Sans are loaded through Fontsource under the SIL Open Font License;
 Geist Mono is retained for code. The font packages include their respective license texts.
+
+The palette data is generated from Tailwind CSS color tokens (MIT), converted from OKLCH to rounded/clipped sRGB hex. Tailwind CSS copyright (c) Tailwind Labs, Inc. The installed tailwindcss package contains its MIT license.

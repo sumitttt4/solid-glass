@@ -1,6 +1,6 @@
 ---
 title: Palette Picker
-description: A controlled palette selector with presets and a custom color input.
+description: A Tailwind-style palette with color families, 50–950 shades, keyboard navigation and validated custom hex input.
 ---
 
 Original Colorwork component by Sumit Sharma.
@@ -18,3 +18,7 @@ npx shadcn@latest add sumitttt4/solid-glass/palette-picker#color-language
 <ComponentSource name="palette-picker" />
 
 Import the Colorwork theme for the paired colors and states. The source is editable; connect persistence or data in your app.
+
+## Palette data
+
+This component includes a required tailwind-palette.ts data file, derived from the installed Tailwind CSS tokens and converted to rounded sRGB hex. The registry installs both files. In the collection Source view, expand Required Tailwind palette data when copying manually. Shade buttons support arrow keys and Home/End; custom hex values need six digits.

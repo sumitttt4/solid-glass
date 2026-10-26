@@ -233,3 +233,27 @@ html.dark[data-colorwork-accent] [data-semantic="success"] {
 [data-slot="status-callout"] { display: flex; gap: 12px; align-items: flex-start; padding: 18px; background: var(--tone-soft); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: 10px; }
 [data-slot="status-callout"] > svg { width: 20px; height: 20px; flex-shrink: 0; }[data-slot="status-callout"] > div { flex: 1; min-width: 0; }[data-slot="status-callout"] strong { font-size: 14px; font-weight: 400; }[data-slot="status-callout"] > div > div { margin-top: 6px; font-size: 12px; line-height: 1.6; }
 [data-slot="copy-snippet"] { border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 14px; min-width: 0; }[data-slot="copy-snippet"] > div { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 12px; }[data-slot="copy-snippet"] pre { max-width: 100%; overflow: auto; padding: 18px 0 10px; font-size: 12px; line-height: 1.7; }[data-slot="copy-snippet"] p { color: var(--muted-foreground); font-size: 12px; min-height: 18px; }
+
+/* Opaque themed controls, including portals. Native menus aren't used by the browser UI. */
+:root [data-slot="select-content"],:root [data-slot="dropdown-menu-content"],:root [data-slot="popover-content"] { background: var(--popover); color: var(--popover-foreground); backdrop-filter: none; }
+:root [data-slot="select-content"]::before { backdrop-filter: none; }
+:root [data-slot="select-item"] { min-height: 36px; font-weight: 400; padding: 9px 28px 9px 12px; }
+:root [data-slot="select-item"][data-highlighted] { background: var(--accent); color: var(--accent-foreground); }
+:root [data-slot="palette-picker"] { width: 100%; min-width: 0; max-width: 720px; padding: 16px; background: var(--card); color: var(--card-foreground); }
+:root [data-slot="palette-picker"] .palette-picker-intro { display: flex; justify-content: space-between; align-items: start; gap: 12px; flex-wrap: wrap; margin: 0 0 12px; font-size: 12px; }
+:root [data-slot="palette-picker"] output { display: inline; margin: 0; font-size: 11px; color: var(--muted-foreground); text-transform: capitalize; }
+:root [data-slot="palette-picker"] .palette-scroll { display: block; overflow: auto; max-height: 390px; overscroll-behavior: contain; padding: 4px; border: 1px solid var(--border); border-radius: 7px; }
+.palette-family,.palette-shade-labels { display: grid; grid-template-columns: 65px repeat(11,minmax(24px,1fr)); gap: 4px; align-items: center; min-width: 370px; }
+.palette-shade-labels { position: sticky; top: -4px; z-index: 1; background: var(--card); padding: 4px 0 8px; font-size: 9px; color: var(--muted-foreground); text-align: center; }
+.palette-family { margin-bottom: 5px; }.palette-family > span,.palette-shade-labels > span:first-child { font-size: 10px; text-transform: capitalize; text-align: left; }
+:root [data-slot="palette-picker"] button[data-shade] { width: 100%; min-width: 24px; height: 28px; border: 1px solid #00000012; border-radius: 4px; box-shadow: none; }
+:root [data-slot="palette-picker"] button[data-shade][aria-pressed="true"] { outline: 2px solid var(--foreground); outline-offset: 1px; }
+:root [data-slot="palette-picker"] button[data-shade] span { width: 16px; height: 16px; font-size: 10px; box-shadow: 0 0 0 1px #00000020; }
+:root [data-slot="palette-picker"] .palette-custom { display: flex; align-items: end; flex-wrap: wrap; justify-content: space-between; gap: 12px; margin-top: 14px; }
+:root [data-slot="palette-picker"] .palette-custom label { display: flex; gap: 7px; align-items: center; font-size: 11px; }
+:root [data-slot="palette-picker"] input[type="text"],:root [data-slot="palette-picker"] input:not([type]) { width: 88px; height: 34px; background: var(--background); color: var(--foreground); border: 1px solid var(--input); border-radius: 5px; padding: 6px; font-family: var(--font-mono); font-size: 12px; }
+:root [data-slot="palette-picker"] input[aria-invalid="true"] { border-color: var(--destructive); }
+:root [data-slot="palette-picker"] .palette-reset { width: auto; height: 34px; border: 1px solid var(--border); border-radius: 5px; background: var(--background); color: var(--foreground); box-shadow: none; padding: 0 12px; font-size: 12px; }
+:root [data-slot="palette-picker"] .palette-error { font-size: 12px; margin-top: 12px; color: var(--destructive); }
+:root [data-slot="palette-picker"] .palette-quick { display: flex; gap: 12px; flex-wrap: wrap; }
+.palette-mobile-hint { display: none; }@media(max-width:480px) { .palette-mobile-hint { display: block; font-size: 10px; line-height: 1.5; color: var(--muted-foreground); margin-top: 10px; } }
