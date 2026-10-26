@@ -9,7 +9,8 @@ The supplied tablet screenshot showed a native dark option menu in the light int
 3. Color controls: homepage and collection use the same picker. The installed Tailwind color set supplies 26 families × 11 numbered shades (50–950), totaling 286 swatches. Chromatic families appear first; neutral families remain available below.
 4. Picker behavior: named/numbered swatches, hex readout, roving arrow/Home/End navigation, custom color input, validated hex text, reset and local persistence through the site. Equivalent hex values across families keep a single selected token during interaction. Invalid hex input does not replace the active color.
 5. Reuse: the registry includes the required tailwind-palette.ts helper alongside PalettePicker. Source view exposes that file for manual copy. Interactive original components include client boundaries for compatible Next.js consumers.
-6. Responsive/focus: improved tablet layout; horizontal shade scrolling stays inside the palette, with a swipe hint on narrow screens. Skip navigation is visible for keyboard focus rather than incidental focus changes.
+6. Responsive/focus: improved tablet layout; horizontal shade scrolling stays inside the palette, with a swipe hint on narrow screens. Skip navigation keeps full DOM accessibility and tab focusability without visibility:hidden, sliding into view at top: 10px on :focus-visible and resting offscreen otherwise.
+7. Controls & cross-platform ergonomics: Escape closes global color palette disclosures and restores summary trigger focus; common search aliases (modal, dropdown, toggle, swatch, alert) connect natural vocabulary to component items. Documentation and registry build scripts normalize CRLF line breaks and use cross-platform process execution.
 
 ## Verification
 

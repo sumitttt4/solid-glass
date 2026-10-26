@@ -16,7 +16,7 @@
  * Only what is Solid Glass's is published: the stylesheet, and the components that have a page in
  * content/solid/. Everything else in src/components/ui is shadcn/ui's and is installed from there.
  */
-import { execFileSync } from "node:child_process"
+import { execSync } from "node:child_process"
 import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -118,7 +118,7 @@ const registry = {
 writeFileSync(join(root, "registry.json"), `${JSON.stringify(registry, null, 2)}\n`)
 
 rmSync(out, { recursive: true, force: true })
-execFileSync("npx", ["shadcn", "build", "registry.json", "--output", "public/r"], { cwd: root, stdio: ["ignore", "ignore", "inherit"] })
+execSync("npx shadcn build registry.json --output public/r", { cwd: root, stdio: ["ignore", "ignore", "inherit"] })
 // What the site serves names Solid Glass's own by the site's address instead (see the top).
 for (const file of readdirSync(out).filter((file) => file.endsWith(".json"))) {
   const path = join(out, file)
