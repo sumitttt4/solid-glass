@@ -11,7 +11,7 @@
   },
   "type": "module",
   "scripts": {
-    "docs": "node scripts/build-docs.mjs && node scripts/build-registry.mjs",
+    "docs": "node scripts/build-docs.mjs && node scripts/build-catalog.mjs && node scripts/build-registry.mjs",
     "dev": "npm run docs && vite",
     "build": "npm run docs && vite build",
     "typecheck": "tsc -b",

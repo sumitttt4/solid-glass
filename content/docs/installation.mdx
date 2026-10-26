@@ -17,6 +17,12 @@ npm run dev
 
 Open http://localhost:5191. Build with npm run build; publish the dist directory to a static host. Configure a single-page-app fallback for nested routes. The GitHub Pages workflow uses your account's origin; Pages must still be enabled in repository settings before it can publish.
 
+## Browse the full collection
+
+Open /components for every UI source component, its available examples, complete source and fork-specific install command. The six original Colorwork entries are labeled separately from inherited Solid Glass/shadcn entries. Existing blocks remain at /blocks.
+
+The registry now includes all UI components rather than only the custom subset. Local UI dependencies are pinned to this fork; the sidebar item also includes its required mobile hook. You still need a compatible app and both theme files. Installation of every item into a separate app is not claimed tested.
+
 ## Copy the theme
 
 Copy BOTH src/colorwork.css and src/solid-glass.css into your app's styles directory. The first imports the second for its compatible component selectors, then replaces the material and color roles.

@@ -42,3 +42,13 @@ Kumo official button documentation/source informed the emphasis finish (tonal fi
 Global presets/custom color affect component tones and primary controls, with reset and local persistence. Success remains a separate semantic color. Custom solid-label contrast chooses black or white; arbitrary custom palettes still need contextual review. Figtree is the main face; Plus Jakarta Sans supports navigation and labels. Both use Regular 400.
 
 Global preset selection, arbitrary hex input, black/white label choice, reset and reload persistence passed browser checks. Figtree/Plus Jakarta font-family checks passed. Regular 400 was inspected in the rendered page. Button gradient contrast is checked against its lighter hover endpoint; arbitrary user-selected gradients are not covered by the original palette sample.
+
+## Full collection expansion
+
+Verified upstream main remains at 6e8903e494a15491ceda38fafea5056c95a74d44. All 75 upstream UI files, 456 original example files and 59 block files exist locally. The source catalog and registry now include 81 UI components: 75 inherited + six originals.
+
+All 81 initial preview entry points were opened in local Chromium with no page errors or caught render failures. This is a render smoke check, not exhaustive interaction testing of every variant or all 456 inherited examples. All current catalog entries have an example; previously unrepresented Direction, Markdown and Sonner wrappers received small examples.
+
+New component checks: Option Card native radio arrow-key selection; Palette Picker selection; Status Callout dismissal/reappearance; Copy Snippet actual clipboard write/read. Full collection source/install views, original-only filtering, search empty state, 320/390px reflow and mobile dark render passed. The generated registry graph has no missing local UI targets, invalid alias-as-package dependencies or missing files. Sidebar includes its mobile hook.
+
+The catalog records provenance. Original UI additions are distinct from the adapted Button and inherited components. Blocks remain in the existing Blocks browser. Full independent-app installation of all 81 components is still not claimed verified.

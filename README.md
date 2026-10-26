@@ -17,7 +17,7 @@ npm ci
 npm run dev
 ```
 
-Open http://localhost:5191. The homepage contains the component collection; `/docs/installation` explains copy-in setup and branch-pinned registry commands. `/color-study` keeps the earlier palette workbench; `/view/agent-workspace` is the local-state demo screen.
+Open http://localhost:5191. The homepage highlights 12 examples. `/components` contains the full 81-component browser (75 inherited + 6 original Colorwork components), with example selection, full source and install commands; `/docs/installation` explains copy-in setup and branch-pinned registry commands. `/color-study` keeps the earlier palette workbench; `/view/agent-workspace` is the local-state demo screen.
 
 ## Check and build
 
@@ -47,3 +47,9 @@ Do not use the upstream install command for this theme. See the installation doc
 ## Provenance
 
 Derived from [deeplethe/solid-glass](https://github.com/deeplethe/solid-glass) under MIT; upstream shadcn material is covered by NOTICE.md. Original theme, catalog and color components are additions to that foundation. Keep all relevant notices with redistributed source.
+
+![Full collection browser](docs/screenshots/colorwork-collection.png)
+
+## Original additions
+
+Palette Picker, Option Card, Status Callout and Copy Snippet join Tone Badge and Color Surface. All 75 inherited UI source files, 456 upstream examples and 59 upstream block files are retained. See docs/upstream-inventory.md for provenance and docs/colorwork-verification.md for checks and limits.

@@ -1,0 +1,3 @@
+import { useState } from "react"
+import { OptionCard } from "@/components/ui/option-card"
+export default function OptionCardDemo() { const [choice,setChoice]=useState("calm");return <div className="grid w-full max-w-sm gap-3"><OptionCard name="example-direction" value="calm" checked={choice==="calm"} onValueChange={setChoice} title="Keep it calm" description="Quiet surfaces, one clear action." tone="fern" /><OptionCard name="example-direction" value="expressive" checked={choice==="expressive"} onValueChange={setChoice} title="A little more character" description="Expressive color, deliberate hierarchy." tone="iris" /></div> }

@@ -35,19 +35,55 @@
       ]
     },
     {
-      "name": "button",
+      "name": "accordion",
       "type": "registry:ui",
-      "title": "Colorwork Button",
-      "description": "Kumo-informed button finish with inherited or explicit Colorwork tones.",
+      "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
       "dependencies": [
         "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Displays a callout for user attention.",
+      "dependencies": [
         "class-variance-authority",
         "cn"
       ],
       "registryDependencies": [],
       "files": [
         {
-          "path": "src/components/ui/button.tsx",
+          "path": "src/components/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content and expects a response.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/alert-dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -62,6 +98,258 @@
       "files": [
         {
           "path": "src/components/ui/ask-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Displays content within a desired ratio.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Displays a file or image attachment with media, metadata, upload state, and actions.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Displays a badge or a component that looks like a badge.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Displays the path to the current resource using a hierarchy of links.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Displays a button or a component that looks like a button.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "A container that groups related buttons together with consistent styling.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/separator#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "A calendar component that allows users to select a date or a range of dates.",
+      "dependencies": [
+        "cn",
+        "lucide-react",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Displays a card with header, content, and footer.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "A carousel with motion and swipe built using Embla.",
+      "dependencies": [
+        "cn",
+        "embla-carousel-react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Beautiful charts. Built using Recharts. Copy and paste into your apps.",
+      "dependencies": [
+        "cn",
+        "recharts"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "An interactive component which expands/collapses a panel.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/collapsible.tsx",
           "type": "registry:ui"
         }
       ]
@@ -83,6 +371,48 @@
       ]
     },
     {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Autocomplete input with a list of suggestions.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language",
+        "sumitttt4/solid-glass/input-group#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command menu for search and quick actions.",
+      "dependencies": [
+        "cmdk",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/dialog#color-language",
+        "sumitttt4/solid-glass/input-group#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "composer",
       "type": "registry:ui",
       "title": "Composer",
@@ -91,12 +421,30 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "dropdown-menu",
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#color-language",
+        "sumitttt4/solid-glass/dropdown-menu#color-language"
       ],
       "files": [
         {
           "path": "src/components/ui/composer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Displays a menu of actions triggered by a right click.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/context-menu.tsx",
           "type": "registry:ui"
         }
       ]
@@ -110,11 +458,49 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "popover"
+        "sumitttt4/solid-glass/popover#color-language"
       ],
       "files": [
         {
           "path": "src/components/ui/context-ring.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "copy-snippet",
+      "type": "registry:ui",
+      "title": "Copy Snippet",
+      "description": "Selectable code with truthful asynchronous clipboard feedback.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/copy-snippet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dialog.tsx",
           "type": "registry:ui"
         }
       ]
@@ -134,6 +520,22 @@
       ]
     },
     {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "direction",
+      "description": "Editable direction source with the Colorwork theme.",
+      "dependencies": [
+        "@base-ui/react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dot-loader",
       "type": "registry:ui",
       "title": "Dot Loader",
@@ -143,6 +545,381 @@
       "files": [
         {
           "path": "src/components/ui/dot-loader.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "A drawer component for React.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Use the Empty component to display an empty state.",
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Combine labels, controls, and help text to compose accessible form fields and grouped inputs.",
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/label#color-language",
+        "sumitttt4/solid-glass/separator#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Add addons, buttons, and helper content to inputs.",
+      "dependencies": [
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language",
+        "sumitttt4/solid-glass/input#color-language",
+        "sumitttt4/solid-glass/textarea#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "Accessible one-time password component with copy-paste functionality.",
+      "dependencies": [
+        "cn",
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "A versatile component for displaying content with media, title, description, and actions.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/separator#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Used to display textual user input from keyboard.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Renders an accessible label associated with controls.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "markdown",
+      "type": "registry:ui",
+      "title": "markdown",
+      "description": "Editable markdown source with the Colorwork theme.",
+      "dependencies": [
+        "react-markdown",
+        "rehype-highlight",
+        "remark-cjk-friendly",
+        "remark-gfm"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/markdown.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Displays an inline status, system note, bordered row, or labeled separator in a conversation.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/dropdown-menu#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Displays a message in a conversation, with optional avatar, header, footer, and alignment.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
+      "dependencies": [
+        "@shadcn/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "A styled native HTML select element with consistent design system integration.",
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "A collection of links for navigating websites.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "option-card",
+      "type": "registry:ui",
+      "title": "Option Card",
+      "description": "A selectable content card with native radio-group keyboard behavior.",
+      "dependencies": [],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/tone-badge#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/option-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination with page navigation, next and previous links.",
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "palette-picker",
+      "type": "registry:ui",
+      "title": "Palette Picker",
+      "description": "A controlled palette selector with presets and a custom color input.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/palette-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -166,6 +943,77 @@
       ]
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire",
+      "description": "A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions.",
+      "dependencies": [
+        "@shadcn/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/questionnaire.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "reasoning",
       "type": "registry:ui",
       "title": "Reasoning",
@@ -182,6 +1030,211 @@
       ]
     },
     {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Accessible resizable panel groups and layouts with keyboard support.",
+      "dependencies": [
+        "cn",
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Augments native scroll functionality for custom, cross-browser styling.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Displays a list of options for the user to pick from—triggered by a button.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Visually or semantically separates content.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Extends the Dialog component to display content that complements the main content of the screen.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "A composable, themeable and customizable sidebar component.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language",
+        "sumitttt4/solid-glass/input#color-language",
+        "sumitttt4/solid-glass/separator#color-language",
+        "sumitttt4/solid-glass/sheet#color-language",
+        "sumitttt4/solid-glass/skeleton#color-language",
+        "sumitttt4/solid-glass/tooltip#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "src/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Use to show a placeholder while content is loading.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "An input where the user selects a value from within a given range.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "sonner",
+      "description": "Editable sonner source with the Colorwork theme.",
+      "dependencies": [
+        "lucide-react",
+        "next-themes",
+        "sonner"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "An indicator that can be used to show a loading state.",
+      "dependencies": [
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "status-callout",
+      "type": "registry:ui",
+      "title": "Status Callout",
+      "description": "A semantic message with an icon, text and optional dismissal.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/status-callout.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "status-glyph",
       "type": "registry:ui",
       "title": "Status Glyph",
@@ -191,6 +1244,57 @@
       "files": [
         {
           "path": "src/components/ui/status-glyph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "A responsive table component.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/tabs.tsx",
           "type": "registry:ui"
         }
       ]
@@ -221,6 +1325,80 @@
       "files": [
         {
           "path": "src/components/ui/task-notice.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Displays a form textarea or a component that looks like a textarea.",
+      "dependencies": [
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "A succinct message that is displayed temporarily.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be either on or off.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cn"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/toggle#color-language"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/toggle-group.tsx",
           "type": "registry:ui"
         }
       ]
@@ -258,6 +1436,23 @@
       ]
     },
     {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+      "dependencies": [
+        "@base-ui/react",
+        "cn"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "turn-status",
       "type": "registry:ui",
       "title": "Turn Status",
@@ -284,11 +1479,11 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "kbd",
         "sumitttt4/solid-glass/ask-card#color-language",
         "sumitttt4/solid-glass/button#color-language",
         "sumitttt4/solid-glass/composer#color-language",
         "sumitttt4/solid-glass/context-ring#color-language",
+        "sumitttt4/solid-glass/kbd#color-language",
         "sumitttt4/solid-glass/panel#color-language",
         "sumitttt4/solid-glass/tag#color-language",
         "sumitttt4/solid-glass/tool-steps#color-language",

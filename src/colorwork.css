@@ -213,3 +213,23 @@ html.dark[data-colorwork-accent] [data-semantic="success"] {
 
 /* Regular is the type contract, including inherited component weight utilities. */
 :root :is([data-slot="button"],[data-slot="panel-header"], [data-slot="dialog-title"], [data-slot="tone-badge"]) { font-weight: 400; }
+
+/* Original Colorwork components. */
+[data-slot="palette-picker"] { min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); }
+[data-slot="palette-picker"] legend { padding: 0 5px; font-weight: 400; font-size: 13px; }
+[data-slot="palette-picker"] > div { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+[data-slot="palette-picker"] button { width: 36px; height: 36px; border: 3px solid var(--card); border-radius: 50%; box-shadow: 0 0 0 1px var(--border); cursor: pointer; }
+[data-slot="palette-picker"] button[aria-pressed="true"] { outline: 2px solid var(--foreground); outline-offset: 2px; }
+[data-slot="palette-picker"] button span { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; background: #fff; color: #000; border-radius: 50%; font-size: 12px; }
+[data-slot="palette-picker"] label { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+[data-slot="palette-picker"] input { width: 30px; height: 32px; padding: 2px; }
+[data-slot="palette-picker"] output { display: block; margin-top: 16px; font-family: var(--font-mono); color: var(--muted-foreground); font-size: 12px; }
+[data-slot="palette-picker"]:disabled { opacity: .5; }
+[data-slot="option-card"] { display: flex; align-items: flex-start; gap: 12px; padding: 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--card); cursor: pointer; }
+[data-slot="option-card"][data-checked] { background: var(--tone-soft); border-color: var(--tone-solid); color: var(--tone-ink); }
+[data-slot="option-card"] input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--tone-solid); flex-shrink: 0; }
+.cw-option-copy { display: flex; flex-direction: column; gap: 7px; min-width: 0; }.cw-option-copy strong { font-size: 14px; font-weight: 400; }.cw-option-copy > span:last-child { font-size: 12px; line-height: 1.5; }
+[data-slot="option-card"]:focus-within { outline: 2px solid var(--ring); outline-offset: 3px; }[data-slot="option-card"][data-disabled] { opacity: .5; cursor: not-allowed; }
+[data-slot="status-callout"] { display: flex; gap: 12px; align-items: flex-start; padding: 18px; background: var(--tone-soft); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: 10px; }
+[data-slot="status-callout"] > svg { width: 20px; height: 20px; flex-shrink: 0; }[data-slot="status-callout"] > div { flex: 1; min-width: 0; }[data-slot="status-callout"] strong { font-size: 14px; font-weight: 400; }[data-slot="status-callout"] > div > div { margin-top: 6px; font-size: 12px; line-height: 1.6; }
+[data-slot="copy-snippet"] { border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 14px; min-width: 0; }[data-slot="copy-snippet"] > div { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 12px; }[data-slot="copy-snippet"] pre { max-width: 100%; overflow: auto; padding: 18px 0 10px; font-size: 12px; line-height: 1.7; }[data-slot="copy-snippet"] p { color: var(--muted-foreground); font-size: 12px; min-height: 18px; }

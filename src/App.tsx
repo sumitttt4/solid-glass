@@ -13,6 +13,7 @@ import { ACCENT_KEY, applyAccent } from "@/site/accent"
 import { SiteHeader } from "@/site/site-header"
 
 // The preview on the Create page is a few dozen cards and every icon by name: fetched when the page is.
+const Collection = React.lazy(() => import("@/pages/collection"))
 const Library = React.lazy(() => import("@/pages/library"))
 const ColorStudy = React.lazy(() => import("@/pages/color-study"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
@@ -33,6 +34,7 @@ export function App() {
   React.useLayoutEffect(() => {
     try { applyAccent(localStorage.getItem(ACCENT_KEY) ?? "") } catch { /* use original palette */ }
   }, [])
+  if (pathname === "/components") return <TooltipProvider><React.Suspense fallback={null}><Collection /></React.Suspense></TooltipProvider>
   if (pathname === "/") return <TooltipProvider><React.Suspense fallback={null}><Library /></React.Suspense></TooltipProvider>
   if (pathname === "/color-study") return (
     <TooltipProvider><React.Suspense fallback={null}><ColorStudy /></React.Suspense></TooltipProvider>

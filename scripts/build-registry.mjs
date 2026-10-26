@@ -17,7 +17,7 @@
  * content/solid/. Everything else in src/components/ui is shadcn/ui's and is installed from there.
  */
 import { execFileSync } from "node:child_process"
-import { copyFileSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { copyFileSync, existsSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 import { fileURLToPath } from "node:url"
 import { blockMetadata } from "./block-metadata.mjs"
@@ -34,14 +34,15 @@ const own = readdirSync(join(root, "content/solid"))
   .map((file) => file.replace(/\.mdx$/, ""))
   .sort()
 
-const registryOwn = new Set([...own, "button"])
+const registryNames = readdirSync(join(root, "src/components/ui")).filter(file => file.endsWith(".tsx")).map(file => file.replace(/\.tsx$/, "")).sort()
+const registryOwn = new Set(registryNames)
 
 /** What a file needs: the packages it imports, and the components, its own by address and shadcn/ui's by name. */
 function needs(content) {
   const packages = new Set()
   const others = new Set()
   for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
-    if (source === "react" || source === "@/lib/utils") continue
+    if (source === "react" || source === "@/lib/utils" || source.startsWith("@/hooks/")) continue
     const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
     if (used) others.add(registryOwn.has(used) ? `${repo}/${used}#${ref}` : used)
     else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
@@ -67,26 +68,20 @@ const blocks = readdirSync(join(root, "src/blocks"))
     }
   })
 
-const components = own.map((name) => {
+const components = registryNames.map((name) => {
   const content = read(`src/components/ui/${name}.tsx`)
-  const front = read(`content/solid/${name}.mdx`)
-  const packages = new Set()
-  const others = new Set()
-  for (const [, source] of content.matchAll(/from "([^"]+)"/g)) {
-    if (source === "react" || source === "@/lib/utils") continue
-    const used = source.match(/^@\/components\/ui\/(.+)$/)?.[1]
-    // One of Solid Glass's own is named by its GitHub address; one of shadcn/ui's by its name.
-    if (used) others.add(registryOwn.has(used) ? `${repo}/${used}#${ref}` : used)
-    else packages.add(source.split("/").slice(0, source.startsWith("@") ? 2 : 1).join("/"))
-  }
+  const doc = [`content/solid/${name}.mdx`, `content/components/${name}.mdx`].find(path => existsSync(join(root,path)))
+  const front = doc ? read(doc) : ""
+  const hooks = [...content.matchAll(/from "@\/hooks\/([^"]+)"/g)].map(([,hook]) => hook)
   return {
-    name,
-    type: "registry:ui",
-    title: front.match(/^title:\s*(.*)$/m)?.[1],
-    description: front.match(/^description:\s*(.*)$/m)?.[1],
-    dependencies: [...packages].sort(),
-    registryDependencies: [...others].sort(),
-    files: [{ path: `src/components/ui/${name}.tsx`, type: "registry:ui" }],
+    name, type: "registry:ui",
+    title: front.match(/^title:\s*(.*)$/m)?.[1] ?? name.replaceAll("-", " "),
+    description: front.match(/^description:\s*(.*)$/m)?.[1] ?? `Editable ${name} source with the Colorwork theme.`,
+    ...needs(content),
+    files: [
+      { path: `src/components/ui/${name}.tsx`, type: "registry:ui" },
+      ...hooks.map(hook => ({ path: `src/hooks/${hook}.ts`, type: "registry:hook" })),
+    ],
   }
 })
 
@@ -112,12 +107,6 @@ const registry = {
       description:
         "The stylesheet: the whole material in one file. Thick, smoky glass for every shadcn/ui component you already have.",
       files: [{ path: "src/solid-glass.css", type: "registry:file", target: "src/solid-glass.css" }],
-    },
-    {
-      name: "button", type: "registry:ui", title: "Colorwork Button",
-      description: "Kumo-informed button finish with inherited or explicit Colorwork tones.",
-      ...needs(read("src/components/ui/button.tsx")),
-      files: [{ path: "src/components/ui/button.tsx", type: "registry:ui" }],
     },
     ...components,
     ...blocks,
