@@ -223,7 +223,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
         switch (block.type) {
           case "heading":
             return block.depth === 2 ? (
-              <h2 key={index} id={block.id} className="font-display mt-12 scroll-m-28 text-[1.875rem] leading-tight first:mt-0 lg:mt-14 [&+p]:mt-4!">
+              <h2 key={index} id={block.id} className="font-display mt-12 scroll-m-28 text-[1.375rem] leading-tight first:mt-0 lg:mt-14 [&+p]:mt-4!">
                 <a href={`#${block.id}`}>{block.text}</a>
               </h2>
             ) : (
@@ -336,7 +336,7 @@ function DocShell({ title, description, url, toc, children }: { title: string; d
         <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between md:items-start">
-              <h1 className="font-display scroll-m-24 text-[2.75rem] leading-[1.05]">{title}</h1>
+              <h1 className="font-display scroll-m-24 text-[2rem] leading-[1.12] sm:text-[2.25rem]">{title}</h1>
               <div className="ml-auto flex gap-2">
                 <Neighbours url={url} />
               </div>

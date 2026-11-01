@@ -36,7 +36,7 @@ npm run build
 ## Colours, type and motion
 
 - **Colour:** named after ceramic glazes. Porcelain `#F3F5F7` and Kiln `#101216` grounds, Ink `#15171C` text, Cobalt `#2445E6` as the signature, Celadon `#8FC9B6` as its partner, Oxblood `#B42318` for destructive actions. Five tones for categories (`iris` violet, `fern` emerald, `clay` rose, `sun` amber, `ocean` sky). Set any accent from the palette picker, or with `data-accent` and `--accent-solid` on `<html>`.
-- **Type:** Instrument Serif for display headings (`.font-display`), Figtree for everything you read and press.
+- **Type:** Manrope throughout: regular for reading, medium and semibold for controls and headings.
 - **Motion:** follows Emil Kowalski's standards. Custom ease-out curves, popovers grow from their trigger in 180ms and close faster, dialogs stay centred, buttons scale to 0.97 on press, hover motion only on real pointers, and no animation on the keyboard-opened command palette.
 - **Backdrops:** the site's glass stages use [Paper Shaders](https://shaders.paper.design) mesh gradients (Apache-2.0). They load lazily, run only while on screen, and hold still under reduced motion. They are part of the site, not the installable components.
 

@@ -53,7 +53,7 @@ function MainNav({ className }: { className?: string }) {
       {/* the mark stands still: one that never stops moving reads as a page that shakes */}
       <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mr-1 -ml-3 h-8 gap-2 px-2.5 text-sm")}>
         <SolidGlassMark className="size-5 -translate-y-px" />
-        <span className="font-display text-[22px] leading-none">Glaze</span>
+        <span className="text-[17px] font-semibold tracking-[-0.03em]">Glaze</span>
       </Link>
       {NAV.map((item) => (
         <Link

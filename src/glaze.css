@@ -10,8 +10,8 @@
 /* materials.css is imported after this file: it adds Glass, Frost and Aurora beside Normal. */
 
 @theme inline {
-  --font-sans: "Figtree Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-heading: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 :root {
@@ -296,10 +296,11 @@ html.dark[data-accent], html.dark[data-accent] [data-tone]:not([data-semantic]) 
   --tone-edge: color-mix(in srgb, var(--accent-solid) 40%, transparent);
 }
 
-/* Type: Instrument Serif for display, Figtree for everything you read and press. */
-:root .font-display { font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.012em; font-feature-settings: "liga", "kern"; }
+/* Type: Manrope throughout. Regular for reading, medium and semibold for controls and titles;
+   display headings are semibold and set tight, since Manrope is a wide face. */
+:root .font-display { font-family: var(--font-heading); font-weight: 600; letter-spacing: -0.035em; }
 :root :is([data-slot="dialog-title"],[data-slot="card-title"],[data-slot="alert-dialog-title"],[data-slot="sheet-title"],[data-slot="drawer-title"]) { letter-spacing: -0.01em; }
-:root body { font-family: var(--font-sans); font-feature-settings: "ss01", "cv11"; }
+:root body { font-family: var(--font-sans); font-weight: 400; }
 :root :is([data-slot="dialog-title"],[data-slot="card-title"],[data-slot="alert-dialog-title"],[data-slot="sheet-title"],[data-slot="drawer-title"]) { font-weight: 600; }
 :root [data-slot="badge"] { font-weight: 500; }
 

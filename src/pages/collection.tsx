@@ -152,7 +152,7 @@ export default function Collection() {
               <span className="bg-secondary text-secondary-foreground rounded-md px-2 py-0.5 text-xs font-medium">{selected.category}</span>
               {selected.origin === "Glaze" && <span className="bg-primary/10 text-primary rounded-md px-2 py-0.5 text-xs font-medium">Original</span>}
             </div>
-            <h1 className="font-display mt-4 text-[2.25rem] leading-[1.06] sm:text-[3.25rem]">{selected.title}</h1>
+            <h1 className="font-display mt-4 text-[1.875rem] leading-[1.12] sm:text-[2.5rem] sm:leading-[1.1]">{selected.title}</h1>
             <p className="text-muted-foreground mt-4 text-base leading-[1.6] sm:text-[17px] text-pretty">{selected.description}</p>
           </div>
         </div>

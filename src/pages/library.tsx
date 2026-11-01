@@ -39,7 +39,7 @@ function SectionHead({ title, body, aside }: { title: React.ReactNode; body?: st
   return (
     <div className="mb-12 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
       <div className="max-w-[38rem]">
-        <h2 className="font-display text-[2rem] leading-[1.08] text-balance sm:text-[3.25rem] sm:leading-[1.05]">{title}</h2>
+        <h2 className="font-display text-[1.75rem] leading-[1.15] text-balance sm:text-[2.5rem] sm:leading-[1.1]">{title}</h2>
         {body && <p className="text-muted-foreground mt-4 text-base leading-[1.6] sm:text-[17px] text-pretty">{body}</p>}
       </div>
       {aside}
@@ -249,7 +249,7 @@ function CategoriesSection() {
             </span>
             <div>
               <div className="flex items-baseline justify-between gap-3">
-                <h3 className="font-display text-[1.75rem] leading-tight">{c.title}</h3>
+                <h3 className="text-lg font-semibold tracking-[-0.02em]">{c.title}</h3>
                 <span className="text-muted-foreground text-sm tabular-nums">{c.n}</span>
               </div>
               <p className="text-muted-foreground mt-2 text-[15px] leading-[1.55]">{c.note}</p>
@@ -298,7 +298,7 @@ function InstallSection() {
   return (
     <section className="home-section grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]" aria-labelledby="install-title">
       <div>
-        <h2 id="install-title" className="font-display text-[2rem] leading-[1.08] text-balance sm:text-[3.25rem] sm:leading-[1.05]">
+        <h2 id="install-title" className="font-display text-[1.75rem] leading-[1.15] text-balance sm:text-[2.5rem] sm:leading-[1.1]">
           Free, all of it. Install once and stop looking.
         </h2>
         <p className="text-muted-foreground mt-4 max-w-md text-base leading-[1.6] sm:text-[17px]">
@@ -325,7 +325,7 @@ export default function Library() {
     <div className="home">
       <section className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
         <div className="grid items-end gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
-          <h1 className="font-display text-[2.625rem] leading-[1.04] tracking-[-0.01em] text-balance sm:text-[clamp(3.5rem,8.2vw,7.25rem)] sm:leading-[0.94] sm:tracking-[-0.022em]">
+          <h1 className="font-display text-[2.25rem] leading-[1.08] text-balance sm:text-[clamp(3rem,6vw,5.25rem)] sm:leading-[1.02] sm:tracking-[-0.045em]">
             Beautiful components, solid or glass
           </h1>
           <div className="lg:pb-3">

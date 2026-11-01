@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="border-t border-border/70">
       <div className="mx-auto flex max-w-[1400px] flex-col gap-6 px-4 py-10 sm:px-6 lg:px-8 text-sm md:flex-row md:items-start md:justify-between">
         <div className="flex max-w-sm flex-col gap-3">
-          <Link to="/" className="font-display flex items-center gap-2 text-[22px] leading-none">
+          <Link to="/" className="flex items-center gap-2 text-[17px] font-semibold tracking-[-0.03em]">
             <SolidGlassMark className="size-5" />
             Glaze
           </Link>
