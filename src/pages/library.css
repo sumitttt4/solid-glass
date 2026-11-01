@@ -40,3 +40,41 @@
 @media(max-width:900px) { .cw-global-palette { margin-left: 0; }.cw-color-controls:has(.cw-global-palette[open]) > div:first-child { width: 100%; } }
 /* Reveal skip navigation only for keyboard focus, not incidental programmatic focus. */
 .cw-skip:focus-visible { top: 10px; }.cw-skip:not(:focus-visible) { top: -100px; }
+
+/* ---- Materials, AI, icons, install ------------------------------------------------------ */
+.cw-header-material { margin-right: -4px; }
+@media (max-width: 1100px) { .cw-header-material { display: none; } }
+.cw-section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+.cw-section-head h2 { font-size: 34px; font-weight: 500; letter-spacing: -1px; line-height: 1.15; margin-top: 14px; }
+.cw-section-head h2 + p { margin-top: 12px; max-width: 560px; font-size: 14px; line-height: 1.7; color: var(--muted-foreground); }
+.cw-section-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; }
+.cw-inline-code { font-family: var(--font-mono); font-size: 12px; padding: 8px 12px; border-radius: 8px; background: var(--muted); color: var(--foreground); }
+.cw-materials, .cw-ai, .cw-icons, .cw-install { padding: 64px 0 8px; border-top: 1px solid var(--cw-line); margin-top: 56px; }
+.cw-material-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.cw-material-grid figure { margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.cw-material-stage { border-radius: 18px; min-height: 280px; display: grid; place-items: center; padding: 22px; box-shadow: 0 0 0 1px var(--cw-line); transition: box-shadow .2s; }
+.cw-material-grid figure.is-current .cw-material-stage { box-shadow: 0 0 0 2px var(--primary); }
+.cw-material-grid figcaption { display: flex; align-items: center; justify-content: space-between; gap: 10px; font-size: 12px; color: var(--muted-foreground); }
+.cw-material-grid figcaption span { display: flex; flex-direction: column; gap: 3px; }
+.cw-material-grid figcaption strong { font-size: 14px; font-weight: 500; color: var(--foreground); }
+@media (max-width: 1200px) { .cw-material-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .cw-material-grid { grid-template-columns: minmax(0, 1fr); } }
+.cw-ai-stage { border-radius: 22px; padding: 40px; display: flex; justify-content: center; box-shadow: 0 0 0 1px var(--cw-line); }
+.cw-ai-loading { height: 280px; }
+.cw-ai-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin-top: 20px; background: var(--cw-line); border: 1px solid var(--cw-line); border-radius: 14px; overflow: hidden; }
+.cw-ai-links a { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 18px 44px 18px 18px; background: var(--background); font-size: 14px; transition: background-color .15s; }
+.cw-ai-links a:hover { background: var(--secondary); }
+.cw-ai-links a p { font-size: 12px; color: var(--muted-foreground); }
+.cw-ai-links a svg { position: absolute; right: 18px; top: 50%; translate: 0 -50%; }
+@media (max-width: 900px) { .cw-ai-links { grid-template-columns: minmax(0, 1fr); } .cw-ai-stage { padding: 22px 16px; } }
+.cw-icons-loop { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.cw-icon-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.cw-icon-row a { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 14px; background: var(--card); box-shadow: var(--mat-pane); color: var(--foreground); transition: color .15s, transform .15s; }
+.cw-icon-row a:hover { color: var(--primary); transform: translateY(-2px); }
+.cw-install { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 40px; align-items: start; }
+.cw-install h2 { font-size: 34px; font-weight: 500; letter-spacing: -1px; line-height: 1.15; margin-top: 14px; }
+.cw-install h2 + p { margin-top: 14px; font-size: 14px; line-height: 1.7; color: var(--muted-foreground); max-width: 440px; }
+.cw-install-steps { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.cw-install-steps pre { white-space: pre-wrap; word-break: break-word; }
+@media (max-width: 900px) { .cw-install { grid-template-columns: minmax(0, 1fr); } .cw-section-head h2, .cw-install h2 { font-size: 28px; } }
+.cw-color-controls + .cw-materials { margin-top: 0; border-top: 0; padding-top: 40px; }

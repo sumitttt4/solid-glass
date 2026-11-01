@@ -19,13 +19,13 @@ Open http://localhost:5191. Build with npm run build; publish the dist directory
 
 ## Browse the full collection
 
-Open /components for every UI source component, its available examples, complete source and fork-specific install command. The six original Colorwork entries are labeled separately from inherited Solid Glass/shadcn entries. Existing blocks remain at /blocks.
+Open /components for every UI source component, its available examples, complete source and fork-specific install command. Original Colorwork entries (including the AI & voice set, animated icons and the material picker) are labeled separately from inherited Solid Glass/shadcn entries. Existing blocks remain at /blocks.
 
 The registry now includes all UI components rather than only the custom subset. Local UI dependencies are pinned to this fork; the sidebar item also includes its required mobile hook. You still need a compatible app and both theme files. Installation of every item into a separate app is not claimed tested.
 
 ## Copy the theme
 
-Copy BOTH src/colorwork.css and src/solid-glass.css into your app's styles directory. The first imports the second for its compatible component selectors, then replaces the material and color roles.
+Copy src/colorwork.css, src/materials.css and src/solid-glass.css into your app's styles directory. colorwork.css imports solid-glass.css for its compatible component selectors, then replaces the color roles. materials.css adds the four materials.
 
 Import Colorwork after Tailwind and shadcn styles. Reconcile duplicate theme variables in your app; later overrides win.
 
@@ -34,18 +34,32 @@ Import Colorwork after Tailwind and shadcn styles. Reconcile duplicate theme var
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "./colorwork.css";
+@import "./materials.css";
 ```
+
+## Choose a material
+
+Every component comes in four finishes. Set `data-material` on `<html>` for the whole app, or on any element to finish just that part:
+
+```html
+<html data-material="solid">   <!-- Normal: opaque, color-led -->
+<html data-material="glass">   <!-- Glass: thick, smoky glass -->
+<html data-material="frost">   <!-- Frost: clear glass over vivid light -->
+<html data-material="aurora">  <!-- Aurora: frost over light that moves -->
+```
+
+Glass needs something behind it to read as glass: the page draws soft lights of its own, and the `mat-stage` class gives any box the same backdrop. The `MaterialPicker` component is a ready-made switch.
 
 This source uses React 19, Tailwind 4 and Base UI. Do not assume an older Radix-based shadcn project has matching slots or component APIs.
 
-## Install from this branch
+## Install with the registry
 
-The registry generator now points to this fork. Until the PR is merged, pin the color-language branch rather than the default branch:
+The registry generator points to this fork's main branch:
 
 ```bash
-npx shadcn@latest add sumitttt4/solid-glass/colorwork#color-language
-npx shadcn@latest add sumitttt4/solid-glass/tone-badge#color-language
-npx shadcn@latest add sumitttt4/solid-glass/color-surface#color-language
+npx shadcn@latest add sumitttt4/solid-glass/colorwork#main
+npx shadcn@latest add sumitttt4/solid-glass/tone-badge#main
+npx shadcn@latest add sumitttt4/solid-glass/color-surface#main
 ```
 
 The generated registry files were checked locally; installation into an independent app still needs a compatibility check. There is no npm package release. The Pages-hosted registry is not claimed live before deployment.
@@ -53,7 +67,7 @@ The generated registry files were checked locally; installation into an independ
 ## Install the modified button
 
 ```bash
-npx shadcn@latest add sumitttt4/solid-glass/button#color-language
+npx shadcn@latest add sumitttt4/solid-glass/button#main
 ```
 
 The button retains Base UI behavior and supports an optional tone prop (iris, fern, clay, sun, ocean). It uses a Kumo-informed emphasis treatment rather than the Kumo runtime package.

@@ -1,13 +1,14 @@
 /* Colorwork: opaque, color-led theme. Built on Solid Glass and shadcn/ui; see LICENSE and NOTICE.md.
    Legacy glass hooks are retained for component compatibility. */
 @import "./solid-glass.css";
+/* materials.css is imported after this file: it adds Glass, Frost and Aurora beside Normal. */
 @theme inline {
   --font-sans: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
 }
 :root { --font-secondary: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif; }
 
-:root {
+:root, [data-material="solid"] {
   --study-hue: 265;
   --study-support: 75;
   --study-warmth: 85;
@@ -77,12 +78,18 @@
   --light-1: transparent;
   --light-2: transparent;
   --light-3: transparent;
+  /* Material switches (see materials.css): how solid a tinted surface is, and the shadows a
+     pane and a popover are drawn with. Normal is fully opaque with a plain hairline. */
+  --surface-solid: 100%;
+  --mat-outline-bg: transparent;
+  --mat-pane: 0 0 0 1px var(--border);
+  --mat-popover: 0 0 0 1px var(--border), 0 12px 30px -12px var(--glass-shade);
   color-scheme: light;
   background: var(--background);
 }
 html[data-palette="ink"] { --study-hue: 265; --study-support: 75; --study-warmth: 250; }
 html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmth: 85; }
-.dark {
+.dark, .dark [data-material="solid"] {
   color-scheme: dark;
   --background: oklch(.18 .014 var(--study-hue));
   --foreground: oklch(.95 .01 var(--study-warmth));
@@ -105,8 +112,8 @@ html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmt
   --status-running: oklch(.80 .09 260);
   --status-interrupted: oklch(.83 .10 65);
 }
-:root :is(.glass-panel,.glass-control,.bg-card) { box-shadow: 0 0 0 1px var(--border); }
-:root .bg-popover { box-shadow: 0 0 0 1px var(--border), 0 12px 30px -12px var(--glass-shade); }
+:root :is(.glass-panel,.glass-control,.bg-card) { box-shadow: var(--mat-pane); }
+:root .bg-popover { box-shadow: var(--mat-popover); }
 :root .glass-chosen { background: var(--accent); color: var(--accent-foreground); box-shadow: inset 3px 0 var(--primary); }
 :root [data-slot="panel-row"][aria-current] { font-weight: 400; }
 :root :is(button,a,input,textarea,[tabindex]):focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
@@ -131,8 +138,8 @@ html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmt
 .dark [data-tone="ocean"] { --tone-solid: #9ad5e7; --tone-soft: #203c46; --tone-ink: #c7eaf3; --tone-edge: #6e9da9; --tone-on: #16323b; }
 [data-tone] { --primary: var(--tone-solid); --primary-foreground: var(--tone-on); --ring: var(--tone-solid); }
 .cw-tone-soft { background: var(--tone-soft); color: var(--tone-ink); border-color: var(--tone-edge); }
-[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: var(--tone-soft); color: var(--tone-ink); padding: 4px 9px; font-size: 12px; font-weight: 400; line-height: 1.3; }
-[data-slot="color-surface"] { background: var(--tone-soft); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: var(--radius); padding: 24px; }
+[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: color-mix(in oklch,var(--tone-soft) var(--surface-solid,100%),transparent); color: var(--tone-ink); padding: 4px 9px; font-size: 12px; font-weight: 400; line-height: 1.3; }
+[data-slot="color-surface"] { -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); background: color-mix(in oklch,var(--tone-soft) var(--surface-solid,100%),transparent); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: var(--radius); padding: 24px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
 /* Button finish informed by Kumo's emphasis/secondary treatment, adapted to Colorwork tones.
@@ -145,22 +152,27 @@ html[data-palette="clay"] { --study-hue: 35; --study-support: 150; --study-warmt
   transition: background-color 120ms ease, border-color 120ms ease, box-shadow 120ms ease, transform 120ms ease;
 }
 :root [data-slot="button"][data-variant="default"] {
-  background: linear-gradient(to bottom, color-mix(in oklch,var(--primary),white 8%),var(--primary));
+  /* --primary-solid is 100% in the Normal material; glass materials let a little through. */
+  background: linear-gradient(to bottom, color-mix(in oklch,color-mix(in oklch,var(--primary),white 8%) var(--primary-solid),transparent),color-mix(in oklch,var(--primary) var(--primary-solid),transparent));
+  -webkit-backdrop-filter: var(--glass-blur-control);
+  backdrop-filter: var(--glass-blur-control);
   color: var(--primary-foreground);
   border: 1px solid color-mix(in oklch,var(--primary),black 15%);
-  box-shadow: inset 0 1px 0 color-mix(in oklch,var(--primary),white 26%), 0 1px 2px #00000016, 0 2px 0 color-mix(in oklch,var(--primary),black 18%);
+  box-shadow: inset 0 1px 0 var(--primary-rim), inset 0 1px 0 color-mix(in oklch,var(--primary),white 26%), 0 1px 2px #00000016, 0 2px 0 color-mix(in oklch,var(--primary),black 18%);
 }
 :root [data-slot="button"][data-variant="default"]:not(:disabled):hover {
-  background: linear-gradient(to bottom,color-mix(in oklch,var(--primary),white 14%),color-mix(in oklch,var(--primary),white 3%));
+  background: linear-gradient(to bottom,color-mix(in oklch,color-mix(in oklch,var(--primary),white 14%) var(--primary-solid),transparent),color-mix(in oklch,color-mix(in oklch,var(--primary),white 3%) var(--primary-solid),transparent));
 }
 :root [data-slot="button"][data-variant="secondary"] {
-  background: linear-gradient(to bottom,color-mix(in oklch,var(--tone-soft),var(--card) 32%),var(--tone-soft));
+  -webkit-backdrop-filter: var(--glass-blur-control);
+  backdrop-filter: var(--glass-blur-control);
+  background: linear-gradient(to bottom,color-mix(in oklch,color-mix(in oklch,var(--tone-soft),var(--card) 32%) var(--surface-solid),transparent),color-mix(in oklch,var(--tone-soft) var(--surface-solid),transparent));
   color: var(--tone-ink);
   border: 1px solid var(--tone-edge);
   box-shadow: inset 0 1px 0 color-mix(in srgb,var(--card) 70%,transparent),0 1px 2px #0000000c;
 }
 :root [data-slot="button"][data-variant="outline"] {
-  background: transparent;
+  background: var(--mat-outline-bg);
   color: var(--tone-ink);
   border: 1px solid var(--tone-edge);
   box-shadow: 0 1px 2px #00000008;
@@ -235,7 +247,7 @@ html.dark[data-colorwork-accent] [data-semantic="success"] {
 [data-slot="copy-snippet"] { border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 14px; min-width: 0; }[data-slot="copy-snippet"] > div { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 12px; }[data-slot="copy-snippet"] pre { max-width: 100%; overflow: auto; padding: 18px 0 10px; font-size: 12px; line-height: 1.7; }[data-slot="copy-snippet"] p { color: var(--muted-foreground); font-size: 12px; min-height: 18px; }
 
 /* Opaque themed controls, including portals. Native menus aren't used by the browser UI. */
-:root [data-slot="select-content"],:root [data-slot="dropdown-menu-content"],:root [data-slot="popover-content"] { background: var(--popover); color: var(--popover-foreground); backdrop-filter: none; }
+:root [data-slot="select-content"],:root [data-slot="dropdown-menu-content"],:root [data-slot="popover-content"] { background: var(--popover); color: var(--popover-foreground); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
 :root [data-slot="select-content"]::before { backdrop-filter: none; }
 :root [data-slot="select-item"] { min-height: 36px; font-weight: 400; padding: 9px 28px 9px 12px; }
 :root [data-slot="select-item"][data-highlighted] { background: var(--accent); color: var(--accent-foreground); }

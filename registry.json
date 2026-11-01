@@ -7,12 +7,17 @@
       "name": "colorwork",
       "type": "registry:file",
       "title": "Colorwork",
-      "description": "Opaque surfaces, five expressive color roles, paired themes and visible interaction states.",
+      "description": "Opaque surfaces, five expressive color roles, paired themes and four materials: Normal, Glass, Frost and Aurora.",
       "files": [
         {
           "path": "src/colorwork.css",
           "type": "registry:file",
           "target": "src/colorwork.css"
+        },
+        {
+          "path": "src/materials.css",
+          "type": "registry:file",
+          "target": "src/materials.css"
         },
         {
           "path": "src/solid-glass.css",
@@ -79,11 +84,25 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
           "path": "src/components/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-icons",
+      "type": "registry:ui",
+      "title": "animated icons",
+      "description": "Editable animated-icons source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/animated-icons.tsx",
           "type": "registry:ui"
         }
       ]
@@ -129,11 +148,25 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
           "path": "src/components/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "audio-waveform",
+      "type": "registry:ui",
+      "title": "audio waveform",
+      "description": "Editable audio-waveform source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/audio-waveform.tsx",
           "type": "registry:ui"
         }
       ]
@@ -238,7 +271,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/separator#color-language"
+        "sumitttt4/solid-glass/separator#main"
       ],
       "files": [
         {
@@ -258,7 +291,7 @@
         "react-day-picker"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -294,7 +327,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -361,7 +394,7 @@
       "description": "Group content on an opaque tinted surface with a paired foreground.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/tone-badge#color-language"
+        "sumitttt4/solid-glass/tone-badge#main"
       ],
       "files": [
         {
@@ -381,8 +414,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language",
-        "sumitttt4/solid-glass/input-group#color-language"
+        "sumitttt4/solid-glass/button#main",
+        "sumitttt4/solid-glass/input-group#main"
       ],
       "files": [
         {
@@ -402,8 +435,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/dialog#color-language",
-        "sumitttt4/solid-glass/input-group#color-language"
+        "sumitttt4/solid-glass/dialog#main",
+        "sumitttt4/solid-glass/input-group#main"
       ],
       "files": [
         {
@@ -421,8 +454,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language",
-        "sumitttt4/solid-glass/dropdown-menu#color-language"
+        "sumitttt4/solid-glass/button#main",
+        "sumitttt4/solid-glass/dropdown-menu#main"
       ],
       "files": [
         {
@@ -458,7 +491,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/popover#color-language"
+        "sumitttt4/solid-glass/popover#main"
       ],
       "files": [
         {
@@ -476,7 +509,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -496,7 +529,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -611,8 +644,8 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/label#color-language",
-        "sumitttt4/solid-glass/separator#color-language"
+        "sumitttt4/solid-glass/label#main",
+        "sumitttt4/solid-glass/separator#main"
       ],
       "files": [
         {
@@ -665,9 +698,9 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language",
-        "sumitttt4/solid-glass/input#color-language",
-        "sumitttt4/solid-glass/textarea#color-language"
+        "sumitttt4/solid-glass/button#main",
+        "sumitttt4/solid-glass/input#main",
+        "sumitttt4/solid-glass/textarea#main"
       ],
       "files": [
         {
@@ -705,7 +738,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/separator#color-language"
+        "sumitttt4/solid-glass/separator#main"
       ],
       "files": [
         {
@@ -742,6 +775,20 @@
       "files": [
         {
           "path": "src/components/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "live-transcript",
+      "type": "registry:ui",
+      "title": "live transcript",
+      "description": "Editable live-transcript source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/live-transcript.tsx",
           "type": "registry:ui"
         }
       ]
@@ -784,6 +831,20 @@
       ]
     },
     {
+      "name": "material-picker",
+      "type": "registry:ui",
+      "title": "material picker",
+      "description": "Editable material-picker source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/material-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "menubar",
       "type": "registry:ui",
       "title": "Menubar",
@@ -794,7 +855,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/dropdown-menu#color-language"
+        "sumitttt4/solid-glass/dropdown-menu#main"
       ],
       "files": [
         {
@@ -830,7 +891,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -882,7 +943,7 @@
       "description": "A selectable content card with native radio-group keyboard behavior.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/tone-badge#color-language"
+        "sumitttt4/solid-glass/tone-badge#main"
       ],
       "files": [
         {
@@ -901,7 +962,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -937,7 +998,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -991,7 +1052,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -1113,7 +1174,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -1134,12 +1195,12 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language",
-        "sumitttt4/solid-glass/input#color-language",
-        "sumitttt4/solid-glass/separator#color-language",
-        "sumitttt4/solid-glass/sheet#color-language",
-        "sumitttt4/solid-glass/skeleton#color-language",
-        "sumitttt4/solid-glass/tooltip#color-language"
+        "sumitttt4/solid-glass/button#main",
+        "sumitttt4/solid-glass/input#main",
+        "sumitttt4/solid-glass/separator#main",
+        "sumitttt4/solid-glass/sheet#main",
+        "sumitttt4/solid-glass/skeleton#main",
+        "sumitttt4/solid-glass/tooltip#main"
       ],
       "files": [
         {
@@ -1204,6 +1265,22 @@
       ]
     },
     {
+      "name": "speak-button",
+      "type": "registry:ui",
+      "title": "speak button",
+      "description": "Editable speak-button source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/button#main"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/speak-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "spinner",
       "type": "registry:ui",
       "title": "Spinner",
@@ -1229,7 +1306,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -1248,6 +1325,20 @@
       "files": [
         {
           "path": "src/components/ui/status-glyph.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "streaming-text",
+      "type": "registry:ui",
+      "title": "streaming text",
+      "description": "Editable streaming-text source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/streaming-text.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1360,7 +1451,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#color-language"
+        "sumitttt4/solid-glass/button#main"
       ],
       "files": [
         {
@@ -1398,7 +1489,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/toggle#color-language"
+        "sumitttt4/solid-glass/toggle#main"
       ],
       "files": [
         {
@@ -1430,7 +1521,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/diff-view#color-language"
+        "sumitttt4/solid-glass/diff-view#main"
       ],
       "files": [
         {
@@ -1465,11 +1556,43 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/status-glyph#color-language"
+        "sumitttt4/solid-glass/status-glyph#main"
       ],
       "files": [
         {
           "path": "src/components/ui/turn-status.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "voice-input",
+      "type": "registry:ui",
+      "title": "voice input",
+      "description": "Editable voice-input source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/animated-icons#main",
+        "sumitttt4/solid-glass/audio-waveform#main",
+        "sumitttt4/solid-glass/live-transcript#main"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/voice-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "voice-orb",
+      "type": "registry:ui",
+      "title": "voice orb",
+      "description": "Editable voice-orb source with the Colorwork theme.",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/voice-orb.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1483,15 +1606,15 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/ask-card#color-language",
-        "sumitttt4/solid-glass/button#color-language",
-        "sumitttt4/solid-glass/composer#color-language",
-        "sumitttt4/solid-glass/context-ring#color-language",
-        "sumitttt4/solid-glass/kbd#color-language",
-        "sumitttt4/solid-glass/panel#color-language",
-        "sumitttt4/solid-glass/tag#color-language",
-        "sumitttt4/solid-glass/tool-steps#color-language",
-        "sumitttt4/solid-glass/turn-status#color-language"
+        "sumitttt4/solid-glass/ask-card#main",
+        "sumitttt4/solid-glass/button#main",
+        "sumitttt4/solid-glass/composer#main",
+        "sumitttt4/solid-glass/context-ring#main",
+        "sumitttt4/solid-glass/kbd#main",
+        "sumitttt4/solid-glass/panel#main",
+        "sumitttt4/solid-glass/tag#main",
+        "sumitttt4/solid-glass/tool-steps#main",
+        "sumitttt4/solid-glass/turn-status#main"
       ],
       "files": [
         {

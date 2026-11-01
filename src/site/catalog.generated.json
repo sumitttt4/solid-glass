@@ -12,7 +12,8 @@
       "accordion-borders",
       "accordion-card"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "alert",
@@ -32,7 +33,8 @@
       "alert-dialog-small-media",
       "alert-dialog-small"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "alert-dialog",
@@ -47,7 +49,20 @@
       "alert-dialog-small-media",
       "alert-dialog-destructive"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
+  },
+  {
+    "slug": "animated-icons",
+    "title": "Animated Icons",
+    "description": "A small set of icons that move like what they stand for: hover to play, loop, or switch two-state icons.",
+    "origin": "Colorwork",
+    "examples": [
+      "animated-icons-demo",
+      "animated-icons-buttons"
+    ],
+    "hasDocs": false,
+    "category": "Icons"
   },
   {
     "slug": "ask-card",
@@ -57,7 +72,8 @@
     "examples": [
       "ask-card-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "aspect-ratio",
@@ -69,7 +85,8 @@
       "aspect-ratio-square",
       "aspect-ratio-portrait"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "attachment",
@@ -84,7 +101,19 @@
       "attachment-group",
       "attachment-trigger"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
+  },
+  {
+    "slug": "audio-waveform",
+    "title": "Audio Waveform",
+    "description": "Bars or a line that move with a voice, fed live from the microphone or by simulated levels.",
+    "origin": "Colorwork",
+    "examples": [
+      "audio-waveform-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
   },
   {
     "slug": "avatar",
@@ -102,7 +131,8 @@
       "avatar-size",
       "avatar-dropdown"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "badge",
@@ -117,7 +147,8 @@
       "badge-link",
       "badge-colors"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "breadcrumb",
@@ -132,7 +163,8 @@
       "breadcrumb-ellipsis",
       "breadcrumb-link"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "bubble",
@@ -149,7 +181,8 @@
       "bubble-tooltip",
       "bubble-popover"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "button",
@@ -183,7 +216,8 @@
       "button-group-size",
       "button-group-split"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "button-group",
@@ -203,7 +237,8 @@
       "button-group-select",
       "button-group-popover"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "calendar",
@@ -222,7 +257,8 @@
       "calendar-week-numbers",
       "calendar-multiple"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "card",
@@ -236,7 +272,8 @@
       "card-edge-to-edge",
       "card-image"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "carousel",
@@ -251,7 +288,8 @@
       "carousel-api",
       "carousel-plugin"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "chart",
@@ -267,7 +305,8 @@
       "chart-example-legend",
       "chart-tooltip"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "checkbox",
@@ -283,7 +322,8 @@
       "checkbox-group",
       "checkbox-table"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "collapsible",
@@ -296,7 +336,8 @@
       "collapsible-settings",
       "collapsible-file-tree"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "color-surface",
@@ -306,7 +347,8 @@
     "examples": [
       "color-surface-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "combobox",
@@ -326,7 +368,8 @@
       "combobox-popup",
       "combobox-input-group"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "command",
@@ -341,7 +384,8 @@
       "command-scrollable",
       "command-dialog"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "composer",
@@ -352,7 +396,8 @@
       "composer-demo",
       "composer-running"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "context-menu",
@@ -371,7 +416,8 @@
       "context-menu-destructive",
       "context-menu-sides"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "context-ring",
@@ -381,7 +427,8 @@
     "examples": [
       "context-ring-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "copy-snippet",
@@ -391,7 +438,8 @@
     "examples": [
       "copy-snippet-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "dialog",
@@ -405,7 +453,8 @@
       "dialog-sticky-footer",
       "dialog-scrollable-content"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "diff-view",
@@ -415,7 +464,8 @@
     "examples": [
       "diff-view-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "direction",
@@ -425,7 +475,8 @@
     "examples": [
       "direction-demo"
     ],
-    "hasDocs": false
+    "hasDocs": false,
+    "category": "Components"
   },
   {
     "slug": "dot-loader",
@@ -435,7 +486,8 @@
     "examples": [
       "dot-loader-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "drawer",
@@ -451,7 +503,8 @@
       "drawer-snap-points",
       "drawer-dialog"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "dropdown-menu",
@@ -472,7 +525,8 @@
       "dropdown-menu-avatar",
       "dropdown-menu-complex"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "empty",
@@ -488,7 +542,8 @@
       "empty-input-group",
       "empty-card"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "field",
@@ -509,7 +564,8 @@
       "field-group",
       "field-responsive"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "hover-card",
@@ -520,7 +576,8 @@
       "hover-card-demo",
       "hover-card-sides"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "input",
@@ -575,7 +632,8 @@
       "input-otp-pattern",
       "input-otp-separator"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "input-group",
@@ -607,7 +665,8 @@
       "input-group-with-kbd",
       "input-group-with-tooltip"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "input-otp",
@@ -625,7 +684,8 @@
       "input-otp-alphanumeric",
       "input-otp-form"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "item",
@@ -644,7 +704,8 @@
       "item-link",
       "item-dropdown"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "kbd",
@@ -658,7 +719,8 @@
       "kbd-tooltip",
       "kbd-input-group"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "label",
@@ -669,7 +731,19 @@
       "label-demo",
       "field-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
+  },
+  {
+    "slug": "live-transcript",
+    "title": "Live Transcript",
+    "description": "Live speech-to-text in the browser, shown as a running transcript with timestamps and speakers.",
+    "origin": "Colorwork",
+    "examples": [
+      "live-transcript-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
   },
   {
     "slug": "markdown",
@@ -679,7 +753,8 @@
     "examples": [
       "markdown-demo"
     ],
-    "hasDocs": false
+    "hasDocs": false,
+    "category": "AI & Voice"
   },
   {
     "slug": "marker",
@@ -696,7 +771,19 @@
       "marker-icon",
       "marker-link-button"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
+  },
+  {
+    "slug": "material-picker",
+    "title": "Material Picker",
+    "description": "Switch the whole library, or one part of a page, between Normal, Glass, Frost and Aurora.",
+    "origin": "Colorwork",
+    "examples": [
+      "material-picker-demo"
+    ],
+    "hasDocs": false,
+    "category": "Materials"
   },
   {
     "slug": "menubar",
@@ -710,7 +797,8 @@
       "menubar-submenu",
       "menubar-icons"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "message",
@@ -728,7 +816,8 @@
       "message-scroller-opening-position",
       "message-scroller-state"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "message-scroller",
@@ -740,7 +829,8 @@
       "message-scroller-opening-position",
       "message-scroller-state"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "native-select",
@@ -753,7 +843,8 @@
       "native-select-disabled",
       "native-select-invalid"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "navigation-menu",
@@ -763,7 +854,8 @@
     "examples": [
       "navigation-menu-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "option-card",
@@ -773,7 +865,8 @@
     "examples": [
       "option-card-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "pagination",
@@ -785,7 +878,8 @@
       "pagination-simple",
       "pagination-icons-only"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "palette-picker",
@@ -795,7 +889,8 @@
     "examples": [
       "palette-picker-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "panel",
@@ -805,7 +900,8 @@
     "examples": [
       "panel-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "popover",
@@ -818,7 +914,8 @@
       "popover-alignments",
       "popover-form"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "progress",
@@ -830,7 +927,8 @@
       "progress-label",
       "progress-controlled"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "questionnaire",
@@ -853,7 +951,8 @@
       "questionnaire-card",
       "questionnaire-dialog"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "radio-group",
@@ -868,7 +967,8 @@
       "radio-group-disabled",
       "radio-group-invalid"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "reasoning",
@@ -878,7 +978,8 @@
     "examples": [
       "reasoning-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "resizable",
@@ -890,7 +991,8 @@
       "resizable-vertical",
       "resizable-handle"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "scroll-area",
@@ -901,7 +1003,8 @@
       "scroll-area-demo",
       "scroll-area-horizontal-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "select",
@@ -916,7 +1019,8 @@
       "select-disabled",
       "select-invalid"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "separator",
@@ -929,7 +1033,8 @@
       "separator-menu",
       "separator-list"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "sheet",
@@ -941,7 +1046,8 @@
       "sheet-side",
       "sheet-no-close-button"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "sidebar",
@@ -949,8 +1055,8 @@
     "description": "A composable, themeable and customizable sidebar component.",
     "origin": "shadcn/ui",
     "examples": [
-      "sidebar-controlled",
       "sidebar-demo",
+      "sidebar-controlled",
       "sidebar-footer",
       "sidebar-group-action",
       "sidebar-group-collapsible",
@@ -963,7 +1069,8 @@
       "sidebar-menu",
       "sidebar-rsc"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "skeleton",
@@ -978,7 +1085,8 @@
       "skeleton-form",
       "skeleton-table"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "slider",
@@ -993,7 +1101,8 @@
       "slider-controlled",
       "slider-disabled"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "sonner",
@@ -1003,7 +1112,19 @@
     "examples": [
       "sonner-demo"
     ],
-    "hasDocs": false
+    "hasDocs": false,
+    "category": "Components"
+  },
+  {
+    "slug": "speak-button",
+    "title": "Speak Button",
+    "description": "Reads text aloud with the browser's voices; bars dance while it talks.",
+    "origin": "Colorwork",
+    "examples": [
+      "speak-button-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
   },
   {
     "slug": "spinner",
@@ -1019,7 +1140,8 @@
       "spinner-input-group",
       "spinner-empty"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "status-callout",
@@ -1029,7 +1151,8 @@
     "examples": [
       "status-callout-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "status-glyph",
@@ -1041,7 +1164,19 @@
       "status-glyph-figures",
       "status-glyph-inline"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
+  },
+  {
+    "slug": "streaming-text",
+    "title": "Streaming Text",
+    "description": "An AI answer that arrives word by word, and shimmering text for while the model is working.",
+    "origin": "Colorwork",
+    "examples": [
+      "streaming-text-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
   },
   {
     "slug": "switch",
@@ -1056,7 +1191,8 @@
       "switch-invalid",
       "switch-sizes"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "table",
@@ -1068,7 +1204,8 @@
       "table-footer",
       "table-actions"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "tabs",
@@ -1082,7 +1219,8 @@
       "tabs-disabled",
       "tabs-icons"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "tag",
@@ -1092,7 +1230,8 @@
     "examples": [
       "tag-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "task-notice",
@@ -1102,7 +1241,8 @@
     "examples": [
       "task-notice-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "textarea",
@@ -1116,7 +1256,8 @@
       "textarea-invalid",
       "textarea-button"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "toast",
@@ -1128,7 +1269,8 @@
       "toast-types",
       "toast-promise"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "toggle",
@@ -1149,7 +1291,8 @@
       "toggle-group-spacing",
       "toggle-group-vertical"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "toggle-group",
@@ -1165,7 +1308,8 @@
       "toggle-group-disabled",
       "toggle-group-font-weight-selector"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "tone-badge",
@@ -1175,7 +1319,8 @@
     "examples": [
       "tone-badge-demo"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "tool-steps",
@@ -1186,7 +1331,8 @@
       "tool-steps-demo",
       "tool-steps-list"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
   },
   {
     "slug": "tooltip",
@@ -1199,7 +1345,8 @@
       "tooltip-keyboard",
       "tooltip-disabled"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "Components"
   },
   {
     "slug": "turn-status",
@@ -1211,6 +1358,30 @@
       "turn-status-steps",
       "turn-status-waiting"
     ],
-    "hasDocs": true
+    "hasDocs": true,
+    "category": "AI & Voice"
+  },
+  {
+    "slug": "voice-input",
+    "title": "Voice Input",
+    "description": "Press to talk: a microphone button with a live waveform, timer and transcript that hands back text.",
+    "origin": "Colorwork",
+    "examples": [
+      "voice-input-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
+  },
+  {
+    "slug": "voice-orb",
+    "title": "Voice Orb",
+    "description": "A living orb for a voice assistant: it breathes when idle, swells with a voice and swirls while thinking.",
+    "origin": "Colorwork",
+    "examples": [
+      "voice-orb-demo",
+      "voice-orb-agent"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
   }
 ]

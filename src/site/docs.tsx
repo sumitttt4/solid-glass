@@ -135,7 +135,7 @@ const ManagerContext = React.createContext<[Manager, (next: Manager) => void]>([
 /** One command, said for whichever package manager the reader uses; the choice is kept across the site. */
 function CommandBlock({ command }: { command: string }) {
   const [manager, setManager] = React.useContext(ManagerContext)
-  const text = MANAGERS[manager](command.replace(/^npx shadcn@latest add ([a-z0-9-]+)$/, "npx shadcn@latest add sumitttt4/solid-glass/$1#color-language").replace("{origin}", window.location.origin + import.meta.env.BASE_URL.replace(/\/$/, "")))
+  const text = MANAGERS[manager](command.replace(/^npx shadcn@latest add ([a-z0-9-]+)$/, "npx shadcn@latest add sumitttt4/solid-glass/$1#main").replace("{origin}", window.location.origin + import.meta.env.BASE_URL.replace(/\/$/, "")))
   return (
     <div className="relative my-6 overflow-hidden rounded-xl bg-code">
       <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1">
@@ -198,7 +198,7 @@ function Install({ block }: { block: Extract<Block, { type: "install" }> }) {
         ))}
       </div>
       {tab === "cli" ? (
-        block.cli && <CommandBlock command={block.cli.replace(/deeplethe\/solid-glass\/([a-z-]+)/g, "sumitttt4/solid-glass/$1#color-language")} />
+        block.cli && <CommandBlock command={block.cli.replace(/deeplethe\/solid-glass\/([a-z-]+)/g, "sumitttt4/solid-glass/$1#main")} />
       ) : (
         <div className="ml-3.5 border-l pb-1 pl-7 [counter-reset:step]">
           {block.packages && (

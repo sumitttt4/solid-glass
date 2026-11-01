@@ -6,6 +6,7 @@
 @import "@fontsource-variable/geist-mono";
 @import "@fontsource/marcellus-sc/latin-400.css";
 @import "./colorwork.css";
+@import "./materials.css";
 
 /* ---- The site -------------------------------------------------------------
    What follows is the documentation site's own, not part of the theme. */

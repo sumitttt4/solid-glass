@@ -19,6 +19,10 @@
         var saved = new URLSearchParams(location.search).get("theme")
         try { saved = saved || localStorage.getItem("colorwork:theme") } catch (e) {}
         document.documentElement.classList.toggle("dark", saved === "dark")
+        // ?material=glass|frost|aurora|solid, else the saved one, else Normal.
+        var material = new URLSearchParams(location.search).get("material")
+        try { material = material || localStorage.getItem("colorwork:material") } catch (e) {}
+        document.documentElement.dataset.material = /^(solid|glass|frost|aurora)$/.test(material || "") ? material : "solid"
       })()
     </script>
   </head>
