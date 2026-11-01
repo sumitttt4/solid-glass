@@ -26,7 +26,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const out = join(root, "public/r")
 const read = (path) => readFileSync(join(root, path), "utf8")
 // Where the site is served from, and the repository on GitHub.
-const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://sumitttt4.github.io/solid-glass").replace(/\/$/, "")
+const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://glazeui.xyz").replace(/\/$/, "")
 const repo = "sumitttt4/solid-glass"
 const ref = process.env.COLORWORK_REF ?? "main"
 

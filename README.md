@@ -1,6 +1,6 @@
 # Glaze
 
-**Beautiful components. Solid or glass.**
+**Beautiful components. Solid or glass.** · [glazeui.xyz](https://glazeui.xyz)
 
 Free React components by Sumit Sharma: UI, AI & voice and animated icons, designed together and each available in four materials. Copy a component, install it with one command, or hand the registry to your coding agent. No pro tier. **Alpha.**
 

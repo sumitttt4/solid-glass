@@ -18,8 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      SOLID_GLASS_ORIGIN: https://sumitttt4.github.io/solid-glass
-      SOLID_GLASS_BASE: /solid-glass/
+      SOLID_GLASS_ORIGIN: https://glazeui.xyz
+      SOLID_GLASS_BASE: /
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
