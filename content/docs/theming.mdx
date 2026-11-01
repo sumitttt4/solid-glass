@@ -6,13 +6,13 @@ order: 5
 
 ## Start with paired values
 
-Change surface and text values together. Colorwork keeps the familiar shadcn variable names for background, foreground, primary, secondary, accent, border and ring.
+Change surface and text values together. Glaze keeps the familiar shadcn variable names for background, foreground, primary, secondary, accent, border and ring.
 
 The five tone roles use --tone-solid, --tone-on, --tone-soft, --tone-ink and --tone-edge. Put data-tone="fern" on a subtree, or use the tone prop on a ColorSurface or ToneBadge. The surface's primary action inherits the tone's solid/on pair.
 
 ## Compatibility
 
-colorwork.css imports solid-glass.css first, then replaces color roles, blur, highlights and selected states. Keep both files when copying. Removing inherited selectors without auditing every component can break states.
+glaze.css imports solid-glass.css first, then replaces color roles, blur, highlights and selected states. materials.css, imported after it, brings glass back as three switchable materials (Glass, Frost, Aurora) beside Normal. Keep all three files when copying. Removing inherited selectors without auditing every component can break states.
 
 ## Verify the result
 

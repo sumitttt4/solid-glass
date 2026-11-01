@@ -1,0 +1,28 @@
+/* Spacing scale for the site: 4px base. Sections 128px apart (88px on phones), a heading 16px
+   above its text, text 48px above what it introduces. */
+.home-section {
+  padding-top: 128px;
+}
+.home-section:last-child {
+  padding-bottom: 128px;
+}
+@media (max-width: 640px) {
+  .home-section { padding-top: 88px; }
+  .home-section:last-child { padding-bottom: 88px; }
+}
+
+/* The hero's stage: one hairline, one long soft shadow tinted by cobalt. */
+.hero-stage {
+  box-shadow: 0 0 0 1px var(--border), 0 48px 96px -48px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+
+@keyframes hero-bar {
+  from { transform: scaleY(0.2); opacity: 0; }
+}
+.hero-bar {
+  transform-origin: bottom;
+  animation: hero-bar 600ms var(--ease-out) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bar { animation: none; }
+}

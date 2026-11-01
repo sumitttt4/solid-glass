@@ -135,7 +135,7 @@ const ManagerContext = React.createContext<[Manager, (next: Manager) => void]>([
 /** One command, said for whichever package manager the reader uses; the choice is kept across the site. */
 function CommandBlock({ command }: { command: string }) {
   const [manager, setManager] = React.useContext(ManagerContext)
-  const text = MANAGERS[manager](command.replace(/^npx shadcn@latest add ([a-z0-9-]+)$/, "npx shadcn@latest add sumitttt4/solid-glass/$1#color-language").replace("{origin}", window.location.origin + import.meta.env.BASE_URL.replace(/\/$/, "")))
+  const text = MANAGERS[manager](command.replace(/^npx shadcn@latest add ([a-z0-9-]+)$/, "npx shadcn@latest add sumitttt4/solid-glass/$1#main").replace("{origin}", window.location.origin + import.meta.env.BASE_URL.replace(/\/$/, "")))
   return (
     <div className="relative my-6 overflow-hidden rounded-xl bg-code">
       <div className="flex items-center gap-2 border-b border-border/50 px-3 py-1">
@@ -198,7 +198,7 @@ function Install({ block }: { block: Extract<Block, { type: "install" }> }) {
         ))}
       </div>
       {tab === "cli" ? (
-        block.cli && <CommandBlock command={block.cli.replace(/deeplethe\/solid-glass\/([a-z-]+)/g, "sumitttt4/solid-glass/$1#color-language")} />
+        block.cli && <CommandBlock command={block.cli.replace(/deeplethe\/solid-glass\/([a-z-]+)/g, "sumitttt4/solid-glass/$1#main")} />
       ) : (
         <div className="ml-3.5 border-l pb-1 pl-7 [counter-reset:step]">
           {block.packages && (
@@ -223,7 +223,7 @@ function Blocks({ blocks }: { blocks: Block[] }) {
         switch (block.type) {
           case "heading":
             return block.depth === 2 ? (
-              <h2 key={index} id={block.id} className="mt-10 scroll-m-28 text-xl font-medium tracking-tight first:mt-0 lg:mt-12 [&+p]:mt-4!">
+              <h2 key={index} id={block.id} className="font-display mt-12 scroll-m-28 text-[1.375rem] leading-tight first:mt-0 lg:mt-14 [&+p]:mt-4!">
                 <a href={`#${block.id}`}>{block.text}</a>
               </h2>
             ) : (
@@ -336,7 +336,7 @@ function DocShell({ title, description, url, toc, children }: { title: string; d
         <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between md:items-start">
-              <h1 className="scroll-m-24 text-3xl font-semibold tracking-tight">{title}</h1>
+              <h1 className="font-display scroll-m-24 text-[2rem] leading-[1.12] sm:text-[2.25rem]">{title}</h1>
               <div className="ml-auto flex gap-2">
                 <Neighbours url={url} />
               </div>
@@ -402,7 +402,7 @@ export function ComponentsIndex() {
   return (
     <DocShell
       title="Components"
-      description="Here you can find all the components available in the library, with the Colorwork theme."
+      description="Here you can find all the components available in the library, with the Glaze theme."
       url="/docs/components"
     >
       <h2 id="all-components" className="mt-10 mb-6 scroll-m-28 text-xl font-medium tracking-tight first:mt-0">

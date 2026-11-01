@@ -1,55 +1,49 @@
-# Colorwork
+# Glaze
 
-Build your site with a little more color.
+**Beautiful components. Solid or glass.** · [glazeui.xyz](https://glazeui.xyz)
 
-An evolving React component library by Sumit Sharma. Expressive component tones, opaque surfaces, paired light/dark themes, interactive examples and copyable usage code. **Working name; availability unchecked. Alpha, not a stable release.**
+Free React components by Sumit Sharma: UI, AI & voice and animated icons, designed together and each available in four materials. Copy a component, install it with one command, or hand the registry to your coding agent. No pro tier. **Alpha.**
 
-Built on Solid Glass, shadcn/ui and Base UI. Original LICENSE and NOTICE.md are retained.
+![Glaze](docs/screenshots/glaze-home.png)
 
-![Colorwork component library](docs/screenshots/colorwork-home.png)
+## What's inside
 
-## Run
+- **UI components**: the full shadcn/ui + Solid Glass set, restyled with one colour system and one typeface (Geist), plus originals: Tone Badge, Color Surface, Palette Picker, Option Card, Status Callout, Copy Snippet.
+- **AI & voice**: Chat Window, Model Picker, Prompt Suggestions, Token Counter, Voice Orb, Live Transcript (in-browser speech to text), Voice Input, Audio Waveform, Streaming Text and Speak Button (text to speech), with the inherited agent UI (Composer, Reasoning, Tool Steps…).
+- **Animated icons**: built on [Hugeicons](https://hugeicons.com) (MIT). A tuned set of 39 (bells ring, bins open, rockets launch, two-state copy/menu/theme/mic/play), and `AnimatedIcon`, which animates **any** Hugeicon with 18 presets.
+- **Materials**: `data-material="solid" | "glass" | "frost" | "aurora"` on `<html>` or on any element. On `/components`, every preview can switch material or compare Normal and glass side by side.
 
-Use Node 22.12+ (CI uses Node 22).
+## Install
+
+```bash
+npx shadcn@latest add sumitttt4/solid-glass/glaze#main        # theme + materials
+npx shadcn@latest add sumitttt4/solid-glass/chat-window#main  # any component
+```
+
+Import `glaze.css` then `materials.css` after Tailwind (both need `solid-glass.css`, which the theme item installs). See `/docs/installation`.
+
+## Run locally
+
+Node 22.12+.
 
 ```bash
 npm ci
-npm run dev
-```
-
-Open http://localhost:5191. The homepage highlights 12 examples. `/components` contains the full 81-component browser (75 inherited + 6 original Colorwork components), with example selection, full source and install commands; `/docs/installation` explains copy-in setup and branch-pinned registry commands. `/color-study` keeps the earlier palette workbench; `/view/agent-workspace` is the local-state demo screen.
-
-## Check and build
-
-```bash
-npm run docs
+npm run dev        # http://localhost:5191
 npm run typecheck
-node --test scripts/block-metadata.test.mjs
 npm run build
-npm run preview
 ```
 
-Stop dev before preview; both use port 5191. Build output is `dist/`. Use a static host with SPA fallback for nested routes. GitHub Pages is configured for `https://sumitttt4.github.io/solid-glass`, but is not live until enabled and deployed. `SOLID_GLASS_BASE` and `SOLID_GLASS_ORIGIN` remain as compatible environment variable names for other hosts.
+## Colours, type and motion
 
-## Reuse
+- **Colour:** named after ceramic glazes. Porcelain `#F3F5F7` and Kiln `#101216` grounds, Ink `#15171C` text, Cobalt `#2445E6` as the signature, Celadon `#8FC9B6` as its partner, Oxblood `#B42318` for destructive actions. Five tones for categories (`iris` violet, `fern` emerald, `clay` rose, `sun` amber, `ocean` sky). Set any accent from the palette picker, or with `data-accent` and `--accent-solid` on `<html>`.
+- **Type:** Manrope throughout: regular for reading, medium and semibold for controls and headings.
+- **Motion:** follows Emil Kowalski's standards. Custom ease-out curves, popovers grow from their trigger in 180ms and close faster, dialogs stay centred, buttons scale to 0.97 on press, hover motion only on real pointers, and no animation on the keyboard-opened command palette.
+- **Backdrops:** the site's glass stages use [Paper Shaders](https://shaders.paper.design) mesh gradients (Apache-2.0). They load lazily, run only while on screen, and hold still under reduced motion. They are part of the site, not the installable components.
 
-Copy `src/colorwork.css` and `src/solid-glass.css` together; import colorwork.css after your Tailwind/shadcn styles. The source uses React 19, Tailwind 4, Base UI with Figtree and Plus Jakarta Sans. Copy TSX plus helpers/dependencies when using the new ToneBadge and ColorSurface components.
+## Stress testing
 
-Current branch registry (until merged):
-
-```bash
-npx shadcn@latest add sumitttt4/solid-glass/colorwork#color-language
-npx shadcn@latest add sumitttt4/solid-glass/tone-badge#color-language
-```
-
-Do not use the upstream install command for this theme. See the installation docs for current compatibility limits. Demo actions run in memory; they do not imply a working backend.
+`/dev/worst` (development only) feeds the AI components realistic worst-case data, behind a Demo / Worst case / Empty / One toggle: long names, unbreakable emails and URLs, 2,000-character pastes, zero and over-limit token counts. Keep it as the regression check when changing them.
 
 ## Provenance
 
-Derived from [deeplethe/solid-glass](https://github.com/deeplethe/solid-glass) under MIT; upstream shadcn material is covered by NOTICE.md. Original theme, catalog and color components are additions to that foundation. Keep all relevant notices with redistributed source.
-
-![Full collection browser](docs/screenshots/colorwork-collection.png)
-
-## Original additions
-
-Palette Picker, Option Card, Status Callout and Copy Snippet join Tone Badge and Color Surface. All 75 inherited UI source files, 456 upstream examples and 59 upstream block files are retained. See docs/upstream-inventory.md for provenance and docs/colorwork-verification.md for checks and limits.
+Derived from [deeplethe/solid-glass](https://github.com/deeplethe/solid-glass) under MIT; shadcn/ui material is covered by NOTICE.md. Icons by Hugeicons (MIT) and Lucide (ISC). Keep LICENSE and NOTICE.md with redistributed source.

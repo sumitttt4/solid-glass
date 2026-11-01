@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "description": "A colorful React component library by Sumit Sharma, built on Solid Glass.",
   "license": "MIT",
-  "homepage": "https://sumitttt4.github.io/solid-glass",
+  "homepage": "https://glazeui.xyz",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sumitttt4/solid-glass.git"
@@ -47,6 +47,7 @@
     "@fontsource/marcellus-sc": "^5.3.0",
     "@hugeicons/core-free-icons": "^4.3.5",
     "@hugeicons/react": "^1.1.10",
+    "@paper-design/shaders-react": "0.0.82",
     "@shadcn/react": "^0.3.1",
     "@tabler/icons-react": "^3.49.0",
     "@tailwindcss/vite": "^4",

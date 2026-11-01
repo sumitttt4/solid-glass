@@ -4,7 +4,6 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { Toaster } from "@/components/ui/sonner"
 import { Toaster as ToastToaster } from "@/components/ui/toast"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { Home } from "@/pages/home"
 import { DevBanner } from "@/pages/dev-banner"
 import { DevExamples } from "@/pages/dev-examples"
 import { ComponentsIndex, DocPage, DocsLayout } from "@/site/docs"
@@ -15,6 +14,7 @@ import { SiteHeader } from "@/site/site-header"
 // The preview on the Create page is a few dozen cards and every icon by name: fetched when the page is.
 const Collection = React.lazy(() => import("@/pages/collection"))
 const Library = React.lazy(() => import("@/pages/library"))
+const DevWorst = React.lazy(() => import("@/pages/dev-worst"))
 const ColorStudy = React.lazy(() => import("@/pages/color-study"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
 const Blocks = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.Blocks })))
@@ -34,8 +34,6 @@ export function App() {
   React.useLayoutEffect(() => {
     try { applyAccent(localStorage.getItem(ACCENT_KEY) ?? "") } catch { /* use original palette */ }
   }, [])
-  if (pathname === "/components") return <TooltipProvider><React.Suspense fallback={null}><Collection /></React.Suspense></TooltipProvider>
-  if (pathname === "/") return <TooltipProvider><React.Suspense fallback={null}><Library /></React.Suspense></TooltipProvider>
   if (pathname === "/color-study") return (
     <TooltipProvider><React.Suspense fallback={null}><ColorStudy /></React.Suspense></TooltipProvider>
   )
@@ -66,7 +64,8 @@ export function App() {
         <SiteHeader />
         <main className="flex min-h-0 flex-1 flex-col">
           <Routes>
-            <Route index element={<Home />} />
+            <Route index element={<React.Suspense fallback={null}><Library /></React.Suspense>} />
+            <Route path="components" element={<React.Suspense fallback={null}><Collection /></React.Suspense>} />
             <Route
               path="create"
               element={
@@ -90,6 +89,7 @@ export function App() {
               <Route path=":slug" element={<DocPage section="docs" />} />
             </Route>
             {import.meta.env.DEV && <Route path="dev/examples" element={<DevExamples />} />}
+            {import.meta.env.DEV && <Route path="dev/worst" element={<React.Suspense fallback={null}><DevWorst /></React.Suspense>} />}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
