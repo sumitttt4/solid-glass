@@ -1,91 +1,73 @@
 ---
 title: Installation
-description: Add the Colorwork theme and components to a compatible React project.
+description: Add Glaze, its four materials and any component to a React project.
 order: 2
 ---
 
-## Run the library
+## Requirements
 
-The current work is on the color-language branch of your fork. Use Node 22.12+ and npm.
+React 19, Tailwind CSS 4 and Base UI. The components follow shadcn/ui's file layout (`@/components/ui`, `@/lib/utils`), so a project set up with `npx shadcn@latest init` is ready.
+
+## 1. Add the theme
 
 ```bash
-git clone --branch color-language https://github.com/sumitttt4/solid-glass.git
-cd solid-glass
-npm ci
-npm run dev
+npx shadcn@latest add sumitttt4/solid-glass/glaze#main
 ```
 
-Open http://localhost:5191. Build with npm run build; publish the dist directory to a static host. Configure a single-page-app fallback for nested routes. The GitHub Pages workflow uses your account's origin; Pages must still be enabled in repository settings before it can publish.
-
-## Browse the full collection
-
-Open /components for every UI source component, its available examples, complete source and fork-specific install command. Original Colorwork entries (including the AI & voice set, animated icons and the material picker) are labeled separately from inherited Solid Glass/shadcn entries. Existing blocks remain at /blocks.
-
-The registry now includes all UI components rather than only the custom subset. Local UI dependencies are pinned to this fork; the sidebar item also includes its required mobile hook. You still need a compatible app and both theme files. Installation of every item into a separate app is not claimed tested.
-
-## Copy the theme
-
-Copy src/colorwork.css, src/materials.css and src/solid-glass.css into your app's styles directory. colorwork.css imports solid-glass.css for its compatible component selectors, then replaces the color roles. materials.css adds the four materials.
-
-Import Colorwork after Tailwind and shadcn styles. Reconcile duplicate theme variables in your app; later overrides win.
+This copies three stylesheets: `glaze.css` (colours, type, controls), `materials.css` (Glass, Frost and Aurora) and `solid-glass.css` (the foundation both build on). Import them after Tailwind:
 
 ```css
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "./colorwork.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "./glaze.css";
 @import "./materials.css";
 ```
 
-## Choose a material
+## 2. Add components
 
-Every component comes in four finishes. Set `data-material` on `<html>` for the whole app, or on any element to finish just that part:
+Any component, by name. Its dependencies come with it.
+
+```bash
+npx shadcn@latest add sumitttt4/solid-glass/chat-window#main
+npx shadcn@latest add sumitttt4/solid-glass/animated-icons#main
+npx shadcn@latest add sumitttt4/solid-glass/button#main
+```
+
+Every component page at /components has an Install tab with its command and a Code tab with the full source, if you would rather copy it.
+
+## 3. Choose a material
+
+Set `data-material` on `<html>` for the whole app, or on any element to finish just that part:
 
 ```html
-<html data-material="solid">   <!-- Normal: opaque, color-led -->
+<html data-material="solid">   <!-- Normal: opaque -->
 <html data-material="glass">   <!-- Glass: thick, smoky glass -->
 <html data-material="frost">   <!-- Frost: clear glass over vivid light -->
 <html data-material="aurora">  <!-- Aurora: frost over light that moves -->
 ```
 
-Glass needs something behind it to read as glass: the page draws soft lights of its own, and the `mat-stage` class gives any box the same backdrop. The `MaterialPicker` component is a ready-made switch.
+Glass needs something behind it to read as glass. The page draws soft light of its own, and the `mat-stage` class gives any box the same backdrop. `MaterialPicker` is a ready-made switch.
 
-This source uses React 19, Tailwind 4 and Base UI. Do not assume an older Radix-based shadcn project has matching slots or component APIs.
+## Use with a coding agent
 
-## Install with the registry
+Give your agent this, and it can pick and install what it needs:
 
-The registry generator points to this fork's main branch:
+```text
+Use the Glaze registry (github.com/sumitttt4/solid-glass) for UI.
+Add components with: npx shadcn@latest add sumitttt4/solid-glass/<name>#main
+Use data-material="glass" on <html> for the glass finish.
+```
+
+## Run this site locally
 
 ```bash
-npx shadcn@latest add sumitttt4/solid-glass/colorwork#main
-npx shadcn@latest add sumitttt4/solid-glass/tone-badge#main
-npx shadcn@latest add sumitttt4/solid-glass/color-surface#main
+git clone https://github.com/sumitttt4/solid-glass.git
+cd solid-glass
+npm ci
+npm run dev
 ```
 
-The generated registry files were checked locally; installation into an independent app still needs a compatibility check. There is no npm package release. The Pages-hosted registry is not claimed live before deployment.
-
-## Install the modified button
-
-```bash
-npx shadcn@latest add sumitttt4/solid-glass/button#main
-```
-
-The button retains Base UI behavior and supports an optional tone prop (iris, fern, clay, sun, ocean). It uses a Kumo-informed emphasis treatment rather than the Kumo runtime package.
-
-## Add a color role
-
-```tsx
-import { Button } from "@/components/ui/button"
-import { ToneBadge } from "@/components/ui/tone-badge"
-import { ColorSurface } from "@/components/ui/color-surface"
-
-<ColorSurface tone="fern" aria-label="Project summary">
-  <ToneBadge tone="fern">Design</ToneBadge>
-  <h2>A space for your next idea.</h2>
-  <Button>Start building</Button>
-</ColorSurface>
-```
-
-## Typography and themes
-
-The main font is Figtree, using Medium (500) for headlines and Regular (400) for body and controls. Plus Jakarta Sans supports navigation and labels. Geist Mono is retained for code. To load them, install @fontsource-variable/figtree, @fontsource-variable/plus-jakarta-sans and @fontsource-variable/geist-mono, then import their stylesheets. System fonts are used as fallbacks.
+Use Node 22.12+. Open http://localhost:5191.

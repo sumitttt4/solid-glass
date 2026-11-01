@@ -1,61 +1,275 @@
 import * as React from "react"
 import { Link, useSearchParams } from "react-router-dom"
-import { ArrowLeft, ArrowRight, Moon, Search, Sun } from "lucide-react"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { Cancel01Icon, Search01Icon } from "@hugeicons/core-free-icons"
+
+import { ArrowRightIcon } from "@/components/ui/animated-icons"
 import { Button } from "@/components/ui/button"
 import { CopySnippet } from "@/components/ui/copy-snippet"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { PalettePicker } from "@/components/ui/palette-picker"
 import { MaterialPicker, MATERIALS, type Material } from "@/components/ui/material-picker"
-import { useMaterial } from "@/site/material"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Switch } from "@/components/ui/switch"
 import { ComponentPreview, ComponentSource } from "@/site/component-preview"
-import { SolidGlassMark } from "@/site/logo"
-import { ACCENT_KEY, applyAccent } from "@/site/accent"
-import { useTheme } from "@/site/theme"
 import catalog from "@/site/catalog.generated.json"
-import "./library.css"
+import { useMaterial } from "@/site/material"
 import "./collection.css"
-const SEARCH_ALIASES: Record<string, string[]> = { dialog: ["modal", "popup", "window"], switch: ["toggle"], select: ["dropdown", "combobox", "picker"], "palette-picker": ["color", "theme", "swatch"], "option-card": ["radio", "choice", "tile"], "copy-snippet": ["code", "clipboard"], "status-callout": ["alert", "banner", "notice"], "animated-icons": ["icon", "animation", "lottie", "motion"], "voice-orb": ["ai", "assistant", "voice", "siri", "agent"], "live-transcript": ["transcription", "speech", "captions", "stt", "whisper"], "voice-input": ["microphone", "record", "dictation", "speech"], "audio-waveform": ["audio", "visualizer", "equalizer", "microphone"], "streaming-text": ["typewriter", "ai", "llm", "shimmer", "thinking"], "speak-button": ["tts", "text to speech", "read aloud", "voice"], "material-picker": ["glass", "frost", "aurora", "theme", "glassmorphism"] }
-const FILTERS = ["All", "AI & Voice", "Icons", "Materials", "Originals", "Inherited"] as const
-function matchesFilter(entry: { origin: string; category: string }, filter: string) {
+
+const SEARCH_ALIASES: Record<string, string[]> = {
+  dialog: ["modal", "popup", "window"], switch: ["toggle"], select: ["dropdown", "picker"], "palette-picker": ["color", "theme", "swatch"],
+  "option-card": ["radio", "choice", "tile"], "copy-snippet": ["code", "clipboard"], "status-callout": ["alert", "banner", "notice"],
+  "animated-icons": ["icon", "animation", "lottie", "motion", "hugeicons"], "voice-orb": ["ai", "assistant", "voice", "siri", "agent"],
+  "live-transcript": ["transcription", "speech", "captions", "stt", "whisper"], "voice-input": ["microphone", "record", "dictation"],
+  "audio-waveform": ["audio", "visualizer", "equalizer"], "streaming-text": ["typewriter", "llm", "shimmer", "thinking"],
+  "speak-button": ["tts", "text to speech", "read aloud"], "material-picker": ["glass", "frost", "aurora", "glassmorphism"],
+  "chat-window": ["chat", "chatbot", "assistant", "gpt", "conversation"], "model-picker": ["llm", "model", "provider"],
+  "prompt-suggestions": ["prompts", "starter", "examples"], "token-counter": ["tokens", "context", "usage", "cost"],
+}
+const FILTERS = ["All", "AI & Voice", "Icons", "Components", "Originals"] as const
+type Entry = (typeof catalog)[number]
+function matches(entry: Entry, filter: string) {
   if (filter === "All") return true
-  if (filter === "Originals") return entry.origin === "Colorwork"
-  if (filter === "Inherited") return entry.origin !== "Colorwork"
+  if (filter === "Originals") return entry.origin === "Glaze"
+  if (filter === "Components") return entry.category === "Components" || entry.category === "Materials"
   return entry.category === filter
 }
+const originLabel = (e: Entry) => (e.origin === "Glaze" ? "Glaze" : e.origin === "Adapted" ? "Adapted" : e.origin)
+
 class PreviewBoundary extends React.Component<{ children: React.ReactNode }, { error: boolean }> {
   state = { error: false }
-  static getDerivedStateFromError() { return { error: true } }
-  render() { return this.state.error ? <div role="alert" className="collection-preview-error">This example couldn’t render. You can still inspect its source and dependencies.<Button variant="secondary" onClick={() => this.setState({ error: false })}>Retry preview</Button></div> : this.props.children }
+  static getDerivedStateFromError() {
+    return { error: true }
+  }
+  render() {
+    return this.state.error ? (
+      <div role="alert" className="text-muted-foreground flex min-h-60 flex-col items-center justify-center gap-3 p-8 text-center text-sm">
+        This example couldn’t render. Its source is still available.
+        <Button variant="outline" size="sm" onClick={() => this.setState({ error: false })}>Retry</Button>
+      </div>
+    ) : (
+      this.props.children
+    )
+  }
 }
+
 export default function Collection() {
   const [params, setParams] = useSearchParams()
-  const selected = catalog.find(entry => entry.slug === params.get("component")) ?? catalog.find(entry => entry.slug === "palette-picker")!
-  const [search,setSearch] = React.useState("")
-  const [origin,setOrigin] = React.useState<string>(() => FILTERS.includes(params.get("filter") as (typeof FILTERS)[number]) ? params.get("filter")! : "All")
-  const {material,setMaterial}=useMaterial()
-  const [compare,setCompare]=React.useState(false)
-  // Compare puts Normal beside a glass: the page's own, or Glass when the page is Normal.
-  const glassSide: Material = material === "solid" ? "glass" : material
-  const tab = ["Preview","Source","Install"].includes(params.get("view")??"") ? params.get("view")! : "Preview"
-  const example = params.get("example") ?? ""
-  const [accent,setAccent] = React.useState(() => {try{return localStorage.getItem(ACCENT_KEY)??""}catch{return ""}})
-  const {theme,setTheme}=useTheme()
+  const selected = catalog.find((e) => e.slug === params.get("component")) ?? catalog.find((e) => e.slug === "chat-window")!
+  const [search, setSearch] = React.useState("")
+  const filter = FILTERS.includes(params.get("filter") as (typeof FILTERS)[number]) ? params.get("filter")! : "All"
+  const tab = ["Preview", "Code", "Install"].includes(params.get("view") ?? "") ? params.get("view")! : "Preview"
+  const { material } = useMaterial()
+  const [stage, setStage] = React.useState<Material>(material)
+  React.useEffect(() => setStage(material), [material])
+  const [compare, setCompare] = React.useState(false)
   const list = React.useRef<HTMLElement>(null)
-  const exampleTrigger = React.useRef<HTMLButtonElement>(null)
-  const [exampleOpen,setExampleOpen] = React.useState(false)
-  React.useEffect(()=>{const nav=list.current,active=nav?.querySelector<HTMLElement>('[aria-current="page"]');if(nav&&active){const n=nav.getBoundingClientRect(),a=active.getBoundingClientRect();if(a.top<n.top||a.bottom>n.bottom)nav.scrollTop+=a.top-n.top-nav.clientHeight/2+active.clientHeight/2}},[selected.slug])
-  const q=search.trim().toLowerCase(), entries=catalog.filter(entry=>{if(!matchesFilter(entry,origin))return false;if(!q)return true;if(`${entry.title} ${entry.description} ${entry.slug}`.toLowerCase().includes(q))return true;return(SEARCH_ALIASES[entry.slug]??[]).some(a=>a.includes(q)||q.includes(a))})
-  const currentExample=selected.examples.includes(example)?example:selected.examples[0]
-  function choose(slug:string) {setParams({component:slug});if(window.matchMedia("(max-width: 900px)").matches)requestAnimationFrame(()=>document.getElementById("component-detail")?.scrollIntoView({block:"start"}))}
-  function setTab(view:string){setParams(current=>{const next=new URLSearchParams(current);next.set("component",selected.slug);next.set("view",view);return next})}
-  function setExample(example:string){setParams(current=>{const next=new URLSearchParams(current);next.set("component",selected.slug);next.set("example",example);return next})}
-  function color(value:string) {setAccent(value);applyAccent(value);try{localStorage.setItem(ACCENT_KEY,value)}catch{/* choice lasts for this visit */}}
-  return <div className="cw-site collection-site"><a href="#component-detail" className="cw-skip">Skip to selected component</a><header className="cw-header"><Link to="/" className="cw-brand"><SolidGlassMark />colorwork</Link><nav aria-label="Collection navigation"><Link to="/components" aria-current="page">All components</Link><Link to="/blocks">Blocks</Link><Link to="/docs/installation">Get started</Link></nav><div className="cw-header-end"><MaterialPicker compact value={material} onValueChange={setMaterial} className="collection-material" /><Link to="/" className="cw-source"><ArrowLeft size={14} />Home</Link><Button variant="ghost" size="icon" aria-label={`Switch to ${theme==="dark"?"light":"dark"} theme`} onClick={()=>setTheme(theme==="dark"?"light":"dark")}>{theme==="dark"?<Sun />:<Moon />}</Button></div></header>
-  <div className="collection-heading"><div><p className="cw-eyebrow">THE FULL COLLECTION</p><h1>Every building block.<br /><span>A little more you.</span></h1><p>{catalog.length} source components · {catalog.filter(e=>e.category==="AI & Voice").length} for AI &amp; voice · {catalog.filter(e=>e.origin==="Colorwork").length} originals · every one in four materials</p></div><details className="collection-color" onKeyDown={e=>{if(e.key==="Escape"){e.currentTarget.removeAttribute("open");e.currentTarget.querySelector("summary")?.focus()}}}><summary>Change all component colors</summary><PalettePicker value={accent} onValueChange={color} /></details></div>
-  <div className="collection-layout"><aside className="collection-list" aria-label="All components"><label className="cw-search"><Search size={16} /><input aria-label="Search full component collection" placeholder="Search all components…" value={search} onChange={e=>setSearch(e.target.value)} /></label><div className="collection-filters" role="group" aria-label="Component source">{FILTERS.map(value=><button key={value} aria-pressed={origin===value} onClick={()=>setOrigin(value)}>{value}</button>)}</div><p className="collection-result-count" role="status">{entries.length} components</p><nav ref={list} aria-label="Component list">{entries.map(entry=><button key={entry.slug} aria-current={entry.slug===selected.slug?"page":undefined} onClick={()=>choose(entry.slug)}><span>{entry.title}</span><small>{entry.origin==="Colorwork"?(entry.category==="Components"?"Original":entry.category):entry.origin}</small></button>)}</nav>{!entries.length&&<p className="collection-preview-error">Nothing matches. Try a component name or change the source filter.</p>}</aside>
-  <main id="component-detail" className="collection-detail"><div className="collection-detail-title"><div><span className="collection-origin">{selected.origin==="Colorwork"?"ORIGINAL COLORWORK":selected.origin==="Adapted"?"ADAPTED FOUNDATION":`INHERITED · ${selected.origin}`}</span><h2>{selected.title}</h2><p>{selected.description}</p></div>{selected.hasDocs&&<Link to={`/docs/components/${selected.slug}`}>Documentation<ArrowRight size={14} /></Link>}</div><div className="collection-tabs" role="group" aria-label="Component detail view">{["Preview","Source","Install"].map(value=><button key={value} aria-pressed={tab===value} onClick={()=>setTab(value)}>{value}</button>)}</div>
-    {tab==="Preview"&&<div className="collection-preview"><div className="collection-preview-bar">{selected.examples.length>1&&<div className="collection-example-picker"><span id="example-picker-label">Example</span><Select open={exampleOpen} onOpenChange={(open,details)=>{setExampleOpen(open);if(!open&&details.reason!=="outside-press"&&details.reason!=="focus-out")requestAnimationFrame(()=>exampleTrigger.current?.focus({preventScroll:true}))}} modal={false} items={selected.examples.map(name=>({value:name,label:name.replace(`${selected.slug}-`,"").replaceAll("-"," ")}))} value={currentExample} onValueChange={value=>{if(value)setExample(value)}}><SelectTrigger ref={exampleTrigger} aria-label="Choose component example" className="collection-example-trigger"><SelectValue /></SelectTrigger>{exampleOpen && <SelectContent finalFocus={exampleTrigger} align="start" alignItemWithTrigger={false} className="collection-example-options">{selected.examples.map(name=><SelectItem key={name} value={name}>{name.replace(`${selected.slug}-`,"").replaceAll("-"," ")}</SelectItem>)}</SelectContent>}</Select></div>}<label className="collection-compare"><input type="checkbox" checked={compare} onChange={e=>setCompare(e.target.checked)} />Compare Normal vs {MATERIALS.find(m=>m.value===glassSide)!.label}</label></div>{currentExample?(compare?<div className="collection-compare-grid">{(["solid",glassSide] as Material[]).map(side=><figure key={side}><figcaption>{MATERIALS.find(m=>m.value===side)!.label}</figcaption><div data-material={side} className="mat-stage collection-stage"><PreviewBoundary key={`${selected.slug}-${currentExample}-${side}`}><ComponentPreview name={currentExample} hideCode /></PreviewBoundary></div></figure>)}</div>:<div data-material={material} className="mat-stage collection-stage"><PreviewBoundary key={`${selected.slug}-${currentExample}`}><ComponentPreview key={currentExample} name={currentExample} /></PreviewBoundary></div>):<div className="collection-preview-error">No standalone example for this source file. Open Source to inspect it or Install to use it.</div>}</div>}
-    {tab==="Source"&&<div className="collection-source"><p>Complete editable component source. Keep imports and install its dependencies; the Install tab includes the registry command.</p><ComponentSource key={selected.slug} name={selected.slug} />{selected.slug === "palette-picker" && <details className="collection-helper"><summary>Required Tailwind palette data</summary><ComponentSource name="tailwind-palette" title="components/ui/tailwind-palette.ts" /></details>}</div>}
-    {tab==="Install"&&<div className="collection-install"><CopySnippet label={`Install ${selected.title}`} code={`npx shadcn@latest add sumitttt4/solid-glass/${selected.slug}#main`} /><CopySnippet label="Install the theme and its four materials" code="npx shadcn@latest add sumitttt4/solid-glass/colorwork#main" /><p>Use React 19, Tailwind 4 and compatible Base UI primitives. Import colorwork.css then materials.css after your app styles; they also need solid-glass.css. Set data-material="glass", "frost" or "aurora" on html, or on any element, to change the finish. Registry installation copies editable source and declared dependencies. The full collection is included; end-to-end installation of every item is not claimed tested.</p><Link to="/docs/installation">Read setup and font instructions<ArrowRight size={14}/></Link></div>}
-    <footer className="collection-provenance">{selected.origin==="Colorwork"?"Original component added for Colorwork. Theme tokens are shared with the rest of the collection.":"Inherited from the MIT-licensed Solid Glass foundation and its shadcn/ui components. Colorwork applies its own shared theme; upstream authorship is retained."} <a href="https://github.com/sumitttt4/solid-glass/tree/main">View repository</a></footer></main></div></div>
+
+  const q = search.trim().toLowerCase()
+  const entries = catalog.filter((e) => {
+    if (!matches(e, filter)) return false
+    if (!q) return true
+    if (`${e.title} ${e.description} ${e.slug}`.toLowerCase().includes(q)) return true
+    return (SEARCH_ALIASES[e.slug] ?? []).some((a) => a.includes(q) || q.includes(a))
+  })
+  const example = selected.examples.includes(params.get("example") ?? "") ? params.get("example")! : selected.examples[0]
+  const glassSide: Material = stage === "solid" ? "glass" : stage
+
+  function update(next: Record<string, string | null>) {
+    setParams(
+      (current) => {
+        const p = new URLSearchParams(current)
+        for (const [k, v] of Object.entries(next)) v === null ? p.delete(k) : p.set(k, v)
+        return p
+      },
+      { preventScrollReset: true }
+    )
+  }
+  function choose(slug: string) {
+    update({ component: slug, example: null, view: null })
+    if (window.matchMedia("(max-width: 1023px)").matches) document.getElementById("component-detail")?.scrollIntoView({ block: "start" })
+    else window.scrollTo({ top: 0 })
+  }
+
+  React.useEffect(() => {
+    const nav = list.current
+    const active = nav?.querySelector<HTMLElement>('[aria-current="page"]')
+    if (!nav || !active) return
+    const n = nav.getBoundingClientRect()
+    const a = active.getBoundingClientRect()
+    if (a.top < n.top || a.bottom > n.bottom) nav.scrollTop += a.top - n.top - nav.clientHeight / 2
+  }, [selected.slug, filter])
+
+  return (
+    <div className="collection mx-auto grid w-full max-w-[1400px] grid-cols-[minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)]">
+      <aside className="collection-aside min-w-0" aria-label="Components">
+        <label className="border-input bg-card focus-within:border-ring focus-within:ring-ring/20 flex h-9 items-center gap-2 rounded-lg border px-2.5 shadow-xs focus-within:ring-3">
+          <HugeiconsIcon icon={Search01Icon} size={16} className="text-muted-foreground" />
+          <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search components…" aria-label="Search components" className="placeholder:text-muted-foreground min-w-0 flex-1 bg-transparent text-sm outline-none" />
+          {search && (
+            <button type="button" aria-label="Clear search" onClick={() => setSearch("")} className="text-muted-foreground hover:text-foreground cursor-pointer">
+              <HugeiconsIcon icon={Cancel01Icon} size={14} />
+            </button>
+          )}
+        </label>
+        <div className="mt-3 flex flex-wrap gap-1" role="group" aria-label="Category">
+          {FILTERS.map((f) => (
+            <button
+              key={f}
+              type="button"
+              aria-pressed={filter === f}
+              onClick={() => update({ filter: f === "All" ? null : f })}
+              className="text-muted-foreground hover:text-foreground aria-pressed:bg-foreground aria-pressed:text-background h-7 cursor-pointer rounded-full px-2.5 text-xs font-medium transition-colors"
+            >
+              {f}
+            </button>
+          ))}
+        </div>
+        <p className="text-muted-foreground mt-4 mb-1 px-2 text-xs" role="status">
+          {entries.length} components
+        </p>
+        <nav ref={list} className="collection-list" aria-label="Component list">
+          {entries.map((e) => (
+            <button
+              key={e.slug}
+              type="button"
+              aria-current={e.slug === selected.slug ? "page" : undefined}
+              onClick={() => choose(e.slug)}
+              className="text-muted-foreground hover:bg-accent hover:text-foreground aria-[current=page]:bg-accent aria-[current=page]:text-foreground flex h-8 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-left text-sm transition-colors aria-[current=page]:font-medium"
+            >
+              <span className="truncate">{e.title}</span>
+              {e.origin === "Glaze" && <span className="bg-primary/10 text-primary shrink-0 rounded px-1.5 py-px text-[10px] font-medium">{e.category === "AI & Voice" ? "AI" : "New"}</span>}
+            </button>
+          ))}
+          {!entries.length && <p className="text-muted-foreground px-2 py-6 text-sm">Nothing matches. Try another word or category.</p>}
+        </nav>
+      </aside>
+
+      <main id="component-detail" className="min-w-0 px-4 py-10 sm:px-6 lg:px-10">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="max-w-2xl">
+            <p className="text-muted-foreground text-xs font-medium">
+              {selected.category} · {originLabel(selected)}
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight">{selected.title}</h1>
+            <p className="text-muted-foreground mt-3 text-base leading-relaxed">{selected.description}</p>
+          </div>
+          {selected.hasDocs && (
+            <Link to={`/docs/components/${selected.slug}`} className="text-primary inline-flex items-center gap-1.5 text-sm font-medium" data-icon-trigger="">
+              Documentation <ArrowRightIcon size={15} />
+            </Link>
+          )}
+        </div>
+
+        <div className="border-border mt-8 flex gap-6 border-b" role="tablist" aria-label="View">
+          {["Preview", "Code", "Install"].map((v) => (
+            <button
+              key={v}
+              role="tab"
+              aria-selected={tab === v}
+              onClick={() => update({ view: v === "Preview" ? null : v })}
+              className="text-muted-foreground hover:text-foreground aria-selected:border-foreground aria-selected:text-foreground -mb-px cursor-pointer border-b-2 border-transparent pb-3 text-sm font-medium transition-colors"
+            >
+              {v}
+            </button>
+          ))}
+        </div>
+
+        {tab === "Preview" && (
+          <div className="mt-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                {selected.examples.length > 1 && (
+                  <Select
+                    items={selected.examples.map((n) => ({ value: n, label: n.replace(`${selected.slug}-`, "").replaceAll("-", " ") }))}
+                    value={example}
+                    onValueChange={(v) => v && update({ example: v })}
+                  >
+                    <SelectTrigger aria-label="Example" className="h-8 min-w-36 capitalize">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {selected.examples.map((n) => (
+                        <SelectItem key={n} value={n} className="capitalize">
+                          {n.replace(`${selected.slug}-`, "").replaceAll("-", " ")}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                )}
+                <MaterialPicker compact value={stage} onValueChange={setStage} className="max-sm:hidden" />
+              </div>
+              <label className="flex items-center gap-2 text-sm font-medium">
+                <Switch checked={compare} onCheckedChange={setCompare} />
+                Compare with {compare ? MATERIALS.find((m) => m.value === glassSide)!.label : "glass"}
+              </label>
+            </div>
+            {example ? (
+              compare ? (
+                <div className="mt-4 grid gap-4 xl:grid-cols-2">
+                  {(["solid", glassSide] as Material[]).map((side) => (
+                    <figure key={side} className="m-0 min-w-0">
+                      <figcaption className="text-muted-foreground mb-2 text-xs font-medium">{MATERIALS.find((m) => m.value === side)!.label}</figcaption>
+                      <div data-material={side} className="mat-stage collection-stage">
+                        <PreviewBoundary key={`${example}-${side}`}>
+                          <ComponentPreview name={example} hideCode />
+                        </PreviewBoundary>
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+              ) : (
+                <div data-material={stage} className="mat-stage collection-stage mt-4">
+                  <PreviewBoundary key={example}>
+                    <ComponentPreview key={example} name={example} hideCode />
+                  </PreviewBoundary>
+                </div>
+              )
+            ) : (
+              <p className="text-muted-foreground mt-6 text-sm">No standalone example. See Code or Install.</p>
+            )}
+            {example && (
+              <details className="collection-usage mt-4">
+                <summary className="text-muted-foreground hover:text-foreground cursor-pointer text-sm font-medium">Example code</summary>
+                <ExampleCode name={example} />
+              </details>
+            )}
+          </div>
+        )}
+        {tab === "Code" && (
+          <div className="mt-6">
+            <ComponentSource key={selected.slug} name={selected.slug} />
+          </div>
+        )}
+        {tab === "Install" && (
+          <div className="mt-6 flex max-w-2xl flex-col gap-4">
+            <CopySnippet label={`Add ${selected.title}`} code={`npx shadcn@latest add sumitttt4/solid-glass/${selected.slug}#main`} />
+            <CopySnippet label="Add the theme and its four materials (once)" code="npx shadcn@latest add sumitttt4/solid-glass/glaze#main" />
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              Needs React 19, Tailwind CSS 4 and Base UI. Import <code className="font-mono text-xs">glaze.css</code> then <code className="font-mono text-xs">materials.css</code> after your Tailwind styles. Set <code className="font-mono text-xs">data-material</code> to <code className="font-mono text-xs">glass</code>, <code className="font-mono text-xs">frost</code> or <code className="font-mono text-xs">aurora</code> on html or any element to change the finish.
+            </p>
+            <Link to="/docs/installation" className="text-primary inline-flex items-center gap-1.5 text-sm font-medium" data-icon-trigger="">
+              Full setup guide <ArrowRightIcon size={15} />
+            </Link>
+          </div>
+        )}
+        <p className="text-muted-foreground border-border mt-12 border-t pt-6 text-xs">
+          {selected.origin === "Glaze" ? "An original Glaze component." : "Inherited from the MIT-licensed Solid Glass foundation and shadcn/ui, restyled for Glaze."}{" "}
+          <a className="underline underline-offset-2" href="https://github.com/sumitttt4/solid-glass">View on GitHub</a>
+        </p>
+      </main>
+    </div>
+  )
 }
+
+const exampleSources = import.meta.glob<string>("/src/examples/*.tsx", { query: "?raw", import: "default" })
+function ExampleCode({ name }: { name: string }) {
+  const [code, setCode] = React.useState("")
+  React.useEffect(() => {
+    let live = true
+    void exampleSources[`/src/examples/${name}.tsx`]?.().then((c) => live && setCode(c.replace(/^"use client"\n\n?/, "")))
+    return () => {
+      live = false
+    }
+  }, [name])
+  return code ? <div className="mt-3"><CopySnippet label={`${name}.tsx`} code={code} /></div> : null
+}
+

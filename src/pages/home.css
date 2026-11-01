@@ -1,0 +1,35 @@
+.home-section {
+  padding-block: 96px 0;
+}
+.home-section:last-child {
+  padding-bottom: 112px;
+}
+@media (max-width: 640px) {
+  .home-section { padding-top: 72px; }
+}
+
+.home-gradient-text {
+  background: linear-gradient(100deg, var(--primary) 10%, color-mix(in oklch, var(--primary), oklch(0.72 0.17 330) 55%) 55%, color-mix(in oklch, var(--primary), oklch(0.78 0.13 210) 60%) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The hero's stage: a soft halo under it and a hairline round it. */
+.hero-stage {
+  box-shadow: 0 0 0 1px var(--border), 0 40px 80px -40px color-mix(in oklch, var(--primary) 35%, transparent);
+}
+.hero-stage[data-material="solid"] {
+  background-image: radial-gradient(80% 60% at 50% 0%, color-mix(in oklch, var(--primary) 7%, transparent), transparent 70%);
+}
+
+@keyframes hero-bar {
+  from { transform: scaleY(0.2); opacity: 0; }
+}
+.hero-bar {
+  transform-origin: bottom;
+  animation: hero-bar 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-bar { animation: none; }
+}

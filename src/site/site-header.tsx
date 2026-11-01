@@ -1,5 +1,5 @@
 import * as React from "react"
-import { MenuIcon, MoonIcon, SearchIcon, SunIcon } from "lucide-react"
+import { MenuIcon, SearchIcon } from "lucide-react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
 
 import { cn } from "@/lib/utils"
@@ -19,32 +19,40 @@ import { Separator } from "@/components/ui/separator"
 import { SolidGlassMark } from "@/site/logo"
 import { agents, components, docs, urlOf } from "@/site/pages"
 import { useTheme } from "@/site/theme"
+import { useMaterial } from "@/site/material"
+import { MaterialPicker } from "@/components/ui/material-picker"
+import { GithubIcon, ThemeIcon } from "@/components/ui/animated-icons"
+import catalog from "@/site/catalog.generated.json"
 
 const NAV = [
-  { href: "/docs", label: "Docs" },
-  { href: "/docs/components", label: "Components" },
+  { href: "/components", label: "Components" },
+  { href: "/components?filter=AI+%26+Voice&component=chat-window", label: "AI" },
+  { href: "/components?filter=Icons&component=animated-icons", label: "Icons" },
   { href: "/blocks", label: "Blocks" },
-  { href: "/docs/color-language", label: "Color" },
-  { href: "/color-study", label: "Workbench" },
+  { href: "/docs", label: "Docs" },
 ]
 
 /**
  * Which tab the page belongs to: the one whose address it is, or is under. Where two are (a
  * component's page is under Docs and under Components), the nearer one, which is the longer address.
  */
-function tabOf(pathname: string) {
+function tabOf(pathname: string, search: string) {
+  if (pathname === "/components") {
+    const filter = new URLSearchParams(search).get("filter")
+    return filter === "AI & Voice" ? NAV[1].href : filter === "Icons" ? NAV[2].href : NAV[0].href
+  }
   return NAV.filter((item) => pathname === item.href || pathname.startsWith(`${item.href}/`)).sort((a, b) => b.href.length - a.href.length)[0]?.href
 }
 
 function MainNav({ className }: { className?: string }) {
-  const { pathname } = useLocation()
-  const tab = tabOf(pathname)
+  const { pathname, search } = useLocation()
+  const tab = tabOf(pathname, search)
   return (
     <nav className={cn("items-center gap-0", className)}>
       {/* the mark stands still: one that never stops moving reads as a page that shakes */}
       <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mr-1 -ml-3 h-8 gap-2 px-2.5 text-sm")}>
         <SolidGlassMark className="size-5 -translate-y-px" />
-        <span className="font-semibold tracking-tight">Colorwork</span>
+        <span className="text-[15px] font-semibold tracking-tight">Glaze</span>
       </Link>
       {NAV.map((item) => (
         <Link
@@ -55,8 +63,8 @@ function MainNav({ className }: { className?: string }) {
           className={cn(
             buttonVariants({ variant: "ghost", size: "sm" }),
             // the tab you are on wears the one state, like the chosen row of any list
-            "hidden h-8 px-2.5 text-sm text-foreground/70 lg:inline-flex",
-            tab === item.href && "glass-chosen text-foreground"
+            "hidden h-8 px-2.5 text-sm font-medium text-muted-foreground hover:text-foreground lg:inline-flex",
+            tab === item.href && "text-foreground"
           )}
         >
           {item.label}
@@ -152,7 +160,7 @@ function CommandMenu() {
         onClick={() => setOpen(true)}
         className="relative h-8 w-full justify-start rounded-md pl-2.5 font-normal text-muted-foreground shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
       >
-        <span className="hidden lg:inline-flex">Search documentation...</span>
+        <span className="hidden lg:inline-flex">Search components…</span>
         <span className="inline-flex lg:hidden">Search...</span>
         <span className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
           <Kbd>⌘</Kbd>
@@ -178,7 +186,18 @@ function CommandMenu() {
                 </CommandItem>
               ))}
             </CommandGroup>
-            <CommandGroup heading="Components">
+            <CommandGroup heading="Library">
+              {catalog.map((entry) => (
+                <CommandItem key={entry.slug} value={`library ${entry.title} ${entry.category}`} onSelect={() => go(`/components?component=${entry.slug}`)}>
+                  <span className="flex size-4 items-center justify-center">
+                    <span className="size-1.5 rounded-full bg-primary" />
+                  </span>
+                  <Matched text={entry.title} query={query} />
+                  <span className="ml-auto text-xs text-muted-foreground">{entry.category}</span>
+                </CommandItem>
+              ))}
+            </CommandGroup>
+            <CommandGroup heading="Component docs">
               {components.map((page) => (
                 <CommandItem key={page.slug} value={`component ${page.title}`} onSelect={() => go(urlOf(page))}>
                   <span className="flex size-4 items-center justify-center">
@@ -244,9 +263,7 @@ function GitHubLink() {
       title="GitHub"
       className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-8")}
     >
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-[17px]">
-        <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z" />
-      </svg>
+      <GithubIcon size={18} />
       <span className="sr-only">GitHub</span>
     </a>
   )
@@ -262,29 +279,35 @@ function ModeSwitcher() {
       title="Toggle theme"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
-      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      <ThemeIcon size={18} active={theme === "dark"} />
       <span className="sr-only">Toggle theme</span>
     </Button>
   )
 }
 
+function HeaderMaterial() {
+  const { material, setMaterial } = useMaterial()
+  return <MaterialPicker compact value={material} onValueChange={setMaterial} className="hidden xl:inline-flex" />
+}
+
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full bg-background">
-      <div className="container-wrapper px-6">
+    <header className="sticky top-0 z-50 w-full border-b border-border/70 bg-background/80 backdrop-blur-xl backdrop-saturate-150">
+      <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-8">
         <div className="flex h-(--header-height) items-center **:data-[slot=separator]:h-4! **:data-[slot=separator]:self-center!">
           <MainNav className="flex" />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
               <CommandMenu />
             </div>
-            <Separator orientation="vertical" className="ml-2 hidden lg:block" />
+            <HeaderMaterial />
+            <Separator orientation="vertical" className="ml-1 hidden lg:block" />
             <GitHubLink />
             <ModeSwitcher />
             <MobileNav />
             <Separator orientation="vertical" className="hidden lg:block" />
             <Link to="/docs/installation" className={cn(buttonVariants({ size: "sm" }), "hidden h-8 rounded-md px-3 text-sm lg:inline-flex")}>
-              Get Started
+              Get started
             </Link>
           </div>
         </div>

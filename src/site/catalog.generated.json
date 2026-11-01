@@ -56,9 +56,10 @@
     "slug": "animated-icons",
     "title": "Animated Icons",
     "description": "A small set of icons that move like what they stand for: hover to play, loop, or switch two-state icons.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "animated-icons-demo",
+      "animated-icons-any",
       "animated-icons-buttons"
     ],
     "hasDocs": false,
@@ -108,7 +109,7 @@
     "slug": "audio-waveform",
     "title": "Audio Waveform",
     "description": "Bars or a line that move with a voice, fed live from the microphone or by simulated levels.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "audio-waveform-demo"
     ],
@@ -309,6 +310,17 @@
     "category": "Components"
   },
   {
+    "slug": "chat-window",
+    "title": "Chat Window",
+    "description": "A complete chat: model picker, context meter, streaming answers with copy, retry and read-aloud, suggestions, files and voice input.",
+    "origin": "Glaze",
+    "examples": [
+      "chat-window-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
+  },
+  {
     "slug": "checkbox",
     "title": "Checkbox",
     "description": "A control that allows the user to toggle between checked and not checked.",
@@ -343,7 +355,7 @@
     "slug": "color-surface",
     "title": "Color Surface",
     "description": "Group content on an opaque tinted surface with a paired foreground.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "color-surface-demo"
     ],
@@ -434,7 +446,7 @@
     "slug": "copy-snippet",
     "title": "Copy Snippet",
     "description": "Selectable code with truthful asynchronous clipboard feedback.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "copy-snippet-demo"
     ],
@@ -738,7 +750,7 @@
     "slug": "live-transcript",
     "title": "Live Transcript",
     "description": "Live speech-to-text in the browser, shown as a running transcript with timestamps and speakers.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "live-transcript-demo"
     ],
@@ -778,7 +790,7 @@
     "slug": "material-picker",
     "title": "Material Picker",
     "description": "Switch the whole library, or one part of a page, between Normal, Glass, Frost and Aurora.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "material-picker-demo"
     ],
@@ -833,6 +845,17 @@
     "category": "AI & Voice"
   },
   {
+    "slug": "model-picker",
+    "title": "Model Picker",
+    "description": "A searchable model switcher grouped by provider, with capabilities and context size. Fully keyboard driven.",
+    "origin": "Glaze",
+    "examples": [
+      "model-picker-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
+  },
+  {
     "slug": "native-select",
     "title": "Native Select",
     "description": "A styled native HTML select element with consistent design system integration.",
@@ -861,7 +884,7 @@
     "slug": "option-card",
     "title": "Option Card",
     "description": "A selectable content card with native radio-group keyboard behavior.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "option-card-demo"
     ],
@@ -885,7 +908,7 @@
     "slug": "palette-picker",
     "title": "Palette Picker",
     "description": "A Tailwind-style palette with color families, 50–950 shades, keyboard navigation and validated custom hex input.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "palette-picker-demo"
     ],
@@ -929,6 +952,17 @@
     ],
     "hasDocs": true,
     "category": "Components"
+  },
+  {
+    "slug": "prompt-suggestions",
+    "title": "Prompt Suggestions",
+    "description": "Starting points for an empty chat, as cards or pills, with icons and a gentle entrance.",
+    "origin": "Glaze",
+    "examples": [
+      "prompt-suggestions-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
   },
   {
     "slug": "questionnaire",
@@ -1119,7 +1153,7 @@
     "slug": "speak-button",
     "title": "Speak Button",
     "description": "Reads text aloud with the browser's voices; bars dance while it talks.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "speak-button-demo"
     ],
@@ -1147,7 +1181,7 @@
     "slug": "status-callout",
     "title": "Status Callout",
     "description": "A semantic message with an icon, text and optional dismissal.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "status-callout-demo"
     ],
@@ -1171,7 +1205,7 @@
     "slug": "streaming-text",
     "title": "Streaming Text",
     "description": "An AI answer that arrives word by word, and shimmering text for while the model is working.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "streaming-text-demo"
     ],
@@ -1312,10 +1346,21 @@
     "category": "Components"
   },
   {
+    "slug": "token-counter",
+    "title": "Token Counter",
+    "description": "Context window usage as a small ring that opens into a breakdown and estimated cost. Warns at 70% and 90%.",
+    "origin": "Glaze",
+    "examples": [
+      "token-counter-demo"
+    ],
+    "hasDocs": false,
+    "category": "AI & Voice"
+  },
+  {
     "slug": "tone-badge",
     "title": "Tone Badge",
     "description": "Label a category with a named color role and a paired foreground.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "tone-badge-demo"
     ],
@@ -1365,7 +1410,7 @@
     "slug": "voice-input",
     "title": "Voice Input",
     "description": "Press to talk: a microphone button with a live waveform, timer and transcript that hands back text.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "voice-input-demo"
     ],
@@ -1376,7 +1421,7 @@
     "slug": "voice-orb",
     "title": "Voice Orb",
     "description": "A living orb for a voice assistant: it breathes when idle, swells with a voice and swirls while thinking.",
-    "origin": "Colorwork",
+    "origin": "Glaze",
     "examples": [
       "voice-orb-demo",
       "voice-orb-agent"

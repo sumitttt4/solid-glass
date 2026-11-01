@@ -4,7 +4,6 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { Toaster } from "@/components/ui/sonner"
 import { Toaster as ToastToaster } from "@/components/ui/toast"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import { Home } from "@/pages/home"
 import { DevBanner } from "@/pages/dev-banner"
 import { DevExamples } from "@/pages/dev-examples"
 import { ComponentsIndex, DocPage, DocsLayout } from "@/site/docs"
@@ -34,8 +33,6 @@ export function App() {
   React.useLayoutEffect(() => {
     try { applyAccent(localStorage.getItem(ACCENT_KEY) ?? "") } catch { /* use original palette */ }
   }, [])
-  if (pathname === "/components") return <TooltipProvider><React.Suspense fallback={null}><Collection /></React.Suspense></TooltipProvider>
-  if (pathname === "/") return <TooltipProvider><React.Suspense fallback={null}><Library /></React.Suspense></TooltipProvider>
   if (pathname === "/color-study") return (
     <TooltipProvider><React.Suspense fallback={null}><ColorStudy /></React.Suspense></TooltipProvider>
   )
@@ -66,7 +63,8 @@ export function App() {
         <SiteHeader />
         <main className="flex min-h-0 flex-1 flex-col">
           <Routes>
-            <Route index element={<Home />} />
+            <Route index element={<React.Suspense fallback={null}><Library /></React.Suspense>} />
+            <Route path="components" element={<React.Suspense fallback={null}><Collection /></React.Suspense>} />
             <Route
               path="create"
               element={

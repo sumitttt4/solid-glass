@@ -1,118 +1,366 @@
 import * as React from "react"
 import { Link } from "react-router-dom"
-import { ArrowDown, ArrowRight, Bell, Check, CheckCheck, ChevronDown, Code2, Copy, Folder, Heart, Layers, Menu, Moon, Plus, Search, Sparkles, Sun, X } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Switch } from "@/components/ui/switch"
-import { Slider } from "@/components/ui/slider"
-import { Checkbox } from "@/components/ui/checkbox"
-import { ToneBadge, type ColorTone } from "@/components/ui/tone-badge"
-import { PalettePicker } from "@/components/ui/palette-picker"
-import { ColorSurface } from "@/components/ui/color-surface"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { ACCENT_KEY, applyAccent } from "@/site/accent"
-import { useTheme } from "@/site/theme"
-import catalog from "@/site/catalog.generated.json"
-import { MaterialPicker } from "@/components/ui/material-picker"
-import { useMaterial } from "@/site/material"
-import { AiShowcase, IconsStrip, InstallEverything, MaterialShowcase } from "./library-extras"
-import "./library.css"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { AiChat02Icon, DashboardSquare01Icon, LayoutGridIcon, MagicWand01Icon } from "@hugeicons/core-free-icons"
 
-const entries = [
-  { id: "buttons", title: "Buttons", group: "Actions", note: "One clear next step.", tone: "iris" },
-  { id: "badges", title: "Tone badges", group: "Display", note: "Categories with character.", tone: "fern" },
-  { id: "inputs", title: "Inputs", group: "Inputs", note: "A helpful place to start.", tone: "ocean" },
-  { id: "surfaces", title: "Color surfaces", group: "Display", note: "Give related things a home.", tone: "sun" },
-  { id: "switches", title: "Switches", group: "Inputs", note: "Small controls. Clear decisions.", tone: "iris" },
-  { id: "menus", title: "Dropdown menus", group: "Navigation", note: "Everything in its place.", tone: "clay" },
-  { id: "checks", title: "Checkboxes", group: "Inputs", note: "Make a little progress.", tone: "fern" },
-  { id: "sliders", title: "Sliders", group: "Inputs", note: "Find your own balance.", tone: "ocean" },
-  { id: "dialogs", title: "Dialogs", group: "Feedback", note: "A moment for the details.", tone: "iris" },
-  { id: "alerts", title: "Alerts", group: "Feedback", note: "Say what happened. Clearly.", tone: "clay" },
-  { id: "empty", title: "Empty states", group: "Feedback", note: "An invitation to begin.", tone: "sun" },
-  { id: "tabs", title: "Segmented controls", group: "Navigation", note: "Different views, same context.", tone: "fern" },
-] as const
-const groups = ["All components", "Actions", "Inputs", "Display", "Navigation", "Feedback"]
-const code: Record<string, string> = {
-  buttons: '<Button tone="iris">Start a project</Button>\n<Button tone="fern">Publish changes</Button>\n<Button tone="clay" variant="secondary">Save draft</Button>\n<Button tone="ocean" variant="outline">Preview</Button>',
-  badges: '<ToneBadge tone="fern">Design</ToneBadge>\n<ToneBadge tone="iris">Engineering</ToneBadge>',
-  inputs: '<label htmlFor="project">Project name</label>\n<Input id="project" placeholder="A good idea…" />',
-  surfaces: '<ColorSurface tone="sun" aria-label="Project summary">\n  <h3>A space for your next idea.</h3>\n  <p>Group related content with paired colors.</p>\n</ColorSurface>',
-  switches: '<label className="flex items-center gap-3">\n  <Switch checked={enabled} onCheckedChange={setEnabled} />\n  Email notifications\n</label>',
-  menus: '<DropdownMenu>\n  <DropdownMenuTrigger render={<Button variant="outline" />}>\n    Project options\n  </DropdownMenuTrigger>\n  <DropdownMenuContent>\n    <DropdownMenuItem onClick={onDuplicate}>Duplicate</DropdownMenuItem>\n  </DropdownMenuContent>\n</DropdownMenu>',
-  checks: '<label className="flex items-center gap-3">\n  <Checkbox checked={done} onCheckedChange={setDone} />\n  Choose a direction\n</label>',
-  sliders: '<label id="volume-label">Volume</label>\n<Slider aria-labelledby="volume-label" value={[volume]}\n  onValueChange={value => setVolume(Array.isArray(value) ? value[0] : value)} />',
-  dialogs: '<Dialog>\n  <DialogTrigger render={<Button />}>Open details</DialogTrigger>\n  <DialogContent>\n    <DialogHeader>\n      <DialogTitle>A little room to focus</DialogTitle>\n      <DialogDescription>Put the important details here.</DialogDescription>\n    </DialogHeader>\n  </DialogContent>\n</Dialog>',
-  alerts: '<div role="alert" data-tone="clay" className="cw-tone-soft rounded-lg border p-4">\n  <strong>Something needs your attention.</strong>\n  <p>Explain the issue and give a useful next step.</p>\n</div>',
-  empty: '<ColorSurface tone="sun" aria-label="Empty projects">\n  <h3>Room for something good.</h3>\n  <p>Your projects will appear here.</p>\n  <Button onClick={createProject}>Create project</Button>\n</ColorSurface>',
-  tabs: '<div role="group" aria-label="Project view">\n  {["Overview", "Activity", "Files"].map(view => (\n    <Button key={view} aria-pressed={selected === view}\n      onClick={() => setSelected(view)}>{view}</Button>\n  ))}\n</div>',
+import { cn } from "@/lib/utils"
+import {
+  animatedIcons,
+  ArrowRightIcon,
+  BellIcon,
+  LockIcon,
+  MailIcon,
+  SparklesIcon,
+  type AnimatedIconName,
+} from "@/components/ui/animated-icons"
+import { AudioWaveform, useSimulatedLevels } from "@/components/ui/audio-waveform"
+import { Button } from "@/components/ui/button"
+import { ChatWindow } from "@/components/ui/chat-window"
+import { CopySnippet } from "@/components/ui/copy-snippet"
+import { Input } from "@/components/ui/input"
+import { MaterialPicker, MATERIALS, type Material } from "@/components/ui/material-picker"
+import { ModelPicker } from "@/components/ui/model-picker"
+import { PalettePicker } from "@/components/ui/palette-picker"
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
+import { Switch } from "@/components/ui/switch"
+import { TokenCounter } from "@/components/ui/token-counter"
+import { VoiceOrb } from "@/components/ui/voice-orb"
+import { DEMO_MODELS, demoRespond } from "@/lib/demo-ai"
+import { ACCENT_KEY, applyAccent } from "@/site/accent"
+import catalog from "@/site/catalog.generated.json"
+import { useMaterial } from "@/site/material"
+import "./home.css"
+
+const count = (category: string) => catalog.filter((e) => e.category === category).length
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return <p className="text-primary text-xs font-semibold tracking-[0.14em] uppercase">{children}</p>
 }
-function CopyButton({ value, label = "Copy code" }: { value: string; label?: string }) {
-  const [state, setState] = React.useState<"idle" | "copied" | "error">("idle")
-  const timer = React.useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  React.useEffect(() => () => clearTimeout(timer.current), [])
-  async function copy() {
-    clearTimeout(timer.current)
-    try { await navigator.clipboard.writeText(value); setState("copied") } catch { setState("error") }
-    timer.current = setTimeout(() => setState("idle"), 2500)
-  }
-  return <div className="cw-copy"><Button variant="ghost" size="sm" onClick={copy}>{state === "copied" ? <Check /> : <Copy />}{state === "copied" ? "Copied" : label}</Button><span role="status" className={state === "error" ? "cw-copy-error" : "sr-only"}>{state === "error" ? "Copy unavailable. Select the code manually." : state === "copied" ? "Copied to clipboard" : ""}</span></div>
+
+function SectionHead({ eyebrow, title, body, aside }: { eyebrow: string; title: React.ReactNode; body?: string; aside?: React.ReactNode }) {
+  return (
+    <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+      <div className="max-w-2xl">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{title}</h2>
+        {body && <p className="text-muted-foreground mt-4 text-base leading-relaxed text-pretty">{body}</p>}
+      </div>
+      {aside}
+    </div>
+  )
 }
-function CodeExample({ id, title }: { id: string; title: string }) {
-  return <Dialog><DialogTrigger render={<Button variant="ghost" size="sm" />}><Code2 />Code</DialogTrigger><DialogContent className="cw-code-dialog"><DialogHeader><DialogTitle>{title}</DialogTitle><DialogDescription>Copy into a React 19 + Tailwind 4 project with Colorwork styles. State variables and handlers belong to your app.</DialogDescription></DialogHeader><pre tabIndex={0} aria-label={`${title} example code`}><code>{code[id]}</code></pre><CopyButton value={code[id]} /></DialogContent></Dialog>
+
+/* ---- Hero showcase: real components on a glass stage ---------------------------------- */
+
+function VoiceCard() {
+  const levels = useSimulatedLevels(true, 28)
+  const level = levels.reduce((a, b) => a + b, 0) / levels.length
+  return (
+    <div className="bg-card flex flex-col items-center gap-4 rounded-2xl p-5">
+      <VoiceOrb state="listening" level={level * 1.6} size={72} />
+      <AudioWaveform levels={levels} height={28} className="w-full" />
+      <p className="text-muted-foreground text-center text-xs leading-relaxed">
+        “Book a table for two<span className="text-foreground"> at eight tonight…</span>”
+      </p>
+    </div>
+  )
 }
-function Example({ id }: { id: string }) {
-  const [liked, setLiked] = React.useState(false)
-  const [enabled, setEnabled] = React.useState(true)
-  const [checked, setChecked] = React.useState(true)
-  const [secondChecked, setSecondChecked] = React.useState(false)
-  const [volume, setVolume] = React.useState(64)
-  const [view, setView] = React.useState("Overview")
-  const [project, setProject] = React.useState("")
-  const [submitted, setSubmitted] = React.useState(false)
-  const [notice, setNotice] = React.useState("")
-  if (id === "buttons") return <div className="cw-button-demo"><div className="cw-colored-buttons"><Button tone="iris" onClick={() => setLiked(!liked)}><Heart fill={liked ? "currentColor" : "none"} />{liked ? "Added to favorites" : "Make it a favorite"}</Button><Button tone="fern" onClick={() => setNotice("Published in this demo’s memory.")}><Check />Publish</Button><Button tone="clay" variant="secondary" onClick={() => setNotice("Draft saved in this demo’s memory.")}>Save draft</Button><Button tone="ocean" variant="outline" onClick={() => setNotice("Preview selected.")}>Preview<ArrowRight /></Button></div><span role="status" className="cw-demo-note">{notice || "Solid, soft, outlined. All with character."}</span></div>
-  if (id === "badges") return <div className="cw-badge-demo"><ToneBadge tone="fern">Design</ToneBadge><ToneBadge tone="iris">Engineering</ToneBadge><ToneBadge tone="clay">Writing</ToneBadge><ToneBadge tone="sun"><Sparkles size={12} />New idea</ToneBadge><ToneBadge tone="ocean">Research</ToneBadge></div>
-  if (id === "inputs") return <form className="cw-input-demo" onSubmit={e => { e.preventDefault(); setSubmitted(true) }} noValidate><label htmlFor="demo-project">Project name</label><div><Input id="demo-project" value={project} onChange={e => { setProject(e.target.value); setSubmitted(false) }} placeholder="A good idea…" aria-invalid={submitted && !project.trim()} aria-describedby="project-feedback" /><Button size="icon" aria-label="Check project name" type="submit"><ArrowRight /></Button></div><p id="project-feedback" role="status" className={submitted && !project.trim() ? "text-destructive" : ""}>{submitted ? project.trim() ? "Ready to use. Nothing has been uploaded." : "Give your project a name first." : "Something short. Something you."}</p></form>
-  if (id === "surfaces") return <ColorSurface tone="sun" aria-label="Sample project"><span className="cw-overline">PERSONAL PROJECT</span><h3>A space for<br />your next idea.</h3><div className="cw-surface-bottom"><ToneBadge tone="sun">In progress</ToneBadge><Layers size={20} /></div></ColorSurface>
-  if (id === "switches") return <div className="cw-setting"><span className="cw-demo-icon"><Bell size={20} /></span><div><strong>Email notifications</strong><p>{enabled ? "You’re in the loop." : "A little peace and quiet."}</p></div><Switch aria-label="Email notifications" checked={enabled} onCheckedChange={setEnabled} /></div>
-  if (id === "menus") return <div className="cw-menu-demo"><DropdownMenu><DropdownMenuTrigger render={<Button tone="clay" variant="secondary" />}>Project options<ChevronDown /></DropdownMenuTrigger><DropdownMenuContent align="center"><DropdownMenuItem onClick={() => setNotice("A demo copy was added locally.")}><Copy />Duplicate project</DropdownMenuItem><DropdownMenuItem onClick={() => setNotice("Project moved to the demo archive.")}><Folder />Move to archive</DropdownMenuItem></DropdownMenuContent></DropdownMenu><p role="status" className="cw-demo-note">{notice || "A few things, neatly tucked away."}</p></div>
-  if (id === "checks") return <div className="cw-check-demo"><span className="cw-overline">THE SMALL WINS</span><label><Checkbox checked={checked} onCheckedChange={setChecked} /><span style={{ textDecoration: checked ? "line-through" : "none" }}>Choose a direction</span></label><label><Checkbox checked={secondChecked} onCheckedChange={setSecondChecked} />Make something good</label><p>{Number(checked) + Number(secondChecked)} of 2 steps completed</p></div>
-  if (id === "sliders") return <div className="cw-slider-demo"><div><label id="volume-label">A little more volume</label><output>{volume}%</output></div><Slider aria-labelledby="volume-label" value={[volume]} onValueChange={value => setVolume(Array.isArray(value) ? value[0] : value)} /><p>Adjust with the arrow keys, too.</p></div>
-  if (id === "dialogs") return <Dialog><DialogTrigger render={<Button tone="iris" />}><Plus />A little room to focus</DialogTrigger><DialogContent><DialogHeader><DialogTitle>A little room to focus.</DialogTitle><DialogDescription>A dialog keeps one decision in view. Escape closes it and returns focus to the trigger. This example doesn’t save or send anything.</DialogDescription></DialogHeader><ColorSurface tone="iris"><strong>Your next good idea starts here.</strong></ColorSurface></DialogContent></Dialog>
-  if (id === "alerts") return <div className="cw-alert-demo" data-tone="fern" data-semantic="success" role="status"><span className="cw-alert-icon"><CheckCheck size={20} /></span><div><strong>All changes are up to date.</strong><p>Success-state example. No server connection.</p></div></div>
-  if (id === "empty") return <div className="cw-empty-demo"><span className="cw-empty-art" aria-hidden="true"><Folder size={38} /><Sparkles size={20} /></span><strong>{notice || "Room for something good."}</strong><p>{notice ? "Created in this demo’s memory." : "Your projects will live here."}</p><Button tone="sun" size="sm" onClick={() => setNotice("Untitled project")} disabled={!!notice}><Plus />{notice ? "Project created" : "Create project"}</Button></div>
-  return <div className="cw-tabs-demo"><div role="group" aria-label="Project view">{["Overview", "Activity", "Files"].map(tab => <button key={tab} type="button" aria-pressed={view === tab} onClick={() => setView(tab)}>{tab}</button>)}</div><p>{view === "Overview" ? "The big picture, all in one place." : view === "Activity" ? "Nothing new. You’re all caught up." : "No files yet. There’s room to grow."}</p></div>
+
+function SettingsCard() {
+  const [on, setOn] = React.useState({ mail: true, push: false, secure: true })
+  const rows: { key: keyof typeof on; label: string; Icon: (typeof animatedIcons)[AnimatedIconName] }[] = [
+    { key: "mail", label: "Email digest", Icon: MailIcon },
+    { key: "push", label: "Push alerts", Icon: BellIcon },
+    { key: "secure", label: "Two-step sign in", Icon: LockIcon },
+  ]
+  return (
+    <div className="bg-card flex flex-1 flex-col justify-center gap-1 rounded-2xl p-2">
+      {rows.map(({ key, label, Icon }) => (
+        <label key={key} className="hover:bg-accent flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors">
+          <span className="bg-muted text-muted-foreground grid size-8 place-items-center rounded-lg">
+            <Icon size={17} />
+          </span>
+          <span className="flex-1">{label}</span>
+          <Switch checked={on[key]} onCheckedChange={(v) => setOn((s) => ({ ...s, [key]: v }))} />
+        </label>
+      ))}
+    </div>
+  )
 }
-const HOME_ALIASES: Record<string, string[]> = { dialogs: ["modal", "popup", "window"], switches: ["toggle"], menus: ["dropdown", "select"], checks: ["checkbox", "todo"], sliders: ["volume", "range"], alerts: ["notification", "notice", "callout"] }
-export default function Library() {
-  const { theme, setTheme } = useTheme()
+
+function SignInCard() {
+  return (
+    <form className="bg-card flex flex-col gap-3 rounded-2xl p-5" onSubmit={(e) => e.preventDefault()}>
+      <div>
+        <p className="text-sm font-semibold">Create your workspace</p>
+        <p className="text-muted-foreground mt-1 text-xs">Free forever. No card needed.</p>
+      </div>
+      <Input placeholder="you@company.com" aria-label="Work email" />
+      <Button type="submit" className="w-full">
+        Continue <ArrowRightIcon size={16} />
+      </Button>
+    </form>
+  )
+}
+
+function UsageCard() {
+  const [model, setModel] = React.useState("aurora-pro")
+  const bars = [38, 52, 44, 68, 57, 80, 72, 90, 64, 76, 85, 70]
+  return (
+    <div className="bg-card flex flex-1 flex-col gap-4 rounded-2xl p-4">
+      <div className="flex items-center justify-between gap-2">
+        <ModelPicker models={DEMO_MODELS} value={model} onValueChange={setModel} className="-ml-1" />
+        <TokenCounter used={142_000} limit={200_000} costPerMillion={3} parts={[{ label: "Files", tokens: 60_000 }, { label: "Conversation", tokens: 82_000 }]} />
+      </div>
+      <div className="flex min-h-20 flex-1 items-end gap-1.5">
+        {bars.map((h, i) => (
+          <span key={i} className="hero-bar bg-primary flex-1 rounded-t-[4px]" style={{ height: `${h}%`, animationDelay: `${i * 40}ms`, opacity: 0.35 + (h / 100) * 0.65 }} />
+        ))}
+      </div>
+      <div className="text-muted-foreground flex justify-between text-[11px]">
+        <span>Requests this week</span>
+        <span className="text-foreground font-medium">+18.2%</span>
+      </div>
+    </div>
+  )
+}
+
+function HeroShowcase() {
+  const { material } = useMaterial()
+  const [stage, setStage] = React.useState<Material>(material === "solid" ? "aurora" : material)
+  return (
+    <div className="relative">
+      <div className="mb-4 flex justify-center">
+        <MaterialPicker value={stage} onValueChange={setStage} />
+      </div>
+      <div data-material={stage} className="mat-stage hero-stage rounded-[28px] p-3 sm:p-5">
+        <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)]">
+          <ChatWindow
+            respond={demoRespond}
+            className="h-[500px] max-w-none"
+            greeting="What are we building?"
+            suggestions={[
+              { title: "Explain glass materials", icon: MagicWand01Icon },
+              { title: "Write a follow-up email", icon: AiChat02Icon },
+            ]}
+          />
+          <div className="flex flex-col gap-3 sm:gap-4">
+            <VoiceCard />
+            <SettingsCard />
+          </div>
+          <div className="flex flex-col gap-3 sm:gap-4 max-lg:hidden">
+            <SignInCard />
+            <UsageCard />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ---- Sections --------------------------------------------------------------------------- */
+
+function MaterialsSection() {
   const { material, setMaterial } = useMaterial()
   const [accent, setAccent] = React.useState(() => {
-    try { return localStorage.getItem(ACCENT_KEY) ?? "" } catch { return "" }
+    try {
+      return localStorage.getItem(ACCENT_KEY) ?? ""
+    } catch {
+      return ""
+    }
   })
-  const [colorStored, setColorStored] = React.useState(true)
-  React.useLayoutEffect(() => { applyAccent(accent) }, [accent])
   function changeAccent(value: string) {
     setAccent(value)
-    try { localStorage.setItem(ACCENT_KEY,value); setColorStored(true) } catch { setColorStored(false) }
+    applyAccent(value)
+    try {
+      localStorage.setItem(ACCENT_KEY, value)
+    } catch {
+      /* this visit only */
+    }
   }
-  const [query, setQuery] = React.useState("")
-  const [group, setGroup] = React.useState("All components")
-  const [mobile, setMobile] = React.useState(false)
-  const q = query.trim().toLowerCase(), shown = entries.filter(item => { if (group !== "All components" && item.group !== group) return false; if (!q) return true; if (`${item.title} ${item.group} ${item.note}`.toLowerCase().includes(q)) return true; return (HOME_ALIASES[item.id] ?? []).some(a => a.includes(q) || q.includes(a)); })
-  const choose = (value: string) => { setGroup(value); setMobile(false) }
-  return <div className="cw-site">
-    <a href="#catalog" className="cw-skip">Skip to components</a>
-    <header className="cw-header"><Link className="cw-brand" to="/"><span className="cw-logo" aria-hidden="true"><i /><i /><i /><i /></span>colorwork<span className="cw-alpha">ALPHA</span></Link><nav aria-label="Main navigation"><Link to="/components">Components</Link><Link to="/components?filter=AI+%26+Voice&component=voice-orb">AI &amp; Voice</Link><Link to="/components?component=animated-icons">Icons</Link><Link to="/docs/color-language">Foundations</Link><Link to="/view/agent-workspace">Workspace</Link></nav><div className="cw-header-end"><MaterialPicker compact value={material} onValueChange={setMaterial} className="cw-header-material" /><a href="https://github.com/sumitttt4/solid-glass/tree/main" target="_blank" rel="noreferrer" className="cw-source">GitHub<ArrowRight size={14} /></a><Button variant="ghost" size="icon" aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`} onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>{theme === "dark" ? <Sun /> : <Moon />}</Button><Button className="cw-mobile-toggle" variant="ghost" size="icon" aria-label="Toggle component categories" aria-expanded={mobile} aria-controls="library-sidebar" onClick={() => setMobile(!mobile)}>{mobile ? <X /> : <Menu />}</Button></div></header>
-    <div className="cw-layout"><aside id="library-sidebar" className={`cw-sidebar ${mobile ? "is-open" : ""}`}><div className="cw-sidebar-caption">THE COLLECTION</div><nav aria-label="Component categories">{groups.map((name, index) => <button key={name} aria-pressed={group === name} onClick={() => choose(name)}><span>{name}</span><span>{index === 0 ? entries.length : entries.filter(e => e.group === name).length.toString().padStart(2, "0")}</span></button>)}</nav><div className="cw-sidebar-caption cw-space-top">MAKE IT YOURS</div><Link to="/docs/installation">Getting started<ArrowRight size={13} /></Link><Link to="/components">All components<ArrowRight size={13} /></Link><Link to="/docs/color-language">Color & material<ArrowRight size={13} /></Link><Link to="/color-study">Palette workbench<ArrowRight size={13} /></Link><div className="cw-sidebar-note"><span className="cw-mini-mark" aria-hidden="true">✳</span><p>Clean doesn’t<br />have to mean<br /><strong>colorless.</strong></p><span>Made by Sumit Sharma</span></div></aside>
-    <main className="cw-main"><section className="cw-intro"><div><p className="cw-eyebrow"><span />ONE LIBRARY FOR EVERYTHING · FREE</p><h1>Every component.<br />One library.<br /><span>Any material.</span></h1><p className="cw-intro-copy">UI components, AI and voice components and animated icons, in Normal, Glass, Frost or Aurora. Copy the code, install with one command, or hand it to your agent.</p><div className="cw-hero-actions"><a href="#catalog" data-tone="iris" data-slot="button" data-variant="default" className="cw-explore">Explore the library<ArrowDown size={15} /></a><Link data-tone="fern" data-slot="button" data-variant="secondary" className="cw-secondary-cta" to="/docs/installation">Get started<ArrowRight size={14} /></Link></div></div><div className="cw-composition" aria-hidden="true"><div className="cw-shape cw-shape-green"><span>Form.</span></div><div className="cw-shape cw-shape-blue"><Sparkles /></div><div className="cw-shape cw-shape-yellow"><span>& feeling.</span></div><span className="cw-composition-caption">A LITTLE STRUCTURE. A LOT OF POSSIBILITY.</span></div></section>
-    <section className="cw-color-controls" aria-label="Global component color"><div><strong>Make it your color.</strong><p>One change. Every component.</p></div><details className="cw-global-palette" onKeyDown={e=>{if(e.key==="Escape"){e.currentTarget.removeAttribute("open");e.currentTarget.querySelector("summary")?.focus()}}}><summary>Choose a color <ChevronDown size={14}/></summary><PalettePicker label="Global component color" value={accent} onValueChange={changeAccent} /></details><span role="status" className="sr-only">{!colorStored ? "Color changed for this visit; browser storage is unavailable." : accent ? `Global color ${accent} selected and remembered.` : "Original multicolor palette."}</span></section>
-    <MaterialShowcase />
-    <section id="catalog" aria-labelledby="catalog-title"><div className="cw-catalog-bar"><div><h2 id="catalog-title">{group === "All components" ? "The building blocks" : group}<span>{shown.length.toString().padStart(2, "0")}</span></h2><p>Small details. Ready to play with.</p></div><label className="cw-search"><Search size={16} /><input aria-label="Search components" placeholder="Find a component…" value={query} onChange={e => setQuery(e.target.value)} />{query && <button type="button" aria-label="Clear search" onClick={() => setQuery("")}><X size={14} /></button>}</label></div><p className="sr-only" role="status">{shown.length} components found</p>
-    <div className="cw-grid">{shown.map((entry) => <article key={entry.id} className={`cw-example cw-example-${entry.id}`} data-tone={entry.tone as ColorTone}><div className="cw-preview"><Example id={entry.id} /></div><div className="cw-example-info"><div><h3>{entry.title}</h3><p>{entry.note}</p></div><CodeExample id={entry.id} title={entry.title} /></div><span className="cw-example-index" aria-hidden="true">{String(entries.indexOf(entry) + 1).padStart(2, "0")}</span></article>)}</div>
-    {!shown.length && <div className="cw-no-results"><Search /><h3>No components found.</h3><p>Try “button”, “input”, or a broader category.</p><Button variant="outline" onClick={() => { setQuery(""); setGroup("All components") }}>Reset filters</Button></div>}
-    </section><AiShowcase /><IconsStrip /><section className="cw-full-collection"><div><p className="cw-eyebrow">THE COLLECTION GOES FURTHER</p><h2>All the foundations.<br />A few things of our own.</h2><p>Browse every inherited component and our original additions. Preview examples, inspect complete source, and copy an install command.</p></div><div className="cw-original-links">{[{slug:"palette-picker",name:"Palette Picker",note:"Choose a color, keep control."},{slug:"option-card",name:"Option Card",note:"Selections with native keyboard behavior."},{slug:"status-callout",name:"Status Callout",note:"A message with meaning."},{slug:"copy-snippet",name:"Copy Snippet",note:"Real clipboard feedback."}].map(item=><Link key={item.slug} to={`/components?component=${item.slug}`}><span>{item.name}<small>ORIGINAL</small></span><p>{item.note}</p><ArrowRight size={16}/></Link>)}<Link className="cw-browse-all" to="/components">Browse all {catalog.length} components<ArrowRight size={16}/></Link><Link className="cw-browse-all" to="/blocks">Explore complete blocks<ArrowRight size={16}/></Link></div></section><InstallEverything /><section className="cw-start"><div><p className="cw-eyebrow">YOUR CODE. YOUR CALL.</p><h2>Take the good parts.<br />Make something of your own.</h2><p>React 19 · Tailwind CSS 4 · Base UI primitives</p></div><Link data-tone="iris" data-slot="button" data-variant="default" to="/docs/installation">Start building<ArrowRight size={18} /></Link></section><footer className="cw-footer"><span>Colorwork · a working name, a growing collection.</span><span>By Sumit Sharma · MIT · <a href="https://github.com/deeplethe/solid-glass">Built on Solid Glass</a> & shadcn/ui</span></footer></main></div>
-  </div>
+  return (
+    <section className="home-section" aria-labelledby="materials-title">
+      <SectionHead
+        eyebrow="Four materials"
+        title={<span id="materials-title">One component. Solid or glass.</span>}
+        body="Every component ships in four finishes. Switch the whole site, or set one attribute on any element and only that part changes."
+        aside={
+          <Popover>
+            <PopoverTrigger render={<Button variant="outline" />}>
+              <span className="size-3.5 rounded-full ring-1 ring-black/10" style={{ background: accent || "var(--primary)" }} />
+              Accent colour
+            </PopoverTrigger>
+            <PopoverContent align="end" className="w-[min(92vw,460px)] p-0">
+              <PalettePicker label="Accent colour" value={accent} onValueChange={changeAccent} />
+            </PopoverContent>
+          </Popover>
+        }
+      />
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {MATERIALS.map((m) => (
+          <figure key={m.value} className="flex min-w-0 flex-col gap-3">
+            <div data-material={m.value} className={cn("mat-stage grid min-h-72 place-items-center rounded-2xl p-6 ring-1 ring-border transition-shadow", m.value === material && "ring-2 ring-primary")}>
+              <div className="bg-card flex w-full max-w-[240px] flex-col gap-3 rounded-xl p-4">
+                <div className="flex items-center gap-2.5">
+                  <span className="bg-primary text-primary-foreground grid size-8 place-items-center rounded-lg">
+                    <SparklesIcon size={16} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold">Join the beta</p>
+                    <p className="text-muted-foreground text-xs">Early access</p>
+                  </div>
+                </div>
+                <Input aria-label={`Email, ${m.label}`} placeholder="you@example.com" className="h-8 text-xs" />
+                <Button size="sm">Request access</Button>
+              </div>
+            </div>
+            <figcaption className="flex items-center justify-between gap-3">
+              <span>
+                <span className="block text-sm font-semibold">{m.label}</span>
+                <span className="text-muted-foreground text-xs">{m.note}</span>
+              </span>
+              <Button size="sm" variant={m.value === material ? "default" : "outline"} aria-pressed={m.value === material} onClick={() => setMaterial(m.value)}>
+                {m.value === material ? "In use" : "Use"}
+              </Button>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <p className="text-muted-foreground mt-6 font-mono text-xs">{`<html data-material="${material}">`}</p>
+    </section>
+  )
+}
+
+const CATEGORIES = [
+  { title: "UI components", note: "Buttons, forms, overlays, data, navigation: the full shadcn/ui set, refined.", href: "/components", n: count("Components"), icon: LayoutGridIcon },
+  { title: "AI & voice", note: "Chat window, model picker, token counter, live transcription, voice orb and more.", href: "/components?filter=AI+%26+Voice&component=chat-window", n: count("AI & Voice"), icon: AiChat02Icon },
+  { title: "Animated icons", note: "Hugeicons that move like what they stand for. Animate any of 4,000+.", href: "/components?filter=Icons&component=animated-icons", n: Object.keys(animatedIcons).length, icon: MagicWand01Icon },
+  { title: "Blocks", note: "Dashboards, sign-in pages and sidebars, ready to drop in.", href: "/blocks", n: 12, icon: DashboardSquare01Icon },
+]
+
+function CategoriesSection() {
+  return (
+    <section className="home-section" aria-labelledby="everything-title">
+      <SectionHead eyebrow="Everything in one place" title={<span id="everything-title">Stop collecting libraries.</span>} body="UI, AI and motion, designed together: same spacing, same type, same colours, same materials." />
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {CATEGORIES.map((c) => (
+          <Link key={c.title} to={c.href} className="group bg-card hover:ring-primary/40 relative flex flex-col gap-4 rounded-2xl p-6 transition-shadow hover:ring-2">
+            <span className="bg-primary/10 text-primary grid size-11 place-items-center rounded-xl">
+              <HugeiconsIcon icon={c.icon} size={22} />
+            </span>
+            <div>
+              <div className="flex items-baseline justify-between gap-2">
+                <h3 className="text-lg font-semibold tracking-tight">{c.title}</h3>
+                <span className="text-muted-foreground font-mono text-xs tabular-nums">{c.n}</span>
+              </div>
+              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{c.note}</p>
+            </div>
+            <span className="text-primary mt-auto inline-flex items-center gap-1.5 text-sm font-medium">
+              Explore <ArrowRightIcon size={16} />
+            </span>
+          </Link>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function IconsSection() {
+  const [loop, setLoop] = React.useState(true)
+  return (
+    <section className="home-section" aria-labelledby="icons-title">
+      <SectionHead
+        eyebrow="Animated icons"
+        title={<span id="icons-title">Icons with a little life.</span>}
+        body="Built on Hugeicons. Each one moves the way its thing moves: bells ring, bins open, rockets launch. Or pass any Hugeicon and a preset."
+        aside={
+          <label className="flex items-center gap-2.5 text-sm font-medium">
+            <Switch checked={loop} onCheckedChange={setLoop} /> Play on loop
+          </label>
+        }
+      />
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(64px,1fr))] gap-2.5">
+        {(Object.keys(animatedIcons) as AnimatedIconName[]).map((name) => {
+          const Icon = animatedIcons[name]
+          return (
+            <Link
+              key={name}
+              to="/components?filter=Icons&component=animated-icons"
+              aria-label={`${name} icon`}
+              title={name}
+              className="bg-card hover:text-primary grid aspect-square place-items-center rounded-xl transition-colors"
+            >
+              <Icon size={24} animate={loop} />
+            </Link>
+          )
+        })}
+      </div>
+    </section>
+  )
+}
+
+function InstallSection() {
+  return (
+    <section className="home-section grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]" aria-labelledby="install-title">
+      <div>
+        <Eyebrow>Free. All of it.</Eyebrow>
+        <h2 id="install-title" className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+          Install once. Never go looking again.
+        </h2>
+        <p className="text-muted-foreground mt-4 max-w-md text-base leading-relaxed">
+          No pro tier, no paywall. Copy one component, add it with one command, or hand the registry to your coding agent and let it pick what it needs.
+        </p>
+        <Button className="mt-6" nativeButton={false} render={<Link to="/docs/installation" />}>
+          Read the setup guide <ArrowRightIcon size={16} />
+        </Button>
+      </div>
+      <div className="flex min-w-0 flex-col gap-3">
+        <CopySnippet label="1 · Theme and materials" code="npx shadcn@latest add sumitttt4/solid-glass/glaze#main" />
+        <CopySnippet label="2 · Any component" code="npx shadcn@latest add sumitttt4/solid-glass/chat-window#main" />
+        <CopySnippet label="3 · Or tell your agent" code={'Use the Glaze registry (github.com/sumitttt4/solid-glass) for UI.\nAdd components with: npx shadcn@latest add sumitttt4/solid-glass/<name>#main\nUse data-material="glass" on <html> for the glass finish.'} />
+      </div>
+    </section>
+  )
+}
+
+export default function Library() {
+  return (
+    <div className="home">
+      <section className="home-hero mx-auto max-w-[1400px] px-4 pt-16 pb-10 sm:px-6 sm:pt-24 lg:px-8">
+        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+          <Link to="/components?filter=AI+%26+Voice&component=chat-window" className="bg-card hover:bg-accent inline-flex items-center gap-2 rounded-full py-1 pr-3 pl-1 text-xs font-medium transition-colors">
+            <span className="bg-primary text-primary-foreground rounded-full px-2 py-0.5 text-[11px]">New</span>
+            <span className="sm:hidden">AI chat &amp; voice components</span>
+            <span className="max-sm:hidden">Chat window, model picker and voice components</span>
+            <ArrowRightIcon size={14} />
+          </Link>
+          <h1 className="mt-7 text-[clamp(2.4rem,5.6vw,4.5rem)] leading-[1.02] font-semibold tracking-[-0.04em] text-balance">
+            Beautiful components.
+            <br />
+            <span className="home-gradient-text">Solid or glass.</span>
+          </h1>
+          <p className="text-muted-foreground mt-6 max-w-xl text-lg leading-relaxed text-pretty">
+            {catalog.length} free React components: UI, AI &amp; voice and animated icons, each in four materials. Copy the code, install with one command, or hand it to your agent.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button size="lg" nativeButton={false} render={<Link to="/components" />}>
+              Browse components <ArrowRightIcon size={16} />
+            </Button>
+            <Button size="lg" variant="outline" nativeButton={false} render={<Link to="/docs/installation" />}>
+              Get started
+            </Button>
+          </div>
+        </div>
+        <div className="mt-16">
+          <HeroShowcase />
+        </div>
+      </section>
+      <div className="mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <MaterialsSection />
+        <CategoriesSection />
+        <IconsSection />
+        <InstallSection />
+      </div>
+    </div>
+  )
 }

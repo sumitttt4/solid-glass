@@ -402,7 +402,7 @@ export function ComponentsIndex() {
   return (
     <DocShell
       title="Components"
-      description="Here you can find all the components available in the library, with the Colorwork theme."
+      description="Here you can find all the components available in the library, with the Glaze theme."
       url="/docs/components"
     >
       <h2 id="all-components" className="mt-10 mb-6 scroll-m-28 text-xl font-medium tracking-tight first:mt-0">

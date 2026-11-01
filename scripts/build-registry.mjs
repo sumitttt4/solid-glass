@@ -77,7 +77,7 @@ const components = registryNames.map((name) => {
   return {
     name, type: "registry:ui",
     title: front.match(/^title:\s*(.*)$/m)?.[1] ?? name.replaceAll("-", " "),
-    description: front.match(/^description:\s*(.*)$/m)?.[1] ?? `Editable ${name} source with the Colorwork theme.`,
+    description: front.match(/^description:\s*(.*)$/m)?.[1] ?? `Editable ${name} source with the Glaze theme.`,
     ...needs(content),
     files: [
       { path: `src/components/ui/${name}.tsx`, type: "registry:ui" },
@@ -89,16 +89,16 @@ const components = registryNames.map((name) => {
 
 const registry = {
   $schema: "https://ui.shadcn.com/schema/registry.json",
-  name: "colorwork",
+  name: "glaze",
   homepage: origin,
   items: [
     {
-      name: "colorwork",
+      name: "glaze",
       type: "registry:file",
-      title: "Colorwork",
-      description: "Opaque surfaces, five expressive color roles, paired themes and four materials: Normal, Glass, Frost and Aurora.",
+      title: "Glaze",
+      description: "The Glaze theme: neutral surfaces, an indigo accent, five tones, Geist type and four materials (Normal, Glass, Frost, Aurora).",
       files: [
-        { path: "src/colorwork.css", type: "registry:file", target: "src/colorwork.css" },
+        { path: "src/glaze.css", type: "registry:file", target: "src/glaze.css" },
         { path: "src/materials.css", type: "registry:file", target: "src/materials.css" },
         { path: "src/solid-glass.css", type: "registry:file", target: "src/solid-glass.css" },
       ],
@@ -129,7 +129,7 @@ for (const file of readdirSync(out).filter((file) => file.endsWith(".json"))) {
 }
 // The stylesheet as it is, for whoever would rather copy one file than run a command.
 copyFileSync(join(root, "src/solid-glass.css"), join(out, "solid-glass.css"))
-copyFileSync(join(root, "src/colorwork.css"), join(out, "colorwork.css"))
+copyFileSync(join(root, "src/glaze.css"), join(out, "glaze.css"))
 copyFileSync(join(root, "src/materials.css"), join(out, "materials.css"))
 
 console.log(`registry: ${components.length} components, ${blocks.length} block and the stylesheet -> registry.json, public/r/`)

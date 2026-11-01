@@ -1,103 +1,176 @@
 import * as React from "react"
+import {
+  Add01Icon,
+  AiMagicIcon as AiMagicData,
+  ArrowRight02Icon,
+  Attachment01Icon,
+  Bookmark02Icon,
+  BrainIcon as BrainData,
+  Calendar03Icon,
+  CheckmarkCircle02Icon,
+  Copy01Icon,
+  Delete02Icon,
+  Download04Icon,
+  FavouriteIcon,
+  FlashIcon as FlashData,
+  Github01Icon,
+  Home01Icon,
+  Idea01Icon,
+  Link01Icon,
+  Loading03Icon,
+  Location01Icon,
+  Mail01Icon,
+  Menu01Icon,
+  Mic01Icon,
+  Moon02Icon,
+  Notification03Icon,
+  PauseIcon,
+  PlayIcon,
+  RefreshIcon as RefreshData,
+  Rocket01Icon,
+  Search01Icon,
+  SentIcon,
+  Settings02Icon,
+  SparklesIcon as SparklesData,
+  SquareLock02Icon,
+  StarIcon as StarData,
+  Sun03Icon,
+  ThumbsUpIcon as ThumbsUpData,
+  Tick02Icon,
+  Upload04Icon,
+  ViewIcon,
+  VolumeHighIcon,
+  Wifi01Icon,
+} from "@hugeicons/core-free-icons"
 
 import { cn } from "@/lib/utils"
 
 /*
- * Animated icons: a small, hand-picked set, not a whole icon font. Each one moves the way the
- * thing it stands for moves — a bell swings, a heart beats, a gear turns.
+ * Animated icons, built on Hugeicons (MIT, https://hugeicons.com).
  *
- * They play when the icon, or the button or link it sits in, is hovered or focused. `animate`
- * plays them on a loop; `active` switches the two-state ones (copy → check, menu → close,
- * sun → moon, play state of the mic). Reduced motion is respected.
+ * `AnimatedIcon` animates ANY Hugeicon: pass its data and a preset, for the whole icon or for
+ * single parts of it (a bell's clapper, a bin's lid). The named icons below are tuned that way.
  *
- * Path data is from Lucide (ISC, https://lucide.dev), so they sit beside lucide-react icons
- * without a change in weight. The keyframes ship with the component: no stylesheet to copy.
+ * Triggers: "hover" (default) plays when the icon, or the button, link or label it sits in, is
+ * hovered or focused; "loop" plays forever; "mount" plays once when it appears; "none" never.
+ * Two-state icons (Copy, Menu, Theme, Mic, PlayPause, Heart) switch with `active`.
+ * Keyframes ship with the component; reduced motion is respected.
  */
 
+export type IconData = readonly (readonly [string, { readonly [key: string]: string | number }])[]
+
+export type IconAnimation =
+  | "swing" | "clapper" | "beat" | "pop" | "scan" | "spin" | "spin-once" | "spin-always" | "fly" | "drop" | "rise"
+  | "lift" | "twinkle" | "twinkle-late" | "blink" | "nudge" | "wave" | "wave-late" | "shackle" | "quarter"
+  | "draw" | "wiggle" | "float" | "shake" | "launch" | "tilt" | "flash"
+
+export type IconTrigger = "hover" | "loop" | "mount" | "none"
+
+export const ICON_ANIMATIONS: IconAnimation[] = [
+  "swing", "beat", "pop", "spin-once", "spin", "wiggle", "tilt", "shake", "float", "nudge", "drop", "rise", "fly", "launch", "blink", "draw", "twinkle", "flash",
+]
+
 const css = `
-[data-animated-icon]{overflow:visible;flex-shrink:0}
-[data-animated-icon] *{transform-box:fill-box;transform-origin:center}
-[data-animated-icon] [data-part="bell"]{--ai:ai-swing .9s ease-in-out;transform-origin:50% 0}
-[data-animated-icon] [data-part="clapper"]{--ai:ai-clapper .9s ease-in-out}
-[data-animated-icon] [data-part="heart"]{--ai:ai-beat 1s ease-in-out}
-[data-animated-icon] [data-part="lens"]{--ai:ai-scan 1.1s ease-in-out}
-[data-animated-icon] [data-part="gear"]{--ai:ai-spin 1.6s cubic-bezier(.5,0,.5,1)}
-[data-animated-icon] [data-part="plane"]{--ai:ai-fly 1s ease-in-out}
-[data-animated-icon] [data-part="arrow-down"]{--ai:ai-drop .9s ease-in-out}
-[data-animated-icon] [data-part="arrow-up"]{--ai:ai-rise .9s ease-in-out}
-[data-animated-icon] [data-part="lid"]{--ai:ai-lid .9s ease-in-out;transform-origin:0% 100%}
-[data-animated-icon] [data-part="refresh"]{--ai:ai-spin 1s ease-in-out}
-[data-animated-icon] [data-part="star"]{--ai:ai-twinkle 1.2s ease-in-out}
-[data-animated-icon] [data-part="star-small"]{--ai:ai-twinkle 1.2s .3s ease-in-out}
-[data-animated-icon] [data-part="lashes"]{--ai:ai-blink 1.2s ease-in-out}
-[data-animated-icon] [data-part="nudge"]{--ai:ai-nudge .8s ease-in-out}
-[data-animated-icon] [data-part="wave"]{--ai:ai-wave 1s ease-in-out}
-[data-animated-icon] [data-part="wave-2"]{--ai:ai-wave 1s .15s ease-in-out}
-[data-animated-icon] [data-part="shackle"]{--ai:ai-shackle 1s ease-in-out}
-[data-animated-icon] [data-part="plus"]{--ai:ai-quarter .5s ease-out}
-[data-animated-icon] [data-part="draw"]{--ai:ai-draw .7s ease-out;stroke-dasharray:24;stroke-dashoffset:0}
-:is(button,a,label,[role="button"],[data-slot="button"],[data-icon-trigger]):is(:hover,:focus-visible) [data-animated-icon] [data-part],
-[data-animated-icon]:hover [data-part]{animation:var(--ai)}
-[data-animated-icon][data-animate] [data-part]{animation:var(--ai);animation-iteration-count:infinite}
-[data-animated-icon] [data-part="spinner"]{animation:ai-spin .9s linear infinite}
-[data-animated-icon] [data-part="mic-ring"]{opacity:0}
-[data-animated-icon][data-active] [data-part="mic-ring"]{animation:ai-ring 1.6s ease-out infinite}
-[data-animated-icon] [data-swap]{transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .2s ease}
-[data-animated-icon] [data-swap="off"]{opacity:1;transform:scale(1) rotate(0)}
-[data-animated-icon] [data-swap="on"]{opacity:0;transform:scale(.4) rotate(-45deg)}
-[data-animated-icon][data-active] [data-swap="off"]{opacity:0;transform:scale(.4) rotate(45deg)}
-[data-animated-icon][data-active] [data-swap="on"]{opacity:1;transform:scale(1) rotate(0)}
-[data-animated-icon] [data-bar]{transition:transform .3s cubic-bezier(.3,1.3,.5,1),opacity .2s}
-[data-animated-icon][data-active] [data-bar="1"]{transform:translateY(7px) rotate(45deg)}
-[data-animated-icon][data-active] [data-bar="2"]{opacity:0;transform:scaleX(.2)}
-[data-animated-icon][data-active] [data-bar="3"]{transform:translateY(-7px) rotate(-45deg)}
-@keyframes ai-swing{0%,100%{transform:rotate(0)}20%{transform:rotate(14deg)}40%{transform:rotate(-12deg)}60%{transform:rotate(7deg)}80%{transform:rotate(-4deg)}}
-@keyframes ai-clapper{0%,100%{transform:translateX(0)}20%{transform:translateX(2.4px)}40%{transform:translateX(-2px)}60%{transform:translateX(1.2px)}80%{transform:translateX(-.6px)}}
-@keyframes ai-beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(.96)}45%{transform:scale(1.1)}}
+[data-ai-icon]{overflow:visible;flex-shrink:0}
+[data-ai-icon] *{transform-box:fill-box;transform-origin:center}
+[data-ai-icon] [data-anim=swing]{--a:ai-swing .9s ease-in-out;transform-origin:50% 0}
+[data-ai-icon] [data-anim=clapper]{--a:ai-clapper .9s ease-in-out}
+[data-ai-icon] [data-anim=beat]{--a:ai-beat .9s ease-in-out}
+[data-ai-icon] [data-anim=pop]{--a:ai-pop .45s cubic-bezier(.3,1.6,.5,1)}
+[data-ai-icon] [data-anim=scan]{--a:ai-scan 1.1s ease-in-out}
+[data-ai-icon] [data-anim=spin]{--a:ai-spin 1.4s cubic-bezier(.5,0,.5,1)}
+[data-ai-icon] [data-anim=spin-once]{--a:ai-spin .7s cubic-bezier(.4,0,.2,1)}
+[data-ai-icon] [data-anim=spin-always]{animation:ai-spin 1s linear infinite!important}
+[data-ai-icon] [data-anim=fly]{--a:ai-fly .9s ease-in-out}
+[data-ai-icon] [data-anim=drop]{--a:ai-drop .8s ease-in-out}
+[data-ai-icon] [data-anim=rise]{--a:ai-rise .8s ease-in-out}
+[data-ai-icon] [data-anim=lift]{--a:ai-lift .8s ease-in-out;transform-origin:0% 100%}
+[data-ai-icon] [data-anim=twinkle]{--a:ai-twinkle 1s ease-in-out}
+[data-ai-icon] [data-anim=twinkle-late]{--a:ai-twinkle 1s .2s ease-in-out}
+[data-ai-icon] [data-anim=blink]{--a:ai-blink .9s ease-in-out}
+[data-ai-icon] [data-anim=nudge]{--a:ai-nudge .7s ease-in-out}
+[data-ai-icon] [data-anim=wave]{--a:ai-wave .9s ease-in-out}
+[data-ai-icon] [data-anim=wave-late]{--a:ai-wave .9s .15s ease-in-out}
+[data-ai-icon] [data-anim=shackle]{--a:ai-shackle .9s ease-in-out}
+[data-ai-icon] [data-anim=quarter]{--a:ai-quarter .45s cubic-bezier(.3,1.4,.5,1)}
+[data-ai-icon] [data-anim=draw]{--a:ai-draw .8s cubic-bezier(.6,0,.3,1);stroke-dasharray:1}
+[data-ai-icon] [data-anim=wiggle]{--a:ai-wiggle .7s ease-in-out}
+[data-ai-icon] [data-anim=float]{--a:ai-float 1.2s ease-in-out}
+[data-ai-icon] [data-anim=shake]{--a:ai-shake .5s ease-in-out}
+[data-ai-icon] [data-anim=launch]{--a:ai-launch 1.1s ease-in-out}
+[data-ai-icon] [data-anim=tilt]{--a:ai-tilt .7s cubic-bezier(.3,1.4,.5,1);transform-origin:20% 90%}
+[data-ai-icon] [data-anim=flash]{--a:ai-flash .8s ease-in-out}
+[data-ai-icon][data-trigger=loop] [data-anim]{animation:var(--a);animation-iteration-count:infinite}
+[data-ai-icon][data-trigger=mount] [data-anim]{animation:var(--a)}
+[data-ai-icon][data-trigger=hover]:hover [data-anim],
+:is(button,a,label,summary,[role=button],[role=menuitem],[data-slot=button],[data-icon-trigger]):is(:hover,:focus-visible) [data-ai-icon][data-trigger=hover] [data-anim]{animation:var(--a)}
+[data-ai-icon] [data-ring]{opacity:0}
+[data-ai-icon][data-active] [data-ring]{animation:ai-ring 1.6s ease-out infinite}
+[data-ai-icon] [data-swap]{transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .2s ease}
+[data-ai-icon] [data-swap=off]{opacity:1;transform:scale(1) rotate(0)}
+[data-ai-icon] [data-swap=on]{opacity:0;transform:scale(.4) rotate(-60deg)}
+[data-ai-icon][data-active] [data-swap=off]{opacity:0;transform:scale(.4) rotate(60deg)}
+[data-ai-icon][data-active] [data-swap=on]{opacity:1;transform:scale(1) rotate(0)}
+[data-ai-icon] [data-bar]{transition:transform .32s cubic-bezier(.3,1.3,.5,1),opacity .2s}
+[data-ai-icon][data-active] [data-bar="0"]{transform:translateY(7px) rotate(45deg)}
+[data-ai-icon][data-active] [data-bar="1"]{opacity:0;transform:scaleX(.2)}
+[data-ai-icon][data-active] [data-bar="2"]{transform:translateY(-7px) rotate(-45deg)}
+[data-ai-icon] [data-fill]{transition:fill .25s ease}
+@keyframes ai-swing{0%,100%{transform:rotate(0)}20%{transform:rotate(14deg)}40%{transform:rotate(-11deg)}60%{transform:rotate(6deg)}80%{transform:rotate(-3deg)}}
+@keyframes ai-clapper{0%,100%{transform:translateX(0)}20%{transform:translateX(2.5px)}40%{transform:translateX(-2px)}60%{transform:translateX(1px)}}
+@keyframes ai-beat{0%,100%{transform:scale(1)}15%{transform:scale(1.2)}30%{transform:scale(.95)}45%{transform:scale(1.1)}}
+@keyframes ai-pop{0%{transform:scale(1)}40%{transform:scale(.82)}100%{transform:scale(1)}}
 @keyframes ai-scan{0%,100%{transform:translate(0,0)}25%{transform:translate(-1.5px,-1px)}50%{transform:translate(1px,-1.5px)}75%{transform:translate(1.5px,1px)}}
 @keyframes ai-spin{to{transform:rotate(360deg)}}
-@keyframes ai-fly{0%,100%{transform:translate(0,0)}45%{transform:translate(5px,-5px);opacity:0}46%{transform:translate(-5px,5px);opacity:0}70%{transform:translate(0,0);opacity:1}}
+@keyframes ai-fly{0%,100%{transform:translate(0,0);opacity:1}45%{transform:translate(6px,-6px);opacity:0}46%{transform:translate(-6px,6px);opacity:0}75%{transform:translate(0,0);opacity:1}}
 @keyframes ai-drop{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
 @keyframes ai-rise{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-@keyframes ai-lid{0%,100%{transform:rotate(0) translateY(0)}40%,60%{transform:rotate(-18deg) translateY(-1px)}}
-@keyframes ai-twinkle{0%,100%{transform:scale(1) rotate(0);opacity:1}50%{transform:scale(.7) rotate(20deg);opacity:.6}}
-@keyframes ai-blink{0%,40%,60%,100%{transform:scaleY(1)}50%{transform:scaleY(.1)}}
-@keyframes ai-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3px)}}
-@keyframes ai-wave{0%,100%{opacity:1;transform:translateX(0)}50%{opacity:.3;transform:translateX(1px)}}
-@keyframes ai-shackle{0%,100%{transform:translateY(0)}40%,60%{transform:translateY(-2.5px)}}
+@keyframes ai-lift{0%,100%{transform:rotate(0) translateY(0)}35%,65%{transform:rotate(-16deg) translateY(-1.5px)}}
+@keyframes ai-twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(.7) rotate(25deg)}}
+@keyframes ai-blink{0%,35%,65%,100%{transform:scaleY(1)}50%{transform:scaleY(.08)}}
+@keyframes ai-nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(3.5px)}}
+@keyframes ai-wave{0%,100%{opacity:1}50%{opacity:.2}}
+@keyframes ai-shackle{0%,100%{transform:translateY(0)}35%,65%{transform:translateY(-2.5px)}}
 @keyframes ai-quarter{to{transform:rotate(90deg)}}
+@keyframes ai-draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes ai-wiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-12deg)}40%{transform:rotate(10deg)}60%{transform:rotate(-6deg)}80%{transform:rotate(3deg)}}
+@keyframes ai-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5px)}}
+@keyframes ai-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-2px)}40%,80%{transform:translateX(2px)}}
+@keyframes ai-launch{0%,100%{transform:translate(0,0)}15%{transform:translate(-1px,1px)}45%{transform:translate(7px,-7px);opacity:0}46%{transform:translate(-5px,5px);opacity:0}75%{transform:translate(0,0);opacity:1}}
+@keyframes ai-tilt{0%,100%{transform:rotate(0)}40%{transform:rotate(-14deg) scale(1.08)}}
+@keyframes ai-flash{0%,100%{opacity:1;transform:scale(1)}30%{opacity:.25}60%{opacity:1;transform:scale(1.12)}}
 @keyframes ai-ring{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(1.5)}}
-@keyframes ai-draw{from{stroke-dashoffset:24}to{stroke-dashoffset:0}}
-@media (prefers-reduced-motion:reduce){[data-animated-icon] *{animation:none!important;transition-duration:.01ms!important}}
+@media (prefers-reduced-motion:reduce){[data-ai-icon] *{animation:none!important;transition-duration:.01ms!important}}
 `
 
 export type AnimatedIconProps = Omit<React.SVGProps<SVGSVGElement>, "children"> & {
   /** Edge length in pixels. */
   size?: number
-  /** Keep playing on a loop, not just on hover. */
-  animate?: boolean
-  /** The second state of a two-state icon (copied, open, dark, recording). */
-  active?: boolean
   strokeWidth?: number
+  /** When it plays. Default "hover". `animate` is the same as trigger="loop". */
+  trigger?: IconTrigger
+  animate?: boolean
+  /** The second state of a two-state icon (copied, open, dark, recording, playing, liked). */
+  active?: boolean
 }
 
-function Svg({ size = 24, animate, active, strokeWidth = 2, className, children, ...props }: AnimatedIconProps & { children: React.ReactNode }) {
+type Parts = Partial<Record<number, IconAnimation>>
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function Frame({ size = 24, strokeWidth: _strokeWidth, trigger = "hover", animate, active, className, children, ...props }: AnimatedIconProps & { children: React.ReactNode }) {
   return (
     <>
-      <style href="animated-icons" precedence="default">{css}</style>
+      <style href="glaze-animated-icons" precedence="default">{css}</style>
       <svg
-        data-animated-icon=""
-        data-animate={animate ? "" : undefined}
+        data-ai-icon=""
+        data-trigger={animate ? "loop" : trigger}
         data-active={active ? "" : undefined}
         xmlns="http://www.w3.org/2000/svg"
         width={size}
         height={size}
         viewBox="0 0 24 24"
         fill="none"
-        stroke="currentColor"
-        strokeWidth={strokeWidth}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        color="currentColor"
         aria-hidden={props["aria-label"] ? undefined : true}
         className={cn("shrink-0", className)}
         {...props}
@@ -108,172 +181,135 @@ function Svg({ size = 24, animate, active, strokeWidth = 2, className, children,
   )
 }
 
-export const BellIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="bell"><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326" /></g>
-    <path data-part="clapper" d="M10.268 21a2 2 0 0 0 3.464 0" />
-  </Svg>
-)
+/** The elements of one Hugeicon, each with its own animation if it has one. */
+function Elements({ icon, parts, whole, draw, strokeWidth, fill }: { icon: IconData; parts?: Parts; whole?: IconAnimation; draw?: boolean; strokeWidth?: number; fill?: Partial<Record<number, string>> }) {
+  const nodes = icon.map(([tag, attrs], i) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { key: _key, ...rest } = attrs as Record<string, string | number>
+    const anim = draw && !whole ? "draw" : parts?.[i]
+    return React.createElement(tag, {
+      key: i,
+      ...rest,
+      ...(strokeWidth && "strokeWidth" in rest ? { strokeWidth } : null),
+      ...(anim ? { "data-anim": anim } : null),
+      ...(anim === "draw" ? { pathLength: 1 } : null),
+      ...(fill?.[i] !== undefined ? { fill: fill[i], "data-fill": "" } : null),
+    })
+  })
+  return whole ? <g data-anim={whole}>{nodes}</g> : <>{nodes}</>
+}
 
-export const HeartIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <path data-part="heart" fill={p.active ? "currentColor" : "none"} d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
-  </Svg>
-)
+/**
+ * Animate any Hugeicon. `animation` moves the whole icon; `parts` moves single elements by
+ * their index in the icon's data (look at the icon's source to find them).
+ *
+ *   <AnimatedIcon icon={Notification03Icon} animation="swing" />
+ *   <AnimatedIcon icon={Delete02Icon} parts={{ 1: "lift" }} trigger="loop" />
+ *   <AnimatedIcon icon={Tick02Icon} animation="draw" trigger="mount" />
+ */
+export function AnimatedIcon({ icon, animation, parts, strokeWidth, ...props }: AnimatedIconProps & { icon: IconData; animation?: IconAnimation; parts?: Parts }) {
+  const draw = animation === "draw"
+  return (
+    <Frame strokeWidth={strokeWidth} {...props}>
+      <Elements icon={icon} parts={parts} whole={draw ? undefined : animation} draw={draw} strokeWidth={strokeWidth} />
+    </Frame>
+  )
+}
 
-export const SearchIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="lens"><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></g>
-  </Svg>
-)
+/** A tuned icon: the data and how each part of it moves. */
+function tuned(icon: IconData, config: { whole?: IconAnimation; parts?: Parts }) {
+  const Icon = ({ strokeWidth, ...props }: AnimatedIconProps) => (
+    <Frame strokeWidth={strokeWidth} {...props}>
+      <Elements icon={icon} parts={config.parts} whole={config.whole} draw={config.whole === "draw"} strokeWidth={strokeWidth} />
+    </Frame>
+  )
+  return Icon
+}
 
-export const SettingsIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="gear">
-      <path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" />
-      <circle cx="12" cy="12" r="3" />
-    </g>
-  </Svg>
-)
+export const BellIcon = tuned(Notification03Icon, { parts: { 0: "swing", 1: "swing", 2: "clapper" } })
+export const SearchIcon = tuned(Search01Icon, { whole: "scan" })
+export const SettingsIcon = tuned(Settings02Icon, { whole: "spin" })
+export const SendIcon = tuned(SentIcon, { whole: "fly" })
+export const DownloadIcon = tuned(Download04Icon, { parts: { 0: "drop" } })
+export const UploadIcon = tuned(Upload04Icon, { parts: { 1: "rise" } })
+export const TrashIcon = tuned(Delete02Icon, { parts: { 1: "lift" } })
+export const RefreshIcon = tuned(RefreshData, { whole: "spin-once" })
+export const SparklesIcon = tuned(SparklesData, { parts: { 0: "twinkle", 1: "twinkle-late" } })
+export const AiMagicIcon = tuned(AiMagicData, { parts: { 0: "pop", 1: "twinkle" } })
+export const EyeIcon = tuned(ViewIcon, { whole: "blink" })
+export const ArrowRightIcon = tuned(ArrowRight02Icon, { whole: "nudge" })
+export const VolumeIcon = tuned(VolumeHighIcon, { parts: { 1: "wave", 2: "wave-late" } })
+export const LockIcon = tuned(SquareLock02Icon, { parts: { 1: "shackle" } })
+export const PlusIcon = tuned(Add01Icon, { whole: "quarter" })
+export const CheckIcon = tuned(Tick02Icon, { whole: "draw" })
+export const CheckCircleIcon = tuned(CheckmarkCircle02Icon, { parts: { 0: "pop", 1: "draw" } })
+export const LoaderIcon = tuned(Loading03Icon, { whole: "spin-always" })
+export const RocketIcon = tuned(Rocket01Icon, { whole: "launch" })
+export const MailIcon = tuned(Mail01Icon, { whole: "wiggle" })
+export const AttachmentIcon = tuned(Attachment01Icon, { whole: "wiggle" })
+export const HomeIcon = tuned(Home01Icon, { whole: "pop" })
+export const CalendarIcon = tuned(Calendar03Icon, { parts: { 0: "float", 3: "flash" } })
+export const GithubIcon = tuned(Github01Icon, { whole: "wiggle" })
+export const ThumbsUpIcon = tuned(ThumbsUpData, { whole: "tilt" })
+export const BookmarkIcon = tuned(Bookmark02Icon, { whole: "drop" })
+export const LocationIcon = tuned(Location01Icon, { whole: "float" })
+export const WifiIcon = tuned(Wifi01Icon, { whole: "flash" })
+export const BrainIcon = tuned(BrainData, { whole: "beat" })
+export const FlashIcon = tuned(FlashData, { whole: "flash" })
+export const IdeaIcon = tuned(Idea01Icon, { whole: "flash" })
+export const StarIcon = tuned(StarData, { whole: "spin-once" })
+export const LinkIcon = tuned(Link01Icon, { whole: "wiggle" })
 
-export const SendIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="plane">
-      <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
-      <path d="m21.854 2.147-10.94 10.939" />
-    </g>
-  </Svg>
-)
-
-export const DownloadIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="arrow-down"><path d="M12 15V3" /><path d="m7 10 5 5 5-5" /></g>
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-  </Svg>
-)
-
-export const UploadIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="arrow-up"><path d="M12 3v12" /><path d="m17 8-5-5-5 5" /></g>
-    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-  </Svg>
-)
-
-export const TrashIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="lid"><path d="M3 6h18" /><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /></g>
-    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /><path d="M10 11v6" /><path d="M14 11v6" />
-  </Svg>
-)
-
-export const RefreshIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="refresh">
-      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /><path d="M21 3v5h-5" />
-      <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /><path d="M8 16H3v5" />
-    </g>
-  </Svg>
-)
-
-export const SparklesIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <path data-part="star" d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-    <g data-part="star-small"><path d="M20 2v4" /><path d="M22 4h-4" /></g>
-    <circle data-part="star-small" cx="4" cy="20" r="2" />
-  </Svg>
-)
-
-export const EyeIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="lashes">
-      <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
-      <circle cx="12" cy="12" r="3" />
-    </g>
-  </Svg>
-)
-
-export const ArrowRightIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="nudge"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></g>
-  </Svg>
-)
-
-export const VolumeIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
-    <path data-part="wave" d="M16 9a5 5 0 0 1 0 6" />
-    <path data-part="wave-2" d="M19.364 18.364a9 9 0 0 0 0-12.728" />
-  </Svg>
-)
-
-export const LockIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
-    <path data-part="shackle" d="M7 11V7a5 5 0 0 1 10 0v4" />
-  </Svg>
-)
-
-export const PlusIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-part="plus"><path d="M5 12h14" /><path d="M12 5v14" /></g>
-  </Svg>
-)
-
-export const CheckIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <path data-part="draw" d="M20 6 9 17l-5-5" />
-  </Svg>
-)
-
-export const LoaderIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <path data-part="spinner" d="M21 12a9 9 0 1 1-6.219-8.56" />
-  </Svg>
+/** Two states: `active` fills it. */
+export const HeartIcon = ({ active, strokeWidth, ...props }: AnimatedIconProps) => (
+  <Frame active={active} strokeWidth={strokeWidth} {...props}>
+    <Elements icon={FavouriteIcon} whole="beat" strokeWidth={strokeWidth} fill={{ 0: active ? "currentColor" : "transparent" }} />
+  </Frame>
 )
 
 /** Two states: set `active` once the text is on the clipboard. */
-export const CopyIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-swap="off">
-      <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-      <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
-    </g>
-    <g data-swap="on"><path d="M20 6 9 17l-5-5" /></g>
-  </Svg>
+export const CopyIcon = ({ strokeWidth, ...props }: AnimatedIconProps) => (
+  <Frame strokeWidth={strokeWidth} {...props}>
+    <g data-swap="off"><Elements icon={Copy01Icon} whole="pop" strokeWidth={strokeWidth} /></g>
+    <g data-swap="on"><Elements icon={Tick02Icon} strokeWidth={strokeWidth} /></g>
+  </Frame>
 )
 
-/** Two states: set `active` while the menu is open. The three bars fold into a cross. */
-export const MenuIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <path data-bar="1" d="M4 5h16" />
-    <path data-bar="2" d="M4 12h16" />
-    <path data-bar="3" d="M4 19h16" />
-  </Svg>
+/** Two states: set `active` while the menu is open. The bars fold into a cross. */
+export const MenuIcon = ({ strokeWidth = 1.5, ...props }: AnimatedIconProps) => (
+  <Frame strokeWidth={strokeWidth} {...props}>
+    {Menu01Icon.map(([, attrs], i) => (
+      <path key={i} data-bar={i} d={String(attrs.d)} stroke="currentColor" strokeLinecap="round" strokeWidth={strokeWidth} />
+    ))}
+  </Frame>
 )
 
 /** Two states: `active` is dark. */
-export const ThemeIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <g data-swap="off">
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" />
-      <path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" />
-    </g>
-    <g data-swap="on"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" /></g>
-  </Svg>
+export const ThemeIcon = ({ strokeWidth, ...props }: AnimatedIconProps) => (
+  <Frame strokeWidth={strokeWidth} {...props}>
+    <g data-swap="off"><Elements icon={Sun03Icon} parts={{ 1: "spin-once" }} strokeWidth={strokeWidth} /></g>
+    <g data-swap="on"><Elements icon={Moon02Icon} whole="wiggle" strokeWidth={strokeWidth} /></g>
+  </Frame>
+)
+
+/** Two states: `active` is playing (shows pause). */
+export const PlayPauseIcon = ({ strokeWidth, ...props }: AnimatedIconProps) => (
+  <Frame strokeWidth={strokeWidth} {...props}>
+    <g data-swap="off"><Elements icon={PlayIcon} whole="pop" strokeWidth={strokeWidth} /></g>
+    <g data-swap="on"><Elements icon={PauseIcon} whole="pop" strokeWidth={strokeWidth} /></g>
+  </Frame>
 )
 
 /** Two states: `active` while recording, with rings going out from it. */
-export const MicIcon = (p: AnimatedIconProps) => (
-  <Svg {...p}>
-    <circle data-part="mic-ring" cx="12" cy="9" r="9" strokeWidth={1} />
-    <circle data-part="mic-ring" cx="12" cy="9" r="9" strokeWidth={1} style={{ animationDelay: ".8s" }} />
-    <path d="M12 19v3" /><path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-    <rect x="9" y="2" width="6" height="13" rx="3" fill={p.active ? "currentColor" : "none"} />
-  </Svg>
+export const MicIcon = ({ strokeWidth, active, ...props }: AnimatedIconProps) => (
+  <Frame active={active} strokeWidth={strokeWidth} {...props}>
+    <circle data-ring="" cx="11.5" cy="9" r="9" stroke="currentColor" strokeWidth={1} />
+    <circle data-ring="" cx="11.5" cy="9" r="9" stroke="currentColor" strokeWidth={1} style={{ animationDelay: ".8s" }} />
+    <Elements icon={Mic01Icon} whole="pop" strokeWidth={strokeWidth} fill={{ 0: active ? "currentColor" : "transparent" }} />
+  </Frame>
 )
 
-/** Every icon in the set, by name, for pickers and galleries. */
+/** Every named icon, for pickers and galleries. */
 export const animatedIcons = {
   Bell: BellIcon,
   Heart: HeartIcon,
@@ -285,17 +321,36 @@ export const animatedIcons = {
   Trash: TrashIcon,
   Refresh: RefreshIcon,
   Sparkles: SparklesIcon,
+  AiMagic: AiMagicIcon,
+  Brain: BrainIcon,
+  Idea: IdeaIcon,
+  Flash: FlashIcon,
   Eye: EyeIcon,
   ArrowRight: ArrowRightIcon,
   Volume: VolumeIcon,
   Lock: LockIcon,
   Plus: PlusIcon,
   Check: CheckIcon,
+  CheckCircle: CheckCircleIcon,
   Loader: LoaderIcon,
+  Rocket: RocketIcon,
+  Mail: MailIcon,
+  Attachment: AttachmentIcon,
+  Home: HomeIcon,
+  Calendar: CalendarIcon,
+  Github: GithubIcon,
+  ThumbsUp: ThumbsUpIcon,
+  Bookmark: BookmarkIcon,
+  Location: LocationIcon,
+  Wifi: WifiIcon,
+  Star: StarIcon,
+  Link: LinkIcon,
   Copy: CopyIcon,
   Menu: MenuIcon,
   Theme: ThemeIcon,
+  PlayPause: PlayPauseIcon,
   Mic: MicIcon,
 } as const
 
 export type AnimatedIconName = keyof typeof animatedIcons
+export const TWO_STATE_ICONS: AnimatedIconName[] = ["Heart", "Copy", "Menu", "Theme", "PlayPause", "Mic"]

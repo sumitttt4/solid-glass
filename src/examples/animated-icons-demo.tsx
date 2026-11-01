@@ -1,36 +1,38 @@
 import * as React from "react"
 
-import { animatedIcons, type AnimatedIconName } from "@/components/ui/animated-icons"
+import { animatedIcons, TWO_STATE_ICONS, type AnimatedIconName } from "@/components/ui/animated-icons"
 import { Switch } from "@/components/ui/switch"
-
-const twoState = new Set<AnimatedIconName>(["Copy", "Menu", "Theme", "Mic", "Heart"])
 
 export default function AnimatedIconsDemo() {
   const [loop, setLoop] = React.useState(false)
   const [active, setActive] = React.useState<Partial<Record<AnimatedIconName, boolean>>>({})
   return (
-    <div className="flex w-full max-w-2xl flex-col gap-5">
-      <div className="flex flex-wrap items-center justify-between gap-3 text-sm">
-        <p className="text-muted-foreground">Hover an icon to play it. Two-state icons switch on click.</p>
-        <label className="flex items-center gap-2">
-          <Switch checked={loop} onCheckedChange={setLoop} aria-label="Play all on a loop" />
+    <div className="flex w-full max-w-3xl flex-col gap-5">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-muted-foreground text-sm">Hover to play. Two-state icons switch on click.</p>
+        <label className="flex items-center gap-2 text-sm font-medium">
+          <Switch checked={loop} onCheckedChange={setLoop} />
           Loop all
         </label>
       </div>
-      <div className="grid grid-cols-3 gap-2 sm:grid-cols-5 md:grid-cols-7">
+      <div className="grid grid-cols-[repeat(auto-fill,minmax(88px,1fr))] gap-2">
         {(Object.keys(animatedIcons) as AnimatedIconName[]).map((name) => {
           const Icon = animatedIcons[name]
+          const twoState = TWO_STATE_ICONS.includes(name)
           const on = !!active[name]
           return (
             <button
               key={name}
               type="button"
-              aria-pressed={twoState.has(name) ? on : undefined}
-              onClick={() => twoState.has(name) && setActive((all) => ({ ...all, [name]: !all[name] }))}
-              className="bg-card hover:text-primary flex cursor-pointer flex-col items-center gap-2 rounded-xl px-2 py-4 text-xs transition-colors"
+              aria-pressed={twoState ? on : undefined}
+              onClick={() => twoState && setActive((all) => ({ ...all, [name]: !all[name] }))}
+              className="bg-card text-foreground hover:text-primary group flex aspect-square cursor-pointer flex-col items-center justify-center gap-2.5 rounded-xl transition-colors"
             >
-              <Icon size={24} animate={loop} active={on} />
-              <span className="text-muted-foreground">{name}</span>
+              <Icon size={26} animate={loop} active={on} />
+              <span className="text-muted-foreground text-[11px] font-medium">
+                {name}
+                {twoState && <span className="text-primary ml-1">•</span>}
+              </span>
             </button>
           )
         })}

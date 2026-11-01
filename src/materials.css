@@ -1,7 +1,7 @@
 /*
  * Materials: one set of components, four finishes.
  *
- *   Normal  — data-material="solid"   opaque, color-led (Colorwork's own look)
+ *   Normal  — data-material="solid"   opaque, color-led (Glaze's own look)
  *   Glass   — data-material="glass"   thick smoky glass: the Solid Glass material
  *   Frost   — data-material="frost"   clear frosted glass over vivid light
  *   Aurora  — data-material="aurora"  frost over light that moves
@@ -12,11 +12,11 @@
  * inside a page with a different one. Colours (primary, tones, the accent picker) carry over:
  * the glass is tinted by them.
  *
- * Import after colorwork.css. A glass material needs something behind it to be seen as glass:
+ * Import after glaze.css. A glass material needs something behind it to be seen as glass:
  * the page gets lights of its own, and `.mat-stage` gives any box the same backdrop.
  */
 
-/* ---- Glass: the Solid Glass material, tinted by the Colorwork hue ------------------------ */
+/* ---- Glass: the Solid Glass material, tinted by the Glaze hue ------------------------ */
 
 [data-material="glass"] {
   color-scheme: light;
@@ -51,8 +51,8 @@
   --glass-state-armed: oklch(0.3 0.02 var(--study-hue) / 26%);
   --hover: oklch(0.3 0.02 var(--study-hue) / 10%);
   --hover-faint: oklch(0.3 0.02 var(--study-hue) / 5.5%);
-  --primary-solid: 86%;
-  --primary-rim: oklch(1 0 0 / 35%);
+  --primary-solid: 92%;
+  --primary-rim: oklch(1 0 0 / 30%);
   --primary-under: oklch(0 0 0 / 35%);
   --primary-inner: oklch(1 0 0 / 7%);
   --primary-edge: oklch(0.2 0 0 / 30%);
@@ -103,8 +103,8 @@
   --glass-state-armed: oklch(1 0 0 / 11%);
   --hover: oklch(1 0 0 / 8%);
   --hover-faint: oklch(1 0 0 / 4%);
-  --primary-solid: 84%;
-  --primary-rim: oklch(1 0 0 / 70%);
+  --primary-solid: 90%;
+  --primary-rim: oklch(1 0 0 / 30%);
   --primary-under: oklch(0 0 0 / 22%);
   --field: oklch(1 0 0 / 6%);
   --field-rim: oklch(1 0 0 / 15%);
@@ -151,8 +151,8 @@
   --glass-state-armed: oklch(1 0 0 / 80%);
   --hover: oklch(1 0 0 / 50%);
   --hover-faint: oklch(1 0 0 / 28%);
-  --primary-solid: 78%;
-  --primary-rim: oklch(1 0 0 / 55%);
+  --primary-solid: 92%;
+  --primary-rim: oklch(1 0 0 / 45%);
   --primary-under: oklch(0 0 0 / 25%);
   --primary-inner: oklch(1 0 0 / 12%);
   --primary-edge: oklch(1 0 0 / 40%);
@@ -205,8 +205,8 @@
   --glass-state-armed: oklch(1 0 0 / 26%);
   --hover: oklch(1 0 0 / 10%);
   --hover-faint: oklch(1 0 0 / 5%);
-  --primary-solid: 80%;
-  --primary-rim: oklch(1 0 0 / 75%);
+  --primary-solid: 90%;
+  --primary-rim: oklch(1 0 0 / 35%);
   --primary-under: oklch(0 0 0 / 22%);
   --field: oklch(1 0 0 / 7%);
   --field-rim: oklch(1 0 0 / 22%);

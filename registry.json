@@ -1,18 +1,18 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "name": "colorwork",
+  "name": "glaze",
   "homepage": "https://sumitttt4.github.io/solid-glass",
   "items": [
     {
-      "name": "colorwork",
+      "name": "glaze",
       "type": "registry:file",
-      "title": "Colorwork",
-      "description": "Opaque surfaces, five expressive color roles, paired themes and four materials: Normal, Glass, Frost and Aurora.",
+      "title": "Glaze",
+      "description": "The Glaze theme: neutral surfaces, an indigo accent, five tones, Geist type and four materials (Normal, Glass, Frost, Aurora).",
       "files": [
         {
-          "path": "src/colorwork.css",
+          "path": "src/glaze.css",
           "type": "registry:file",
-          "target": "src/colorwork.css"
+          "target": "src/glaze.css"
         },
         {
           "path": "src/materials.css",
@@ -97,8 +97,10 @@
       "name": "animated-icons",
       "type": "registry:ui",
       "title": "animated icons",
-      "description": "Editable animated-icons source with the Colorwork theme.",
-      "dependencies": [],
+      "description": "Editable animated-icons source with the Glaze theme.",
+      "dependencies": [
+        "@hugeicons/core-free-icons"
+      ],
       "registryDependencies": [],
       "files": [
         {
@@ -161,7 +163,7 @@
       "name": "audio-waveform",
       "type": "registry:ui",
       "title": "audio waveform",
-      "description": "Editable audio-waveform source with the Colorwork theme.",
+      "description": "Editable audio-waveform source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -349,6 +351,33 @@
       "files": [
         {
           "path": "src/components/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat-window",
+      "type": "registry:ui",
+      "title": "chat window",
+      "description": "Editable chat-window source with the Glaze theme.",
+      "dependencies": [
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/animated-icons#main",
+        "sumitttt4/solid-glass/audio-waveform#main",
+        "sumitttt4/solid-glass/live-transcript#main",
+        "sumitttt4/solid-glass/model-picker#main",
+        "sumitttt4/solid-glass/prompt-suggestions#main",
+        "sumitttt4/solid-glass/speak-button#main",
+        "sumitttt4/solid-glass/streaming-text#main",
+        "sumitttt4/solid-glass/token-counter#main",
+        "sumitttt4/solid-glass/voice-orb#main"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/chat-window.tsx",
           "type": "registry:ui"
         }
       ]
@@ -556,7 +585,7 @@
       "name": "direction",
       "type": "registry:ui",
       "title": "direction",
-      "description": "Editable direction source with the Colorwork theme.",
+      "description": "Editable direction source with the Glaze theme.",
       "dependencies": [
         "@base-ui/react"
       ],
@@ -783,7 +812,7 @@
       "name": "live-transcript",
       "type": "registry:ui",
       "title": "live transcript",
-      "description": "Editable live-transcript source with the Colorwork theme.",
+      "description": "Editable live-transcript source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -797,7 +826,7 @@
       "name": "markdown",
       "type": "registry:ui",
       "title": "markdown",
-      "description": "Editable markdown source with the Colorwork theme.",
+      "description": "Editable markdown source with the Glaze theme.",
       "dependencies": [
         "react-markdown",
         "rehype-highlight",
@@ -834,7 +863,7 @@
       "name": "material-picker",
       "type": "registry:ui",
       "title": "material picker",
-      "description": "Editable material-picker source with the Colorwork theme.",
+      "description": "Editable material-picker source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -896,6 +925,25 @@
       "files": [
         {
           "path": "src/components/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "model-picker",
+      "type": "registry:ui",
+      "title": "model picker",
+      "description": "Editable model-picker source with the Glaze theme.",
+      "dependencies": [
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
+      ],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/popover#main"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/model-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1037,6 +1085,22 @@
       "files": [
         {
           "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "prompt-suggestions",
+      "type": "registry:ui",
+      "title": "prompt suggestions",
+      "description": "Editable prompt-suggestions source with the Glaze theme.",
+      "dependencies": [
+        "@hugeicons/react"
+      ],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "src/components/ui/prompt-suggestions.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1250,7 +1314,7 @@
       "name": "sonner",
       "type": "registry:ui",
       "title": "sonner",
-      "description": "Editable sonner source with the Colorwork theme.",
+      "description": "Editable sonner source with the Glaze theme.",
       "dependencies": [
         "lucide-react",
         "next-themes",
@@ -1268,7 +1332,7 @@
       "name": "speak-button",
       "type": "registry:ui",
       "title": "speak button",
-      "description": "Editable speak-button source with the Colorwork theme.",
+      "description": "Editable speak-button source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [
         "sumitttt4/solid-glass/button#main"
@@ -1333,7 +1397,7 @@
       "name": "streaming-text",
       "type": "registry:ui",
       "title": "streaming text",
-      "description": "Editable streaming-text source with the Colorwork theme.",
+      "description": "Editable streaming-text source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
@@ -1499,6 +1563,22 @@
       ]
     },
     {
+      "name": "token-counter",
+      "type": "registry:ui",
+      "title": "token counter",
+      "description": "Editable token-counter source with the Glaze theme.",
+      "dependencies": [],
+      "registryDependencies": [
+        "sumitttt4/solid-glass/popover#main"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/token-counter.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "tone-badge",
       "type": "registry:ui",
       "title": "Tone Badge",
@@ -1569,7 +1649,7 @@
       "name": "voice-input",
       "type": "registry:ui",
       "title": "voice input",
-      "description": "Editable voice-input source with the Colorwork theme.",
+      "description": "Editable voice-input source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [
         "sumitttt4/solid-glass/animated-icons#main",
@@ -1587,7 +1667,7 @@
       "name": "voice-orb",
       "type": "registry:ui",
       "title": "voice orb",
-      "description": "Editable voice-orb source with the Colorwork theme.",
+      "description": "Editable voice-orb source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [
