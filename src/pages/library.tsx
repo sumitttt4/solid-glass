@@ -39,8 +39,8 @@ function SectionHead({ title, body, aside }: { title: React.ReactNode; body?: st
   return (
     <div className="mb-12 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
       <div className="max-w-[38rem]">
-        <h2 className="font-display text-[2.5rem] leading-[1.05] text-balance sm:text-[3.25rem]">{title}</h2>
-        {body && <p className="text-muted-foreground mt-4 text-[17px] leading-[1.6] text-pretty">{body}</p>}
+        <h2 className="font-display text-[2rem] leading-[1.08] text-balance sm:text-[3.25rem] sm:leading-[1.05]">{title}</h2>
+        {body && <p className="text-muted-foreground mt-4 text-base leading-[1.6] sm:text-[17px] text-pretty">{body}</p>}
       </div>
       {aside}
     </div>
@@ -298,10 +298,10 @@ function InstallSection() {
   return (
     <section className="home-section grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]" aria-labelledby="install-title">
       <div>
-        <h2 id="install-title" className="font-display text-[2.5rem] leading-[1.05] text-balance sm:text-[3.25rem]">
+        <h2 id="install-title" className="font-display text-[2rem] leading-[1.08] text-balance sm:text-[3.25rem] sm:leading-[1.05]">
           Free, all of it. Install once and stop looking.
         </h2>
-        <p className="text-muted-foreground mt-4 max-w-md text-[17px] leading-[1.6]">
+        <p className="text-muted-foreground mt-4 max-w-md text-base leading-[1.6] sm:text-[17px]">
           No pro tier and no paywall. Copy one component, add it with one command, or hand the registry to your coding agent.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -325,11 +325,11 @@ export default function Library() {
     <div className="home">
       <section className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
         <div className="grid items-end gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
-          <h1 className="font-display text-[clamp(3.25rem,8.2vw,7.25rem)] leading-[0.94] tracking-[-0.022em] text-balance">
+          <h1 className="font-display text-[2.625rem] leading-[1.04] tracking-[-0.01em] text-balance sm:text-[clamp(3.5rem,8.2vw,7.25rem)] sm:leading-[0.94] sm:tracking-[-0.022em]">
             Beautiful components, solid or glass
           </h1>
           <div className="lg:pb-3">
-            <p className="text-muted-foreground max-w-md text-[17px] leading-[1.6] text-pretty">
+            <p className="text-muted-foreground max-w-md text-base leading-[1.6] sm:text-[17px] text-pretty">
               {catalog.length} free React components for interfaces, AI and voice, plus animated icons. Each comes in four finishes. Copy the code, install it with one command, or hand it to your agent.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">

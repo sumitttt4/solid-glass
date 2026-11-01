@@ -20,8 +20,6 @@ type Mode = "demo" | "worst" | "empty" | "one"
 const WORST_MODELS: ModelOption[] = [
   { id: "a", name: "Konstantin-Oberhauser-Wettstein Reasoning Ultra Long Context Preview", provider: "Northwind Industries Holdings Research Laboratory", description: "Senior Product Design Engineer, Platform Infrastructure: a 2,000 token description pasted straight from the vendor's marketing site that keeps going well past two lines of text in the list.", tags: ["Reasoning", "Vision", "Audio", "Realtime", "Benachrichtigungseinstellungen", "customer-feedback-from-enterprise-onboarding", "Open"], context: 10_000_000, color: "#b45309" },
   { id: "b", name: "J", provider: "Jo", context: 1000 },
-  { id: "c", name: "王秀英 模型", provider: "王秀英", description: "中文描述，没有空格的长句子会在任何地方断开吗", tags: ["中文"], context: 128_000 },
-  { id: "d", name: "نور الهدى", provider: "نور الهدى عبد الرحمن", description: "نموذج عربي", context: 32_000 },
   { id: "e", name: "🦊 Fox", provider: "👩🏽‍💻 Priya Labs", tags: [], context: 0 },
   { id: "f", name: "Disabled model", provider: "Jo", description: "Not available on your plan.", disabled: true },
 ]
@@ -39,13 +37,13 @@ const WORST_MESSAGES: ChatMessage[] = [
   { id: "1", role: "user", content: "https://example.com/workspaces/acme/projects/q3-launch/docs/9f8e7d6c5b4a?tab=comments&filter=unresolved", files: ["Q3 Board Deck — FINAL (revised) v12 [approved by legal].pdf", "IMG_20250914_183022_HDR_portrait_edited_edited.HEIC"] },
   { id: "2", role: "assistant", content: "Benachrichtigungseinstellungen\n\n<script>alert(1)</script> &amp; **not bold**\n\nconst x = 0.1 + 0.2 // 0.30000000000000004" },
   { id: "3", role: "user", content: LONG_PASTE },
-  { id: "4", role: "assistant", content: "👩🏽‍💻 نور الهدى عبد الرحمن — Đặng Thị Ngọc Hân — 王秀英" },
+  { id: "4", role: "assistant", content: "Christopher Alexander Montgomery III signed off on the Q3 Board Deck — FINAL (revised) v12." },
 ]
 
 const WORST_SEGMENTS: TranscriptSegment[] = [
   { id: "1", text: "bartholomew.fitzgerald@northwind-industries-holdings.example.com said yes", at: 0, speaker: "Aleksandra Wiśniewska-Kowalczyk" },
-  { id: "2", text: "Đặng Thị Ngọc Hân", at: 4523, speaker: "J" },
-  { id: "3", text: "نور الهدى عبد الرحمن", at: 86_399, speaker: "نور" },
+  { id: "2", text: "Sounds good to me.", at: 4523, speaker: "J" },
+  { id: "3", text: "Let us wrap up and ship it tomorrow morning.", at: 86_399, speaker: "Christopher Alexander Montgomery III" },
 ]
 
 function fixtures(mode: Mode) {

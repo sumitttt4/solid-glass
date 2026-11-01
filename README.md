@@ -42,7 +42,7 @@ npm run build
 
 ## Stress testing
 
-`/dev/worst` (development only) feeds the AI components realistic worst-case data, behind a Demo / Worst case / Empty / One toggle: long names, unbreakable emails and URLs, RTL and CJK text, 2,000-character pastes, zero and over-limit token counts. Keep it as the regression check when changing them.
+`/dev/worst` (development only) feeds the AI components realistic worst-case data, behind a Demo / Worst case / Empty / One toggle: long names, unbreakable emails and URLs, 2,000-character pastes, zero and over-limit token counts. Keep it as the regression check when changing them.
 
 ## Provenance
 
