@@ -15,6 +15,7 @@ import { SiteHeader } from "@/site/site-header"
 const Collection = React.lazy(() => import("@/pages/collection"))
 const Library = React.lazy(() => import("@/pages/library"))
 const DevWorst = React.lazy(() => import("@/pages/dev-worst"))
+const DevLaunch = React.lazy(() => import("@/pages/dev-launch"))
 const ColorStudy = React.lazy(() => import("@/pages/color-study"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
 const Blocks = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.Blocks })))
@@ -39,6 +40,8 @@ export function App() {
   )
   // The README's banner is a picture of the material and nothing else: no header, no footer behind it.
   if (import.meta.env.DEV && pathname === "/dev/banner") return <DevBanner />
+  // The launch video, drawn frame by frame for video/render.mjs.
+  if (import.meta.env.DEV && pathname === "/dev/launch") return <React.Suspense fallback={null}><DevLaunch /></React.Suspense>
   // A block by itself, in a window of its own: no header, no footer round it.
   if (pathname.startsWith("/view/")) {
     return (
