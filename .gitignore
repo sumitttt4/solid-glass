@@ -4,3 +4,7 @@ dist
 .DS_Store
 public/r
 src/docs/generated.json
+
+# rendered video and audio
+video/*.mp4
+video/*.wav
