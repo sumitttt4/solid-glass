@@ -121,43 +121,46 @@
 
 /* ---- Normal, dark: kiln black, cobalt lifted ------------------------------------------ */
 .dark, .dark [data-material="solid"] {
+  /* Pure black, built in steps: the page is #000, cards one step up, popovers two, hairlines
+     solid so they read evenly on every step. Text is soft white, never #fff on #000. */
   color-scheme: dark;
-  --background: #101216;
-  --foreground: #eef0f4;
-  --panel: #14171c;
-  --card: #171a20;
-  --popover: #1c2027;
-  --primary: #5b74ff;
+  --background: #000000;
+  --foreground: #ededed;
+  --panel: #050505;
+  --card: #0a0a0a;
+  --popover: #111111;
+  --primary: #4f6bff;
   --primary-foreground: #ffffff;
-  --secondary: #222731;
-  --secondary-foreground: #eef0f4;
-  --muted: #1e222a;
-  --muted-foreground: #9aa1ae;
-  --accent: #232832;
-  --accent-foreground: #eef0f4;
-  --border: #ffffff14;
-  --input: #ffffff24;
-  --ring: #7b8fff;
-  --destructive: #f2786b;
-  --study-error: #3a1714;
-  --success: #5fc9a6;
+  --secondary: #161616;
+  --secondary-foreground: #ededed;
+  --muted: #141414;
+  --muted-foreground: #a1a1a1;
+  --accent: #1a1a1a;
+  --accent-foreground: #ededed;
+  --border: #1f1f1f;
+  --input: #2e2e2e;
+  --ring: #6f86ff;
+  --destructive: #ff6b5e;
+  --study-error: #2a0f0c;
+  --success: #4fd1a5;
   --status-running: #8c9bff;
   --status-interrupted: #f0b25a;
-  --brand: #7b8fff;
-  --celadon: #6fb8a2;
+  --brand: #6f86ff;
+  --celadon: #6fc4aa;
   --link: #8c9bff;
   --chart-1: #6f86ff;
   --chart-2: #6fc4aa;
   --chart-3: #a9b4ff;
   --chart-4: #f0b25a;
   --chart-5: #f08a5d;
-  --sidebar: #14171c;
-  --glass-shade: #00000080;
-  --glass-contact: #0000004d;
-  --glass-lift: #0000004d;
+  --sidebar: #050505;
+  --glass-shade: #000000cc;
+  --glass-contact: #00000080;
+  --glass-lift: #00000080;
   --knob: #ffffff;
-  --mat-pane: 0 0 0 1px var(--border), 0 1px 2px #0000004d;
-  --mat-popover: 0 0 0 1px #ffffff1a, 0 20px 44px -12px #000000b3;
+  --mat-outline-bg: #0a0a0a;
+  --mat-pane: 0 0 0 1px var(--border);
+  --mat-popover: 0 0 0 1px #262626, 0 24px 48px -12px #000000;
 }
 
 /* ---- Panes, popovers, states -------------------------------------------------------- */
@@ -194,7 +197,7 @@
 [data-tone="clay"]  { --tone-solid: #e11d48; --tone-soft: #fff1f2; --tone-ink: #be123c; --tone-edge: #fda4af; --tone-on: #fff; }
 [data-tone="sun"]   { --tone-solid: #b45309; --tone-soft: #fffbeb; --tone-ink: #92400e; --tone-edge: #fcd34d; --tone-on: #fff; }
 [data-tone="ocean"] { --tone-solid: #0369a1; --tone-soft: #f0f9ff; --tone-ink: #075985; --tone-edge: #7dd3fc; --tone-on: #fff; }
-.dark { --tone-solid: #5b74ff; --tone-soft: #5b74ff29; --tone-ink: #c3ccff; --tone-edge: #5b74ff66; --tone-on: #fff; }
+.dark { --tone-solid: #4f6bff; --tone-soft: #4f6bff24; --tone-ink: #c3ccff; --tone-edge: #4f6bff59; --tone-on: #fff; }
 .dark [data-tone="iris"]  { --tone-solid: #a78bfa; --tone-soft: #a78bfa24; --tone-ink: #ddd6fe; --tone-edge: #a78bfa59; --tone-on: #2e1065; }
 .dark [data-tone="fern"]  { --tone-solid: #34d399; --tone-soft: #34d39921; --tone-ink: #a7f3d0; --tone-edge: #34d39952; --tone-on: #022c22; }
 .dark [data-tone="clay"]  { --tone-solid: #fb7185; --tone-soft: #fb718521; --tone-ink: #fecdd3; --tone-edge: #fb718552; --tone-on: #4c0519; }
@@ -238,6 +241,7 @@
   border: 1px solid var(--input);
   box-shadow: 0 1px 2px #15171c0d;
 }
+.dark [data-slot="button"][data-variant="outline"] { box-shadow: none; }
 :root [data-slot="button"][data-tone][data-variant="secondary"] { background: color-mix(in oklab, var(--tone-soft) var(--surface-solid), transparent); color: var(--tone-ink); border-color: var(--tone-edge); }
 :root [data-slot="button"][data-tone][data-variant="outline"] { color: var(--tone-ink); border-color: var(--tone-edge); }
 @media (hover: hover) and (pointer: fine) {

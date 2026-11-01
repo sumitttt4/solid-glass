@@ -45,19 +45,19 @@ export function PromptSuggestions({
           className={cn(
             "group text-foreground hover:bg-accent focus-visible:ring-ring/40 cursor-pointer text-left transition-[background-color,border-color,transform] outline-none focus-visible:ring-3 active:scale-[.98]",
             variant === "cards"
-              ? "bg-card flex items-start gap-3 rounded-xl p-3.5"
+              ? "bg-card flex min-h-14 items-center gap-3 rounded-xl px-3.5 py-3"
               : "border-border bg-card inline-flex h-8 max-w-full min-w-0 items-center gap-1.5 rounded-full border px-3 text-sm"
           )}
         >
           {s.icon && (
             <span className={cn("text-muted-foreground group-hover:text-primary shrink-0 transition-colors", variant === "cards" && "bg-muted grid size-8 place-items-center rounded-lg")}>
-              <HugeiconsIcon icon={s.icon} size={variant === "cards" ? 17 : 15} />
+              <HugeiconsIcon icon={s.icon} size={variant === "cards" ? 17 : 15} className="block" />
             </span>
           )}
           {variant === "cards" ? (
-            <span className="min-w-0">
-              <span dir="auto" className="line-clamp-2 block text-sm font-medium [overflow-wrap:anywhere]">{s.title}</span>
-              {s.description && <span dir="auto" className="text-muted-foreground mt-0.5 line-clamp-2 block text-xs leading-snug [overflow-wrap:anywhere]">{s.description}</span>}
+            <span className="flex min-w-0 flex-col justify-center gap-0.5">
+              <span dir="auto" className="line-clamp-2 block text-sm leading-5 font-medium [overflow-wrap:anywhere]">{s.title}</span>
+              {s.description && <span dir="auto" className="text-muted-foreground line-clamp-2 block text-xs leading-4 [overflow-wrap:anywhere]">{s.description}</span>}
             </span>
           ) : (
             <span dir="auto" className="min-w-0 truncate font-medium">{s.title}</span>

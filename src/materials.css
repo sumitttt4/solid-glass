@@ -74,7 +74,7 @@
 .dark[data-material="glass"],
 .dark [data-material="glass"] {
   color-scheme: dark;
-  --background: oklch(0.17 0.01 var(--study-hue));
+  --background: #000000;
   --foreground: oklch(0.97 0.005 var(--study-hue));
   --panel: oklch(1 0 0 / 4.5%);
   --card: oklch(0.31 0.01 var(--study-hue) / 46%);
@@ -176,7 +176,7 @@
 .dark[data-material="aurora"],
 .dark [data-material="aurora"] {
   color-scheme: dark;
-  --background: oklch(0.16 0.02 var(--study-hue));
+  --background: #000000;
   --foreground: oklch(0.98 0.005 var(--study-hue));
   --panel: oklch(1 0 0 / 5%);
   --card: oklch(1 0 0 / 7%);
