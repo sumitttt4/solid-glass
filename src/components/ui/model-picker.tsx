@@ -82,13 +82,13 @@ export function ModelPicker({
       <PopoverTrigger
         data-slot="model-picker"
         className={cn(
-          "hover:bg-accent focus-visible:ring-ring/40 inline-flex h-8 cursor-pointer items-center gap-2 rounded-lg px-2 text-sm font-medium outline-none focus-visible:ring-3",
+          "hover:bg-accent focus-visible:ring-ring/40 inline-flex h-8 max-w-full min-w-0 cursor-pointer items-center gap-2 rounded-lg px-2 text-sm font-medium outline-none focus-visible:ring-3",
           className
         )}
       >
         {current ? <Mark model={current} size={18} /> : null}
-        <span className="truncate">{current?.name ?? placeholder}</span>
-        <HugeiconsIcon icon={ArrowDown01Icon} size={14} className="text-muted-foreground" />
+        <span className="min-w-0 truncate" title={current?.name}>{current?.name ?? placeholder}</span>
+        <HugeiconsIcon icon={ArrowDown01Icon} size={14} className="text-muted-foreground shrink-0" />
       </PopoverTrigger>
       <PopoverContent align="start" className="w-80 gap-0 overflow-hidden p-0">
         <div className="border-border flex items-center gap-2 border-b px-3">
@@ -111,10 +111,10 @@ export function ModelPicker({
           />
         </div>
         <div ref={list} id="model-picker-list" role="listbox" aria-label="Models" className="max-h-80 overflow-y-auto p-1.5">
-          {!flat.length && <p className="text-muted-foreground px-3 py-6 text-center text-sm">No models match “{query}”.</p>}
+          {!flat.length && <p className="text-muted-foreground px-3 py-6 text-center text-sm">{models.length ? `No models match “${query}”.` : "No models available."}</p>}
           {groups.map((group) => (
             <div key={group} role="group" aria-label={group}>
-              <div className="text-muted-foreground px-2 pt-2 pb-1 text-[11px] font-medium tracking-wide uppercase">{group}</div>
+              <div dir="auto" className="text-muted-foreground truncate px-2 pt-2.5 pb-1 text-xs font-medium">{group}</div>
               {shown
                 .filter((m) => m.provider === group)
                 .map((model) => {
@@ -135,17 +135,18 @@ export function ModelPicker({
                       <Mark model={model} />
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="truncate text-sm font-medium">{model.name}</span>
-                          {model.context && <span className="text-muted-foreground font-mono text-[10px]">{compact(model.context)}</span>}
+                          <span className="truncate text-sm font-medium" title={model.name} dir="auto">{model.name}</span>
+                          {!!model.context && <span className="text-muted-foreground font-mono text-[10px]">{compact(model.context)}</span>}
                         </div>
-                        {model.description && <p className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-snug">{model.description}</p>}
+                        {model.description && <p dir="auto" className="text-muted-foreground mt-0.5 line-clamp-2 text-xs leading-snug [overflow-wrap:anywhere]">{model.description}</p>}
                         {!!model.tags?.length && (
                           <div className="mt-1.5 flex flex-wrap gap-1">
-                            {model.tags.map((tag) => (
-                              <span key={tag} className="bg-muted text-muted-foreground rounded px-1.5 py-px text-[10px] font-medium">
+                            {model.tags.slice(0, 3).map((tag) => (
+                              <span key={tag} title={tag} className="bg-muted text-muted-foreground max-w-[12rem] truncate rounded px-1.5 py-px text-[10px] font-medium">
                                 {tag}
                               </span>
                             ))}
+                            {model.tags.length > 3 && <span title={model.tags.slice(3).join(", ")} className="text-muted-foreground px-1 py-px text-[10px] font-medium">+{model.tags.length - 3}</span>}
                           </div>
                         )}
                       </div>

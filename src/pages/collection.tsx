@@ -3,7 +3,9 @@ import { Link, useSearchParams } from "react-router-dom"
 import { HugeiconsIcon } from "@hugeicons/react"
 import { Cancel01Icon, Search01Icon } from "@hugeicons/core-free-icons"
 
-import { ArrowRightIcon } from "@/components/ui/animated-icons"
+import { CopyIcon } from "@/components/ui/animated-icons"
+import { GithubIcon } from "@/components/ui/animated-icons"
+import { sourceUrl } from "@/site/github"
 import { Button } from "@/components/ui/button"
 import { CopySnippet } from "@/components/ui/copy-snippet"
 import { MaterialPicker, MATERIALS, type Material } from "@/components/ui/material-picker"
@@ -12,6 +14,7 @@ import { Switch } from "@/components/ui/switch"
 import { ComponentPreview, ComponentSource } from "@/site/component-preview"
 import catalog from "@/site/catalog.generated.json"
 import { useMaterial } from "@/site/material"
+import { ShaderStage } from "@/site/shader-stage"
 import "./collection.css"
 
 const SEARCH_ALIASES: Record<string, string[]> = {
@@ -32,7 +35,6 @@ function matches(entry: Entry, filter: string) {
   if (filter === "Components") return entry.category === "Components" || entry.category === "Materials"
   return entry.category === filter
 }
-const originLabel = (e: Entry) => (e.origin === "Glaze" ? "Glaze" : e.origin === "Adapted" ? "Adapted" : e.origin)
 
 class PreviewBoundary extends React.Component<{ children: React.ReactNode }, { error: boolean }> {
   state = { error: false }
@@ -124,7 +126,7 @@ export default function Collection() {
           ))}
         </div>
         <p className="text-muted-foreground mt-4 mb-1 px-2 text-xs" role="status">
-          {entries.length} components
+          {entries.length === 1 ? "1 component" : `${entries.length} components`}
         </p>
         <nav ref={list} className="collection-list" aria-label="Component list">
           {entries.map((e) => (
@@ -146,15 +148,23 @@ export default function Collection() {
       <main id="component-detail" className="min-w-0 px-4 py-10 sm:px-6 lg:px-10">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="max-w-2xl">
-            <p className="text-muted-foreground text-xs font-medium">
-              {selected.category} · {originLabel(selected)}
-            </p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight">{selected.title}</h1>
-            <p className="text-muted-foreground mt-3 text-base leading-relaxed">{selected.description}</p>
+            <div className="flex flex-wrap gap-1.5">
+              <span className="bg-secondary text-secondary-foreground rounded-md px-2 py-0.5 text-xs font-medium">{selected.category}</span>
+              {selected.origin === "Glaze" && <span className="bg-primary/10 text-primary rounded-md px-2 py-0.5 text-xs font-medium">Original</span>}
+            </div>
+            <h1 className="font-display mt-4 text-[2.75rem] leading-[1.05] sm:text-[3.25rem]">{selected.title}</h1>
+            <p className="text-muted-foreground mt-4 text-[17px] leading-[1.6] text-pretty">{selected.description}</p>
           </div>
+        </div>
+        <div className="mt-8 flex flex-wrap items-center gap-2">
+          <InstallPill slug={selected.slug} />
+          <CopyCodeButton slug={selected.slug} />
+          <a href={sourceUrl(`src/components/ui/${selected.slug}.tsx`)} target="_blank" rel="noreferrer" data-press="" className="border-input bg-card hover:bg-accent inline-flex h-9 items-center gap-2 rounded-[10px] border px-3 text-[13px] font-medium shadow-[0_1px_2px_#15171c0d]">
+            <GithubIcon size={16} /> Source on GitHub
+          </a>
           {selected.hasDocs && (
-            <Link to={`/docs/components/${selected.slug}`} className="text-primary inline-flex items-center gap-1.5 text-sm font-medium" data-icon-trigger="">
-              Documentation <ArrowRightIcon size={15} />
+            <Link to={`/docs/components/${selected.slug}`} data-press="" className="text-muted-foreground hover:text-foreground hover:bg-accent inline-flex h-9 items-center rounded-[10px] px-3 text-[13px] font-medium">
+              Docs
             </Link>
           )}
         </div>
@@ -208,20 +218,20 @@ export default function Collection() {
                   {(["solid", glassSide] as Material[]).map((side) => (
                     <figure key={side} className="m-0 min-w-0">
                       <figcaption className="text-muted-foreground mb-2 text-xs font-medium">{MATERIALS.find((m) => m.value === side)!.label}</figcaption>
-                      <div data-material={side} className="mat-stage collection-stage">
+                      <ShaderStage material={side} shader={side !== "solid"} className="collection-stage">
                         <PreviewBoundary key={`${example}-${side}`}>
                           <ComponentPreview name={example} hideCode />
                         </PreviewBoundary>
-                      </div>
+                      </ShaderStage>
                     </figure>
                   ))}
                 </div>
               ) : (
-                <div data-material={stage} className="mat-stage collection-stage mt-4">
+                <ShaderStage material={stage} shader={stage !== "solid"} className="collection-stage mt-4">
                   <PreviewBoundary key={example}>
                     <ComponentPreview key={example} name={example} hideCode />
                   </PreviewBoundary>
-                </div>
+                </ShaderStage>
               )
             ) : (
               <p className="text-muted-foreground mt-6 text-sm">No standalone example. See Code or Install.</p>
@@ -247,7 +257,7 @@ export default function Collection() {
               Needs React 19, Tailwind CSS 4 and Base UI. Import <code className="font-mono text-xs">glaze.css</code> then <code className="font-mono text-xs">materials.css</code> after your Tailwind styles. Set <code className="font-mono text-xs">data-material</code> to <code className="font-mono text-xs">glass</code>, <code className="font-mono text-xs">frost</code> or <code className="font-mono text-xs">aurora</code> on html or any element to change the finish.
             </p>
             <Link to="/docs/installation" className="text-primary inline-flex items-center gap-1.5 text-sm font-medium" data-icon-trigger="">
-              Full setup guide <ArrowRightIcon size={15} />
+              Full setup guide
             </Link>
           </div>
         )}
@@ -257,6 +267,63 @@ export default function Collection() {
         </p>
       </main>
     </div>
+  )
+}
+
+function useCopied() {
+  const [copied, setCopied] = React.useState(false)
+  React.useEffect(() => {
+    if (!copied) return
+    const t = setTimeout(() => setCopied(false), 1600)
+    return () => clearTimeout(t)
+  }, [copied])
+  const copy = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+    } catch {
+      /* clipboard blocked: the text stays selectable */
+    }
+  }
+  return [copied, copy] as const
+}
+
+/** The install command, readable at a glance, copied in one tap. */
+function InstallPill({ slug }: { slug: string }) {
+  const [copied, copy] = useCopied()
+  const command = `npx shadcn@latest add sumitttt4/solid-glass/${slug}#main`
+  return (
+    <button
+      type="button"
+      data-press=""
+      onClick={() => copy(command)}
+      aria-label={copied ? "Install command copied" : `Copy install command: ${command}`}
+      className="bg-foreground text-background inline-flex h-9 max-w-full min-w-0 cursor-pointer items-center gap-2.5 rounded-[10px] pr-2.5 pl-3 font-mono text-[12.5px]"
+    >
+      <span className="opacity-60">$</span>
+      <span className="truncate">npx shadcn add …/{slug}</span>
+      <CopyIcon size={15} active={copied} className="shrink-0 opacity-80" />
+      <span role="status" className="sr-only">{copied ? "Copied" : ""}</span>
+    </button>
+  )
+}
+
+const uiSources = import.meta.glob<string>("/src/components/ui/*.tsx", { query: "?raw", import: "default" })
+function CopyCodeButton({ slug }: { slug: string }) {
+  const [copied, copy] = useCopied()
+  return (
+    <button
+      type="button"
+      data-press=""
+      onClick={async () => {
+        const code = await uiSources[`/src/components/ui/${slug}.tsx`]?.()
+        if (code) await copy(code)
+      }}
+      className="border-input bg-card hover:bg-accent inline-flex h-9 cursor-pointer items-center gap-2 rounded-[10px] border px-3 text-[13px] font-medium shadow-[0_1px_2px_#15171c0d]"
+    >
+      <CopyIcon size={15} active={copied} />
+      {copied ? "Copied" : "Copy code"}
+    </button>
   )
 }
 

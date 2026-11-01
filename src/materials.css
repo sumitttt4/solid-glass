@@ -304,3 +304,22 @@ html[data-material="aurora"] body::before,
     --surface-solid: 100%;
   }
 }
+
+/* ---- Shader stages (the site's ShaderStage) ----------------------------------------------- */
+.shader-stage {
+  background-image: none;
+}
+.shader-stage-light {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.shader-stage-light canvas {
+  display: block;
+}
+.mat-stage.shader-stage[data-material="aurora"]::before {
+  content: none;
+}

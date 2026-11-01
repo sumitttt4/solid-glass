@@ -17,6 +17,7 @@ import { Kbd } from "@/components/ui/kbd"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Separator } from "@/components/ui/separator"
 import { SolidGlassMark } from "@/site/logo"
+import { GitHubButton, REPO_URL } from "@/site/github"
 import { agents, components, docs, urlOf } from "@/site/pages"
 import { useTheme } from "@/site/theme"
 import { useMaterial } from "@/site/material"
@@ -52,7 +53,7 @@ function MainNav({ className }: { className?: string }) {
       {/* the mark stands still: one that never stops moving reads as a page that shakes */}
       <Link to="/" className={cn(buttonVariants({ variant: "ghost", size: "sm" }), "mr-1 -ml-3 h-8 gap-2 px-2.5 text-sm")}>
         <SolidGlassMark className="size-5 -translate-y-px" />
-        <span className="text-[15px] font-semibold tracking-tight">Glaze</span>
+        <span className="font-display text-[22px] leading-none">Glaze</span>
       </Link>
       {NAV.map((item) => (
         <Link
@@ -257,11 +258,11 @@ function MobileNav() {
 function GitHubLink() {
   return (
     <a
-      href="https://github.com/sumitttt4/solid-glass"
+      href={REPO_URL}
       target="_blank"
       rel="noreferrer"
       title="GitHub"
-      className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-8")}
+      className={cn(buttonVariants({ variant: "ghost", size: "icon" }), "size-9 md:hidden")}
     >
       <GithubIcon size={18} />
       <span className="sr-only">GitHub</span>
@@ -303,10 +304,11 @@ export function SiteHeader() {
             <HeaderMaterial />
             <Separator orientation="vertical" className="ml-1 hidden lg:block" />
             <GitHubLink />
+            <GitHubButton size="sm" className="max-md:hidden" />
             <ModeSwitcher />
             <MobileNav />
             <Separator orientation="vertical" className="hidden lg:block" />
-            <Link to="/docs/installation" className={cn(buttonVariants({ size: "sm" }), "hidden h-8 rounded-md px-3 text-sm lg:inline-flex")}>
+            <Link to="/docs/installation" data-slot="button" data-variant="default" className={cn(buttonVariants({ size: "sm" }), "hidden h-8 rounded-[10px] px-3 text-[13px] lg:inline-flex")}>
               Get started
             </Link>
           </div>

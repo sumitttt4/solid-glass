@@ -29,21 +29,18 @@ import { DEMO_MODELS, demoRespond } from "@/lib/demo-ai"
 import { ACCENT_KEY, applyAccent } from "@/site/accent"
 import catalog from "@/site/catalog.generated.json"
 import { useMaterial } from "@/site/material"
+import { ShaderStage } from "@/site/shader-stage"
+import { GitHubButton } from "@/site/github"
 import "./home.css"
 
 const count = (category: string) => catalog.filter((e) => e.category === category).length
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return <p className="text-primary text-xs font-semibold tracking-[0.14em] uppercase">{children}</p>
-}
-
-function SectionHead({ eyebrow, title, body, aside }: { eyebrow: string; title: React.ReactNode; body?: string; aside?: React.ReactNode }) {
+function SectionHead({ title, body, aside }: { title: React.ReactNode; body?: string; aside?: React.ReactNode }) {
   return (
-    <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-      <div className="max-w-2xl">
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance sm:text-4xl">{title}</h2>
-        {body && <p className="text-muted-foreground mt-4 text-base leading-relaxed text-pretty">{body}</p>}
+    <div className="mb-12 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
+      <div className="max-w-[38rem]">
+        <h2 className="font-display text-[2.5rem] leading-[1.05] text-balance sm:text-[3.25rem]">{title}</h2>
+        {body && <p className="text-muted-foreground mt-4 text-[17px] leading-[1.6] text-pretty">{body}</p>}
       </div>
       {aside}
     </div>
@@ -56,7 +53,7 @@ function VoiceCard() {
   const levels = useSimulatedLevels(true, 28)
   const level = levels.reduce((a, b) => a + b, 0) / levels.length
   return (
-    <div className="bg-card flex flex-col items-center gap-4 rounded-2xl p-5">
+    <div className="bg-card flex flex-1 flex-col items-center justify-center gap-5 rounded-2xl p-6">
       <VoiceOrb state="listening" level={level * 1.6} size={72} />
       <AudioWaveform levels={levels} height={28} className="w-full" />
       <p className="text-muted-foreground text-center text-xs leading-relaxed">
@@ -74,7 +71,7 @@ function SettingsCard() {
     { key: "secure", label: "Two-step sign in", Icon: LockIcon },
   ]
   return (
-    <div className="bg-card flex flex-1 flex-col justify-center gap-1 rounded-2xl p-2">
+    <div className="bg-card flex flex-col gap-1 rounded-2xl p-2">
       {rows.map(({ key, label, Icon }) => (
         <label key={key} className="hover:bg-accent flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors">
           <span className="bg-muted text-muted-foreground grid size-8 place-items-center rounded-lg">
@@ -97,7 +94,7 @@ function SignInCard() {
       </div>
       <Input placeholder="you@company.com" aria-label="Work email" />
       <Button type="submit" className="w-full">
-        Continue <ArrowRightIcon size={16} />
+        Continue
       </Button>
     </form>
   )
@@ -107,14 +104,14 @@ function UsageCard() {
   const [model, setModel] = React.useState("aurora-pro")
   const bars = [38, 52, 44, 68, 57, 80, 72, 90, 64, 76, 85, 70]
   return (
-    <div className="bg-card flex flex-1 flex-col gap-4 rounded-2xl p-4">
+    <div className="bg-card flex flex-1 flex-col justify-between gap-4 rounded-2xl p-4">
       <div className="flex items-center justify-between gap-2">
         <ModelPicker models={DEMO_MODELS} value={model} onValueChange={setModel} className="-ml-1" />
         <TokenCounter used={142_000} limit={200_000} costPerMillion={3} parts={[{ label: "Files", tokens: 60_000 }, { label: "Conversation", tokens: 82_000 }]} />
       </div>
-      <div className="flex min-h-20 flex-1 items-end gap-1.5">
+      <div className="flex h-24 items-end gap-1.5">
         {bars.map((h, i) => (
-          <span key={i} className="hero-bar bg-primary flex-1 rounded-t-[4px]" style={{ height: `${h}%`, animationDelay: `${i * 40}ms`, opacity: 0.35 + (h / 100) * 0.65 }} />
+          <span key={i} className="hero-bar bg-primary dark:bg-[var(--celadon)] flex-1 rounded-t-[4px]" style={{ height: `${h}%`, animationDelay: `${i * 40}ms`, opacity: 0.35 + (h / 100) * 0.65 }} />
         ))}
       </div>
       <div className="text-muted-foreground flex justify-between text-[11px]">
@@ -130,10 +127,11 @@ function HeroShowcase() {
   const [stage, setStage] = React.useState<Material>(material === "solid" ? "aurora" : material)
   return (
     <div className="relative">
-      <div className="mb-4 flex justify-center">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-muted-foreground text-sm">Live components. Try a finish.</p>
         <MaterialPicker value={stage} onValueChange={setStage} />
       </div>
-      <div data-material={stage} className="mat-stage hero-stage rounded-[28px] p-3 sm:p-5">
+      <ShaderStage material={stage} palette="hero" animate className="hero-stage rounded-[28px] p-3 sm:p-5">
         <div className="grid gap-3 sm:gap-4 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)_minmax(0,1fr)]">
           <ChatWindow
             respond={demoRespond}
@@ -153,7 +151,7 @@ function HeroShowcase() {
             <UsageCard />
           </div>
         </div>
-      </div>
+      </ShaderStage>
     </div>
   )
 }
@@ -181,8 +179,7 @@ function MaterialsSection() {
   return (
     <section className="home-section" aria-labelledby="materials-title">
       <SectionHead
-        eyebrow="Four materials"
-        title={<span id="materials-title">One component. Solid or glass.</span>}
+        title={<span id="materials-title">One component, four finishes</span>}
         body="Every component ships in four finishes. Switch the whole site, or set one attribute on any element and only that part changes."
         aside={
           <Popover>
@@ -199,7 +196,7 @@ function MaterialsSection() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {MATERIALS.map((m) => (
           <figure key={m.value} className="flex min-w-0 flex-col gap-3">
-            <div data-material={m.value} className={cn("mat-stage grid min-h-72 place-items-center rounded-2xl p-6 ring-1 ring-border transition-shadow", m.value === material && "ring-2 ring-primary")}>
+            <ShaderStage material={m.value} shader={m.value !== "solid"} className={cn("grid min-h-72 place-items-center rounded-[20px] p-6 ring-1 ring-border", m.value === material && "ring-2 ring-primary")}>
               <div className="bg-card flex w-full max-w-[240px] flex-col gap-3 rounded-xl p-4">
                 <div className="flex items-center gap-2.5">
                   <span className="bg-primary text-primary-foreground grid size-8 place-items-center rounded-lg">
@@ -213,7 +210,7 @@ function MaterialsSection() {
                 <Input aria-label={`Email, ${m.label}`} placeholder="you@example.com" className="h-8 text-xs" />
                 <Button size="sm">Request access</Button>
               </div>
-            </div>
+            </ShaderStage>
             <figcaption className="flex items-center justify-between gap-3">
               <span>
                 <span className="block text-sm font-semibold">{m.label}</span>
@@ -226,7 +223,9 @@ function MaterialsSection() {
           </figure>
         ))}
       </div>
-      <p className="text-muted-foreground mt-6 font-mono text-xs">{`<html data-material="${material}">`}</p>
+      <p className="text-muted-foreground mt-8 text-sm">
+        In code: <code className="bg-muted text-foreground rounded-md px-1.5 py-0.5 font-mono text-[13px]">{`<html data-material="${material}">`}</code>, or the same attribute on any element.
+      </p>
     </section>
   )
 }
@@ -241,23 +240,20 @@ const CATEGORIES = [
 function CategoriesSection() {
   return (
     <section className="home-section" aria-labelledby="everything-title">
-      <SectionHead eyebrow="Everything in one place" title={<span id="everything-title">Stop collecting libraries.</span>} body="UI, AI and motion, designed together: same spacing, same type, same colours, same materials." />
+      <SectionHead title={<span id="everything-title">Stop collecting libraries</span>} body="Interface, AI and motion, designed together: one spacing scale, one type system, one set of colours and materials." />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {CATEGORIES.map((c) => (
-          <Link key={c.title} to={c.href} className="group bg-card hover:ring-primary/40 relative flex flex-col gap-4 rounded-2xl p-6 transition-shadow hover:ring-2">
+          <Link key={c.title} to={c.href} data-press="" className="group bg-card relative flex flex-col gap-5 rounded-[20px] p-6 shadow-[0_0_0_1px_var(--border)] transition-[box-shadow,transform] [@media(hover:hover)]:hover:shadow-[0_0_0_1px_var(--border),0_12px_32px_-16px_#15171c40]">
             <span className="bg-primary/10 text-primary grid size-11 place-items-center rounded-xl">
               <HugeiconsIcon icon={c.icon} size={22} />
             </span>
             <div>
-              <div className="flex items-baseline justify-between gap-2">
-                <h3 className="text-lg font-semibold tracking-tight">{c.title}</h3>
-                <span className="text-muted-foreground font-mono text-xs tabular-nums">{c.n}</span>
+              <div className="flex items-baseline justify-between gap-3">
+                <h3 className="font-display text-[1.75rem] leading-tight">{c.title}</h3>
+                <span className="text-muted-foreground text-sm tabular-nums">{c.n}</span>
               </div>
-              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{c.note}</p>
+              <p className="text-muted-foreground mt-2 text-[15px] leading-[1.55]">{c.note}</p>
             </div>
-            <span className="text-primary mt-auto inline-flex items-center gap-1.5 text-sm font-medium">
-              Explore <ArrowRightIcon size={16} />
-            </span>
           </Link>
         ))}
       </div>
@@ -270,9 +266,8 @@ function IconsSection() {
   return (
     <section className="home-section" aria-labelledby="icons-title">
       <SectionHead
-        eyebrow="Animated icons"
-        title={<span id="icons-title">Icons with a little life.</span>}
-        body="Built on Hugeicons. Each one moves the way its thing moves: bells ring, bins open, rockets launch. Or pass any Hugeicon and a preset."
+        title={<span id="icons-title">Icons that move like the thing they show</span>}
+        body="Built on Hugeicons. Bells ring, bins open, rockets launch. Hover one, or pass any of the 4,000+ Hugeicons and a motion preset."
         aside={
           <label className="flex items-center gap-2.5 text-sm font-medium">
             <Switch checked={loop} onCheckedChange={setLoop} /> Play on loop
@@ -303,21 +298,23 @@ function InstallSection() {
   return (
     <section className="home-section grid gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]" aria-labelledby="install-title">
       <div>
-        <Eyebrow>Free. All of it.</Eyebrow>
-        <h2 id="install-title" className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Install once. Never go looking again.
+        <h2 id="install-title" className="font-display text-[2.5rem] leading-[1.05] text-balance sm:text-[3.25rem]">
+          Free, all of it. Install once and stop looking.
         </h2>
-        <p className="text-muted-foreground mt-4 max-w-md text-base leading-relaxed">
-          No pro tier, no paywall. Copy one component, add it with one command, or hand the registry to your coding agent and let it pick what it needs.
+        <p className="text-muted-foreground mt-4 max-w-md text-[17px] leading-[1.6]">
+          No pro tier and no paywall. Copy one component, add it with one command, or hand the registry to your coding agent.
         </p>
-        <Button className="mt-6" nativeButton={false} render={<Link to="/docs/installation" />}>
-          Read the setup guide <ArrowRightIcon size={16} />
-        </Button>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Button size="lg" nativeButton={false} render={<Link to="/docs/installation" />}>
+            Read the setup guide
+          </Button>
+          <GitHubButton />
+        </div>
       </div>
       <div className="flex min-w-0 flex-col gap-3">
-        <CopySnippet label="1 · Theme and materials" code="npx shadcn@latest add sumitttt4/solid-glass/glaze#main" />
-        <CopySnippet label="2 · Any component" code="npx shadcn@latest add sumitttt4/solid-glass/chat-window#main" />
-        <CopySnippet label="3 · Or tell your agent" code={'Use the Glaze registry (github.com/sumitttt4/solid-glass) for UI.\nAdd components with: npx shadcn@latest add sumitttt4/solid-glass/<name>#main\nUse data-material="glass" on <html> for the glass finish.'} />
+        <CopySnippet label="Theme and materials" code="npx shadcn@latest add sumitttt4/solid-glass/glaze#main" />
+        <CopySnippet label="Any component" code="npx shadcn@latest add sumitttt4/solid-glass/chat-window#main" />
+        <CopySnippet label="Or tell your agent" code={'Use the Glaze registry (github.com/sumitttt4/solid-glass) for UI.\nAdd components with: npx shadcn@latest add sumitttt4/solid-glass/<name>#main\nUse data-material="glass" on <html> for the glass finish.'} />
       </div>
     </section>
   )
@@ -326,32 +323,24 @@ function InstallSection() {
 export default function Library() {
   return (
     <div className="home">
-      <section className="home-hero mx-auto max-w-[1400px] px-4 pt-16 pb-10 sm:px-6 sm:pt-24 lg:px-8">
-        <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
-          <Link to="/components?filter=AI+%26+Voice&component=chat-window" className="bg-card hover:bg-accent inline-flex items-center gap-2 rounded-full py-1 pr-3 pl-1 text-xs font-medium transition-colors">
-            <span className="bg-primary text-primary-foreground rounded-full px-2 py-0.5 text-[11px]">New</span>
-            <span className="sm:hidden">AI chat &amp; voice components</span>
-            <span className="max-sm:hidden">Chat window, model picker and voice components</span>
-            <ArrowRightIcon size={14} />
-          </Link>
-          <h1 className="mt-7 text-[clamp(2.4rem,5.6vw,4.5rem)] leading-[1.02] font-semibold tracking-[-0.04em] text-balance">
-            Beautiful components.
-            <br />
-            <span className="home-gradient-text">Solid or glass.</span>
+      <section className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
+        <div className="grid items-end gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
+          <h1 className="font-display text-[clamp(3.25rem,8.2vw,7.25rem)] leading-[0.94] tracking-[-0.022em] text-balance">
+            Beautiful components, solid or glass
           </h1>
-          <p className="text-muted-foreground mt-6 max-w-xl text-lg leading-relaxed text-pretty">
-            {catalog.length} free React components: UI, AI &amp; voice and animated icons, each in four materials. Copy the code, install with one command, or hand it to your agent.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button size="lg" nativeButton={false} render={<Link to="/components" />}>
-              Browse components <ArrowRightIcon size={16} />
-            </Button>
-            <Button size="lg" variant="outline" nativeButton={false} render={<Link to="/docs/installation" />}>
-              Get started
-            </Button>
+          <div className="lg:pb-3">
+            <p className="text-muted-foreground max-w-md text-[17px] leading-[1.6] text-pretty">
+              {catalog.length} free React components for interfaces, AI and voice, plus animated icons. Each comes in four finishes. Copy the code, install it with one command, or hand it to your agent.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <Button size="lg" nativeButton={false} render={<Link to="/components" />}>
+                Browse components
+              </Button>
+              <GitHubButton />
+            </div>
           </div>
         </div>
-        <div className="mt-16">
+        <div className="mt-16 sm:mt-20">
           <HeroShowcase />
         </div>
       </section>

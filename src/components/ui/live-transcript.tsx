@@ -111,7 +111,13 @@ export function useSpeechRecognition({ lang = "en-US", speaker }: { lang?: strin
   return { supported, listening, segments, interim, text, error, start, stop, reset, setSegments }
 }
 
-const stamp = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.floor(seconds % 60)).padStart(2, "0")}`
+function stamp(seconds: number) {
+  const s = Math.max(0, Math.floor(seconds))
+  const h = Math.floor(s / 3600)
+  const m = Math.floor((s % 3600) / 60)
+  const ss = String(s % 60).padStart(2, "0")
+  return h ? `${h}:${String(m).padStart(2, "0")}:${ss}` : `${m}:${ss}`
+}
 
 export type LiveTranscriptProps = React.ComponentProps<"div"> & {
   segments: TranscriptSegment[]
@@ -156,8 +162,8 @@ export function LiveTranscript({
         <div className="flex flex-col gap-2.5">
           {segments.map((segment) => (
             <div key={segment.id} data-line className="flex gap-3">
-              {showTimestamps && <span className="text-muted-foreground w-9 shrink-0 pt-px font-mono text-[11px] tabular-nums">{stamp(segment.at)}</span>}
-              <p className="min-w-0">
+              {showTimestamps && <span className="text-muted-foreground min-w-9 shrink-0 pt-px font-mono text-[11px] tabular-nums">{stamp(segment.at)}</span>}
+              <p dir="auto" className="min-w-0 [overflow-wrap:anywhere]">
                 {segment.speaker && <span className="text-primary mr-1.5 font-medium">{segment.speaker}</span>}
                 {segment.text}
               </p>
@@ -165,7 +171,7 @@ export function LiveTranscript({
           ))}
           {(interim || listening) && (
             <div data-line className="flex gap-3">
-              {showTimestamps && <span className="w-9 shrink-0" />}
+              {showTimestamps && <span className="min-w-9 shrink-0" />}
               <p className="text-muted-foreground min-w-0">
                 {interim}
                 {listening && <span aria-hidden className="bg-primary ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[3px] animate-[lt-caret_1s_steps(1)_infinite]" />}

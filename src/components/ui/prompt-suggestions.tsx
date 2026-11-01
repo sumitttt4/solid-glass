@@ -40,12 +40,13 @@ export function PromptSuggestions({
           key={s.title}
           type="button"
           onClick={() => onSelect(s.prompt ?? s.title)}
+          title={variant === "pills" ? s.title : undefined}
           style={{ animationDelay: `${i * 50}ms` }}
           className={cn(
             "group text-foreground hover:bg-accent focus-visible:ring-ring/40 cursor-pointer text-left transition-[background-color,border-color,transform] outline-none focus-visible:ring-3 active:scale-[.98]",
             variant === "cards"
               ? "bg-card flex items-start gap-3 rounded-xl p-3.5"
-              : "border-border bg-card inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-sm"
+              : "border-border bg-card inline-flex h-8 max-w-full min-w-0 items-center gap-1.5 rounded-full border px-3 text-sm"
           )}
         >
           {s.icon && (
@@ -55,11 +56,11 @@ export function PromptSuggestions({
           )}
           {variant === "cards" ? (
             <span className="min-w-0">
-              <span className="block text-sm font-medium">{s.title}</span>
-              {s.description && <span className="text-muted-foreground mt-0.5 block text-xs leading-snug">{s.description}</span>}
+              <span dir="auto" className="line-clamp-2 block text-sm font-medium [overflow-wrap:anywhere]">{s.title}</span>
+              {s.description && <span dir="auto" className="text-muted-foreground mt-0.5 line-clamp-2 block text-xs leading-snug [overflow-wrap:anywhere]">{s.description}</span>}
             </span>
           ) : (
-            <span className="font-medium">{s.title}</span>
+            <span dir="auto" className="min-w-0 truncate font-medium">{s.title}</span>
           )}
         </button>
       ))}

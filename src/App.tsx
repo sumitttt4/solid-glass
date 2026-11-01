@@ -14,6 +14,7 @@ import { SiteHeader } from "@/site/site-header"
 // The preview on the Create page is a few dozen cards and every icon by name: fetched when the page is.
 const Collection = React.lazy(() => import("@/pages/collection"))
 const Library = React.lazy(() => import("@/pages/library"))
+const DevWorst = React.lazy(() => import("@/pages/dev-worst"))
 const ColorStudy = React.lazy(() => import("@/pages/color-study"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
 const Blocks = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.Blocks })))
@@ -88,6 +89,7 @@ export function App() {
               <Route path=":slug" element={<DocPage section="docs" />} />
             </Route>
             {import.meta.env.DEV && <Route path="dev/examples" element={<DevExamples />} />}
+            {import.meta.env.DEV && <Route path="dev/worst" element={<React.Suspense fallback={null}><DevWorst /></React.Suspense>} />}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

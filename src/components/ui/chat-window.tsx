@@ -45,6 +45,7 @@ export function ChatWindow({
   title = "New chat",
   greeting = "How can I help today?",
   contextLimit = 200_000,
+  initialMessages = [],
   className,
 }: {
   respond: ChatResponder
@@ -55,9 +56,11 @@ export function ChatWindow({
   title?: string
   greeting?: string
   contextLimit?: number
+  /** A conversation to start from. */
+  initialMessages?: ChatMessage[]
   className?: string
 }) {
-  const [messages, setMessages] = React.useState<ChatMessage[]>([])
+  const [messages, setMessages] = React.useState<ChatMessage[]>(initialMessages)
   const [draft, setDraft] = React.useState("")
   const [files, setFiles] = React.useState<string[]>([])
   const [status, setStatus] = React.useState<"idle" | "thinking" | "streaming">("idle")
@@ -146,8 +149,8 @@ export function ChatWindow({
     <div data-slot="chat-window" className={cn("bg-card text-card-foreground flex h-[620px] w-full max-w-2xl flex-col overflow-hidden rounded-2xl", className)}>
       <style href="chat-window" precedence="default">{css}</style>
       <header className="border-border flex h-13 shrink-0 items-center justify-between gap-2 border-b px-3">
-        {models && model && onModelChange ? <ModelPicker models={models} value={model} onValueChange={onModelChange} /> : <span className="px-2 text-sm font-semibold">{title}</span>}
-        <div className="flex items-center gap-1">
+        {models && model && onModelChange ? <ModelPicker models={models} value={model} onValueChange={onModelChange} /> : <span className="min-w-0 truncate px-2 text-sm font-semibold">{title}</span>}
+        <div className="flex shrink-0 items-center gap-1">
           <TokenCounter
             used={tokens}
             limit={contextLimit}
@@ -165,7 +168,7 @@ export function ChatWindow({
                 setMessages([])
                 setStatus("idle")
               }}
-              className="text-muted-foreground hover:bg-accent hover:text-foreground h-8 cursor-pointer rounded-lg px-2.5 text-xs font-medium"
+              className="text-muted-foreground hover:bg-accent hover:text-foreground h-8 cursor-pointer rounded-lg px-2.5 text-xs font-medium whitespace-nowrap"
             >
               New chat
             </button>
@@ -186,12 +189,12 @@ export function ChatWindow({
               m.role === "user" ? (
                 <div key={m.id} data-message className="flex flex-col items-end gap-1.5">
                   {m.files?.map((f) => (
-                    <span key={f} className="bg-muted text-muted-foreground inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs">
-                      <HugeiconsIcon icon={File01Icon} size={14} />
-                      {f}
+                    <span key={f} title={f} className="bg-muted text-muted-foreground inline-flex max-w-[85%] min-w-0 items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs">
+                      <HugeiconsIcon icon={File01Icon} size={14} className="shrink-0" />
+                      <MiddleTruncate text={f} />
                     </span>
                   ))}
-                  {m.content && <p className="bg-secondary text-secondary-foreground max-w-[85%] rounded-2xl rounded-br-md px-4 py-2.5 text-sm leading-relaxed whitespace-pre-wrap">{m.content}</p>}
+                  {m.content && <UserBubble text={m.content} />}
                 </div>
               ) : (
                 <AssistantMessage key={m.id} message={m} streaming={status === "streaming" && i === messages.length - 1} onRetry={() => retry(m.id)} />
@@ -212,9 +215,9 @@ export function ChatWindow({
           {!!files.length && (
             <div className="flex flex-wrap gap-1.5 px-3 pt-3">
               {files.map((f) => (
-                <span key={f} className="bg-muted inline-flex items-center gap-1.5 rounded-lg py-1 pr-1 pl-2.5 text-xs font-medium">
-                  <HugeiconsIcon icon={File01Icon} size={14} className="text-muted-foreground" />
-                  {f}
+                <span key={f} title={f} className="bg-muted inline-flex max-w-full min-w-0 items-center gap-1.5 rounded-lg py-1 pr-1 pl-2.5 text-xs font-medium">
+                  <HugeiconsIcon icon={File01Icon} size={14} className="text-muted-foreground shrink-0" />
+                  <MiddleTruncate text={f} />
                   <button type="button" aria-label={`Remove ${f}`} onClick={() => setFiles((all) => all.filter((x) => x !== f))} className="hover:bg-accent grid size-5 cursor-pointer place-items-center rounded">
                     <HugeiconsIcon icon={Cancel01Icon} size={12} />
                   </button>
@@ -294,6 +297,33 @@ export function ChatWindow({
   )
 }
 
+/** Long messages fold after eight lines, with a way to read the rest. */
+function UserBubble({ text }: { text: string }) {
+  const long = text.length > 600 || text.split("\n").length > 10
+  const [open, setOpen] = React.useState(false)
+  return (
+    <div className="bg-secondary text-secondary-foreground max-w-[85%] min-w-0 rounded-2xl rounded-br-md px-4 py-2.5 text-sm leading-relaxed">
+      <p dir="auto" className={cn("whitespace-pre-wrap [overflow-wrap:anywhere]", long && !open && "line-clamp-8")}>{text}</p>
+      {long && (
+        <button type="button" onClick={() => setOpen(!open)} className="text-muted-foreground hover:text-foreground mt-1.5 cursor-pointer text-xs font-medium">
+          {open ? "Show less" : "Show more"}
+        </button>
+      )}
+    </div>
+  )
+}
+
+/** File names differ at the end (v11, v12, .pdf): keep both ends, cut the middle. */
+function MiddleTruncate({ text }: { text: string }) {
+  if (text.length <= 28) return <span className="truncate">{text}</span>
+  return (
+    <span className="flex min-w-0">
+      <span className="truncate">{text.slice(0, -12)}</span>
+      <span className="shrink-0">{text.slice(-12)}</span>
+    </span>
+  )
+}
+
 function IconButton({ label, pressed, className, children, ...props }: React.ComponentProps<"button"> & { label: string; pressed?: boolean }) {
   return (
     <button
@@ -322,7 +352,7 @@ function AssistantMessage({ message, streaming, onRetry }: { message: ChatMessag
     <div data-message className="group flex gap-3">
       <VoiceOrb state={streaming ? "speaking" : voice.speaking ? "speaking" : "idle"} level={streaming ? 0.4 : 0} size={24} className="mt-0.5" />
       <div className="min-w-0 flex-1">
-        <p className="text-sm leading-relaxed whitespace-pre-wrap">
+        <p dir="auto" className="text-sm leading-relaxed whitespace-pre-wrap [overflow-wrap:anywhere]">
           {message.content}
           {streaming && <span aria-hidden className="bg-primary ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[3px] animate-[cw-caret_1s_steps(1)_infinite]" />}
         </p>

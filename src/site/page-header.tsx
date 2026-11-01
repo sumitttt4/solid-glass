@@ -16,7 +16,7 @@ function PageHeaderHeading({ className, ...props }: React.ComponentProps<"h1">) 
   return (
     <h1
       className={cn(
-        "max-w-3xl text-3xl leading-[1.1] font-semibold tracking-tight text-balance text-foreground xl:text-5xl xl:tracking-tighter",
+        "font-display max-w-3xl text-[2.75rem] leading-[1.02] text-balance text-foreground xl:text-[4rem]",
         className
       )}
       {...props}

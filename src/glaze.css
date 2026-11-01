@@ -10,57 +10,65 @@
 /* materials.css is imported after this file: it adds Glass, Frost and Aurora beside Normal. */
 
 @theme inline {
-  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-heading: "Geist Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: "Figtree Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Instrument Serif", ui-serif, Georgia, "Times New Roman", serif;
   --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
-:root { --font-secondary: var(--font-sans); }
+:root {
+  --font-secondary: var(--font-sans);
+  /* Motion (Emil Kowalski's curves): ease-out for anything entering or leaving, ease-in-out
+     for things moving on screen, the drawer curve for sheets. Never ease-in. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}
 
-/* ---- Normal, light ------------------------------------------------------------------ */
+/* ---- Normal, light: porcelain, ink and cobalt ----------------------------------------- */
 :root, [data-material="solid"] {
-  /* The hue materials tint their glass with. */
-  --study-hue: 277;
-  --study-support: 200;
-  --study-warmth: 277;
-  --radius: 0.75rem;
-  --radius-control: 0.5rem;
+  /* The hue materials tint their glass with: cobalt. */
+  --study-hue: 264;
+  --study-support: 170;
+  --study-warmth: 240;
+  --radius: 0.875rem;
+  --radius-control: 0.625rem;
 
-  --background: oklch(0.985 0.002 286);
-  --foreground: oklch(0.21 0.006 286);
-  --panel: oklch(0.975 0.002 286);
-  --card: oklch(1 0 0);
+  --background: #f3f5f7;
+  --foreground: #15171c;
+  --panel: #eef1f4;
+  --card: #ffffff;
   --card-foreground: var(--foreground);
-  --popover: oklch(1 0 0);
+  --popover: #ffffff;
   --popover-foreground: var(--foreground);
-  --primary: oklch(0.54 0.22 277);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.955 0.003 286);
-  --secondary-foreground: oklch(0.21 0.006 286);
-  --muted: oklch(0.96 0.003 286);
-  --muted-foreground: oklch(0.52 0.016 286);
-  --accent: oklch(0.955 0.004 286);
-  --accent-foreground: oklch(0.21 0.006 286);
-  --border: oklch(0.915 0.004 286);
-  --input: oklch(0.88 0.006 286);
-  --ring: oklch(0.54 0.22 277);
-  --destructive: oklch(0.55 0.22 25);
-  --study-error: oklch(0.97 0.02 25);
-  --success: oklch(0.52 0.14 160);
+  --primary: #2445e6;
+  --primary-foreground: #ffffff;
+  --secondary: #e9edf2;
+  --secondary-foreground: #15171c;
+  --muted: #eceff3;
+  --muted-foreground: #5b6270;
+  --accent: #eceff4;
+  --accent-foreground: #15171c;
+  --border: #dfe3e9;
+  --input: #cfd5de;
+  --ring: #2445e6;
+  --destructive: #b42318;
+  --study-error: #fdf0ee;
+  --success: #17795e;
   --status-done: var(--success);
-  --status-running: oklch(0.54 0.22 277);
-  --status-interrupted: oklch(0.6 0.15 65);
-  --brand: var(--primary);
-  --brand-foreground: var(--primary-foreground);
-  --brand-muted: oklch(0.54 0.22 277 / 10%);
-  --link: oklch(0.5 0.22 277);
+  --status-running: #2445e6;
+  --status-interrupted: #b45309;
+  --brand: #2445e6;
+  --brand-foreground: #ffffff;
+  --brand-muted: #2445e61a;
+  --celadon: #8fc9b6;
+  --link: #2445e6;
 
-  --chart-1: oklch(0.54 0.22 277);
-  --chart-2: oklch(0.68 0.14 230);
-  --chart-3: oklch(0.7 0.15 165);
-  --chart-4: oklch(0.78 0.15 75);
-  --chart-5: oklch(0.65 0.2 15);
+  --chart-1: #2445e6;
+  --chart-2: #5fb39b;
+  --chart-3: #8c9bff;
+  --chart-4: #e3a93b;
+  --chart-5: #c2410c;
 
-  --sidebar: oklch(0.975 0.002 286);
+  --sidebar: #eef1f4;
   --sidebar-foreground: var(--foreground);
   --sidebar-accent: var(--accent);
   --sidebar-accent-foreground: var(--accent-foreground);
@@ -81,13 +89,13 @@
   --glass-control-rim: transparent;
   --glass-state-rim: transparent;
   --glass-edge: var(--border);
-  --glass-shade: oklch(0.2 0.02 286 / 10%);
-  --glass-contact: oklch(0.2 0.02 286 / 5%);
-  --glass-lift: oklch(0.2 0.02 286 / 8%);
+  --glass-shade: #15171c1f;
+  --glass-contact: #15171c0d;
+  --glass-lift: #15171c14;
   --popover-edge: var(--border);
   --popover-under: transparent;
   --primary-solid: 100%;
-  --primary-rim: oklch(1 0 0 / 18%);
+  --primary-rim: #ffffff2e;
   --primary-under: transparent;
   --primary-inner: transparent;
   --primary-edge: transparent;
@@ -97,7 +105,7 @@
   --focus-line: var(--primary);
   --hover: var(--accent);
   --hover-faint: var(--muted);
-  --knob: oklch(1 0 0);
+  --knob: #ffffff;
   --light-1: transparent;
   --light-2: transparent;
   --light-3: transparent;
@@ -105,49 +113,51 @@
   /* Material switches (see materials.css). */
   --surface-solid: 100%;
   --mat-outline-bg: var(--card);
-  --mat-pane: 0 0 0 1px var(--border), 0 1px 2px oklch(0.2 0.02 286 / 4%);
-  --mat-popover: 0 0 0 1px var(--border), 0 12px 32px -12px oklch(0.2 0.02 286 / 18%), 0 4px 8px -4px oklch(0.2 0.02 286 / 6%);
+  --mat-pane: 0 0 0 1px var(--border), 0 1px 2px #15171c0a;
+  --mat-popover: 0 0 0 1px #15171c14, 0 16px 36px -12px #15171c2e, 0 4px 10px -4px #15171c12;
   color-scheme: light;
   background: var(--background);
 }
 
-/* ---- Normal, dark ------------------------------------------------------------------- */
+/* ---- Normal, dark: kiln black, cobalt lifted ------------------------------------------ */
 .dark, .dark [data-material="solid"] {
   color-scheme: dark;
-  --background: oklch(0.145 0.004 286);
-  --foreground: oklch(0.975 0.002 286);
-  --panel: oklch(0.165 0.005 286);
-  --card: oklch(0.18 0.005 286);
-  --popover: oklch(0.2 0.006 286);
-  --primary: oklch(0.585 0.21 277);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.25 0.006 286);
-  --secondary-foreground: oklch(0.975 0.002 286);
-  --muted: oklch(0.23 0.006 286);
-  --muted-foreground: oklch(0.72 0.014 286);
-  --accent: oklch(0.26 0.007 286);
-  --accent-foreground: oklch(0.975 0.002 286);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.68 0.17 277);
-  --destructive: oklch(0.7 0.19 22);
-  --study-error: oklch(0.25 0.05 25);
-  --success: oklch(0.75 0.15 160);
-  --status-running: oklch(0.72 0.15 277);
-  --status-interrupted: oklch(0.8 0.14 70);
-  --link: oklch(0.75 0.14 277);
-  --chart-1: oklch(0.65 0.2 277);
-  --chart-2: oklch(0.72 0.13 230);
-  --chart-3: oklch(0.74 0.14 165);
-  --chart-4: oklch(0.8 0.14 75);
-  --chart-5: oklch(0.7 0.18 15);
-  --sidebar: oklch(0.165 0.005 286);
-  --glass-shade: oklch(0 0 0 / 50%);
-  --glass-contact: oklch(0 0 0 / 30%);
-  --glass-lift: oklch(0 0 0 / 30%);
-  --knob: oklch(1 0 0);
-  --mat-pane: 0 0 0 1px var(--border), 0 1px 2px oklch(0 0 0 / 30%);
-  --mat-popover: 0 0 0 1px var(--border), 0 16px 40px -12px oklch(0 0 0 / 60%);
+  --background: #101216;
+  --foreground: #eef0f4;
+  --panel: #14171c;
+  --card: #171a20;
+  --popover: #1c2027;
+  --primary: #5b74ff;
+  --primary-foreground: #ffffff;
+  --secondary: #222731;
+  --secondary-foreground: #eef0f4;
+  --muted: #1e222a;
+  --muted-foreground: #9aa1ae;
+  --accent: #232832;
+  --accent-foreground: #eef0f4;
+  --border: #ffffff14;
+  --input: #ffffff24;
+  --ring: #7b8fff;
+  --destructive: #f2786b;
+  --study-error: #3a1714;
+  --success: #5fc9a6;
+  --status-running: #8c9bff;
+  --status-interrupted: #f0b25a;
+  --brand: #7b8fff;
+  --celadon: #6fb8a2;
+  --link: #8c9bff;
+  --chart-1: #6f86ff;
+  --chart-2: #6fc4aa;
+  --chart-3: #a9b4ff;
+  --chart-4: #f0b25a;
+  --chart-5: #f08a5d;
+  --sidebar: #14171c;
+  --glass-shade: #00000080;
+  --glass-contact: #0000004d;
+  --glass-lift: #0000004d;
+  --knob: #ffffff;
+  --mat-pane: 0 0 0 1px var(--border), 0 1px 2px #0000004d;
+  --mat-popover: 0 0 0 1px #ffffff1a, 0 20px 44px -12px #000000b3;
 }
 
 /* ---- Panes, popovers, states -------------------------------------------------------- */
@@ -158,33 +168,33 @@
 :root :is(button,a,[tabindex]):not(input,textarea):focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 :root :is(input,textarea):focus-visible { outline: none; }
 :root :is(button,[role="button"]):disabled { opacity: .5; cursor: not-allowed; }
-:root [data-slot="composer"]:focus-within { box-shadow: var(--mat-pane), 0 0 0 3px color-mix(in oklch, var(--ring) 22%, transparent); }
+:root [data-slot="composer"]:focus-within { box-shadow: var(--mat-pane), 0 0 0 3px color-mix(in oklab, var(--ring) 22%, transparent); }
 :root [data-slot="composer"] button[aria-label="Send"]:not(:disabled) { background: var(--primary); color: var(--primary-foreground); }
 :root .study-error { color: var(--destructive); background: var(--study-error); border-color: currentColor; }
-:root ::selection { background: color-mix(in oklch, var(--primary) 22%, transparent); }
+:root ::selection { background: color-mix(in oklab, var(--primary) 22%, transparent); }
 
 /* Fields: a hairline, a whisper of shadow, and a soft ring of the signature colour on focus. */
 :root :is([data-slot="input"],[data-slot="textarea"],[data-slot="select-trigger"],[data-slot="native-select"],[data-slot="input-group"],[data-slot="combobox-chips"]):not([aria-invalid="true"]) {
   border-color: var(--input);
-  box-shadow: 0 1px 2px oklch(0.2 0.02 286 / 4%);
+  box-shadow: 0 1px 2px #15171c0a;
 }
 :root :is([data-slot="input"],[data-slot="textarea"],[data-slot="select-trigger"],[data-slot="native-select"]):focus-visible,
 :root [data-slot="input-group"]:focus-within {
   outline: none;
   border-color: var(--ring);
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 20%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 20%, transparent);
 }
 
 /* ---- Tones -----------------------------------------------------------------------------
    Five named tones for categories and emphasis (the names are kept from earlier releases):
    iris = violet, fern = emerald, clay = rose, sun = amber, ocean = sky. Unset is indigo. */
-:root { --tone-solid: oklch(0.54 0.22 277); --tone-soft: oklch(0.962 0.018 277); --tone-ink: oklch(0.45 0.2 277); --tone-edge: oklch(0.82 0.08 277); --tone-on: #fff; }
+:root { --tone-solid: #2445e6; --tone-soft: #eef1ff; --tone-ink: #1c36b8; --tone-edge: #b3c0ff; --tone-on: #fff; }
 [data-tone="iris"]  { --tone-solid: #7c3aed; --tone-soft: #f5f3ff; --tone-ink: #6d28d9; --tone-edge: #c4b5fd; --tone-on: #fff; }
 [data-tone="fern"]  { --tone-solid: #047857; --tone-soft: #ecfdf5; --tone-ink: #047857; --tone-edge: #6ee7b7; --tone-on: #fff; }
 [data-tone="clay"]  { --tone-solid: #e11d48; --tone-soft: #fff1f2; --tone-ink: #be123c; --tone-edge: #fda4af; --tone-on: #fff; }
 [data-tone="sun"]   { --tone-solid: #b45309; --tone-soft: #fffbeb; --tone-ink: #92400e; --tone-edge: #fcd34d; --tone-on: #fff; }
 [data-tone="ocean"] { --tone-solid: #0369a1; --tone-soft: #f0f9ff; --tone-ink: #075985; --tone-edge: #7dd3fc; --tone-on: #fff; }
-.dark { --tone-solid: oklch(0.585 0.21 277); --tone-soft: oklch(0.585 0.21 277 / 16%); --tone-ink: oklch(0.8 0.1 277); --tone-edge: oklch(0.585 0.21 277 / 40%); --tone-on: #fff; }
+.dark { --tone-solid: #5b74ff; --tone-soft: #5b74ff29; --tone-ink: #c3ccff; --tone-edge: #5b74ff66; --tone-on: #fff; }
 .dark [data-tone="iris"]  { --tone-solid: #a78bfa; --tone-soft: #a78bfa24; --tone-ink: #ddd6fe; --tone-edge: #a78bfa59; --tone-on: #2e1065; }
 .dark [data-tone="fern"]  { --tone-solid: #34d399; --tone-soft: #34d39921; --tone-ink: #a7f3d0; --tone-edge: #34d39952; --tone-on: #022c22; }
 .dark [data-tone="clay"]  { --tone-solid: #fb7185; --tone-soft: #fb718521; --tone-ink: #fecdd3; --tone-edge: #fb718552; --tone-on: #4c0519; }
@@ -192,34 +202,32 @@
 .dark [data-tone="ocean"] { --tone-solid: #38bdf8; --tone-soft: #38bdf821; --tone-ink: #bae6fd; --tone-edge: #38bdf852; --tone-on: #082f49; }
 [data-tone] { --primary: var(--tone-solid); --primary-foreground: var(--tone-on); --ring: var(--tone-solid); }
 .cw-tone-soft { background: var(--tone-soft); color: var(--tone-ink); border-color: var(--tone-edge); }
-[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: color-mix(in oklch,var(--tone-soft) var(--surface-solid,100%),transparent); color: var(--tone-ink); padding: 3px 10px; font-size: 12px; font-weight: 500; line-height: 1.4; }
-[data-slot="color-surface"] { -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); background: color-mix(in oklch,var(--tone-soft) var(--surface-solid,100%),transparent); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: var(--radius); padding: 24px; }
+[data-slot="tone-badge"] { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--tone-edge); border-radius: 999px; background: color-mix(in oklab,var(--tone-soft) var(--surface-solid,100%),transparent); color: var(--tone-ink); padding: 3px 10px; font-size: 12px; font-weight: 500; line-height: 1.4; }
+[data-slot="color-surface"] { -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); background: color-mix(in oklab,var(--tone-soft) var(--surface-solid,100%),transparent); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: var(--radius); padding: 24px; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
 /* ---- Buttons --------------------------------------------------------------------------
-   Primary: the signature colour with a soft inner highlight. Secondary and outline stay
-   neutral unless the button itself carries a tone. */
+   Primary is cobalt with a soft inner highlight. Secondary and outline stay neutral unless the
+   button itself carries a tone. Press feedback is a 0.97 scale on a strong ease-out; colour
+   changes on hover only where there is a real pointer. */
 :root [data-slot="button"] {
   cursor: pointer;
   font-weight: 500;
-  letter-spacing: -0.006em;
-  transition: background-color 140ms ease, border-color 140ms ease, box-shadow 140ms ease, color 140ms ease, transform 100ms ease;
+  letter-spacing: -0.005em;
+  transition: transform 160ms var(--ease-out), background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
 }
 :root [data-slot="button"][data-variant="default"] {
-  background: color-mix(in oklch, var(--primary) var(--primary-solid), transparent);
+  background: color-mix(in oklab, var(--primary) var(--primary-solid), transparent);
   -webkit-backdrop-filter: var(--glass-blur-control);
   backdrop-filter: var(--glass-blur-control);
   color: var(--primary-foreground);
-  border: 1px solid color-mix(in oklch, var(--primary), black 12%);
-  box-shadow: inset 0 1px 0 var(--primary-rim), 0 1px 2px oklch(0 0 0 / 12%), 0 2px 6px -2px color-mix(in oklch, var(--primary) 45%, transparent);
-}
-:root [data-slot="button"][data-variant="default"]:not(:disabled):hover {
-  background: color-mix(in oklch, color-mix(in oklch, var(--primary), white 9%) var(--primary-solid), transparent);
+  border: 1px solid color-mix(in oklab, var(--primary), black 14%);
+  box-shadow: inset 0 1px 0 var(--primary-rim), 0 1px 2px #0000001f, 0 3px 8px -3px color-mix(in oklab, var(--primary) 50%, transparent);
 }
 :root [data-slot="button"][data-variant="secondary"] {
   -webkit-backdrop-filter: var(--glass-blur-control);
   backdrop-filter: var(--glass-blur-control);
-  background: color-mix(in oklch, var(--secondary) var(--surface-solid), transparent);
+  background: color-mix(in oklab, var(--secondary) var(--surface-solid), transparent);
   color: var(--secondary-foreground);
   border: 1px solid transparent;
   box-shadow: none;
@@ -228,15 +236,44 @@
   background: var(--mat-outline-bg);
   color: var(--foreground);
   border: 1px solid var(--input);
-  box-shadow: 0 1px 2px oklch(0.2 0.02 286 / 5%);
+  box-shadow: 0 1px 2px #15171c0d;
 }
-:root [data-slot="button"]:is([data-variant="secondary"],[data-variant="outline"]):not(:disabled):hover { background: var(--accent); color: var(--accent-foreground); }
-:root [data-slot="button"][data-tone][data-variant="secondary"] { background: color-mix(in oklch, var(--tone-soft) var(--surface-solid), transparent); color: var(--tone-ink); border-color: var(--tone-edge); }
+:root [data-slot="button"][data-tone][data-variant="secondary"] { background: color-mix(in oklab, var(--tone-soft) var(--surface-solid), transparent); color: var(--tone-ink); border-color: var(--tone-edge); }
 :root [data-slot="button"][data-tone][data-variant="outline"] { color: var(--tone-ink); border-color: var(--tone-edge); }
-:root [data-slot="button"][data-tone]:is([data-variant="secondary"],[data-variant="outline"]):not(:disabled):hover { background: color-mix(in oklch, var(--tone-soft), var(--tone-solid) 8%); color: var(--tone-ink); border-color: var(--tone-solid); }
-:root [data-slot="button"]:not(:disabled):active { transform: translateY(0.5px) scale(0.985); }
+@media (hover: hover) and (pointer: fine) {
+  :root [data-slot="button"][data-variant="default"]:not(:disabled):hover { background: color-mix(in oklab, color-mix(in oklab, var(--primary), white 10%) var(--primary-solid), transparent); }
+  :root [data-slot="button"]:is([data-variant="secondary"],[data-variant="outline"]):not(:disabled):hover { background: var(--accent); color: var(--accent-foreground); }
+  :root [data-slot="button"][data-tone]:is([data-variant="secondary"],[data-variant="outline"]):not(:disabled):hover { background: color-mix(in oklab, var(--tone-soft), var(--tone-solid) 8%); color: var(--tone-ink); border-color: var(--tone-solid); }
+}
+:root [data-slot="button"]:not(:disabled):active { transform: scale(0.97); }
 :root [data-slot="button"]:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 :root [data-slot="button"]:disabled { cursor: not-allowed; opacity: .5; box-shadow: none; }
+/* Any other pressable thing gets the same press. */
+:root :is([data-slot="toggle"],[data-slot="toggle-group-item"],[data-slot="tabs-trigger"],[data-slot="model-picker"],[data-slot="token-counter"],[data-press]) { transition: transform 160ms var(--ease-out), background-color 150ms ease, color 150ms ease; }
+:root :is([data-slot="toggle"],[data-slot="toggle-group-item"],[data-slot="model-picker"],[data-slot="token-counter"],[data-press]):not(:disabled):active { transform: scale(0.97); }
+
+/* ---- Overlays -------------------------------------------------------------------------
+   Popovers grow out of their trigger (Base UI's --transform-origin), open in 180ms and close
+   faster than they open. Modals stay centred. The command palette, opened from the keyboard
+   many times a day, does not animate at all. */
+:root :is([data-slot="popover-content"],[data-slot="dropdown-menu-content"],[data-slot="dropdown-menu-sub-content"],[data-slot="select-content"],[data-slot="combobox-content"],[data-slot="context-menu-content"],[data-slot="context-menu-sub-content"],[data-slot="menubar-content"],[data-slot="menubar-sub-content"],[data-slot="hover-card-content"],[data-slot="navigation-menu-popup"]) {
+  transform-origin: var(--transform-origin);
+  --tw-duration: 180ms;
+  --tw-ease: var(--ease-out);
+  --tw-enter-scale: .96;
+  --tw-exit-scale: .96;
+  border-radius: 12px;
+}
+:root :is([data-slot="popover-content"],[data-slot="dropdown-menu-content"],[data-slot="dropdown-menu-sub-content"],[data-slot="select-content"],[data-slot="combobox-content"],[data-slot="context-menu-content"],[data-slot="menubar-content"],[data-slot="hover-card-content"])[data-closed] { --tw-duration: 110ms; }
+:root [data-slot="tooltip-content"] { transform-origin: var(--transform-origin); --tw-duration: 125ms; --tw-ease: var(--ease-out); --tw-enter-scale: .97; --tw-exit-scale: .97; }
+:root [data-slot="tooltip-content"][data-instant] { animation: none !important; }
+:root :is([data-slot="dialog-content"],[data-slot="alert-dialog-content"]) { --tw-duration: 200ms; --tw-ease: var(--ease-out); --tw-enter-scale: .96; --tw-exit-scale: .97; }
+:root :is([data-slot="dialog-content"],[data-slot="alert-dialog-content"])[data-closed] { --tw-duration: 140ms; }
+:root :is([data-slot="dialog-overlay"],[data-slot="alert-dialog-overlay"]) { --tw-duration: 200ms; --tw-ease: var(--ease-out); }
+:root [data-slot="sheet-content"] { transition-timing-function: var(--ease-drawer); }
+:root [data-slot="command-dialog"] [data-slot="dialog-content"], :root [data-slot="dialog-content"]:has([data-slot="command"]) { animation: none !important; }
+/* Menu rows: 32px tall, 8px in, a quiet highlight. */
+:root :is([data-slot="dropdown-menu-item"],[data-slot="context-menu-item"],[data-slot="menubar-item"],[data-slot="combobox-item"]) { min-height: 32px; border-radius: 8px; }
 
 /* Public accent hook: set --accent-solid / --accent-on and data-accent on html. */
 html[data-accent] {
@@ -259,8 +296,10 @@ html.dark[data-accent], html.dark[data-accent] [data-tone]:not([data-semantic]) 
   --tone-edge: color-mix(in srgb, var(--accent-solid) 40%, transparent);
 }
 
-/* Type: one face, real weights. */
-:root :is(h1,h2,h3,h4,[data-slot="dialog-title"],[data-slot="card-title"],[data-slot="alert-dialog-title"],[data-slot="sheet-title"],[data-slot="drawer-title"]) { letter-spacing: -0.02em; }
+/* Type: Instrument Serif for display, Figtree for everything you read and press. */
+:root .font-display { font-family: var(--font-heading); font-weight: 400; letter-spacing: -0.012em; font-feature-settings: "liga", "kern"; }
+:root :is([data-slot="dialog-title"],[data-slot="card-title"],[data-slot="alert-dialog-title"],[data-slot="sheet-title"],[data-slot="drawer-title"]) { letter-spacing: -0.01em; }
+:root body { font-family: var(--font-sans); font-feature-settings: "ss01", "cv11"; }
 :root :is([data-slot="dialog-title"],[data-slot="card-title"],[data-slot="alert-dialog-title"],[data-slot="sheet-title"],[data-slot="drawer-title"]) { font-weight: 600; }
 :root [data-slot="badge"] { font-weight: 500; }
 
@@ -282,7 +321,7 @@ html.dark[data-accent], html.dark[data-accent] [data-tone]:not([data-semantic]) 
 [data-slot="option-card"]:focus-within { outline: 2px solid var(--ring); outline-offset: 3px; }[data-slot="option-card"][data-disabled] { opacity: .5; cursor: not-allowed; }
 [data-slot="status-callout"] { display: flex; gap: 12px; align-items: flex-start; padding: 18px; background: var(--tone-soft); color: var(--tone-ink); border: 1px solid var(--tone-edge); border-radius: 10px; }
 [data-slot="status-callout"] > svg { width: 20px; height: 20px; flex-shrink: 0; }[data-slot="status-callout"] > div { flex: 1; min-width: 0; }[data-slot="status-callout"] strong { font-size: 14px; font-weight: 500; }[data-slot="status-callout"] > div > div { margin-top: 6px; font-size: 12px; line-height: 1.6; }
-[data-slot="copy-snippet"] { border: 1px solid var(--border); border-radius: 10px; background: var(--card); padding: 14px; min-width: 0; }[data-slot="copy-snippet"] > div { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 12px; }[data-slot="copy-snippet"] pre { max-width: 100%; overflow: auto; padding: 18px 0 10px; font-size: 12px; line-height: 1.7; }[data-slot="copy-snippet"] p { color: var(--muted-foreground); font-size: 12px; min-height: 18px; }
+[data-slot="copy-snippet"] { border: 1px solid var(--border); border-radius: 14px; background: var(--card); padding: 12px 12px 14px 16px; min-width: 0; }[data-slot="copy-snippet"] > div { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 12px; }[data-slot="copy-snippet"] pre { max-width: 100%; overflow: auto; padding: 10px 0 0; font-size: 12.5px; line-height: 1.7; }[data-slot="copy-snippet"] p { color: var(--muted-foreground); font-size: 12px; }[data-slot="copy-snippet"] p:empty { display: none; }
 
 /* Opaque themed controls, including portals. Native menus aren't used by the browser UI. */
 :root [data-slot="select-content"],:root [data-slot="dropdown-menu-content"],:root [data-slot="popover-content"] { background: var(--popover); color: var(--popover-foreground); -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur); }
