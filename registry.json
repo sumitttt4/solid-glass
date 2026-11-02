@@ -1683,7 +1683,8 @@
       "title": "Agent workspace",
       "description": "A workspace where an agent works: sessions, the thread, files and background tasks",
       "dependencies": [
-        "lucide-react"
+        "@hugeicons/core-free-icons",
+        "@hugeicons/react"
       ],
       "registryDependencies": [
         "sumitttt4/solid-glass/ask-card#main",
