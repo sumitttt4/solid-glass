@@ -52,7 +52,7 @@ export default function FieldDemo() {
       <form>
         <FieldGroup>
           <FieldSet>
-            <FieldLegend>Payment Method</FieldLegend>
+            <FieldLegend>Payment method</FieldLegend>
             <FieldDescription>
               All transactions are secure and encrypted
             </FieldDescription>
@@ -69,7 +69,7 @@ export default function FieldDemo() {
               </Field>
               <Field>
                 <FieldLabel htmlFor="checkout-7j9-card-number-uw1">
-                  Card Number
+                  Card number
                 </FieldLabel>
                 <Input
                   id="checkout-7j9-card-number-uw1"
@@ -128,7 +128,7 @@ export default function FieldDemo() {
           </FieldSet>
           <FieldSeparator />
           <FieldSet>
-            <FieldLegend>Billing Address</FieldLegend>
+            <FieldLegend>Billing address</FieldLegend>
             <FieldDescription>
               The billing address associated with your payment method
             </FieldDescription>

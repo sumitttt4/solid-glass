@@ -36,7 +36,7 @@ export function SelectAlignItem() {
     <FieldGroup className="w-full max-w-xs">
       <Field orientation="horizontal">
         <FieldContent>
-          <FieldLabel htmlFor="align-item">Align Item</FieldLabel>
+          <FieldLabel htmlFor="align-item">Align item</FieldLabel>
           <FieldDescription>
             Toggle to align the item with the trigger.
           </FieldDescription>

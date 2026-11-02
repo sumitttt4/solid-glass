@@ -55,7 +55,7 @@
   {
     "slug": "animated-icons",
     "title": "Animated Icons",
-    "description": "A small set of icons that move like what they stand for: hover to play, loop, or switch two-state icons.",
+    "description": "65 animated icons for dashboards and everyday actions: hover to play, loop them, or switch two-state icons.",
     "origin": "Glaze",
     "examples": [
       "animated-icons-demo",
@@ -79,7 +79,7 @@
   {
     "slug": "aspect-ratio",
     "title": "Aspect Ratio",
-    "description": "Displays content within a desired ratio.",
+    "description": "Keeps content at a fixed width-to-height ratio.",
     "origin": "shadcn/ui",
     "examples": [
       "aspect-ratio-demo",
@@ -295,7 +295,7 @@
   {
     "slug": "chart",
     "title": "Chart",
-    "description": "Beautiful charts. Built using Recharts. Copy and paste into your apps.",
+    "description": "Area, bar, line, pie and radar charts built on Recharts, styled to match the theme.",
     "origin": "shadcn/ui",
     "examples": [
       "chart-demo",
@@ -340,7 +340,7 @@
   {
     "slug": "collapsible",
     "title": "Collapsible",
-    "description": "An interactive component which expands/collapses a panel.",
+    "description": "A panel that expands and collapses.",
     "origin": "shadcn/ui",
     "examples": [
       "collapsible-demo",
@@ -402,7 +402,7 @@
   {
     "slug": "composer",
     "title": "Composer",
-    "description": "Where a message is written: a pane of glass holding its tags, its text and the mark that sends it.",
+    "description": "The message box for a chat: attachments, text and a send button.",
     "origin": "Solid Glass",
     "examples": [
       "composer-demo",
@@ -434,7 +434,7 @@
   {
     "slug": "context-ring",
     "title": "Context Ring",
-    "description": "How full the context window is, as a ring. Opened, the numbers and what it is full of.",
+    "description": "How full the context window is, shown as a ring. Click it for the numbers and a breakdown.",
     "origin": "Solid Glass",
     "examples": [
       "context-ring-demo"
@@ -445,7 +445,7 @@
   {
     "slug": "copy-snippet",
     "title": "Copy Snippet",
-    "description": "Selectable code with truthful asynchronous clipboard feedback.",
+    "description": "Code you can select or copy, with feedback that reports whether the copy actually worked.",
     "origin": "Glaze",
     "examples": [
       "copy-snippet-demo"
@@ -471,7 +471,7 @@
   {
     "slug": "diff-view",
     "title": "Diff View",
-    "description": "A patch as a diff: added and removed lines coloured, file headers dropped.",
+    "description": "A patch as a diff: added and removed lines colored, file headers dropped.",
     "origin": "Solid Glass",
     "examples": [
       "diff-view-demo"
@@ -482,7 +482,7 @@
   {
     "slug": "direction",
     "title": "Direction",
-    "description": "Editable direction component source.",
+    "description": "Sets left-to-right or right-to-left layout for the components inside it.",
     "origin": "shadcn/ui",
     "examples": [
       "direction-demo"
@@ -504,7 +504,7 @@
   {
     "slug": "drawer",
     "title": "Drawer",
-    "description": "A drawer component for React.",
+    "description": "A panel that slides in from the edge of the screen and can be dragged to close.",
     "origin": "shadcn/ui",
     "examples": [
       "drawer-demo",
@@ -521,7 +521,7 @@
   {
     "slug": "dropdown-menu",
     "title": "Dropdown Menu",
-    "description": "Displays a menu to the user — such as a set of actions or functions — triggered by a button.",
+    "description": "A menu of actions or options, opened from a button.",
     "origin": "shadcn/ui",
     "examples": [
       "dropdown-menu-demo",
@@ -543,7 +543,7 @@
   {
     "slug": "empty",
     "title": "Empty",
-    "description": "Use the Empty component to display an empty state.",
+    "description": "An empty state with an icon, a message and an action.",
     "origin": "shadcn/ui",
     "examples": [
       "empty-demo",
@@ -594,7 +594,7 @@
   {
     "slug": "input",
     "title": "Input",
-    "description": "A text input component for forms and user data entry with built-in styling and accessibility features.",
+    "description": "A text field for forms.",
     "origin": "shadcn/ui",
     "examples": [
       "input-demo",
@@ -702,7 +702,7 @@
   {
     "slug": "item",
     "title": "Item",
-    "description": "A versatile component for displaying content with media, title, description, and actions.",
+    "description": "A row for lists: media, title, description and actions.",
     "origin": "shadcn/ui",
     "examples": [
       "item-demo",
@@ -722,7 +722,7 @@
   {
     "slug": "kbd",
     "title": "Kbd",
-    "description": "Used to display textual user input from keyboard.",
+    "description": "Shows a keyboard key or shortcut.",
     "origin": "shadcn/ui",
     "examples": [
       "kbd-demo",
@@ -760,7 +760,7 @@
   {
     "slug": "markdown",
     "title": "Markdown",
-    "description": "Editable markdown component source.",
+    "description": "Renders Markdown from a model or a user, with code blocks, tables and links styled to match.",
     "origin": "shadcn/ui",
     "examples": [
       "markdown-demo"
@@ -858,7 +858,7 @@
   {
     "slug": "native-select",
     "title": "Native Select",
-    "description": "A styled native HTML select element with consistent design system integration.",
+    "description": "The browser's own select element, styled to match the theme.",
     "origin": "shadcn/ui",
     "examples": [
       "native-select-demo",
@@ -918,7 +918,7 @@
   {
     "slug": "panel",
     "title": "Panel",
-    "description": "The thinnest pane of glass, with a title bar: what a page is laid out in.",
+    "description": "A titled container for laying out the sections of a page.",
     "origin": "Solid Glass",
     "examples": [
       "panel-demo"
@@ -991,7 +991,7 @@
   {
     "slug": "radio-group",
     "title": "Radio Group",
-    "description": "A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.",
+    "description": "A set of options where only one can be selected at a time.",
     "origin": "shadcn/ui",
     "examples": [
       "radio-group-demo",
@@ -1007,7 +1007,7 @@
   {
     "slug": "reasoning",
     "title": "Reasoning",
-    "description": "The model's thinking, folded away by default.",
+    "description": "The model's reasoning, collapsed by default.",
     "origin": "Solid Glass",
     "examples": [
       "reasoning-demo"
@@ -1031,7 +1031,7 @@
   {
     "slug": "scroll-area",
     "title": "Scroll Area",
-    "description": "Augments native scroll functionality for custom, cross-browser styling.",
+    "description": "A scrollable region with slim, styled scrollbars.",
     "origin": "shadcn/ui",
     "examples": [
       "scroll-area-demo",
@@ -1043,7 +1043,7 @@
   {
     "slug": "select",
     "title": "Select",
-    "description": "Displays a list of options for the user to pick from—triggered by a button.",
+    "description": "A list of options to pick from, opened from a button.",
     "origin": "shadcn/ui",
     "examples": [
       "select-demo",
@@ -1086,7 +1086,7 @@
   {
     "slug": "sidebar",
     "title": "Sidebar",
-    "description": "A composable, themeable and customizable sidebar component.",
+    "description": "A collapsible app sidebar with groups, menus, badges and a mobile sheet.",
     "origin": "shadcn/ui",
     "examples": [
       "sidebar-demo",
@@ -1109,7 +1109,7 @@
   {
     "slug": "skeleton",
     "title": "Skeleton",
-    "description": "Use to show a placeholder while content is loading.",
+    "description": "A placeholder shape shown while content loads.",
     "origin": "shadcn/ui",
     "examples": [
       "skeleton-demo",
@@ -1141,7 +1141,7 @@
   {
     "slug": "sonner",
     "title": "Sonner",
-    "description": "Editable sonner component source.",
+    "description": "Toast notifications built on Sonner, styled to match the theme.",
     "origin": "shadcn/ui",
     "examples": [
       "sonner-demo"
@@ -1191,7 +1191,7 @@
   {
     "slug": "status-glyph",
     "title": "Status Glyph",
-    "description": "Three points of light that say a turn is going, and what it is doing.",
+    "description": "Three animated dots that show an agent is working, and what it is doing.",
     "origin": "Solid Glass",
     "examples": [
       "status-glyph-demo",
@@ -1204,7 +1204,7 @@
   {
     "slug": "streaming-text",
     "title": "Streaming Text",
-    "description": "An AI answer that arrives word by word, and shimmering text for while the model is working.",
+    "description": "An AI answer that arrives word by word, plus shimmering text for while the model is working.",
     "origin": "Glaze",
     "examples": [
       "streaming-text-demo"
@@ -1231,7 +1231,7 @@
   {
     "slug": "table",
     "title": "Table",
-    "description": "A responsive table component.",
+    "description": "A responsive table for rows of data.",
     "origin": "shadcn/ui",
     "examples": [
       "table-demo",
@@ -1244,7 +1244,7 @@
   {
     "slug": "tabs",
     "title": "Tabs",
-    "description": "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    "description": "Layered sections of content, shown one at a time.",
     "origin": "shadcn/ui",
     "examples": [
       "tabs-demo",
@@ -1259,7 +1259,7 @@
   {
     "slug": "tag",
     "title": "Tag",
-    "description": "Something attached to what is being written. While it uploads, the tag is its own progress bar.",
+    "description": "A file or reference attached to a message. While it uploads, the tag fills up as a progress bar.",
     "origin": "Solid Glass",
     "examples": [
       "tag-demo"
@@ -1270,7 +1270,7 @@
   {
     "slug": "task-notice",
     "title": "Task Notice",
-    "description": "News of something ending behind the conversation: a dot for how it went, a line for what it was.",
+    "description": "A notice that a background task has finished: a status dot and a line saying what it was.",
     "origin": "Solid Glass",
     "examples": [
       "task-notice-demo"
@@ -1370,7 +1370,7 @@
   {
     "slug": "tool-steps",
     "title": "Tool Steps",
-    "description": "A run of tool calls folded into one line, which opens to what each one did.",
+    "description": "A run of tool calls collapsed into one line that expands to show each step.",
     "origin": "Solid Glass",
     "examples": [
       "tool-steps-demo",
@@ -1396,7 +1396,7 @@
   {
     "slug": "turn-status",
     "title": "Turn Status",
-    "description": "The line a turn ends on for as long as it is going: what it is doing, for how long, and how much it has written.",
+    "description": "The status line under a running reply: what it is doing, for how long and how much it has written.",
     "origin": "Solid Glass",
     "examples": [
       "turn-status-demo",

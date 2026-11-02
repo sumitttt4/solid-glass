@@ -93,7 +93,7 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+          <NavigationMenuTrigger>With icon</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid w-[200px]">
               <li>
@@ -111,7 +111,7 @@ export default function NavigationMenuDemo() {
                   }
                 >
                   <CircleDashedIcon />
-                  To Do
+                  To do
                 </NavigationMenuLink>
                 <NavigationMenuLink
                   render={

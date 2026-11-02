@@ -26,7 +26,7 @@ export function InputGroupBlockStart() {
             placeholder="Enter your name"
           />
           <InputGroupAddon align="block-start">
-            <InputGroupText>Full Name</InputGroupText>
+            <InputGroupText>Full name</InputGroupText>
           </InputGroupAddon>
         </InputGroup>
         <FieldDescription>Header positioned above the input.</FieldDescription>

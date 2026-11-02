@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 export function RadioGroupInvalid() {
   return (
     <FieldSet className="w-full max-w-xs">
-      <FieldLegend variant="label">Notification Preferences</FieldLegend>
+      <FieldLegend variant="label">Notification preferences</FieldLegend>
       <FieldDescription>
         Choose how you want to receive notifications.
       </FieldDescription>

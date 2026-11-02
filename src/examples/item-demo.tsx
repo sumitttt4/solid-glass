@@ -15,7 +15,7 @@ export function ItemDemo() {
     <div className="flex w-full max-w-md flex-col gap-6">
       <Item variant="outline">
         <ItemContent>
-          <ItemTitle>Basic Item</ItemTitle>
+          <ItemTitle>Basic item</ItemTitle>
           <ItemDescription>
             A simple item with title and description.
           </ItemDescription>

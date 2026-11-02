@@ -15,7 +15,7 @@ export default function AlertDialogDemo() {
   return (
     <AlertDialog>
       <AlertDialogTrigger render={<Button variant="outline" />}>
-        Show Dialog
+        Show dialog
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

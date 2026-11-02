@@ -12,7 +12,7 @@ export function InputGroupBasic() {
         <Input placeholder="Placeholder" id="input-default-01" />
       </Field>
       <Field>
-        <FieldLabel htmlFor="input-group-02">Input Group</FieldLabel>
+        <FieldLabel htmlFor="input-group-02">Input group</FieldLabel>
         <InputGroup>
           <InputGroupInput id="input-group-02" placeholder="Placeholder" />
         </InputGroup>

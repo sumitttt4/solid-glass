@@ -18,7 +18,7 @@ export default function HoverCardDemo() {
         closeDelay={100}
         render={<Button variant="link" />}
       >
-        Hover Here
+        Hover here
       </HoverCardTrigger>
       <HoverCardContent className="flex w-64 flex-col gap-0.5">
         <div className="font-semibold">@nextjs</div>

@@ -430,9 +430,9 @@ export function DataTable({
           <SelectContent>
             <SelectGroup>
               <SelectItem value="outline">Outline</SelectItem>
-              <SelectItem value="past-performance">Past Performance</SelectItem>
-              <SelectItem value="key-personnel">Key Personnel</SelectItem>
-              <SelectItem value="focus-documents">Focus Documents</SelectItem>
+              <SelectItem value="past-performance">Past performance</SelectItem>
+              <SelectItem value="key-personnel">Key personnel</SelectItem>
+              <SelectItem value="focus-documents">Focus documents</SelectItem>
             </SelectGroup>
           </SelectContent>
         </Select>
@@ -444,7 +444,7 @@ export function DataTable({
           <TabsTrigger value="key-personnel">
             Key Personnel <Badge variant="secondary">2</Badge>
           </TabsTrigger>
-          <TabsTrigger value="focus-documents">Focus Documents</TabsTrigger>
+          <TabsTrigger value="focus-documents">Focus documents</TabsTrigger>
         </TabsList>
         <div className="flex items-center gap-2">
           <DropdownMenu>
@@ -481,7 +481,7 @@ export function DataTable({
           </DropdownMenu>
           <Button variant="outline" size="sm">
             <PlusIcon />
-            <span className="hidden lg:inline">Add Section</span>
+            <span className="hidden lg:inline">Add section</span>
           </Button>
         </div>
       </div>
@@ -791,18 +791,18 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                         Table of Contents
                       </SelectItem>
                       <SelectItem value="Executive Summary">
-                        Executive Summary
+                        Executive summary
                       </SelectItem>
                       <SelectItem value="Technical Approach">
-                        Technical Approach
+                        Technical approach
                       </SelectItem>
                       <SelectItem value="Design">Design</SelectItem>
                       <SelectItem value="Capabilities">Capabilities</SelectItem>
                       <SelectItem value="Focus Documents">
-                        Focus Documents
+                        Focus documents
                       </SelectItem>
                       <SelectItem value="Narrative">Narrative</SelectItem>
-                      <SelectItem value="Cover Page">Cover Page</SelectItem>
+                      <SelectItem value="Cover Page">Cover page</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -823,8 +823,8 @@ function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                   <SelectContent>
                     <SelectGroup>
                       <SelectItem value="Done">Done</SelectItem>
-                      <SelectItem value="In Progress">In Progress</SelectItem>
-                      <SelectItem value="Not Started">Not Started</SelectItem>
+                      <SelectItem value="In Progress">In progress</SelectItem>
+                      <SelectItem value="Not Started">Not started</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>

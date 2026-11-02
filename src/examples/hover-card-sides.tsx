@@ -21,7 +21,7 @@ export function HoverCardSides() {
           </HoverCardTrigger>
           <HoverCardContent side={side}>
             <div className="flex flex-col gap-1">
-              <h4 className="font-medium">Hover Card</h4>
+              <h4 className="font-medium">Hover card</h4>
               <p>This hover card appears on the {side} side of the trigger.</p>
             </div>
           </HoverCardContent>

@@ -14,18 +14,18 @@ export function RadioFields() {
   return (
     <FieldGroup>
       <FieldSet>
-        <FieldLegend variant="label">Subscription Plan</FieldLegend>
+        <FieldLegend variant="label">Subscription plan</FieldLegend>
         <RadioGroup defaultValue="free">
           <Field orientation="horizontal">
             <RadioGroupItem value="free" id="radio-free" />
             <FieldLabel htmlFor="radio-free" className="font-normal">
-              Free Plan
+              Free plan
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
             <RadioGroupItem value="pro" id="radio-pro" />
             <FieldLabel htmlFor="radio-pro" className="font-normal">
-              Pro Plan
+              Pro plan
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
@@ -37,7 +37,7 @@ export function RadioFields() {
         </RadioGroup>
       </FieldSet>
       <FieldSet>
-        <FieldLegend variant="label">Battery Level</FieldLegend>
+        <FieldLegend variant="label">Battery level</FieldLegend>
         <FieldDescription>
           Choose your preferred battery level.
         </FieldDescription>
@@ -107,7 +107,7 @@ export function RadioFields() {
         </FieldLabel>
       </RadioGroup>
       <FieldSet>
-        <FieldLegend variant="label">Invalid Radio Group</FieldLegend>
+        <FieldLegend variant="label">Invalid radio group</FieldLegend>
         <RadioGroup>
           <Field data-invalid orientation="horizontal">
             <RadioGroupItem
@@ -128,7 +128,7 @@ export function RadioFields() {
         </RadioGroup>
       </FieldSet>
       <FieldSet>
-        <FieldLegend variant="label">Disabled Radio Group</FieldLegend>
+        <FieldLegend variant="label">Disabled radio group</FieldLegend>
         <RadioGroup disabled>
           <Field data-disabled orientation="horizontal">
             <RadioGroupItem value="disabled1" id="radio-disabled-1" disabled />

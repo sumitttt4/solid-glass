@@ -48,7 +48,7 @@ export function SignupForm({
                   </Field>
                   <Field>
                     <FieldLabel htmlFor="confirm-password">
-                      Confirm Password
+                      Confirm password
                     </FieldLabel>
                     <Input id="confirm-password" type="password" required />
                   </Field>
@@ -58,7 +58,7 @@ export function SignupForm({
                 </FieldDescription>
               </Field>
               <Field>
-                <Button type="submit">Create Account</Button>
+                <Button type="submit">Create account</Button>
               </Field>
               <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
                 Or continue with
@@ -108,7 +108,7 @@ export function SignupForm({
       </Card>
       <FieldDescription className="px-6 text-center">
         By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        and <a href="#">Privacy policy</a>.
       </FieldDescription>
     </div>
   )

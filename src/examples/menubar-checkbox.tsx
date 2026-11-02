@@ -15,7 +15,7 @@ export function MenubarCheckbox() {
       <MenubarMenu>
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-64">
-          <MenubarCheckboxItem>Always Show Bookmarks Bar</MenubarCheckboxItem>
+          <MenubarCheckboxItem>Always show bookmarks bar</MenubarCheckboxItem>
           <MenubarCheckboxItem checked>
             Always Show Full URLs
           </MenubarCheckboxItem>

@@ -23,7 +23,7 @@ export function DropdownMenuRadioGroupDemo() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-32">
         <DropdownMenuGroup>
-          <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+          <DropdownMenuLabel>Panel position</DropdownMenuLabel>
           <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
             <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>

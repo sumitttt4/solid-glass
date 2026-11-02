@@ -142,7 +142,7 @@ export function InputGroupWithTooltip({
           </FieldDescription>
         </Field>
         <Field>
-          <FieldLabel htmlFor="url">Button Group</FieldLabel>
+          <FieldLabel htmlFor="url">Button group</FieldLabel>
           <ButtonGroup>
             <ButtonGroupText>https://</ButtonGroupText>
             <InputGroup>

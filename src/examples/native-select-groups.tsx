@@ -14,23 +14,23 @@ export default function NativeSelectGroups() {
         <NativeSelectOption value="devops">DevOps</NativeSelectOption>
       </NativeSelectOptGroup>
       <NativeSelectOptGroup label="Sales">
-        <NativeSelectOption value="sales-rep">Sales Rep</NativeSelectOption>
+        <NativeSelectOption value="sales-rep">Sales rep</NativeSelectOption>
         <NativeSelectOption value="account-manager">
-          Account Manager
+          Account manager
         </NativeSelectOption>
         <NativeSelectOption value="sales-director">
-          Sales Director
+          Sales director
         </NativeSelectOption>
       </NativeSelectOptGroup>
       <NativeSelectOptGroup label="Operations">
         <NativeSelectOption value="support">
-          Customer Support
+          Customer support
         </NativeSelectOption>
         <NativeSelectOption value="product-manager">
-          Product Manager
+          Product manager
         </NativeSelectOption>
         <NativeSelectOption value="ops-manager">
-          Operations Manager
+          Operations manager
         </NativeSelectOption>
       </NativeSelectOptGroup>
     </NativeSelect>

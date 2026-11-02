@@ -39,7 +39,7 @@ export function DatePickerNaturalLanguage() {
 
   return (
     <Field className="mx-auto max-w-xs">
-      <FieldLabel htmlFor="date-optional">Schedule Date</FieldLabel>
+      <FieldLabel htmlFor="date-optional">Schedule date</FieldLabel>
       <InputGroup>
         <InputGroupInput
           id="date-optional"

@@ -85,7 +85,7 @@ export function DrawerDemo() {
       swipeDirection={isMobile ? "down" : "right"}
     >
       <DrawerTrigger render={<Button variant="secondary" />}>
-        Open Drawer
+        Open drawer
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
@@ -120,7 +120,7 @@ export function DrawerDemo() {
         </div>
         <DrawerFooter>
           <Button onClick={handleConfirm} className="h-[34px]">
-            Confirm Delivery Time
+            Confirm delivery time
           </Button>
           <DrawerClose render={<Button variant="outline" />}>
             Cancel

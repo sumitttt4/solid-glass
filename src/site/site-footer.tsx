@@ -14,7 +14,7 @@ export function SiteFooter() {
         </div>
         <div className="grid grid-cols-2 gap-x-12 gap-y-2 sm:grid-cols-3">
           <Link className="text-muted-foreground hover:text-foreground" to="/components">Components</Link>
-          <Link className="text-muted-foreground hover:text-foreground" to="/components?filter=AI+%26+Voice&component=chat-window">AI &amp; Voice</Link>
+          <Link className="text-muted-foreground hover:text-foreground" to="/components?filter=AI+%26+Voice&component=chat-window">AI and voice</Link>
           <Link className="text-muted-foreground hover:text-foreground" to="/components?filter=Icons&component=animated-icons">Animated icons</Link>
           <Link className="text-muted-foreground hover:text-foreground" to="/blocks">Blocks</Link>
           <Link className="text-muted-foreground hover:text-foreground" to="/docs/installation">Installation</Link>

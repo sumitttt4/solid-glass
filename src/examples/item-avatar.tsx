@@ -64,7 +64,7 @@ export function ItemAvatar() {
           </div>
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>No Team Members</ItemTitle>
+          <ItemTitle>No team members</ItemTitle>
           <ItemDescription>
             Invite your team to collaborate on this project.
           </ItemDescription>

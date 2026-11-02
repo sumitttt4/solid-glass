@@ -28,6 +28,7 @@ const SEARCH_ALIASES: Record<string, string[]> = {
   "prompt-suggestions": ["prompts", "starter", "examples"], "token-counter": ["tokens", "context", "usage", "cost"],
 }
 const FILTERS = ["All", "AI & Voice", "Icons", "Components", "Originals"] as const
+const FILTER_LABEL: Record<(typeof FILTERS)[number], string> = { All: "All", "AI & Voice": "AI", Icons: "Icons", Components: "UI", Originals: "New" }
 type Entry = (typeof catalog)[number]
 function matches(entry: Entry, filter: string) {
   if (filter === "All") return true
@@ -112,16 +113,17 @@ export default function Collection() {
             </button>
           )}
         </label>
-        <div className="mt-3 flex flex-wrap gap-1" role="group" aria-label="Category">
+        <div className="bg-muted mt-3 grid grid-cols-5 gap-0.5 rounded-full p-1" role="group" aria-label="Category">
           {FILTERS.map((f) => (
             <button
               key={f}
               type="button"
               aria-pressed={filter === f}
               onClick={() => update({ filter: f === "All" ? null : f })}
-              className="text-muted-foreground hover:text-foreground aria-pressed:bg-foreground aria-pressed:text-background h-7 cursor-pointer rounded-full px-2.5 text-xs font-medium transition-colors"
+              title={f === "Originals" ? "Original Glaze components" : f === "Components" ? "Interface components" : undefined}
+              className="text-muted-foreground hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground h-7 cursor-pointer rounded-full text-xs font-medium transition-colors aria-pressed:shadow-[0_1px_2px_#0000001f,0_0_0_1px_var(--border)]"
             >
-              {f}
+              {FILTER_LABEL[f]}
             </button>
           ))}
         </div>

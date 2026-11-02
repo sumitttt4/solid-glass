@@ -20,18 +20,18 @@ export function DropdownMenuRadioIcons() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Payment Method
+        Payment method
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-56">
         <DropdownMenuGroup>
-          <DropdownMenuLabel>Select Payment Method</DropdownMenuLabel>
+          <DropdownMenuLabel>Select payment method</DropdownMenuLabel>
           <DropdownMenuRadioGroup
             value={paymentMethod}
             onValueChange={setPaymentMethod}
           >
             <DropdownMenuRadioItem value="card">
               <CreditCardIcon />
-              Credit Card
+              Credit card
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="paypal">
               <WalletIcon />
@@ -39,7 +39,7 @@ export function DropdownMenuRadioIcons() {
             </DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="bank">
               <Building2Icon />
-              Bank Transfer
+              Bank transfer
             </DropdownMenuRadioItem>
           </DropdownMenuRadioGroup>
         </DropdownMenuGroup>

@@ -10,7 +10,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 export function FieldRadio() {
   return (
     <FieldSet className="w-full max-w-xs">
-      <FieldLegend variant="label">Subscription Plan</FieldLegend>
+      <FieldLegend variant="label">Subscription plan</FieldLegend>
       <FieldDescription>
         Yearly and lifetime plans offer significant savings.
       </FieldDescription>

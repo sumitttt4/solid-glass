@@ -1,19 +1,26 @@
 ---
 title: Material
-description: Opaque color, deliberate boundaries and quiet depth.
+description: Normal, Glass, Frost and Aurora: one attribute changes the finish.
 order: 4
 ---
 
-## A solid foundation
+## Four finishes
 
-Glaze's Normal material uses opaque surfaces; Glass, Frost and Aurora (materials.css) bring the glass back. Background, card, panel and popover roles are distinct; tint, border and spacing establish their hierarchy.
+- **Normal** (`solid`): opaque surfaces, crisp hairlines. The default.
+- **Glass**: thick, smoky glass, lit along its top edge.
+- **Frost**: clear frosted glass over vivid light.
+- **Aurora**: frost over light that slowly moves.
 
-Legacy class names such as glass-panel remain in the inherited components for compatibility. The imported Glaze theme replaces the effects behind those names.
+```html
+<html data-material="glass">
+```
 
-## Related content, related color
+Put the attribute on `<html>` for the whole app, or on any element to change only that part. Materials nest, so a Normal card inside a Glass page stays Normal.
 
-Use a tinted surface when it groups meaningful content. Avoid giving every item a competing saturated fill. Keep actions easy to distinguish from passive content.
+## Give glass something to sit on
 
-## Read more
+Glass reads as glass only when something is behind it. The page draws soft light of its own, and the `mat-stage` class gives any box the same backdrop. Keep long text on the thicker panes.
 
-The Color language page explains component tones and foreground pairing. Installation explains the two-file theme import and branch-specific registry commands.
+## Accessibility
+
+Under the system's reduced-transparency setting, panes become nearly opaque. Under reduced motion, Aurora's light holds still.

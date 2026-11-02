@@ -6,6 +6,8 @@ import { AiChat02Icon, DashboardSquare01Icon, LayoutGridIcon, MagicWand01Icon } 
 import { cn } from "@/lib/utils"
 import {
   animatedIcons,
+  dashboardIcons,
+  type AnimatedIconProps,
   ArrowRightIcon,
   BellIcon,
   LockIcon,
@@ -185,10 +187,10 @@ function MaterialsSection() {
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               <span className="size-3.5 rounded-full ring-1 ring-black/10" style={{ background: accent || "var(--primary)" }} />
-              Accent colour
+              Accent color
             </PopoverTrigger>
             <PopoverContent align="end" className="w-[min(92vw,460px)] p-0">
-              <PalettePicker label="Accent colour" value={accent} onValueChange={changeAccent} />
+              <PalettePicker label="Accent color" value={accent} onValueChange={changeAccent} />
             </PopoverContent>
           </Popover>
         }
@@ -233,14 +235,14 @@ function MaterialsSection() {
 const CATEGORIES = [
   { title: "UI components", note: "Buttons, forms, overlays, data, navigation: the full shadcn/ui set, refined.", href: "/components", n: count("Components"), icon: LayoutGridIcon },
   { title: "AI & voice", note: "Chat window, model picker, token counter, live transcription, voice orb and more.", href: "/components?filter=AI+%26+Voice&component=chat-window", n: count("AI & Voice"), icon: AiChat02Icon },
-  { title: "Animated icons", note: "Hugeicons that move like what they stand for. Animate any of 4,000+.", href: "/components?filter=Icons&component=animated-icons", n: Object.keys(animatedIcons).length, icon: MagicWand01Icon },
+  { title: "Animated icons", note: "Hugeicons that move like what they stand for. Animate any of 4,000+.", href: "/components?filter=Icons&component=animated-icons", n: Object.keys(animatedIcons).length + Object.keys(dashboardIcons).length, icon: MagicWand01Icon },
   { title: "Blocks", note: "Dashboards, sign-in pages and sidebars, ready to drop in.", href: "/blocks", n: 12, icon: DashboardSquare01Icon },
 ]
 
 function CategoriesSection() {
   return (
     <section className="home-section" aria-labelledby="everything-title">
-      <SectionHead title={<span id="everything-title">Stop collecting libraries</span>} body="Interface, AI and motion, designed together: one spacing scale, one type system, one set of colours and materials." />
+      <SectionHead title={<span id="everything-title">Stop collecting libraries</span>} body="Interface, AI and motion, designed together: one spacing scale, one type system, one set of colors and materials." />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {CATEGORIES.map((c) => (
           <Link key={c.title} to={c.href} data-press="" className="group bg-card relative flex flex-col gap-5 rounded-[20px] p-6 shadow-[0_0_0_1px_var(--border)] transition-[box-shadow,transform] [@media(hover:hover)]:hover:shadow-[0_0_0_1px_var(--border),0_12px_32px_-16px_#15171c40]">
@@ -267,7 +269,7 @@ function IconsSection() {
     <section className="home-section" aria-labelledby="icons-title">
       <SectionHead
         title={<span id="icons-title">Icons that move like the thing they show</span>}
-        body="Built on Hugeicons. Bells ring, bins open, rockets launch. Hover one, or pass any of the 4,000+ Hugeicons and a motion preset."
+        body="Built on Hugeicons, with a full dashboard set: charts that grow, filters that slide, bells that ring. Hover one, or pass any of the 4,000+ Hugeicons and a motion preset."
         aside={
           <label className="flex items-center gap-2.5 text-sm font-medium">
             <Switch checked={loop} onCheckedChange={setLoop} /> Play on loop
@@ -275,8 +277,8 @@ function IconsSection() {
         }
       />
       <div className="grid grid-cols-[repeat(auto-fill,minmax(64px,1fr))] gap-2.5">
-        {(Object.keys(animatedIcons) as AnimatedIconName[]).map((name) => {
-          const Icon = animatedIcons[name]
+        {Object.entries({ ...dashboardIcons, ...animatedIcons }).map(([name, Glyph]) => {
+          const Icon = Glyph as React.ComponentType<AnimatedIconProps>
           return (
             <Link
               key={name}
@@ -326,11 +328,11 @@ export default function Library() {
       <section className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
         <div className="grid items-end gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
           <h1 className="font-display text-[2.25rem] leading-[1.08] text-balance sm:text-[clamp(3rem,6vw,5.25rem)] sm:leading-[1.02] sm:tracking-[-0.045em]">
-            Beautiful components, solid or glass
+            React components, solid or glass
           </h1>
           <div className="lg:pb-3">
             <p className="text-muted-foreground max-w-md text-base leading-[1.6] sm:text-[17px] text-pretty">
-              {catalog.length} free React components for interfaces, AI and voice, plus animated icons. Each comes in four finishes. Copy the code, install it with one command, or hand it to your agent.
+              {catalog.length} free components for interfaces, AI and voice, plus animated icons. Each comes in four finishes. Copy the code, install it with one command, or hand it to your agent.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button size="lg" nativeButton={false} render={<Link to="/components" />}>

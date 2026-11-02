@@ -27,7 +27,7 @@ export function DropdownMenuCheckboxesIcons() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">
         <DropdownMenuGroup>
-          <DropdownMenuLabel>Notification Preferences</DropdownMenuLabel>
+          <DropdownMenuLabel>Notification preferences</DropdownMenuLabel>
           <DropdownMenuCheckboxItem
             checked={notifications.email}
             onCheckedChange={(checked) =>

@@ -36,7 +36,7 @@ export default function ButtonGroupDropdown() {
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <VolumeOffIcon />
-              Mute Conversation
+              Mute conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
               <CheckIcon />
@@ -44,26 +44,26 @@ export default function ButtonGroupDropdown() {
             </DropdownMenuItem>
             <DropdownMenuItem>
               <AlertTriangleIcon />
-              Report Conversation
+              Report conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
               <UserRoundXIcon />
-              Block User
+              Block user
             </DropdownMenuItem>
             <DropdownMenuItem>
               <ShareIcon />
-              Share Conversation
+              Share conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
               <CopyIcon />
-              Copy Conversation
+              Copy conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
             <DropdownMenuItem variant="destructive">
               <TrashIcon />
-              Delete Conversation
+              Delete conversation
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>

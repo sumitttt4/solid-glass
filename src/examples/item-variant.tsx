@@ -16,7 +16,7 @@ export function ItemVariant() {
           <InboxIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Default Variant</ItemTitle>
+          <ItemTitle>Default variant</ItemTitle>
           <ItemDescription>
             Transparent background with no border.
           </ItemDescription>
@@ -27,7 +27,7 @@ export function ItemVariant() {
           <InboxIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Outline Variant</ItemTitle>
+          <ItemTitle>Outline variant</ItemTitle>
           <ItemDescription>
             Outlined style with a visible border.
           </ItemDescription>
@@ -38,7 +38,7 @@ export function ItemVariant() {
           <InboxIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Muted Variant</ItemTitle>
+          <ItemTitle>Muted variant</ItemTitle>
           <ItemDescription>
             Muted background for secondary content.
           </ItemDescription>

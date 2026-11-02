@@ -1,18 +1,19 @@
 import * as React from "react"
 import {
-  ChevronRightIcon,
-  FileTextIcon,
-  FolderIcon,
-  FolderPlusIcon,
-  ListChecksIcon,
-  PanelLeftIcon,
-  PlusIcon,
-  RefreshCwIcon,
-  SearchIcon,
-  SquareIcon,
-  UploadIcon,
-  XIcon,
-} from "lucide-react"
+  Add01Icon,
+  ArrowRight01Icon,
+  Cancel01Icon,
+  CheckListIcon,
+  File01Icon,
+  Folder01Icon,
+  FolderAddIcon,
+  RefreshIcon,
+  Search01Icon,
+  SidebarLeft01Icon,
+  StopIcon,
+  Upload01Icon,
+} from "@hugeicons/core-free-icons"
+import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react"
 
 import { cn } from "@/lib/utils"
 import { AskCard } from "@/components/ui/ask-card"
@@ -24,6 +25,25 @@ import { Panel, PanelRow } from "@/components/ui/panel"
 import { Tag } from "@/components/ui/tag"
 import { StepGroup, type Step } from "@/components/ui/tool-steps"
 import { TurnStatus } from "@/components/ui/turn-status"
+
+type IconProps = { className?: string; strokeWidth?: number }
+/** A Hugeicons glyph sized by its class, like the rest of the library's icons. */
+const icon = (svg: IconSvgElement) =>
+  function Icon({ className, strokeWidth = 1.6 }: IconProps) {
+    return <HugeiconsIcon icon={svg} strokeWidth={strokeWidth} className={cn("size-4", className)} aria-hidden />
+  }
+const ChevronRightIcon = icon(ArrowRight01Icon)
+const FileTextIcon = icon(File01Icon)
+const FolderIcon = icon(Folder01Icon)
+const FolderPlusIcon = icon(FolderAddIcon)
+const ListChecksIcon = icon(CheckListIcon)
+const PanelLeftIcon = icon(SidebarLeft01Icon)
+const PlusIcon = icon(Add01Icon)
+const RefreshCwIcon = icon(RefreshIcon)
+const SearchIcon = icon(Search01Icon)
+const SquareIcon = icon(StopIcon)
+const UploadIcon = icon(Upload01Icon)
+const XIcon = icon(Cancel01Icon)
 
 /**
  * Agent workspace: an application where an agent works, whole. Sessions on the left, the thread in
@@ -256,15 +276,15 @@ function Tree({
                 onClick={() => (node.children ? onToggle(path) : onChoose(path))}
                 style={{ paddingLeft: 6 + depth * INDENT }}
                 className={cn(
-                  "flex w-full items-center gap-1 rounded-sm py-[3px] pr-2 text-left transition-colors outline-none hover:bg-accent focus-visible:bg-accent",
-                  chosen === path && "glass-chosen"
+                  "tree-row flex w-full items-center gap-1.5 rounded-md py-1 pr-2 text-left text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:bg-accent",
+                  chosen === path && "bg-accent font-medium text-foreground"
                 )}
               >
                 {node.children ? (
                   <ChevronRightIcon strokeWidth={1.5} className={cn("size-3.5 shrink-0 text-muted-foreground transition-transform", shown && "rotate-90")} />
                 ) : (
                   // where a folder has its chevron, and as light: the name is what is read
-                  <FileTextIcon strokeWidth={1.5} className="ml-0.5 size-3 shrink-0 text-muted-foreground/70" />
+                  <FileTextIcon strokeWidth={1.5} className="ml-0.5 size-3.5 shrink-0 text-muted-foreground/80" />
                 )}
                 <span className="min-w-0 flex-1 truncate text-[12.5px]">{node.name}</span>
                 {node.size && <span className="shrink-0 text-[11px] text-muted-foreground/80 tabular-nums">{node.size}</span>}

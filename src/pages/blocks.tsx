@@ -138,30 +138,30 @@ export function Blocks() {
   const [category, setCategory] = React.useState<(typeof CATEGORIES)[number]>("Featured")
   const shown = blocks.filter((block) => (category === "Featured" ? block.featured : block.category === category))
   return (
-    <div className="flex flex-1 flex-col">
-      <PageHeader>
-        <PageHeaderHeading>Whole screens, in the material</PageHeaderHeading>
-        <PageHeaderDescription>
-          Blocks are finished screens made of the components, with made-up data in them. Look at one, read it, then copy it in and make it yours.
-        </PageHeaderDescription>
-        <PageActions>
-          <a href="#blocks" className={cn(buttonVariants(), "h-[35px] px-3")}>
-            Browse Blocks
-          </a>
-          <Link to="/docs/components" data-slot="button" data-variant="secondary" className={cn(buttonVariants({ variant: "secondary" }), "h-[35px] px-3")}>
-            View Components
-          </Link>
-        </PageActions>
-      </PageHeader>
-      <div id="blocks" className="container-wrapper flex scroll-mt-20 flex-col gap-14 px-6 pb-20">
-        <div className="flex items-center gap-1 overflow-x-auto">
+    <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-4 sm:px-6 lg:px-8">
+      <header className="flex flex-wrap items-end justify-between gap-x-10 gap-y-6 pt-16 pb-10 sm:pt-20">
+        <div className="max-w-2xl">
+          <h1 className="font-display text-[2.25rem] leading-[1.08] sm:text-[3.25rem] sm:leading-[1.04]">Blocks</h1>
+          <p className="text-muted-foreground mt-4 text-base leading-[1.6] text-pretty sm:text-[17px]">
+            Whole screens built from the components, with made-up data: dashboards, sign-in pages, sidebars and an agent workspace. Open one, read the code, copy it in.
+          </p>
+        </div>
+        <Link to="/components" data-slot="button" data-variant="outline" className={cn(buttonVariants({ variant: "outline" }), "h-9 rounded-[10px] px-3.5")}>
+          All components
+        </Link>
+      </header>
+      <div id="blocks" className="flex scroll-mt-20 flex-col gap-14 pb-24">
+        <div role="group" aria-label="Category" className="bg-muted inline-flex w-fit max-w-full gap-0.5 overflow-x-auto rounded-full p-1">
           {CATEGORIES.map((name) => (
             <button
               key={name}
               type="button"
               aria-pressed={category === name}
               onClick={() => setCategory(name)}
-              className={cn("h-8 shrink-0 rounded-md px-3 text-[15px] font-medium text-muted-foreground outline-none hover:text-foreground", category === name && "glass-chosen text-foreground")}
+              className={cn(
+                "h-8 shrink-0 cursor-pointer rounded-full px-3.5 text-sm font-medium text-muted-foreground outline-none transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring",
+                category === name && "bg-card text-foreground shadow-[0_1px_2px_#0000001f,0_0_0_1px_var(--border)]"
+              )}
             >
               {name}
             </button>

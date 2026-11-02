@@ -29,7 +29,7 @@ export function ButtonGroupNested() {
             <TooltipTrigger render={<InputGroupAddon align="inline-end" />}>
               <AudioLinesIcon />
             </TooltipTrigger>
-            <TooltipContent>Voice Mode</TooltipContent>
+            <TooltipContent>Voice mode</TooltipContent>
           </Tooltip>
         </InputGroup>
       </ButtonGroup>

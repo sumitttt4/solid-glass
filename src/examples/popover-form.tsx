@@ -15,7 +15,7 @@ export function PopoverForm() {
     <>
       <Popover>
         <PopoverTrigger render={<Button variant="outline" />}>
-          Open Popover
+          Open popover
         </PopoverTrigger>
         <PopoverContent className="w-64" align="start">
           <PopoverHeader>

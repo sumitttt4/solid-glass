@@ -19,7 +19,7 @@ export function ToastPromise() {
 
   return (
     <Button variant="outline" onClick={showToast}>
-      Create Event
+      Create event
     </Button>
   )
 }

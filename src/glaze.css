@@ -2,7 +2,7 @@
  * Glaze — the theme. Built on Solid Glass and shadcn/ui; see LICENSE and NOTICE.md.
  *
  * Neutral surfaces (zinc), one signature colour (indigo), five tones for categories and
- * emphasis, one typeface (Geist). Import after Tailwind and shadcn's stylesheet, then import
+ * emphasis, one typeface (Manrope). Import after Tailwind and shadcn's stylesheet, then import
  * materials.css for Glass, Frost and Aurora. Solid Glass's own hooks stay in place underneath,
  * so every inherited component keeps working.
  */
@@ -351,3 +351,6 @@ html.dark[data-accent], html.dark[data-accent] [data-tone]:not([data-semantic]) 
 :root [data-slot="palette-picker"] .palette-error { font-size: 12px; margin-top: 12px; color: var(--destructive); }
 :root [data-slot="palette-picker"] .palette-quick { display: flex; gap: 12px; flex-wrap: wrap; }
 .palette-mobile-hint { display: none; }@media(max-width:480px) { .palette-mobile-hint { display: block; font-size: 10px; line-height: 1.5; color: var(--muted-foreground); margin-top: 10px; } }
+
+/* Dense list rows (file trees): focus shows as the row's own fill, never a ring drawn outside it. */
+:root button.tree-row:focus-visible { outline: none; }

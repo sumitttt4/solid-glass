@@ -18,7 +18,7 @@ export function AlertDialogSmallWithMedia() {
   return (
     <AlertDialog>
       <AlertDialogTrigger
-        render={<Button variant="outline">Show Dialog</Button>}
+        render={<Button variant="outline">Show dialog</Button>}
       />
 
       <AlertDialogContent size="sm">

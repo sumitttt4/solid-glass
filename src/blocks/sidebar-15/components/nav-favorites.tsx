@@ -62,7 +62,7 @@ export function NavFavorites({
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <LinkIcon className="text-muted-foreground" />
-                  <span>Copy Link</span>
+                  <span>Copy link</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <ArrowUpRightIcon className="text-muted-foreground" />

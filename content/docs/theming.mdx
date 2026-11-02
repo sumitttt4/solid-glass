@@ -1,19 +1,28 @@
 ---
 title: Theming
-description: Adapt the roles without changing component structure.
+description: Change the roles, keep the components.
 order: 5
 ---
 
-## Start with paired values
+## The files
 
-Change surface and text values together. Glaze keeps the familiar shadcn variable names for background, foreground, primary, secondary, accent, border and ring.
+- `glaze.css`: colors, type, controls and motion. It imports `solid-glass.css`, the foundation.
+- `materials.css`: Glass, Frost and Aurora.
 
-The five tone roles use --tone-solid, --tone-on, --tone-soft, --tone-ink and --tone-edge. Put data-tone="fern" on a subtree, or use the tone prop on a ColorSurface or ToneBadge. The surface's primary action inherits the tone's solid/on pair.
+Import both after Tailwind, and keep `solid-glass.css` beside them.
 
-## Compatibility
+## Change the roles
 
-glaze.css imports solid-glass.css first, then replaces color roles, blur, highlights and selected states. materials.css, imported after it, brings glass back as three switchable materials (Glass, Frost, Aurora) beside Normal. Keep all three files when copying. Removing inherited selectors without auditing every component can break states.
+Glaze keeps shadcn/ui's variable names: `--background`, `--foreground`, `--card`, `--popover`, `--primary`, `--secondary`, `--muted`, `--accent`, `--border`, `--input` and `--ring`. Change a surface and its text together, in both `:root` and `.dark`.
 
-## Verify the result
+## Type
 
-Inspect light and dark at desktop and mobile widths. Check normal text, hover, focus, disabled controls, open menus, errors and long labels. A successful build is not proof of readable color.
+Manrope throughout: regular for reading, medium for controls, semibold for headings. Swap `--font-sans` and `--font-heading` to change it.
+
+## Motion
+
+Overlays use custom ease-out curves (`--ease-out`, `--ease-in-out`, `--ease-drawer`). Popovers grow from their trigger in 180ms and close faster, dialogs stay centered, and buttons scale to 0.97 when pressed. Reduced motion is respected everywhere.
+
+## Check it
+
+Look at light and dark, at desktop and phone widths, with menus open, errors showing and long labels in place.

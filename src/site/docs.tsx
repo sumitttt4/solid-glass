@@ -41,33 +41,25 @@ function SidebarLink({ to, end, children }: { to: string; end?: boolean; childre
 
 export function DocsLayout() {
   return (
-    <div className="container-wrapper flex flex-1 flex-col px-2">
-      <div className="min-h-min flex-1 items-start px-0 [--sidebar-width:calc(var(--spacing)*72)] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--top-spacing:calc(var(--spacing)*4)]">
+    <div className="mx-auto flex w-full max-w-[1400px] flex-1 flex-col px-4 sm:px-6 lg:px-8">
+      <div className="min-h-min flex-1 items-start px-0 [--sidebar-width:calc(var(--spacing)*52)] [--top-spacing:0] lg:grid lg:grid-cols-[var(--sidebar-width)_minmax(0,1fr)] lg:[--top-spacing:calc(var(--spacing)*4)]">
         <aside className="sticky top-[calc(var(--header-height)+0.6rem)] z-30 hidden h-[calc(100svh-10rem)] overscroll-none lg:flex">
-          <div className="no-scrollbar w-(--sidebar-width) overflow-y-auto px-2 pt-(--top-spacing) pb-12 [mask-image:linear-gradient(to_bottom,black_calc(100%-3rem),transparent)]">
-            <SidebarGroup label="Sections">
+          <div className="no-scrollbar w-(--sidebar-width) overflow-y-auto pt-(--top-spacing) pr-6 pb-12">
+            {/* The guide only: every component already has its own page and list at /components. */}
+            <SidebarGroup label="Guide">
               {docs.map((page) => (
                 <SidebarLink key={page.slug} to={urlOf(page)} end>
                   {page.title}
                 </SidebarLink>
               ))}
-              <SidebarLink to="/docs/components" end>
-                Components
+            </SidebarGroup>
+            <SidebarGroup label="Library">
+              <SidebarLink to="/components" end>
+                All components
               </SidebarLink>
-            </SidebarGroup>
-            <SidebarGroup label="Components">
-              {components.map((page) => (
-                <SidebarLink key={page.slug} to={urlOf(page)}>
-                  {page.title}
-                </SidebarLink>
-              ))}
-            </SidebarGroup>
-            <SidebarGroup label="Agents">
-              {agents.map((page) => (
-                <SidebarLink key={page.slug} to={urlOf(page)}>
-                  {page.title}
-                </SidebarLink>
-              ))}
+              <SidebarLink to="/blocks" end>
+                Blocks
+              </SidebarLink>
             </SidebarGroup>
           </div>
         </aside>
@@ -290,7 +282,7 @@ function TableOfContents({ page }: { page: Page }) {
   if (!headings.length) return null
   return (
     <div className="flex flex-col gap-2 p-4 pt-0 text-sm">
-      <p className="sticky top-0 h-6 bg-background text-xs font-medium text-muted-foreground">On This Page</p>
+      <p className="sticky top-0 h-6 bg-background text-xs font-medium text-muted-foreground">On this page</p>
       {headings.map((heading) => (
         <a
           key={heading.id}
@@ -333,25 +325,20 @@ function DocShell({ title, description, url, toc, children }: { title: string; d
     <div data-slot="docs" className="flex scroll-mt-24 items-stretch pb-8 text-[1.05rem] sm:text-[15px] xl:w-full">
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-4 py-6 text-foreground md:px-0 lg:py-8">
+        <div className="mx-auto flex w-full max-w-180 min-w-0 flex-1 flex-col gap-6 py-6 text-foreground lg:py-8">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between md:items-start">
-              <h1 className="font-display scroll-m-24 text-[2rem] leading-[1.12] sm:text-[2.25rem]">{title}</h1>
-              <div className="ml-auto flex gap-2">
-                <Neighbours url={url} />
-              </div>
-            </div>
+            <h1 className="font-display scroll-m-24 text-[2rem] leading-[1.12] sm:text-[2.25rem]">{title}</h1>
             {description && <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]">{description}</p>}
           </div>
-          <div className="w-full flex-1 pb-16 sm:pb-0">{children}</div>
-          <div className="hidden h-16 w-full items-center gap-2 px-4 sm:flex sm:px-0">
+          <div className="w-full flex-1">{children}</div>
+          <div className="flex w-full items-center gap-2 border-t pt-6">
             <Neighbours url={url} labelled />
           </div>
         </div>
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
         <div className="h-(--top-spacing) shrink-0" />
-        <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto px-8">{toc}</div>
+        <div className="no-scrollbar flex flex-col gap-8 overflow-y-auto pl-8">{toc}</div>
       </div>
     </div>
   )
@@ -402,7 +389,7 @@ export function ComponentsIndex() {
   return (
     <DocShell
       title="Components"
-      description="Here you can find all the components available in the library, with the Glaze theme."
+      description="Every component in the library, in the Glaze theme."
       url="/docs/components"
     >
       <h2 id="all-components" className="mt-10 mb-6 scroll-m-28 text-xl font-medium tracking-tight first:mt-0">

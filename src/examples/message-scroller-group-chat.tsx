@@ -112,7 +112,7 @@ export function MessageScrollerGroupChat() {
       <div className="relative flex flex-col gap-4">
         <Card className="mx-auto h-140 w-full max-w-sm gap-0">
           <CardHeader className="gap-1 border-b">
-            <CardTitle>Group Chat</CardTitle>
+            <CardTitle>Group chat</CardTitle>
             <CardDescription>
               A group chat with several participants and an assistant. The
               Marker is marked as a turn.

@@ -14,7 +14,7 @@ export default function FieldChoiceCard() {
   return (
     <FieldGroup className="w-full max-w-xs">
       <FieldSet>
-        <FieldLegend variant="label">Compute Environment</FieldLegend>
+        <FieldLegend variant="label">Compute environment</FieldLegend>
         <FieldDescription>
           Select the compute environment for your cluster.
         </FieldDescription>
@@ -33,7 +33,7 @@ export default function FieldChoiceCard() {
           <FieldLabel htmlFor="vm-z4k">
             <Field orientation="horizontal">
               <FieldContent>
-                <FieldTitle>Virtual Machine</FieldTitle>
+                <FieldTitle>Virtual machine</FieldTitle>
                 <FieldDescription>
                   Access a cluster to run GPU workloads.
                 </FieldDescription>

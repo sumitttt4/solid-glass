@@ -51,7 +51,7 @@ export function DropdownMenuAvatar() {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <LogOutIcon />
-          Sign Out
+          Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

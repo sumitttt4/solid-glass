@@ -59,30 +59,30 @@ export function DropdownMenuComplex() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Complex Menu
+        Complex menu
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-44">
         <DropdownMenuGroup>
           <DropdownMenuLabel>File</DropdownMenuLabel>
           <DropdownMenuItem>
             <FileIcon />
-            New File
+            New file
             <DropdownMenuShortcut>⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <FolderIcon />
-            New Folder
+            New folder
             <DropdownMenuShortcut>⇧⌘N</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
               <FolderOpenIcon />
-              Open Recent
+              Open recent
             </DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
                 <DropdownMenuGroup>
-                  <DropdownMenuLabel>Recent Projects</DropdownMenuLabel>
+                  <DropdownMenuLabel>Recent projects</DropdownMenuLabel>
                   <DropdownMenuItem>
                     <FileCodeIcon />
                     Project Alpha
@@ -94,7 +94,7 @@ export function DropdownMenuComplex() {
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger>
                       <MoreHorizontalIcon />
-                      More Projects
+                      More projects
                     </DropdownMenuSubTrigger>
                     <DropdownMenuPortal>
                       <DropdownMenuSubContent>
@@ -142,7 +142,7 @@ export function DropdownMenuComplex() {
             }
           >
             <EyeIcon />
-            Show Sidebar
+            Show sidebar
           </DropdownMenuCheckboxItem>
           <DropdownMenuCheckboxItem
             checked={notifications.sms}
@@ -151,7 +151,7 @@ export function DropdownMenuComplex() {
             }
           >
             <LayoutIcon />
-            Show Status Bar
+            Show status bar
           </DropdownMenuCheckboxItem>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>
@@ -207,7 +207,7 @@ export function DropdownMenuComplex() {
                   <DropdownMenuLabel>Preferences</DropdownMenuLabel>
                   <DropdownMenuItem>
                     <KeyboardIcon />
-                    Keyboard Shortcuts
+                    Keyboard shortcuts
                   </DropdownMenuItem>
                   <DropdownMenuItem>
                     <LanguagesIcon />
@@ -222,7 +222,7 @@ export function DropdownMenuComplex() {
                       <DropdownMenuSubContent>
                         <DropdownMenuGroup>
                           <DropdownMenuLabel>
-                            Notification Types
+                            Notification types
                           </DropdownMenuLabel>
                           <DropdownMenuCheckboxItem
                             checked={notifications.push}
@@ -234,7 +234,7 @@ export function DropdownMenuComplex() {
                             }
                           >
                             <BellIcon />
-                            Push Notifications
+                            Push notifications
                           </DropdownMenuCheckboxItem>
                           <DropdownMenuCheckboxItem
                             checked={notifications.email}
@@ -246,7 +246,7 @@ export function DropdownMenuComplex() {
                             }
                           >
                             <MailIcon />
-                            Email Notifications
+                            Email notifications
                           </DropdownMenuCheckboxItem>
                         </DropdownMenuGroup>
                       </DropdownMenuSubContent>
@@ -279,7 +279,7 @@ export function DropdownMenuComplex() {
         <DropdownMenuGroup>
           <DropdownMenuItem variant="destructive">
             <LogOutIcon />
-            Sign Out
+            Sign out
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>

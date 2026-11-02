@@ -18,7 +18,7 @@ export function ItemIcon() {
           <ShieldAlertIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Security Alert</ItemTitle>
+          <ItemTitle>Security alert</ItemTitle>
           <ItemDescription>
             New login detected from unknown device.
           </ItemDescription>

@@ -18,7 +18,7 @@ export function DrawerSnapPoints() {
   return (
     <Drawer snapPoints={SNAP_POINTS} showSwipeHandle>
       <DrawerTrigger render={<Button variant="outline" />}>
-        Open Snap Drawer
+        Open snap drawer
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>

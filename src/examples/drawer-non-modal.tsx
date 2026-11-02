@@ -13,11 +13,11 @@ export function DrawerNonModal() {
   return (
     <Drawer modal={false} disablePointerDismissal swipeDirection="right">
       <DrawerTrigger render={<Button variant="outline" />}>
-        Non Modal
+        Non-modal
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Non Modal Drawer</DrawerTitle>
+          <DrawerTitle>Non-modal drawer</DrawerTitle>
         </DrawerHeader>
         <div className="flex-1 p-4">
           <div className="rounded-2xl bg-muted group-data-[swipe-axis=x]/drawer-popup:size-full group-data-[swipe-axis=y]/drawer-popup:h-80 group-data-[swipe-axis=y]/drawer-popup:w-full" />

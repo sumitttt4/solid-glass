@@ -40,7 +40,7 @@ export default function AppSidebar() {
                 <SidebarMenuItem>
                   <SidebarMenuButton render={<a href="#" />}>
                     <FrameIcon />
-                    <span>Design Engineering</span>
+                    <span>Design engineering</span>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
                 <SidebarMenuItem>

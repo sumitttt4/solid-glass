@@ -18,7 +18,7 @@ export default function EmptyDemo() {
         <EmptyMedia variant="icon">
           <IconFolderCode />
         </EmptyMedia>
-        <EmptyTitle>No Projects Yet</EmptyTitle>
+        <EmptyTitle>No projects yet</EmptyTitle>
         <EmptyDescription>
           You haven&apos;t created any projects yet. Get started by creating
           your first project.

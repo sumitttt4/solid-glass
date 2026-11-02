@@ -58,7 +58,7 @@ export function InputGroupDropdown() {
             <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
-                <DropdownMenuItem>Blog Posts</DropdownMenuItem>
+                <DropdownMenuItem>Blog posts</DropdownMenuItem>
                 <DropdownMenuItem>Changelog</DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>

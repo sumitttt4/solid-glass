@@ -14,7 +14,7 @@ export default function FieldSlider() {
 
   return (
     <Field className="w-full max-w-xs">
-      <FieldTitle>Price Range</FieldTitle>
+      <FieldTitle>Price range</FieldTitle>
       <FieldDescription>
         Set your budget range ($
         <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
