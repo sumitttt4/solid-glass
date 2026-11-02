@@ -16,7 +16,7 @@ export function ToggleGroupFontWeightSelector() {
   const [fontWeight, setFontWeight] = React.useState("normal")
   return (
     <Field>
-      <FieldLabel>Font Weight</FieldLabel>
+      <FieldLabel>Font weight</FieldLabel>
       <ToggleGroup
         value={[fontWeight]}
         onValueChange={(value) => setFontWeight(value[0])}

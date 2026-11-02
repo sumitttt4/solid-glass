@@ -18,7 +18,7 @@ export function EmptyMuted() {
         <EmptyMedia variant="icon">
           <IconBell />
         </EmptyMedia>
-        <EmptyTitle>No Notifications</EmptyTitle>
+        <EmptyTitle>No notifications</EmptyTitle>
         <EmptyDescription className="max-w-xs text-pretty">
           You&apos;re all caught up. New notifications will appear here.
         </EmptyDescription>

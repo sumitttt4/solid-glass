@@ -18,7 +18,7 @@ export function DialogDemo() {
     <Dialog>
       <form>
         <DialogTrigger render={<Button variant="outline" />}>
-          Open Dialog
+          Open dialog
         </DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>

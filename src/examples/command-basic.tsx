@@ -19,7 +19,7 @@ export function CommandBasic() {
   return (
     <div className="flex flex-col gap-4">
       <Button onClick={() => setOpen(true)} variant="outline" className="w-fit">
-        Open Menu
+        Open menu
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
@@ -28,7 +28,7 @@ export function CommandBasic() {
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Suggestions">
               <CommandItem>Calendar</CommandItem>
-              <CommandItem>Search Emoji</CommandItem>
+              <CommandItem>Search emoji</CommandItem>
               <CommandItem>Calculator</CommandItem>
             </CommandGroup>
           </CommandList>

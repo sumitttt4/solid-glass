@@ -18,7 +18,7 @@ export function AlertDialogDestructive() {
   return (
     <AlertDialog>
       <AlertDialogTrigger
-        render={<Button variant="destructive">Delete Chat</Button>}
+        render={<Button variant="destructive">Delete chat</Button>}
       />
       <AlertDialogContent size="sm">
         <AlertDialogHeader>

@@ -95,7 +95,7 @@ export function InputGroupWithKbd() {
       </InputGroup>
       <FieldGroup className="grid grid-cols-2 gap-4">
         <Field>
-          <FieldLabel htmlFor="input-group-11">First Name</FieldLabel>
+          <FieldLabel htmlFor="input-group-11">First name</FieldLabel>
           <InputGroup>
             <InputGroupInput id="input-group-11" placeholder="First Name" />
             <InputGroupAddon align="inline-end">
@@ -104,7 +104,7 @@ export function InputGroupWithKbd() {
           </InputGroup>
         </Field>
         <Field>
-          <FieldLabel htmlFor="input-group-12">Last Name</FieldLabel>
+          <FieldLabel htmlFor="input-group-12">Last name</FieldLabel>
           <InputGroup>
             <InputGroupInput id="input-group-12" placeholder="Last Name" />
             <InputGroupAddon align="inline-end">

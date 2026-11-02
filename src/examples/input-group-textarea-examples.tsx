@@ -35,7 +35,7 @@ export function InputGroupTextareaExamples() {
         />
       </Field>
       <Field>
-        <FieldLabel htmlFor="textarea-header-footer-13">Input Group</FieldLabel>
+        <FieldLabel htmlFor="textarea-header-footer-13">Input group</FieldLabel>
         <InputGroup>
           <InputGroupTextarea
             id="textarea-header-footer-13"
@@ -120,13 +120,13 @@ export function InputGroupTextareaExamples() {
               Cancel
             </InputGroupButton>
             <InputGroupButton variant="default" size="sm">
-              Post Comment
+              Post comment
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
       </Field>
       <Field>
-        <FieldLabel htmlFor="textarea-code-32">Code Editor</FieldLabel>
+        <FieldLabel htmlFor="textarea-code-32">Code editor</FieldLabel>
         <InputGroup>
           <InputGroupTextarea
             id="textarea-code-32"

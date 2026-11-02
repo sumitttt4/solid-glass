@@ -16,7 +16,7 @@ export function ItemSizeDemo() {
           <InboxIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Default Size</ItemTitle>
+          <ItemTitle>Default size</ItemTitle>
           <ItemDescription>
             The standard size for most use cases.
           </ItemDescription>
@@ -27,7 +27,7 @@ export function ItemSizeDemo() {
           <InboxIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Small Size</ItemTitle>
+          <ItemTitle>Small size</ItemTitle>
           <ItemDescription>A compact size for dense layouts.</ItemDescription>
         </ItemContent>
       </Item>
@@ -36,7 +36,7 @@ export function ItemSizeDemo() {
           <InboxIcon />
         </ItemMedia>
         <ItemContent>
-          <ItemTitle>Extra Small Size</ItemTitle>
+          <ItemTitle>Extra small size</ItemTitle>
           <ItemDescription>The most compact size available.</ItemDescription>
         </ItemContent>
       </Item>

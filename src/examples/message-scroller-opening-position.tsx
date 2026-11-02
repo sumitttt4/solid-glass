@@ -70,7 +70,7 @@ export function MessageScrollerOpeningPosition() {
     <div className="relative flex flex-col gap-4">
       <Card className="mx-auto h-140 w-full max-w-sm gap-0">
         <CardHeader className="gap-1 border-b">
-          <CardTitle>Opening Position</CardTitle>
+          <CardTitle>Opening position</CardTitle>
           <CardDescription>
             Choose where a saved transcript opens.
           </CardDescription>

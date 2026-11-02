@@ -21,7 +21,7 @@ export function DrawerNested() {
   return (
     <Drawer showSwipeHandle={isMobile} swipeDirection={swipeDirection}>
       <DrawerTrigger render={<Button variant="secondary" />}>
-        Open Drawer
+        Open drawer
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
@@ -36,11 +36,11 @@ export function DrawerNested() {
         <DrawerFooter>
           <Drawer showSwipeHandle={isMobile} swipeDirection={swipeDirection}>
             <DrawerTrigger render={<Button variant="outline" />}>
-              Open Nested Drawer
+              Open nested drawer
             </DrawerTrigger>
             <DrawerContent>
               <DrawerHeader>
-                <DrawerTitle>Nested Drawer</DrawerTitle>
+                <DrawerTitle>Nested drawer</DrawerTitle>
                 <DrawerDescription>
                   The parent drawer stays mounted behind this one.
                 </DrawerDescription>
@@ -54,11 +54,11 @@ export function DrawerNested() {
                   swipeDirection={swipeDirection}
                 >
                   <DrawerTrigger render={<Button variant="outline" />}>
-                    Open Third Drawer
+                    Open third drawer
                   </DrawerTrigger>
                   <DrawerContent>
                     <DrawerHeader>
-                      <DrawerTitle>Third Drawer</DrawerTitle>
+                      <DrawerTitle>Third drawer</DrawerTitle>
                       <DrawerDescription>
                         Two drawers are stacked behind this one.
                       </DrawerDescription>
@@ -72,11 +72,11 @@ export function DrawerNested() {
                         swipeDirection={swipeDirection}
                       >
                         <DrawerTrigger render={<Button variant="outline" />}>
-                          Open Fourth Drawer
+                          Open fourth drawer
                         </DrawerTrigger>
                         <DrawerContent>
                           <DrawerHeader>
-                            <DrawerTitle>Fourth Drawer</DrawerTitle>
+                            <DrawerTitle>Fourth drawer</DrawerTitle>
                             <DrawerDescription>
                               This is the frontmost drawer in the stack.
                             </DrawerDescription>

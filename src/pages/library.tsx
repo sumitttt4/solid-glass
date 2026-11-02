@@ -187,10 +187,10 @@ function MaterialsSection() {
           <Popover>
             <PopoverTrigger render={<Button variant="outline" />}>
               <span className="size-3.5 rounded-full ring-1 ring-black/10" style={{ background: accent || "var(--primary)" }} />
-              Accent colour
+              Accent color
             </PopoverTrigger>
             <PopoverContent align="end" className="w-[min(92vw,460px)] p-0">
-              <PalettePicker label="Accent colour" value={accent} onValueChange={changeAccent} />
+              <PalettePicker label="Accent color" value={accent} onValueChange={changeAccent} />
             </PopoverContent>
           </Popover>
         }
@@ -242,7 +242,7 @@ const CATEGORIES = [
 function CategoriesSection() {
   return (
     <section className="home-section" aria-labelledby="everything-title">
-      <SectionHead title={<span id="everything-title">Stop collecting libraries</span>} body="Interface, AI and motion, designed together: one spacing scale, one type system, one set of colours and materials." />
+      <SectionHead title={<span id="everything-title">Stop collecting libraries</span>} body="Interface, AI and motion, designed together: one spacing scale, one type system, one set of colors and materials." />
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {CATEGORIES.map((c) => (
           <Link key={c.title} to={c.href} data-press="" className="group bg-card relative flex flex-col gap-5 rounded-[20px] p-6 shadow-[0_0_0_1px_var(--border)] transition-[box-shadow,transform] [@media(hover:hover)]:hover:shadow-[0_0_0_1px_var(--border),0_12px_32px_-16px_#15171c40]">
@@ -328,11 +328,11 @@ export default function Library() {
       <section className="mx-auto max-w-[1400px] px-4 pt-16 sm:px-6 sm:pt-24 lg:px-8">
         <div className="grid items-end gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
           <h1 className="font-display text-[2.25rem] leading-[1.08] text-balance sm:text-[clamp(3rem,6vw,5.25rem)] sm:leading-[1.02] sm:tracking-[-0.045em]">
-            Beautiful components, solid or glass
+            React components, solid or glass
           </h1>
           <div className="lg:pb-3">
             <p className="text-muted-foreground max-w-md text-base leading-[1.6] sm:text-[17px] text-pretty">
-              {catalog.length} free React components for interfaces, AI and voice, plus animated icons. Each comes in four finishes. Copy the code, install it with one command, or hand it to your agent.
+              {catalog.length} free components for interfaces, AI and voice, plus animated icons. Each comes in four finishes. Copy the code, install it with one command, or hand it to your agent.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button size="lg" nativeButton={false} render={<Link to="/components" />}>

@@ -69,7 +69,7 @@ export function InputGroupWithAddons() {
         <InputGroup className="h-auto">
           <InputGroupInput id="input-addon-20" />
           <InputGroupAddon align="block-start">
-            <InputGroupText>First Name</InputGroupText>
+            <InputGroupText>First name</InputGroupText>
             <InfoIcon className="ml-auto text-muted-foreground" />
           </InputGroupAddon>
         </InputGroup>
@@ -85,7 +85,7 @@ export function InputGroupWithAddons() {
         </InputGroup>
       </Field>
       <Field>
-        <FieldLabel htmlFor="input-icon-both-10">Multiple Icons</FieldLabel>
+        <FieldLabel htmlFor="input-icon-both-10">Multiple icons</FieldLabel>
         <InputGroup>
           <InputGroupInput id="input-icon-both-10" />
           <InputGroupAddon align="inline-end">

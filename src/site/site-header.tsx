@@ -162,7 +162,7 @@ function CommandMenu() {
         className="relative h-8 w-full justify-start rounded-md pl-2.5 font-normal text-muted-foreground shadow-none sm:pr-12 md:w-48 lg:w-56 xl:w-64"
       >
         <span className="hidden lg:inline-flex">Search components…</span>
-        <span className="inline-flex lg:hidden">Search...</span>
+        <span className="inline-flex lg:hidden">Search…</span>
         <span className="absolute top-1.5 right-1.5 hidden gap-1 sm:flex">
           <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
@@ -174,9 +174,9 @@ function CommandMenu() {
           setOpen(next)
           if (!next) setQuery("")
         }}
-        title="Search documentation" description="Search for a page or a component.">
+        title="Search" description="Find a component or a docs page.">
         <Command>
-          <CommandInput placeholder="Search documentation..." value={query} onValueChange={setQuery} />
+          <CommandInput placeholder="Search components and docs…" value={query} onValueChange={setQuery} />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup heading="Sections">
@@ -243,12 +243,6 @@ function MobileNav() {
               {item.label}
             </Link>
           ))}
-        <p className="px-2 pt-3 pb-1 text-xs font-medium text-muted-foreground">Agents</p>
-        {agents.map((page) => (
-          <Link key={page.slug} to={urlOf(page)} className={link} onClick={() => setOpen(false)}>
-            {page.title}
-          </Link>
-        ))}
       </PopoverContent>
     </Popover>
   )

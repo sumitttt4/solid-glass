@@ -41,7 +41,7 @@ export default function EmptyAvatarGroup() {
             </Avatar>
           </div>
         </EmptyMedia>
-        <EmptyTitle>No Team Members</EmptyTitle>
+        <EmptyTitle>No team members</EmptyTitle>
         <EmptyDescription>
           Invite your team to collaborate on this project.
         </EmptyDescription>
@@ -49,7 +49,7 @@ export default function EmptyAvatarGroup() {
       <EmptyContent>
         <Button size="sm">
           <PlusIcon />
-          Invite Members
+          Invite members
         </Button>
       </EmptyContent>
     </Empty>

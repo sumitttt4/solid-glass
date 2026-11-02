@@ -14,11 +14,11 @@ export function DrawerWithSides() {
   return (
     <Drawer swipeDirection="left">
       <DrawerTrigger render={<Button variant="secondary" />}>
-        Open Left Drawer
+        Open left drawer
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle>Move Goal</DrawerTitle>
+          <DrawerTitle>Move goal</DrawerTitle>
           <DrawerDescription>Set your daily activity goal.</DrawerDescription>
         </DrawerHeader>
         <div className="flex-1 p-4">

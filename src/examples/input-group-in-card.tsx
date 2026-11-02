@@ -29,7 +29,7 @@ export function InputGroupInCard() {
       <CardContent>
         <FieldGroup>
           <Field>
-            <FieldLabel htmlFor="email-input">Email Address</FieldLabel>
+            <FieldLabel htmlFor="email-input">Email address</FieldLabel>
             <InputGroup>
               <InputGroupInput
                 id="email-input"

@@ -46,7 +46,7 @@ export function CommandManyItems() {
   return (
     <div className="flex flex-col gap-4">
       <Button onClick={() => setOpen(true)} variant="outline" className="w-fit">
-        Open Menu
+        Open menu
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>
@@ -79,12 +79,12 @@ export function CommandManyItems() {
             <CommandGroup heading="Actions">
               <CommandItem>
                 <PlusIcon />
-                <span>New File</span>
+                <span>New file</span>
                 <CommandShortcut>⌘N</CommandShortcut>
               </CommandItem>
               <CommandItem>
                 <FolderPlusIcon />
-                <span>New Folder</span>
+                <span>New folder</span>
                 <CommandShortcut>⇧⌘N</CommandShortcut>
               </CommandItem>
               <CommandItem>
@@ -112,20 +112,20 @@ export function CommandManyItems() {
             <CommandGroup heading="View">
               <CommandItem>
                 <LayoutGridIcon />
-                <span>Grid View</span>
+                <span>Grid view</span>
               </CommandItem>
               <CommandItem>
                 <ListIcon />
-                <span>List View</span>
+                <span>List view</span>
               </CommandItem>
               <CommandItem>
                 <ZoomInIcon />
-                <span>Zoom In</span>
+                <span>Zoom in</span>
                 <CommandShortcut>⌘+</CommandShortcut>
               </CommandItem>
               <CommandItem>
                 <ZoomOutIcon />
-                <span>Zoom Out</span>
+                <span>Zoom out</span>
                 <CommandShortcut>⌘-</CommandShortcut>
               </CommandItem>
             </CommandGroup>
@@ -167,11 +167,11 @@ export function CommandManyItems() {
               </CommandItem>
               <CommandItem>
                 <ImageIcon />
-                <span>Image Editor</span>
+                <span>Image editor</span>
               </CommandItem>
               <CommandItem>
                 <CodeIcon />
-                <span>Code Editor</span>
+                <span>Code editor</span>
               </CommandItem>
             </CommandGroup>
           </CommandList>

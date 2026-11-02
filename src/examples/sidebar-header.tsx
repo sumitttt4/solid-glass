@@ -32,7 +32,7 @@ export default function AppSidebar() {
                     <SidebarMenuButton className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground" />
                   }
                 >
-                  Select Workspace
+                  Select workspace
                   <ChevronDownIcon className="ml-auto" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-(--radix-popper-anchor-width)">

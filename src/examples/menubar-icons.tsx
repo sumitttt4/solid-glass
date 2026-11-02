@@ -30,7 +30,7 @@ export function MenubarIcons() {
           </MenubarItem>
           <MenubarItem>
             <FolderIcon />
-            Open Folder
+            Open folder
           </MenubarItem>
           <MenubarSeparator />
           <MenubarItem>

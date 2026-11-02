@@ -7,7 +7,7 @@ export default function ButtonSize() {
     <div className="flex flex-col items-start gap-8 sm:flex-row">
       <div className="flex items-start gap-2">
         <Button size="xs" variant="outline">
-          Extra Small
+          Extra small
         </Button>
         <Button size="icon-xs" aria-label="Submit" variant="outline">
           <ArrowUpRightIcon />

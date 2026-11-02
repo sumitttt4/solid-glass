@@ -28,7 +28,7 @@ export default function MenubarDemo() {
             <MenubarItem>
               New Window <MenubarShortcut>⌘N</MenubarShortcut>
             </MenubarItem>
-            <MenubarItem disabled>New Incognito Window</MenubarItem>
+            <MenubarItem disabled>New incognito window</MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
@@ -74,7 +74,7 @@ export default function MenubarDemo() {
                 <MenubarGroup>
                   <MenubarItem>Find...</MenubarItem>
                   <MenubarItem>Find Next</MenubarItem>
-                  <MenubarItem>Find Previous</MenubarItem>
+                  <MenubarItem>Find previous</MenubarItem>
                 </MenubarGroup>
               </MenubarSubContent>
             </MenubarSub>
@@ -91,7 +91,7 @@ export default function MenubarDemo() {
         <MenubarTrigger>View</MenubarTrigger>
         <MenubarContent className="w-44">
           <MenubarGroup>
-            <MenubarCheckboxItem>Bookmarks Bar</MenubarCheckboxItem>
+            <MenubarCheckboxItem>Bookmarks bar</MenubarCheckboxItem>
             <MenubarCheckboxItem checked>Full URLs</MenubarCheckboxItem>
           </MenubarGroup>
           <MenubarSeparator />
@@ -105,11 +105,11 @@ export default function MenubarDemo() {
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>Toggle Fullscreen</MenubarItem>
+            <MenubarItem inset>Toggle fullscreen</MenubarItem>
           </MenubarGroup>
           <MenubarSeparator />
           <MenubarGroup>
-            <MenubarItem inset>Hide Sidebar</MenubarItem>
+            <MenubarItem inset>Hide sidebar</MenubarItem>
           </MenubarGroup>
         </MenubarContent>
       </MenubarMenu>

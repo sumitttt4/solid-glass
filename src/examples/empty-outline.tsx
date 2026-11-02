@@ -17,14 +17,14 @@ export default function EmptyOutline() {
         <EmptyMedia variant="icon">
           <IconCloud />
         </EmptyMedia>
-        <EmptyTitle>Cloud Storage Empty</EmptyTitle>
+        <EmptyTitle>Cloud storage empty</EmptyTitle>
         <EmptyDescription>
           Upload files to your cloud storage to access them anywhere.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button variant="outline" size="sm">
-          Upload Files
+          Upload files
         </Button>
       </EmptyContent>
     </Empty>

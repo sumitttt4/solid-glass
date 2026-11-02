@@ -24,11 +24,11 @@ export function ContextMenuGroups() {
         <ContextMenuGroup>
           <ContextMenuLabel>File</ContextMenuLabel>
           <ContextMenuItem>
-            New File
+            New file
             <ContextMenuShortcut>⌘N</ContextMenuShortcut>
           </ContextMenuItem>
           <ContextMenuItem>
-            Open File
+            Open file
             <ContextMenuShortcut>⌘O</ContextMenuShortcut>
           </ContextMenuItem>
           <ContextMenuItem>

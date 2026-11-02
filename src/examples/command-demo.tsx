@@ -31,7 +31,7 @@ export function CommandDemo() {
           </CommandItem>
           <CommandItem>
             <Smile />
-            <span>Search Emoji</span>
+            <span>Search emoji</span>
           </CommandItem>
           <CommandItem disabled>
             <Calculator />

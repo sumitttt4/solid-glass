@@ -63,7 +63,7 @@ export function SidebarRight({
           <SidebarMenuItem>
             <SidebarMenuButton>
               <PlusIcon />
-              <span>New Calendar</span>
+              <span>New calendar</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

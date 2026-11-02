@@ -55,7 +55,7 @@ export function CommandDialogDemo() {
             </CommandItem>
             <CommandItem>
               <Smile />
-              <span>Search Emoji</span>
+              <span>Search emoji</span>
             </CommandItem>
             <CommandItem>
               <Calculator />

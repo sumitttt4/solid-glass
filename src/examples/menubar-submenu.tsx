@@ -46,7 +46,7 @@ export function MenubarSubmenu() {
             <MenubarSubContent>
               <MenubarItem>Find...</MenubarItem>
               <MenubarItem>Find Next</MenubarItem>
-              <MenubarItem>Find Previous</MenubarItem>
+              <MenubarItem>Find previous</MenubarItem>
             </MenubarSubContent>
           </MenubarSub>
           <MenubarSeparator />

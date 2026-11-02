@@ -12,7 +12,7 @@ import {
 export function InputOTPPattern() {
   return (
     <Field className="w-fit">
-      <FieldLabel htmlFor="digits-only">Digits Only</FieldLabel>
+      <FieldLabel htmlFor="digits-only">Digits only</FieldLabel>
       <InputOTP id="digits-only" maxLength={6} pattern={REGEXP_ONLY_DIGITS}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />

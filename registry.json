@@ -571,7 +571,7 @@
       "name": "diff-view",
       "type": "registry:ui",
       "title": "Diff View",
-      "description": "A patch as a diff: added and removed lines coloured, file headers dropped.",
+      "description": "A patch as a diff: added and removed lines colored, file headers dropped.",
       "dependencies": [],
       "registryDependencies": [],
       "files": [

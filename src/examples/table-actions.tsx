@@ -29,7 +29,7 @@ export function TableActions() {
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium">Wireless Mouse</TableCell>
+          <TableCell className="font-medium">Wireless mouse</TableCell>
           <TableCell>$29.99</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>
@@ -53,7 +53,7 @@ export function TableActions() {
           </TableCell>
         </TableRow>
         <TableRow>
-          <TableCell className="font-medium">Mechanical Keyboard</TableCell>
+          <TableCell className="font-medium">Mechanical keyboard</TableCell>
           <TableCell>$129.99</TableCell>
           <TableCell className="text-right">
             <DropdownMenu>

@@ -19,7 +19,7 @@ export function ToastDemo() {
 
   return (
     <Button variant="outline" onClick={showToast}>
-      Show Toast
+      Show toast
     </Button>
   )
 }

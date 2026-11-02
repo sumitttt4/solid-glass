@@ -13,7 +13,7 @@ export function PopoverBasic() {
     <>
       <Popover>
         <PopoverTrigger render={<Button variant="outline" className="w-fit" />}>
-          Open Popover
+          Open popover
         </PopoverTrigger>
         <PopoverContent align="start">
           <PopoverHeader>

@@ -39,7 +39,7 @@ export function InputOTPForm() {
             </FieldLabel>
             <Button variant="outline" size="xs">
               <RefreshCwIcon />
-              Resend Code
+              Resend code
             </Button>
           </div>
           <InputOTP maxLength={6} id="otp-verification" required>

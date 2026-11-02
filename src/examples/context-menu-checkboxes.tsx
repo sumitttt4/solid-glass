@@ -20,11 +20,11 @@ export function ContextMenuCheckboxes() {
       <ContextMenuContent>
         <ContextMenuGroup>
           <ContextMenuCheckboxItem defaultChecked>
-            Show Bookmarks Bar
+            Show bookmarks bar
           </ContextMenuCheckboxItem>
           <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
           <ContextMenuCheckboxItem defaultChecked>
-            Show Developer Tools
+            Show developer tools
           </ContextMenuCheckboxItem>
         </ContextMenuGroup>
       </ContextMenuContent>

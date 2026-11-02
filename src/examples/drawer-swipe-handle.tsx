@@ -16,7 +16,7 @@ export function DrawerSwipeHandle() {
   return (
     <Drawer showSwipeHandle>
       <DrawerTrigger render={<Button variant="secondary" />}>
-        Open Drawer
+        Open drawer
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>

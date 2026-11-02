@@ -40,7 +40,7 @@ export default function ButtonGroupPopover() {
           </PopoverHeader>
           <Field>
             <FieldLabel htmlFor="task" className="sr-only">
-              Task Description
+              Task description
             </FieldLabel>
             <Textarea
               id="task"

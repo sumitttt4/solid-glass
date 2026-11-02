@@ -36,7 +36,7 @@ export function MessageScrollerState() {
   return (
     <Card className="mx-auto h-112 w-full max-w-md gap-0">
       <CardHeader className="border-b">
-        <CardTitle>Scroll State</CardTitle>
+        <CardTitle>Scroll state</CardTitle>
         <CardDescription>
           Read scroll state in JavaScript with the state hook.
         </CardDescription>

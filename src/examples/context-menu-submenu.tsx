@@ -34,7 +34,7 @@ export function ContextMenuSubmenu() {
           </ContextMenuItem>
         </ContextMenuGroup>
         <ContextMenuSub>
-          <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+          <ContextMenuSubTrigger>More tools</ContextMenuSubTrigger>
           <ContextMenuSubContent>
             <ContextMenuGroup>
               <ContextMenuItem>Save Page...</ContextMenuItem>
@@ -43,7 +43,7 @@ export function ContextMenuSubmenu() {
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>
-              <ContextMenuItem>Developer Tools</ContextMenuItem>
+              <ContextMenuItem>Developer tools</ContextMenuItem>
             </ContextMenuGroup>
             <ContextMenuSeparator />
             <ContextMenuGroup>

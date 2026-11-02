@@ -2,7 +2,7 @@
  * Glaze — the theme. Built on Solid Glass and shadcn/ui; see LICENSE and NOTICE.md.
  *
  * Neutral surfaces (zinc), one signature colour (indigo), five tones for categories and
- * emphasis, one typeface (Geist). Import after Tailwind and shadcn's stylesheet, then import
+ * emphasis, one typeface (Manrope). Import after Tailwind and shadcn's stylesheet, then import
  * materials.css for Glass, Frost and Aurora. Solid Glass's own hooks stay in place underneath,
  * so every inherited component keeps working.
  */

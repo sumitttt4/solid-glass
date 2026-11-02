@@ -41,7 +41,7 @@ export function ContextMenuDemo() {
             <ContextMenuShortcut>⌘R</ContextMenuShortcut>
           </ContextMenuItem>
           <ContextMenuSub>
-            <ContextMenuSubTrigger>More Tools</ContextMenuSubTrigger>
+            <ContextMenuSubTrigger>More tools</ContextMenuSubTrigger>
             <ContextMenuSubContent className="w-44">
               <ContextMenuGroup>
                 <ContextMenuItem>Save Page...</ContextMenuItem>
@@ -50,7 +50,7 @@ export function ContextMenuDemo() {
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
-                <ContextMenuItem>Developer Tools</ContextMenuItem>
+                <ContextMenuItem>Developer tools</ContextMenuItem>
               </ContextMenuGroup>
               <ContextMenuSeparator />
               <ContextMenuGroup>
@@ -62,7 +62,7 @@ export function ContextMenuDemo() {
         <ContextMenuSeparator />
         <ContextMenuGroup>
           <ContextMenuCheckboxItem checked>
-            Show Bookmarks
+            Show bookmarks
           </ContextMenuCheckboxItem>
           <ContextMenuCheckboxItem>Show Full URLs</ContextMenuCheckboxItem>
         </ContextMenuGroup>

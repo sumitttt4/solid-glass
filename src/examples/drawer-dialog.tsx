@@ -34,7 +34,7 @@ export function DrawerDialogDemo() {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger render={<Button variant="outline" />}>
-          Edit Profile
+          Edit profile
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -53,7 +53,7 @@ export function DrawerDialogDemo() {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger render={<Button variant="outline" />}>
-        Edit Profile
+        Edit profile
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">

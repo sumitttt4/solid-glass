@@ -21,7 +21,7 @@ export function CommandWithShortcuts() {
   return (
     <div className="flex flex-col gap-4">
       <Button onClick={() => setOpen(true)} variant="outline" className="w-fit">
-        Open Menu
+        Open menu
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
         <Command>

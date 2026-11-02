@@ -23,7 +23,7 @@ export function CollapsibleBasic() {
               This panel can be expanded or collapsed to reveal additional
               content.
             </div>
-            <Button size="xs">Learn More</Button>
+            <Button size="xs">Learn more</Button>
           </CollapsibleContent>
         </Collapsible>
       </CardContent>

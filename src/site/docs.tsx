@@ -327,16 +327,11 @@ function DocShell({ title, description, url, toc, children }: { title: string; d
         <div className="h-(--top-spacing) shrink-0" />
         <div className="mx-auto flex w-full max-w-180 min-w-0 flex-1 flex-col gap-6 py-6 text-foreground lg:py-8">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center justify-between md:items-start">
-              <h1 className="font-display scroll-m-24 text-[2rem] leading-[1.12] sm:text-[2.25rem]">{title}</h1>
-              <div className="ml-auto flex gap-2">
-                <Neighbours url={url} />
-              </div>
-            </div>
+            <h1 className="font-display scroll-m-24 text-[2rem] leading-[1.12] sm:text-[2.25rem]">{title}</h1>
             {description && <p className="text-[1.05rem] text-muted-foreground sm:text-base sm:text-balance md:max-w-[80%]">{description}</p>}
           </div>
-          <div className="w-full flex-1 pb-16 sm:pb-0">{children}</div>
-          <div className="hidden h-16 w-full items-center gap-2 px-4 sm:flex sm:px-0">
+          <div className="w-full flex-1">{children}</div>
+          <div className="flex w-full items-center gap-2 border-t pt-6">
             <Neighbours url={url} labelled />
           </div>
         </div>
@@ -394,7 +389,7 @@ export function ComponentsIndex() {
   return (
     <DocShell
       title="Components"
-      description="Here you can find all the components available in the library, with the Glaze theme."
+      description="Every component in the library, in the Glaze theme."
       url="/docs/components"
     >
       <h2 id="all-components" className="mt-10 mb-6 scroll-m-28 text-xl font-medium tracking-tight first:mt-0">

@@ -11,13 +11,13 @@ import { Input } from "@/components/ui/input"
 export function FieldFieldset() {
   return (
     <FieldSet className="w-full max-w-sm">
-      <FieldLegend>Address Information</FieldLegend>
+      <FieldLegend>Address information</FieldLegend>
       <FieldDescription>
         We need your address to deliver your order.
       </FieldDescription>
       <FieldGroup>
         <Field>
-          <FieldLabel htmlFor="street">Street Address</FieldLabel>
+          <FieldLabel htmlFor="street">Street address</FieldLabel>
           <Input id="street" type="text" placeholder="123 Main St" />
         </Field>
         <div className="grid grid-cols-2 gap-4">
@@ -26,7 +26,7 @@ export function FieldFieldset() {
             <Input id="city" type="text" placeholder="New York" />
           </Field>
           <Field>
-            <FieldLabel htmlFor="zip">Postal Code</FieldLabel>
+            <FieldLabel htmlFor="zip">Postal code</FieldLabel>
             <Input id="zip" type="text" placeholder="90502" />
           </Field>
         </div>

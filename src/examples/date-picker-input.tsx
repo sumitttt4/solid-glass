@@ -46,7 +46,7 @@ export function DatePickerInput() {
 
   return (
     <Field className="mx-auto w-48">
-      <FieldLabel htmlFor="date-required">Subscription Date</FieldLabel>
+      <FieldLabel htmlFor="date-required">Subscription date</FieldLabel>
       <InputGroup>
         <InputGroupInput
           id="date-required"
