@@ -1,4 +1,5 @@
-import { ChevronRightIcon, FileIcon, FolderIcon } from "lucide-react"
+import { ArrowRight01Icon, File01Icon, Folder01Icon } from "@hugeicons/core-free-icons"
+import { HugeiconsIcon } from "@hugeicons/react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -77,8 +78,8 @@ export function CollapsibleFileTree() {
               />
             }
           >
-            <ChevronRightIcon className="transition-transform group-data-[state=open]:rotate-90" />
-            <FolderIcon />
+            <HugeiconsIcon icon={ArrowRight01Icon} strokeWidth={1.6} className="transition-transform group-data-[panel-open]:rotate-90 group-data-[state=open]:rotate-90" />
+            <HugeiconsIcon icon={Folder01Icon} strokeWidth={1.6} />
             {fileItem.name}
           </CollapsibleTrigger>
           <CollapsibleContent className="mt-1 ml-5 style-lyra:ml-4">
@@ -96,7 +97,7 @@ export function CollapsibleFileTree() {
         size="sm"
         className="w-full justify-start gap-2 text-foreground"
       >
-        <FileIcon />
+        <HugeiconsIcon icon={File01Icon} strokeWidth={1.6} />
         <span>{fileItem.name}</span>
       </Button>
     )

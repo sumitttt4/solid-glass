@@ -1,8 +1,9 @@
 """
 Glaze launch video soundtrack: an original track, synthesized from scratch.
 
-120 BPM, C major (C - G - Am - F), 28 seconds. Cut points in the video sit on bar lines:
-0:00 sting, 0:02 groove drops, 0:24 the end card's final chord. Nothing is sampled.
+120 BPM, C major (C - G - Am - F), 28 seconds, dance-pop energy: four-on-the-floor kick,
+sidechained supersaw stabs, rolling bass, a lead hook. Cut points sit on bar lines:
+0:00 snare build, 0:02 the drop, 0:14 a one-bar breakdown, 0:24 the end card's final hit. Nothing is sampled.
 
     python3 video/music.py out.wav
 """
@@ -136,58 +137,141 @@ def crash():
     return lowpass(highpass(rng.standard_normal(len(t)), 4500, 2), 11_000, 2) * np.exp(-t * 2.4) * 0.07
 
 
-CHORDS = [  # one bar each
-    ("C", ["C4", "E4", "G4"], ["C5", "E5", "G5", "C6"], "C2"),
-    ("G", ["B3", "D4", "G4"], ["B4", "D5", "G5", "B5"], "G1"),
-    ("Am", ["C4", "E4", "A4"], ["A4", "C5", "E5", "A5"], "A1"),
-    ("F", ["C4", "F4", "A4"], ["A4", "C5", "F5", "A5"], "F1"),
+def saw(f, t, ph=0.0):
+    return 2 * ((f * t + ph) % 1) - 1
+
+
+def stab(freqs, dur=0.22):
+    """A supersaw chord hit: seven detuned saws a voice, short and bright."""
+    t = env_t(dur)
+    out = np.zeros_like(t)
+    for f in freqs:
+        for d in (-0.18, -0.1, -0.04, 0.0, 0.05, 0.11, 0.19):
+            out += saw(f * 2 ** (d / 12), t, rng.random())
+    out = lowpass(out, 5200, 2) / (len(freqs) * 7)
+    return out * np.minimum(1, t / 0.003) * np.exp(-t * 9) * 1.4
+
+
+def bass(f, dur):
+    """Saw bass with a plucky filter envelope, plus sub underneath."""
+    t = env_t(dur)
+    raw = saw(f, t) + 0.6 * saw(f * 1.006, t, 0.3)
+    cut = 300 + 1700 * np.exp(-t * 22)
+    out = np.zeros_like(t)
+    seg = 256
+    for i in range(0, len(t), seg):
+        out[i : i + seg] = lowpass(raw[max(0, i - 2048) : i + seg], float(cut[i]))[-len(out[i : i + seg]) :]
+    out = out * 0.32 + np.sin(2 * np.pi * f * t) * 0.5
+    return np.tanh(out * 1.8) * np.minimum(1, t / 0.004) * np.minimum(1, (dur - t) / 0.02) * 0.42
+
+
+def lead(f, dur):
+    t = env_t(dur)
+    vib = 1 + 0.004 * np.sin(2 * np.pi * 5.5 * t) * np.minimum(1, t / 0.2)
+    ph = np.cumsum(f * vib) / SR
+    out = sum(2 * ((ph * r + o) % 1) - 1 for r, o in ((1, 0), (1.007, 0.4), (0.994, 0.7))) / 3
+    out = lowpass(out, 4200, 2) + 0.25 * np.sin(2 * np.pi * 2 * ph)
+    return out * np.minimum(1, t / 0.01) * np.minimum(1, (dur - t) / 0.05) * 0.3
+
+
+def snare():
+    t = env_t(0.22)
+    tone = np.sin(2 * np.pi * 190 * t) * np.exp(-t * 30)
+    noise = bandpass(rng.standard_normal(len(t)), 1500, 9000) * np.exp(-t * 20)
+    return np.tanh((tone * 0.6 + noise) * 1.5) * 0.45
+
+
+def kick():
+    t = env_t(0.36)
+    f = 50 + 140 * np.exp(-t * 38)
+    body = np.sin(2 * np.pi * np.cumsum(f) / SR) * np.exp(-t * 8)
+    click = bandpass(rng.standard_normal(len(t)), 2500, 8000) * np.exp(-t * 260) * 0.35
+    return np.tanh((body + click) * 2.2) * 0.95
+
+
+def shaker():
+    t = env_t(0.05)
+    return bandpass(rng.standard_normal(len(t)), 6000, 14000) * np.minimum(1, t / 0.008) * np.exp(-t * 70) * 0.09
+
+
+CHORDS = [  # one bar each: stab voicing, arp, bass root
+    (["C4", "E4", "G4", "C5"], ["C5", "E5", "G5", "C6"], "C2"),
+    (["B3", "D4", "G4", "B4"], ["B4", "D5", "G5", "B5"], "G1"),
+    (["C4", "E4", "A4", "C5"], ["A4", "C5", "E5", "A5"], "A1"),
+    (["C4", "F4", "A4", "C5"], ["A4", "C5", "F5", "A5"], "F1"),
 ]
 ARP = [0, 2, 1, 3, 2, 1, 0, 2, 1, 3, 2, 3, 1, 2, 0, 1]
+BASS = [0, 0, 12, 0, 0, 12, 0, 7]  # eighth notes, semitones over the root
+HOOK = [  # (beat, note, beats) over two bars, played on bars 6-7 and 10-11
+    (0, "E5", 0.5), (0.5, "G5", 0.5), (1, "C6", 1), (2, "B5", 0.5), (2.5, "G5", 1),
+    (4, "A5", 0.5), (4.5, "C6", 0.5), (5, "E6", 1), (6, "D6", 0.5), (6.5, "C6", 0.5), (7, "G5", 1),
+]
 
-# ---- 0:00 sting: a rising bell motif, a breath, then a riser into the drop ----------------
+
+def semis(f, n):
+    return f * 2 ** (n / 12)
+
+
+def sidechain(t):
+    i = int(t * SR)
+    k = int(0.2 * SR)
+    seg = duck[i : i + k]
+    duck[i : i + len(seg)] = np.minimum(seg, 0.25 + 0.75 * (np.arange(len(seg)) / k) ** 0.5)
+
+
+# ---- 0:00 - 0:02 build: bell motif, a snare roll that speeds up, a riser into the drop ---------
 for t, n in [(0.0, "E5"), (0.12, "G5"), (0.24, "C6")]:
     place(bell(hz(n)), t, 0.9, pan=-0.2 + 0.2 * (n == "C6"), rev=0.6)
-place(pad([hz("C4"), hz("E4"), hz("G4")], 1.1), 0.0, 0.5, rev=0.4)
-place(riser(1.0), 1.0, 0.8, rev=0.2)
+place(pad([hz("C4"), hz("E4"), hz("G4")], 2.0), 0.0, 0.45, rev=0.4)
+roll = [1.0 + i * 0.125 for i in range(4)] + [1.5 + i * 0.0625 for i in range(8)]
+for i, t in enumerate(roll):
+    place(snare(), t, 0.6 + 0.7 * i / len(roll), pan=0.05, rev=0.2)
+place(riser(1.4), 0.6, 1.8, rev=0.2)
 
-# ---- 0:02 - 0:24 groove ----------------------------------------------------------------
-for bar in range(1, 12):  # bars 2..12 (0:02 to 0:24)
+# ---- 0:02 - 0:24 the groove -----------------------------------------------------------------
+for bar in range(1, 12):  # bars 2..12
     t0 = bar * BAR
-    name, padv, arpv, root = CHORDS[(bar - 1) % 4]
-    full = bar >= 3
-    place(pad([hz(n) for n in padv], BAR + 0.1), t0, 0.55 if full else 0.42, rev=0.5)
-    for s in range(16):  # sixteenth-note arpeggio
-        t = t0 + s * BEAT / 4
-        n = arpv[ARP[s]]
-        vel = 0.9 if s % 4 == 0 else 0.62
-        place(pluck(hz(n), 0.38, 1.2), t, vel * (0.7 if full else 0.55), pan=-0.35 if s % 2 else 0.35, rev=0.35)
-    for b in range(4):  # kick, bass, sidechain
+    stabv, arpv, root = CHORDS[(bar - 1) % 4]
+    breakdown = bar == 7  # one bar that drops the kick and lifts again
+    place(pad([hz(n) for n in stabv], BAR + 0.1), t0, 0.35, rev=0.5)
+    for b in range(4):
         t = t0 + b * BEAT
-        place(kick(), t, 0.95 if full else 0.75)
-        i = int(t * SR)
-        k = int(0.22 * SR)
-        duck[i : i + k] = np.minimum(duck[i : i + k], 0.35 + 0.65 * (np.arange(k) / k) ** 0.6)
-        for e in (0, 0.5):
-            place(sub(hz(root), BEAT / 2 - 0.02), t + e * BEAT, 0.9 if e else 0.75)
-    if full:
-        for b in (1, 3):
-            place(clap(), t0 + b * BEAT, 0.8, pan=0.05, rev=0.25)
+        if not breakdown:
+            place(kick(), t, 1.0)
+            sidechain(t)
+        place(stab([hz(n) for n in stabv]), t + BEAT / 2, 0.85 if not breakdown else 0.5, pan=0.0, rev=0.3)
+        place(hat(True), t + BEAT / 2, 1.0, pan=0.2)
+        if b in (1, 3) and not breakdown:
+            place(clap(), t, 0.9, pan=0.0, rev=0.25)
+            place(snare(), t, 0.55)
     for h in range(16):
         t = t0 + h * BEAT / 4
-        open_ = h % 4 == 2
-        place(hat(open_), t, (0.9 if open_ else 0.55) * (1 if full else 0.6), pan=0.25)
-    if bar in (5, 9):  # counter-melody bells on the second pass
-        for k_, n in enumerate(["G5", "E5", "D5", "E5", "C6", "B5", "G5", "A5"]):
-            place(bell(hz(n), 1.0), t0 + k_ * BEAT / 2, 0.45, pan=-0.4, rev=0.6)
+        place(hat(), t, 0.75 if h % 2 else 0.4, pan=0.3)
+        place(shaker(), t + 0.01, 0.9 if h % 4 == 2 else 0.55, pan=-0.3)
+        n = arpv[ARP[h]]
+        place(pluck(hz(n), 0.3, 1.8), t, (0.62 if h % 4 == 0 else 0.45), pan=-0.35 if h % 2 else 0.35, rev=0.3)
+    if not breakdown:
+        for e, n in enumerate(BASS):
+            place(bass(semis(hz(root), n), BEAT / 2 - 0.03), t0 + e * BEAT / 2, 1.0)
+    if bar in (6, 10):
+        for beat, n, ln in HOOK:
+            place(lead(hz(n), ln * BEAT - 0.03), t0 + beat * BEAT, 1.0, pan=0.0, rev=0.35)
+    if bar % 4 == 0 or breakdown:  # a fill into the next phrase
+        for i in range(8 if breakdown else 4):
+            place(snare(), t0 + 3 * BEAT + i * BEAT / (8 if breakdown else 4), 0.45 + 0.06 * i, rev=0.2)
+    if bar in (1, 4, 8):
+        place(crash(), t0, 1.6, pan=0.1, rev=0.3)
+    if breakdown:
+        place(riser(BAR), t0, 1.0, rev=0.2)
 
-place(crash(), 2.0, 1.0, pan=0.1, rev=0.3)
-place(riser(1.0), 23.0, 0.7, rev=0.2)
+place(riser(1.0), 23.0, 0.9, rev=0.2)
 
-# ---- 0:24 end card: one held chord, the motif again, a long tail ------------------------
-place(crash(), 24.0, 1.2, rev=0.4)
-place(kick(), 24.0, 1.0)
+# ---- 0:24 end card: one big hit, the motif, a long tail --------------------------------------
+place(crash(), 24.0, 2.0, rev=0.4)
+place(kick(), 24.0, 1.1)
+place(stab([hz("C4"), hz("E4"), hz("G4"), hz("C5")], 0.6), 24.0, 1.0, rev=0.6)
 place(sub(hz("C2"), 2.5), 24.0, 1.0)
-place(pad([hz("C4"), hz("E4"), hz("G4"), hz("C5")], 3.9), 24.0, 0.75, rev=0.7)
+place(pad([hz("C4"), hz("E4"), hz("G4"), hz("C5")], 3.9), 24.0, 0.7, rev=0.7)
 for t, n in [(24.0, "C5"), (24.12, "E5"), (24.24, "G5"), (24.5, "C6")]:
     place(bell(hz(n), 2.6), t, 0.85, pan=0.15 if n == "C6" else -0.1, rev=0.8)
 
@@ -208,13 +292,13 @@ L += wetL
 R += wetR
 
 mix = np.stack([L, R])
-mix = lowpass(highpass(mix, 28), 15_000, 2)
+mix = lowpass(highpass(mix, 30), 18_000, 2)
 fade = np.ones(N)
 tail = int(0.6 * SR)
 fade[-tail:] = np.linspace(1, 0, tail) ** 2
 mix *= fade
-# Level to about -16 dBFS RMS, then catch the peaks softly below -1 dBFS.
-mix *= 10 ** (-16 / 20) / np.sqrt(np.mean(mix ** 2))
+# Level to about -12 dBFS RMS, then catch the peaks softly below -1 dBFS.
+mix *= 10 ** (-12 / 20) / np.sqrt(np.mean(mix ** 2))
 ceiling = 10 ** (-1.0 / 20)
 mix = ceiling * np.tanh(mix / ceiling)
 
