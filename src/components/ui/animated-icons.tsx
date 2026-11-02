@@ -41,6 +41,32 @@ import {
   ViewIcon,
   VolumeHighIcon,
   Wifi01Icon,
+  Activity01Icon,
+  Analytics01Icon,
+  Archive01Icon,
+  ChartIncreaseIcon,
+  CheckListIcon,
+  Clock01Icon,
+  CloudUploadIcon,
+  CreditCardIcon,
+  DashboardSquare01Icon,
+  Database01Icon,
+  FilterHorizontalIcon,
+  Folder01Icon,
+  Globe02Icon,
+  InboxIcon,
+  Invoice01Icon,
+  Layers01Icon,
+  Logout03Icon,
+  Message01Icon,
+  PencilEdit02Icon,
+  PieChartIcon,
+  Share08Icon,
+  ShoppingCart01Icon,
+  Tag01Icon,
+  UserAdd01Icon,
+  UserGroupIcon,
+  Wallet01Icon,
 } from "@hugeicons/core-free-icons"
 
 import { cn } from "@/lib/utils"
@@ -62,7 +88,7 @@ export type IconData = readonly (readonly [string, { readonly [key: string]: str
 export type IconAnimation =
   | "swing" | "clapper" | "beat" | "pop" | "scan" | "spin" | "spin-once" | "spin-always" | "fly" | "drop" | "rise"
   | "lift" | "twinkle" | "twinkle-late" | "blink" | "nudge" | "wave" | "wave-late" | "shackle" | "quarter"
-  | "draw" | "wiggle" | "float" | "shake" | "launch" | "tilt" | "flash"
+  | "draw" | "wiggle" | "float" | "shake" | "launch" | "tilt" | "flash" | "grow" | "nudge-back" | "slice"
 
 export type IconTrigger = "hover" | "loop" | "mount" | "none"
 
@@ -100,6 +126,9 @@ const css = `
 [data-ai-icon] [data-anim=launch]{--a:ai-launch 1.1s ease-in-out}
 [data-ai-icon] [data-anim=tilt]{--a:ai-tilt .7s cubic-bezier(.3,1.4,.5,1);transform-origin:20% 90%}
 [data-ai-icon] [data-anim=flash]{--a:ai-flash .8s ease-in-out}
+[data-ai-icon] [data-anim=grow]{--a:ai-grow .7s cubic-bezier(.23,1,.32,1);transform-origin:50% 100%}
+[data-ai-icon] [data-anim=nudge-back]{--a:ai-nudge-back .7s ease-in-out}
+[data-ai-icon] [data-anim=slice]{--a:ai-slice .8s cubic-bezier(.3,1.4,.5,1)}
 [data-ai-icon][data-trigger=loop] [data-anim]{animation:var(--a);animation-iteration-count:infinite}
 [data-ai-icon][data-trigger=mount] [data-anim]{animation:var(--a)}
 [data-ai-icon][data-trigger=hover]:hover [data-anim],
@@ -138,6 +167,9 @@ const css = `
 @keyframes ai-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-2px)}40%,80%{transform:translateX(2px)}}
 @keyframes ai-launch{0%,100%{transform:translate(0,0)}15%{transform:translate(-1px,1px)}45%{transform:translate(7px,-7px);opacity:0}46%{transform:translate(-5px,5px);opacity:0}75%{transform:translate(0,0);opacity:1}}
 @keyframes ai-tilt{0%,100%{transform:rotate(0)}40%{transform:rotate(-14deg) scale(1.08)}}
+@keyframes ai-grow{0%{transform:scaleY(1)}30%{transform:scaleY(.25)}100%{transform:scaleY(1)}}
+@keyframes ai-nudge-back{0%,100%{transform:translateX(0)}50%{transform:translateX(-3.5px)}}
+@keyframes ai-slice{0%,100%{transform:translate(0,0)}45%{transform:translate(1.8px,-1.8px)}}
 @keyframes ai-flash{0%,100%{opacity:1;transform:scale(1)}30%{opacity:.25}60%{opacity:1;transform:scale(1.12)}}
 @keyframes ai-ring{0%{opacity:.7;transform:scale(.6)}100%{opacity:0;transform:scale(1.5)}}
 @media (prefers-reduced-motion:reduce){[data-ai-icon] *{animation:none!important;transition-duration:.01ms!important}}
@@ -182,7 +214,7 @@ function Frame({ size = 24, strokeWidth: _strokeWidth, trigger = "hover", animat
 }
 
 /** The elements of one Hugeicon, each with its own animation if it has one. */
-function Elements({ icon, parts, whole, draw, strokeWidth, fill }: { icon: IconData; parts?: Parts; whole?: IconAnimation; draw?: boolean; strokeWidth?: number; fill?: Partial<Record<number, string>> }) {
+function Elements({ icon, parts, whole, draw, strokeWidth, fill, delays }: { icon: IconData; parts?: Parts; whole?: IconAnimation; draw?: boolean; strokeWidth?: number; fill?: Partial<Record<number, string>>; delays?: Partial<Record<number, number>> }) {
   const nodes = icon.map(([tag, attrs], i) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { key: _key, ...rest } = attrs as Record<string, string | number>
@@ -194,6 +226,7 @@ function Elements({ icon, parts, whole, draw, strokeWidth, fill }: { icon: IconD
       ...(anim ? { "data-anim": anim } : null),
       ...(anim === "draw" ? { pathLength: 1 } : null),
       ...(fill?.[i] !== undefined ? { fill: fill[i], "data-fill": "" } : null),
+      ...(delays?.[i] ? { style: { animationDelay: `${delays[i]}ms` } } : null),
     })
   })
   return whole ? <g data-anim={whole}>{nodes}</g> : <>{nodes}</>
@@ -217,10 +250,10 @@ export function AnimatedIcon({ icon, animation, parts, strokeWidth, ...props }: 
 }
 
 /** A tuned icon: the data and how each part of it moves. */
-function tuned(icon: IconData, config: { whole?: IconAnimation; parts?: Parts }) {
+function tuned(icon: IconData, config: { whole?: IconAnimation; parts?: Parts; delays?: Partial<Record<number, number>> }) {
   const Icon = ({ strokeWidth, ...props }: AnimatedIconProps) => (
     <Frame strokeWidth={strokeWidth} {...props}>
-      <Elements icon={icon} parts={config.parts} whole={config.whole} draw={config.whole === "draw"} strokeWidth={strokeWidth} />
+      <Elements icon={icon} parts={config.parts} whole={config.whole} draw={config.whole === "draw"} strokeWidth={strokeWidth} delays={config.delays} />
     </Frame>
   )
   return Icon
@@ -259,6 +292,34 @@ export const FlashIcon = tuned(FlashData, { whole: "flash" })
 export const IdeaIcon = tuned(Idea01Icon, { whole: "flash" })
 export const StarIcon = tuned(StarData, { whole: "spin-once" })
 export const LinkIcon = tuned(Link01Icon, { whole: "wiggle" })
+
+/* Daily use: the icons a dashboard reaches for. */
+export const DashboardIcon = tuned(DashboardSquare01Icon, { parts: { 0: "pop", 1: "pop", 2: "pop", 3: "pop" }, delays: { 1: 60, 2: 120, 3: 180 } })
+export const AnalyticsIcon = tuned(Analytics01Icon, { parts: { 0: "grow", 1: "grow", 2: "grow" }, delays: { 1: 80, 2: 160 } })
+export const ChartIcon = tuned(ChartIncreaseIcon, { parts: { 1: "draw" } })
+export const PieIcon = tuned(PieChartIcon, { parts: { 1: "slice" } })
+export const ActivityIcon = tuned(Activity01Icon, { parts: { 1: "draw" } })
+export const UsersIcon = tuned(UserGroupIcon, { parts: { 0: "float", 1: "float", 2: "float", 3: "float", 4: "float", 5: "float" }, delays: { 2: 120, 3: 120, 4: 120, 5: 120 } })
+export const UserAddIcon = tuned(UserAdd01Icon, { parts: { 1: "quarter" } })
+export const FolderIcon = tuned(Folder01Icon, { whole: "tilt" })
+export const InboxIcon2 = tuned(InboxIcon, { parts: { 1: "drop" } })
+export const FilterIcon = tuned(FilterHorizontalIcon, { parts: { 4: "nudge", 5: "nudge-back" } })
+export const WalletIcon = tuned(Wallet01Icon, { parts: { 2: "nudge" } })
+export const CardIcon = tuned(CreditCardIcon, { whole: "tilt" })
+export const CartIcon = tuned(ShoppingCart01Icon, { whole: "nudge" })
+export const LogoutIcon = tuned(Logout03Icon, { parts: { 1: "nudge" } })
+export const ClockIcon = tuned(Clock01Icon, { parts: { 1: "spin" } })
+export const EditIcon = tuned(PencilEdit02Icon, { parts: { 0: "wiggle" } })
+export const InvoiceIcon = tuned(Invoice01Icon, { parts: { 1: "draw", 2: "draw" } })
+export const ChecklistIcon = tuned(CheckListIcon, { parts: { 3: "draw", 4: "draw" } })
+export const MessageIcon = tuned(Message01Icon, { whole: "pop" })
+export const ShareIcon = tuned(Share08Icon, { whole: "pop" })
+export const ArchiveIcon = tuned(Archive01Icon, { whole: "drop" })
+export const CloudUploadIcon2 = tuned(CloudUploadIcon, { parts: { 1: "rise" } })
+export const DatabaseIcon = tuned(Database01Icon, { parts: { 2: "flash", 4: "flash" }, delays: { 4: 150 } })
+export const LayersIcon = tuned(Layers01Icon, { parts: { 0: "rise", 2: "drop" } })
+export const GlobeIcon = tuned(Globe02Icon, { whole: "wiggle" })
+export const TagIcon = tuned(Tag01Icon, { whole: "swing" })
 
 /** Two states: `active` fills it. */
 export const HeartIcon = ({ active, strokeWidth, ...props }: AnimatedIconProps) => (
@@ -310,6 +371,35 @@ export const MicIcon = ({ strokeWidth, active, ...props }: AnimatedIconProps) =>
 )
 
 /** Every named icon, for pickers and galleries. */
+export const dashboardIcons = {
+  Dashboard: DashboardIcon,
+  Analytics: AnalyticsIcon,
+  Chart: ChartIcon,
+  Pie: PieIcon,
+  Activity: ActivityIcon,
+  Users: UsersIcon,
+  UserAdd: UserAddIcon,
+  Folder: FolderIcon,
+  Inbox: InboxIcon2,
+  Filter: FilterIcon,
+  Wallet: WalletIcon,
+  Card: CardIcon,
+  Cart: CartIcon,
+  Logout: LogoutIcon,
+  Clock: ClockIcon,
+  Edit: EditIcon,
+  Invoice: InvoiceIcon,
+  Checklist: ChecklistIcon,
+  Message: MessageIcon,
+  Share: ShareIcon,
+  Archive: ArchiveIcon,
+  CloudUpload: CloudUploadIcon2,
+  Database: DatabaseIcon,
+  Layers: LayersIcon,
+  Globe: GlobeIcon,
+  Tag: TagIcon,
+} as const
+
 export const animatedIcons = {
   Bell: BellIcon,
   Heart: HeartIcon,
@@ -351,6 +441,12 @@ export const animatedIcons = {
   PlayPause: PlayPauseIcon,
   Mic: MicIcon,
 } as const
+
+/** The whole set in groups, for galleries: what a dashboard uses daily, then everything else. */
+export const ICON_GROUPS = [
+  { name: "Dashboard", icons: dashboardIcons },
+  { name: "Actions and feedback", icons: animatedIcons },
+] as const
 
 export type AnimatedIconName = keyof typeof animatedIcons
 export const TWO_STATE_ICONS: AnimatedIconName[] = ["Heart", "Copy", "Menu", "Theme", "PlayPause", "Mic"]

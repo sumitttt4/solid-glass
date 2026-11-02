@@ -16,7 +16,6 @@ const Collection = React.lazy(() => import("@/pages/collection"))
 const Library = React.lazy(() => import("@/pages/library"))
 const DevWorst = React.lazy(() => import("@/pages/dev-worst"))
 const DevLaunch = React.lazy(() => import("@/pages/dev-launch"))
-const ColorStudy = React.lazy(() => import("@/pages/color-study"))
 // The blocks carry their own source to show it: fetched with the Blocks page, not with every page.
 const Blocks = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.Blocks })))
 const BlockView = React.lazy(() => import("@/pages/blocks").then((page) => ({ default: page.BlockView })))
@@ -35,9 +34,6 @@ export function App() {
   React.useLayoutEffect(() => {
     try { applyAccent(localStorage.getItem(ACCENT_KEY) ?? "") } catch { /* use original palette */ }
   }, [])
-  if (pathname === "/color-study") return (
-    <TooltipProvider><React.Suspense fallback={null}><ColorStudy /></React.Suspense></TooltipProvider>
-  )
   // The README's banner is a picture of the material and nothing else: no header, no footer behind it.
   if (import.meta.env.DEV && pathname === "/dev/banner") return <DevBanner />
   // The launch video, drawn frame by frame for video/render.mjs.
@@ -69,14 +65,8 @@ export function App() {
           <Routes>
             <Route index element={<React.Suspense fallback={null}><Library /></React.Suspense>} />
             <Route path="components" element={<React.Suspense fallback={null}><Collection /></React.Suspense>} />
-            <Route
-              path="create"
-              element={
-                <React.Suspense fallback={null}>
-                  <Navigate to="/color-study" replace />
-                </React.Suspense>
-              }
-            />
+            <Route path="create" element={<Navigate to="/components" replace />} />
+            <Route path="color-study" element={<Navigate to="/" replace />} />
             <Route
               path="blocks"
               element={

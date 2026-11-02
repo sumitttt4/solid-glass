@@ -6,6 +6,8 @@ import { AiChat02Icon, DashboardSquare01Icon, LayoutGridIcon, MagicWand01Icon } 
 import { cn } from "@/lib/utils"
 import {
   animatedIcons,
+  dashboardIcons,
+  type AnimatedIconProps,
   ArrowRightIcon,
   BellIcon,
   LockIcon,
@@ -233,7 +235,7 @@ function MaterialsSection() {
 const CATEGORIES = [
   { title: "UI components", note: "Buttons, forms, overlays, data, navigation: the full shadcn/ui set, refined.", href: "/components", n: count("Components"), icon: LayoutGridIcon },
   { title: "AI & voice", note: "Chat window, model picker, token counter, live transcription, voice orb and more.", href: "/components?filter=AI+%26+Voice&component=chat-window", n: count("AI & Voice"), icon: AiChat02Icon },
-  { title: "Animated icons", note: "Hugeicons that move like what they stand for. Animate any of 4,000+.", href: "/components?filter=Icons&component=animated-icons", n: Object.keys(animatedIcons).length, icon: MagicWand01Icon },
+  { title: "Animated icons", note: "Hugeicons that move like what they stand for. Animate any of 4,000+.", href: "/components?filter=Icons&component=animated-icons", n: Object.keys(animatedIcons).length + Object.keys(dashboardIcons).length, icon: MagicWand01Icon },
   { title: "Blocks", note: "Dashboards, sign-in pages and sidebars, ready to drop in.", href: "/blocks", n: 12, icon: DashboardSquare01Icon },
 ]
 
@@ -267,7 +269,7 @@ function IconsSection() {
     <section className="home-section" aria-labelledby="icons-title">
       <SectionHead
         title={<span id="icons-title">Icons that move like the thing they show</span>}
-        body="Built on Hugeicons. Bells ring, bins open, rockets launch. Hover one, or pass any of the 4,000+ Hugeicons and a motion preset."
+        body="Built on Hugeicons, with a full dashboard set: charts that grow, filters that slide, bells that ring. Hover one, or pass any of the 4,000+ Hugeicons and a motion preset."
         aside={
           <label className="flex items-center gap-2.5 text-sm font-medium">
             <Switch checked={loop} onCheckedChange={setLoop} /> Play on loop
@@ -275,8 +277,8 @@ function IconsSection() {
         }
       />
       <div className="grid grid-cols-[repeat(auto-fill,minmax(64px,1fr))] gap-2.5">
-        {(Object.keys(animatedIcons) as AnimatedIconName[]).map((name) => {
-          const Icon = animatedIcons[name]
+        {Object.entries({ ...dashboardIcons, ...animatedIcons }).map(([name, Glyph]) => {
+          const Icon = Glyph as React.ComponentType<AnimatedIconProps>
           return (
             <Link
               key={name}
