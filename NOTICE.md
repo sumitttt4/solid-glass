@@ -1,7 +1,7 @@
 # Notices
 
-Solid Glass is built on [shadcn/ui](https://github.com/shadcn-ui/ui). The following are taken from
-it, at commit `02cad61166c4c20edbc8a3f71bd720eed4c1f49b`, and are released under the MIT License:
+Glaze includes code from [shadcn/ui](https://github.com/shadcn-ui/ui) and [Solid Glass](https://github.com/deeplethe/solid-glass), both MIT licensed. From shadcn/ui, the following are taken
+at commit `02cad61166c4c20edbc8a3f71bd720eed4c1f49b`, and are released under the MIT License:
 
 - `src/components/ui/`: the components, installed with its command line (all but Solid Glass's
   own, listed in `README.md`).
@@ -41,19 +41,16 @@ Icons are [Lucide](https://lucide.dev) (ISC), with [Tabler](https://tabler.io/ic
 [Hugeicons](https://hugeicons.com) in some of shadcn/ui's examples. The typefaces are
 [Geist and Geist Mono](https://vercel.com/font) (SIL Open Font License).
 
-## Colorwork additions
+## Solid Glass
 
-This fork retains the upstream notices above. The upstream Solid Glass-specific component list
-referred to by its original README comprises ask-card, composer, context-ring, diff-view,
-dot-loader, panel, reasoning, status-glyph, tag, task-notice, tool-steps and turn-status.
-The upstream history and original README remain available in Git.
+The glass foundation (`src/solid-glass.css`) and the components ask-card, composer, context-ring,
+diff-view, dot-loader, panel, reasoning, status-glyph, tag, task-notice, tool-steps and turn-status
+come from Solid Glass by DeepLethe, under the MIT License; its notice is in `LICENSE`.
 
-Colorwork adds its own theme, catalog, Tone Badge, Color Surface, Palette Picker, Option Card,
-Status Callout and Copy Snippet. The Button is an adaptation of the inherited implementation,
-with its finish informed by Cloudflare Kumo's published button patterns. It does not include
-the Kumo runtime package.
+## Fonts and data
 
-Figtree and Plus Jakarta Sans are loaded through Fontsource under the SIL Open Font License;
-Geist Mono is retained for code. The font packages include their respective license texts.
+Manrope and Geist Mono are loaded through Fontsource under the SIL Open Font License; the font
+packages include their license texts. The Button's finish was informed by Cloudflare Kumo's
+published button patterns; it does not include the Kumo runtime package.
 
 The palette data is generated from Tailwind CSS color tokens (MIT), converted from OKLCH to rounded/clipped sRGB hex. Tailwind CSS copyright (c) Tailwind Labs, Inc. The installed tailwindcss package contains its MIT license.

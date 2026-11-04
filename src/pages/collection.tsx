@@ -264,7 +264,7 @@ export default function Collection() {
           </div>
         )}
         <p className="text-muted-foreground border-border mt-12 border-t pt-6 text-xs">
-          {selected.origin === "Glaze" ? "An original Glaze component." : "Inherited from the MIT-licensed Solid Glass foundation and shadcn/ui, restyled for Glaze."}{" "}
+          {selected.origin === "Glaze" ? "An original Glaze component." : "Built on shadcn/ui and Base UI, styled for Glaze."}{" "}
           <a className="underline underline-offset-2" href={REPO_URL}>View on GitHub</a>
         </p>
       </main>
