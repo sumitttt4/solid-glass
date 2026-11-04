@@ -54,5 +54,8 @@ export function resolveHref(href: string): { to?: string; href?: string } {
   const tail = hash ? `#${hash}` : ""
   if (component && pages.some((page) => page.section !== "docs" && page.slug === component)) return { to: `/docs/components/${component}${tail}` }
   if (ordered.some((entry) => entry.url === path)) return { to: path + tail }
+  // this site's own routes, and the files it serves next to them (llms.txt, the registry)
+  if (/^\/(components|blocks|view)(\/|$)/.test(path)) return { to: path + tail }
+  if (/^\/[\w./-]+\.(txt|json|css)$/.test(path)) return { href: path }
   return { href: `https://ui.shadcn.com${href}` }
 }

@@ -1,6 +1,5 @@
-# Maintainers file issues without a form, so blank issues stay on.
 blank_issues_enabled: true
 contact_links:
-  - name: Security problem / 安全问题
-    url: https://github.com/deeplethe/solid-glass/blob/main/SECURITY.md#reporting-a-vulnerability
-    about: Report it by email, not in a public issue.
+  - name: Security problem
+    url: https://github.com/sumitttt4/glazeui/security/advisories/new
+    about: Report it privately, not in a public issue.

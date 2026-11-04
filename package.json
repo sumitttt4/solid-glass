@@ -1,13 +1,14 @@
 {
-  "name": "solid-glass",
+  "name": "glazeui",
   "private": true,
   "version": "0.1.0",
-  "description": "A colorful React component library by Sumit Sharma, built on Solid Glass.",
+  "description": "Free React components for interfaces, AI and voice, in solid or glass finishes.",
+  "author": "Sumit Sharma (https://sumitsharma.pro)",
   "license": "MIT",
   "homepage": "https://glazeui.xyz",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sumitttt4/solid-glass.git"
+    "url": "git+https://github.com/sumitttt4/glazeui.git"
   },
   "type": "module",
   "scripts": {

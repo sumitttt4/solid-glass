@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { StatusGlyph } from "@/components/ui/status-glyph"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 import { CodeBlock } from "@/site/code"
+import { addCommand } from "@/site/github"
 import { PageActions, PageHeader, PageHeaderDescription, PageHeaderHeading } from "@/site/page-header"
 import { useTheme } from "@/site/theme"
 
@@ -33,7 +34,7 @@ function BlockViewer({ block }: { block: Block }) {
   const frame = `${theme}-${round}`
   const [drawn, setDrawn] = React.useState("")
   // Solid Glass's own come from its registry; shadcn/ui's from shadcn/ui, and take the material from the stylesheet.
-  const command = block.own ? `npx shadcn@latest add deeplethe/solid-glass/${block.name}` : `npx shadcn@latest add ${block.name}`
+  const command = block.own ? addCommand(block.name) : `npx shadcn@latest add ${block.name}`
   // The frame is a window of its own: it is told the theme, and loaded again when the theme changes.
   const address = `${base}/view/${block.name}?theme=${theme}`
 

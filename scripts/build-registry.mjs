@@ -1,5 +1,6 @@
 /**
- * Build the registry: what a project installs Solid Glass from with the shadcn command line.
+ * Build the registry: what a project installs Glaze from with the shadcn command line, and llms.txt,
+ * the plain-text index of it that coding agents read.
  *
  *   node scripts/build-registry.mjs
  *
@@ -27,7 +28,7 @@ const out = join(root, "public/r")
 const read = (path) => readFileSync(join(root, path), "utf8")
 // Where the site is served from, and the repository on GitHub.
 const origin = (process.env.SOLID_GLASS_ORIGIN ?? "https://glazeui.xyz").replace(/\/$/, "")
-const repo = "sumitttt4/solid-glass"
+const repo = "sumitttt4/glazeui"
 const ref = process.env.COLORWORK_REF ?? "main"
 
 const own = readdirSync(join(root, "content/solid"))
@@ -96,7 +97,7 @@ const registry = {
       name: "glaze",
       type: "registry:file",
       title: "Glaze",
-      description: "The Glaze theme: neutral surfaces, an indigo accent, five tones, Geist type and four materials (Normal, Glass, Frost, Aurora).",
+      description: "The Glaze theme: porcelain and pure-black surfaces, a cobalt accent, five tones, Manrope type and four finishes (Normal, Glass, Frost, Aurora).",
       files: [
         { path: "src/glaze.css", type: "registry:file", target: "src/glaze.css" },
         { path: "src/materials.css", type: "registry:file", target: "src/materials.css" },
@@ -131,5 +132,37 @@ for (const file of readdirSync(out).filter((file) => file.endsWith(".json"))) {
 copyFileSync(join(root, "src/solid-glass.css"), join(out, "solid-glass.css"))
 copyFileSync(join(root, "src/glaze.css"), join(out, "glaze.css"))
 copyFileSync(join(root, "src/materials.css"), join(out, "materials.css"))
+
+
+// llms.txt: every installable item with its command, for coding agents (https://llmstxt.org).
+const catalog = JSON.parse(read("src/site/catalog.generated.json"))
+const about = new Map((Array.isArray(catalog) ? catalog : catalog.items ?? []).map((entry) => [entry.slug, entry.description]))
+const add = (name) => `npx shadcn@latest add ${repo}/${name}#${ref}`
+const line = (item) => `- ${item.name}: ${about.get(item.name) ?? item.description ?? item.title}\n  ${add(item.name)}`
+const llms = `# Glaze
+
+> Free React components by Sumit Sharma (${origin}): interface components, AI and voice components, animated icons and blocks, each in four finishes (Normal, Glass, Frost, Aurora). Built on shadcn/ui, Base UI and Tailwind CSS 4. MIT licensed. Source: https://github.com/${repo}
+
+## Set up (once)
+
+1. A React 19 + Tailwind CSS 4 project initialised with \`npx shadcn@latest init\`.
+2. Install the theme: \`${add("glaze")}\`
+3. Install the font: \`npm i @fontsource-variable/manrope\`
+4. In the main stylesheet, after Tailwind: \`@import "@fontsource-variable/manrope"; @import "./glaze.css"; @import "./materials.css";\`
+5. Optional finish: \`<html data-material="glass">\` (or "solid", "frost", "aurora"), on <html> or any element.
+
+Each component installs its own dependencies, including other Glaze components. Import from \`@/components/ui/<name>\`.
+Source for any item, to copy instead of installing: https://github.com/${repo}/blob/${ref}/src/components/ui/<name>.tsx
+Docs: ${origin}/docs · Live previews: ${origin}/components
+
+## Components
+
+${components.map(line).join("\n")}
+
+## Blocks
+
+${blocks.map(line).join("\n")}
+`
+writeFileSync(join(root, "public/llms.txt"), llms)
 
 console.log(`registry: ${components.length} components, ${blocks.length} block and the stylesheet -> registry.json, public/r/`)

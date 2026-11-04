@@ -5,7 +5,7 @@ import { Cancel01Icon, Search01Icon } from "@hugeicons/core-free-icons"
 
 import { CopyIcon } from "@/components/ui/animated-icons"
 import { GithubIcon } from "@/components/ui/animated-icons"
-import { sourceUrl } from "@/site/github"
+import { addCommand, REPO_URL, sourceUrl } from "@/site/github"
 import { Button } from "@/components/ui/button"
 import { CopySnippet } from "@/components/ui/copy-snippet"
 import { MaterialPicker, MATERIALS, type Material } from "@/components/ui/material-picker"
@@ -253,8 +253,8 @@ export default function Collection() {
         )}
         {tab === "Install" && (
           <div className="mt-6 flex max-w-2xl flex-col gap-4">
-            <CopySnippet label={`Add ${selected.title}`} code={`npx shadcn@latest add sumitttt4/solid-glass/${selected.slug}#main`} />
-            <CopySnippet label="Add the theme and its four materials (once)" code="npx shadcn@latest add sumitttt4/solid-glass/glaze#main" />
+            <CopySnippet label={`Add ${selected.title}`} code={addCommand(selected.slug)} />
+            <CopySnippet label="Add the theme and its four materials (once)" code={addCommand("glaze")} />
             <p className="text-muted-foreground text-sm leading-relaxed">
               Needs React 19, Tailwind CSS 4 and Base UI. Import <code className="font-mono text-xs">glaze.css</code> then <code className="font-mono text-xs">materials.css</code> after your Tailwind styles. Set <code className="font-mono text-xs">data-material</code> to <code className="font-mono text-xs">glass</code>, <code className="font-mono text-xs">frost</code> or <code className="font-mono text-xs">aurora</code> on html or any element to change the finish.
             </p>
@@ -265,7 +265,7 @@ export default function Collection() {
         )}
         <p className="text-muted-foreground border-border mt-12 border-t pt-6 text-xs">
           {selected.origin === "Glaze" ? "An original Glaze component." : "Inherited from the MIT-licensed Solid Glass foundation and shadcn/ui, restyled for Glaze."}{" "}
-          <a className="underline underline-offset-2" href="https://github.com/sumitttt4/solid-glass">View on GitHub</a>
+          <a className="underline underline-offset-2" href={REPO_URL}>View on GitHub</a>
         </p>
       </main>
     </div>
@@ -293,7 +293,7 @@ function useCopied() {
 /** The install command, readable at a glance, copied in one tap. */
 function InstallPill({ slug }: { slug: string }) {
   const [copied, copy] = useCopied()
-  const command = `npx shadcn@latest add sumitttt4/solid-glass/${slug}#main`
+  const command = addCommand(slug)
   return (
     <button
       type="button"

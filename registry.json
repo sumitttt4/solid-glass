@@ -7,7 +7,7 @@
       "name": "glaze",
       "type": "registry:file",
       "title": "Glaze",
-      "description": "The Glaze theme: neutral surfaces, an indigo accent, five tones, Geist type and four materials (Normal, Glass, Frost, Aurora).",
+      "description": "The Glaze theme: porcelain and pure-black surfaces, a cobalt accent, five tones, Manrope type and four finishes (Normal, Glass, Frost, Aurora).",
       "files": [
         {
           "path": "src/glaze.css",
@@ -84,7 +84,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -150,7 +150,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -273,7 +273,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/separator#main"
+        "sumitttt4/glazeui/separator#main"
       ],
       "files": [
         {
@@ -293,7 +293,7 @@
         "react-day-picker"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -329,7 +329,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -365,15 +365,15 @@
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/animated-icons#main",
-        "sumitttt4/solid-glass/audio-waveform#main",
-        "sumitttt4/solid-glass/live-transcript#main",
-        "sumitttt4/solid-glass/model-picker#main",
-        "sumitttt4/solid-glass/prompt-suggestions#main",
-        "sumitttt4/solid-glass/speak-button#main",
-        "sumitttt4/solid-glass/streaming-text#main",
-        "sumitttt4/solid-glass/token-counter#main",
-        "sumitttt4/solid-glass/voice-orb#main"
+        "sumitttt4/glazeui/animated-icons#main",
+        "sumitttt4/glazeui/audio-waveform#main",
+        "sumitttt4/glazeui/live-transcript#main",
+        "sumitttt4/glazeui/model-picker#main",
+        "sumitttt4/glazeui/prompt-suggestions#main",
+        "sumitttt4/glazeui/speak-button#main",
+        "sumitttt4/glazeui/streaming-text#main",
+        "sumitttt4/glazeui/token-counter#main",
+        "sumitttt4/glazeui/voice-orb#main"
       ],
       "files": [
         {
@@ -423,7 +423,7 @@
       "description": "Group content on an opaque tinted surface with a paired foreground.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/tone-badge#main"
+        "sumitttt4/glazeui/tone-badge#main"
       ],
       "files": [
         {
@@ -443,8 +443,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main",
-        "sumitttt4/solid-glass/input-group#main"
+        "sumitttt4/glazeui/button#main",
+        "sumitttt4/glazeui/input-group#main"
       ],
       "files": [
         {
@@ -464,8 +464,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/dialog#main",
-        "sumitttt4/solid-glass/input-group#main"
+        "sumitttt4/glazeui/dialog#main",
+        "sumitttt4/glazeui/input-group#main"
       ],
       "files": [
         {
@@ -483,8 +483,8 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main",
-        "sumitttt4/solid-glass/dropdown-menu#main"
+        "sumitttt4/glazeui/button#main",
+        "sumitttt4/glazeui/dropdown-menu#main"
       ],
       "files": [
         {
@@ -520,7 +520,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/popover#main"
+        "sumitttt4/glazeui/popover#main"
       ],
       "files": [
         {
@@ -538,7 +538,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -558,7 +558,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -673,8 +673,8 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/label#main",
-        "sumitttt4/solid-glass/separator#main"
+        "sumitttt4/glazeui/label#main",
+        "sumitttt4/glazeui/separator#main"
       ],
       "files": [
         {
@@ -727,9 +727,9 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main",
-        "sumitttt4/solid-glass/input#main",
-        "sumitttt4/solid-glass/textarea#main"
+        "sumitttt4/glazeui/button#main",
+        "sumitttt4/glazeui/input#main",
+        "sumitttt4/glazeui/textarea#main"
       ],
       "files": [
         {
@@ -767,7 +767,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/separator#main"
+        "sumitttt4/glazeui/separator#main"
       ],
       "files": [
         {
@@ -884,7 +884,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/dropdown-menu#main"
+        "sumitttt4/glazeui/dropdown-menu#main"
       ],
       "files": [
         {
@@ -920,7 +920,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -939,7 +939,7 @@
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/popover#main"
+        "sumitttt4/glazeui/popover#main"
       ],
       "files": [
         {
@@ -991,7 +991,7 @@
       "description": "A selectable content card with native radio-group keyboard behavior.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/tone-badge#main"
+        "sumitttt4/glazeui/tone-badge#main"
       ],
       "files": [
         {
@@ -1010,7 +1010,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1046,7 +1046,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1116,7 +1116,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1238,7 +1238,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1259,12 +1259,12 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main",
-        "sumitttt4/solid-glass/input#main",
-        "sumitttt4/solid-glass/separator#main",
-        "sumitttt4/solid-glass/sheet#main",
-        "sumitttt4/solid-glass/skeleton#main",
-        "sumitttt4/solid-glass/tooltip#main"
+        "sumitttt4/glazeui/button#main",
+        "sumitttt4/glazeui/input#main",
+        "sumitttt4/glazeui/separator#main",
+        "sumitttt4/glazeui/sheet#main",
+        "sumitttt4/glazeui/skeleton#main",
+        "sumitttt4/glazeui/tooltip#main"
       ],
       "files": [
         {
@@ -1335,7 +1335,7 @@
       "description": "Editable speak-button source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1370,7 +1370,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1515,7 +1515,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/button#main"
+        "sumitttt4/glazeui/button#main"
       ],
       "files": [
         {
@@ -1553,7 +1553,7 @@
         "cn"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/toggle#main"
+        "sumitttt4/glazeui/toggle#main"
       ],
       "files": [
         {
@@ -1569,7 +1569,7 @@
       "description": "Editable token-counter source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/popover#main"
+        "sumitttt4/glazeui/popover#main"
       ],
       "files": [
         {
@@ -1601,7 +1601,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/diff-view#main"
+        "sumitttt4/glazeui/diff-view#main"
       ],
       "files": [
         {
@@ -1636,7 +1636,7 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/status-glyph#main"
+        "sumitttt4/glazeui/status-glyph#main"
       ],
       "files": [
         {
@@ -1652,9 +1652,9 @@
       "description": "Editable voice-input source with the Glaze theme.",
       "dependencies": [],
       "registryDependencies": [
-        "sumitttt4/solid-glass/animated-icons#main",
-        "sumitttt4/solid-glass/audio-waveform#main",
-        "sumitttt4/solid-glass/live-transcript#main"
+        "sumitttt4/glazeui/animated-icons#main",
+        "sumitttt4/glazeui/audio-waveform#main",
+        "sumitttt4/glazeui/live-transcript#main"
       ],
       "files": [
         {
@@ -1687,15 +1687,15 @@
         "@hugeicons/react"
       ],
       "registryDependencies": [
-        "sumitttt4/solid-glass/ask-card#main",
-        "sumitttt4/solid-glass/button#main",
-        "sumitttt4/solid-glass/composer#main",
-        "sumitttt4/solid-glass/context-ring#main",
-        "sumitttt4/solid-glass/kbd#main",
-        "sumitttt4/solid-glass/panel#main",
-        "sumitttt4/solid-glass/tag#main",
-        "sumitttt4/solid-glass/tool-steps#main",
-        "sumitttt4/solid-glass/turn-status#main"
+        "sumitttt4/glazeui/ask-card#main",
+        "sumitttt4/glazeui/button#main",
+        "sumitttt4/glazeui/composer#main",
+        "sumitttt4/glazeui/context-ring#main",
+        "sumitttt4/glazeui/kbd#main",
+        "sumitttt4/glazeui/panel#main",
+        "sumitttt4/glazeui/tag#main",
+        "sumitttt4/glazeui/tool-steps#main",
+        "sumitttt4/glazeui/turn-status#main"
       ],
       "files": [
         {

@@ -5,8 +5,10 @@ import { HugeiconsIcon } from "@hugeicons/react"
 import { cn } from "@/lib/utils"
 import { GithubIcon } from "@/components/ui/animated-icons"
 
-export const REPO = "sumitttt4/solid-glass"
+export const REPO = "sumitttt4/glazeui"
 export const REPO_URL = `https://github.com/${REPO}`
+/** The command that installs one registry item from this repository. */
+export const addCommand = (name: string) => `npx shadcn@latest add ${REPO}/${name}#main`
 /** A file's page on GitHub. */
 export const sourceUrl = (path: string) => `${REPO_URL}/blob/main/${path}`
 

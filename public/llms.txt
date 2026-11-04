@@ -1,0 +1,209 @@
+# Glaze
+
+> Free React components by Sumit Sharma (https://glazeui.xyz): interface components, AI and voice components, animated icons and blocks, each in four finishes (Normal, Glass, Frost, Aurora). Built on shadcn/ui, Base UI and Tailwind CSS 4. MIT licensed. Source: https://github.com/sumitttt4/glazeui
+
+## Set up (once)
+
+1. A React 19 + Tailwind CSS 4 project initialised with `npx shadcn@latest init`.
+2. Install the theme: `npx shadcn@latest add sumitttt4/glazeui/glaze#main`
+3. Install the font: `npm i @fontsource-variable/manrope`
+4. In the main stylesheet, after Tailwind: `@import "@fontsource-variable/manrope"; @import "./glaze.css"; @import "./materials.css";`
+5. Optional finish: `<html data-material="glass">` (or "solid", "frost", "aurora"), on <html> or any element.
+
+Each component installs its own dependencies, including other Glaze components. Import from `@/components/ui/<name>`.
+Source for any item, to copy instead of installing: https://github.com/sumitttt4/glazeui/blob/main/src/components/ui/<name>.tsx
+Docs: https://glazeui.xyz/docs · Live previews: https://glazeui.xyz/components
+
+## Components
+
+- accordion: A vertically stacked set of interactive headings that each reveal a section of content.
+  npx shadcn@latest add sumitttt4/glazeui/accordion#main
+- alert: Displays a callout for user attention.
+  npx shadcn@latest add sumitttt4/glazeui/alert#main
+- alert-dialog: A modal dialog that interrupts the user with important content and expects a response.
+  npx shadcn@latest add sumitttt4/glazeui/alert-dialog#main
+- animated-icons: 65 animated icons for dashboards and everyday actions: hover to play, loop them, or switch two-state icons.
+  npx shadcn@latest add sumitttt4/glazeui/animated-icons#main
+- ask-card: A decision the agent has put to the user, with its choices as buttons.
+  npx shadcn@latest add sumitttt4/glazeui/ask-card#main
+- aspect-ratio: Keeps content at a fixed width-to-height ratio.
+  npx shadcn@latest add sumitttt4/glazeui/aspect-ratio#main
+- attachment: Displays a file or image attachment with media, metadata, upload state, and actions.
+  npx shadcn@latest add sumitttt4/glazeui/attachment#main
+- audio-waveform: Bars or a line that move with a voice, fed live from the microphone or by simulated levels.
+  npx shadcn@latest add sumitttt4/glazeui/audio-waveform#main
+- avatar: An image element with a fallback for representing the user.
+  npx shadcn@latest add sumitttt4/glazeui/avatar#main
+- badge: Displays a badge or a component that looks like a badge.
+  npx shadcn@latest add sumitttt4/glazeui/badge#main
+- breadcrumb: Displays the path to the current resource using a hierarchy of links.
+  npx shadcn@latest add sumitttt4/glazeui/breadcrumb#main
+- bubble: Displays conversational content in a message bubble. Supports variants, alignment, grouping, reactions, and collapsible content.
+  npx shadcn@latest add sumitttt4/glazeui/bubble#main
+- button: Displays a button or a component that looks like a button.
+  npx shadcn@latest add sumitttt4/glazeui/button#main
+- button-group: A container that groups related buttons together with consistent styling.
+  npx shadcn@latest add sumitttt4/glazeui/button-group#main
+- calendar: A calendar component that allows users to select a date or a range of dates.
+  npx shadcn@latest add sumitttt4/glazeui/calendar#main
+- card: Displays a card with header, content, and footer.
+  npx shadcn@latest add sumitttt4/glazeui/card#main
+- carousel: A carousel with motion and swipe built using Embla.
+  npx shadcn@latest add sumitttt4/glazeui/carousel#main
+- chart: Area, bar, line, pie and radar charts built on Recharts, styled to match the theme.
+  npx shadcn@latest add sumitttt4/glazeui/chart#main
+- chat-window: A complete chat: model picker, context meter, streaming answers with copy, retry and read-aloud, suggestions, files and voice input.
+  npx shadcn@latest add sumitttt4/glazeui/chat-window#main
+- checkbox: A control that allows the user to toggle between checked and not checked.
+  npx shadcn@latest add sumitttt4/glazeui/checkbox#main
+- collapsible: A panel that expands and collapses.
+  npx shadcn@latest add sumitttt4/glazeui/collapsible#main
+- color-surface: Group content on an opaque tinted surface with a paired foreground.
+  npx shadcn@latest add sumitttt4/glazeui/color-surface#main
+- combobox: Autocomplete input with a list of suggestions.
+  npx shadcn@latest add sumitttt4/glazeui/combobox#main
+- command: Command menu for search and quick actions.
+  npx shadcn@latest add sumitttt4/glazeui/command#main
+- composer: The message box for a chat: attachments, text and a send button.
+  npx shadcn@latest add sumitttt4/glazeui/composer#main
+- context-menu: Displays a menu of actions triggered by a right click.
+  npx shadcn@latest add sumitttt4/glazeui/context-menu#main
+- context-ring: How full the context window is, shown as a ring. Click it for the numbers and a breakdown.
+  npx shadcn@latest add sumitttt4/glazeui/context-ring#main
+- copy-snippet: Code you can select or copy, with feedback that reports whether the copy actually worked.
+  npx shadcn@latest add sumitttt4/glazeui/copy-snippet#main
+- dialog: A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.
+  npx shadcn@latest add sumitttt4/glazeui/dialog#main
+- diff-view: A patch as a diff: added and removed lines colored, file headers dropped.
+  npx shadcn@latest add sumitttt4/glazeui/diff-view#main
+- direction: Sets left-to-right or right-to-left layout for the components inside it.
+  npx shadcn@latest add sumitttt4/glazeui/direction#main
+- dot-loader: Three dots flashing in turn: the smallest sign that something is still running.
+  npx shadcn@latest add sumitttt4/glazeui/dot-loader#main
+- drawer: A panel that slides in from the edge of the screen and can be dragged to close.
+  npx shadcn@latest add sumitttt4/glazeui/drawer#main
+- dropdown-menu: A menu of actions or options, opened from a button.
+  npx shadcn@latest add sumitttt4/glazeui/dropdown-menu#main
+- empty: An empty state with an icon, a message and an action.
+  npx shadcn@latest add sumitttt4/glazeui/empty#main
+- field: Combine labels, controls, and help text to compose accessible form fields and grouped inputs.
+  npx shadcn@latest add sumitttt4/glazeui/field#main
+- hover-card: For sighted users to preview content available behind a link.
+  npx shadcn@latest add sumitttt4/glazeui/hover-card#main
+- input: A text field for forms.
+  npx shadcn@latest add sumitttt4/glazeui/input#main
+- input-group: Add addons, buttons, and helper content to inputs.
+  npx shadcn@latest add sumitttt4/glazeui/input-group#main
+- input-otp: Accessible one-time password component with copy-paste functionality.
+  npx shadcn@latest add sumitttt4/glazeui/input-otp#main
+- item: A row for lists: media, title, description and actions.
+  npx shadcn@latest add sumitttt4/glazeui/item#main
+- kbd: Shows a keyboard key or shortcut.
+  npx shadcn@latest add sumitttt4/glazeui/kbd#main
+- label: Renders an accessible label associated with controls.
+  npx shadcn@latest add sumitttt4/glazeui/label#main
+- live-transcript: Live speech-to-text in the browser, shown as a running transcript with timestamps and speakers.
+  npx shadcn@latest add sumitttt4/glazeui/live-transcript#main
+- markdown: Renders Markdown from a model or a user, with code blocks, tables and links styled to match.
+  npx shadcn@latest add sumitttt4/glazeui/markdown#main
+- marker: Displays an inline status, system note, bordered row, or labeled separator in a conversation.
+  npx shadcn@latest add sumitttt4/glazeui/marker#main
+- material-picker: Switch the whole library, or one part of a page, between Normal, Glass, Frost and Aurora.
+  npx shadcn@latest add sumitttt4/glazeui/material-picker#main
+- menubar: A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.
+  npx shadcn@latest add sumitttt4/glazeui/menubar#main
+- message: Displays a message in a conversation, with optional avatar, header, footer, and alignment.
+  npx shadcn@latest add sumitttt4/glazeui/message#main
+- message-scroller: A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.
+  npx shadcn@latest add sumitttt4/glazeui/message-scroller#main
+- model-picker: A searchable model switcher grouped by provider, with capabilities and context size. Fully keyboard driven.
+  npx shadcn@latest add sumitttt4/glazeui/model-picker#main
+- native-select: The browser's own select element, styled to match the theme.
+  npx shadcn@latest add sumitttt4/glazeui/native-select#main
+- navigation-menu: A collection of links for navigating websites.
+  npx shadcn@latest add sumitttt4/glazeui/navigation-menu#main
+- option-card: A selectable content card with native radio-group keyboard behavior.
+  npx shadcn@latest add sumitttt4/glazeui/option-card#main
+- pagination: Pagination with page navigation, next and previous links.
+  npx shadcn@latest add sumitttt4/glazeui/pagination#main
+- palette-picker: A Tailwind-style palette with color families, 50–950 shades, keyboard navigation and validated custom hex input.
+  npx shadcn@latest add sumitttt4/glazeui/palette-picker#main
+- panel: A titled container for laying out the sections of a page.
+  npx shadcn@latest add sumitttt4/glazeui/panel#main
+- popover: Displays rich content in a portal, triggered by a button.
+  npx shadcn@latest add sumitttt4/glazeui/popover#main
+- progress: Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+  npx shadcn@latest add sumitttt4/glazeui/progress#main
+- prompt-suggestions: Starting points for an empty chat, as cards or pills, with icons and a gentle entrance.
+  npx shadcn@latest add sumitttt4/glazeui/prompt-suggestions#main
+- questionnaire: A multi-step questionnaire with single-choice, multiple-choice, freeform, and skippable questions.
+  npx shadcn@latest add sumitttt4/glazeui/questionnaire#main
+- radio-group: A set of options where only one can be selected at a time.
+  npx shadcn@latest add sumitttt4/glazeui/radio-group#main
+- reasoning: The model's reasoning, collapsed by default.
+  npx shadcn@latest add sumitttt4/glazeui/reasoning#main
+- resizable: Accessible resizable panel groups and layouts with keyboard support.
+  npx shadcn@latest add sumitttt4/glazeui/resizable#main
+- scroll-area: A scrollable region with slim, styled scrollbars.
+  npx shadcn@latest add sumitttt4/glazeui/scroll-area#main
+- select: A list of options to pick from, opened from a button.
+  npx shadcn@latest add sumitttt4/glazeui/select#main
+- separator: Visually or semantically separates content.
+  npx shadcn@latest add sumitttt4/glazeui/separator#main
+- sheet: Extends the Dialog component to display content that complements the main content of the screen.
+  npx shadcn@latest add sumitttt4/glazeui/sheet#main
+- sidebar: A collapsible app sidebar with groups, menus, badges and a mobile sheet.
+  npx shadcn@latest add sumitttt4/glazeui/sidebar#main
+- skeleton: A placeholder shape shown while content loads.
+  npx shadcn@latest add sumitttt4/glazeui/skeleton#main
+- slider: An input where the user selects a value from within a given range.
+  npx shadcn@latest add sumitttt4/glazeui/slider#main
+- sonner: Toast notifications built on Sonner, styled to match the theme.
+  npx shadcn@latest add sumitttt4/glazeui/sonner#main
+- speak-button: Reads text aloud with the browser's voices; bars dance while it talks.
+  npx shadcn@latest add sumitttt4/glazeui/speak-button#main
+- spinner: An indicator that can be used to show a loading state.
+  npx shadcn@latest add sumitttt4/glazeui/spinner#main
+- status-callout: A semantic message with an icon, text and optional dismissal.
+  npx shadcn@latest add sumitttt4/glazeui/status-callout#main
+- status-glyph: Three animated dots that show an agent is working, and what it is doing.
+  npx shadcn@latest add sumitttt4/glazeui/status-glyph#main
+- streaming-text: An AI answer that arrives word by word, plus shimmering text for while the model is working.
+  npx shadcn@latest add sumitttt4/glazeui/streaming-text#main
+- switch: A control that allows the user to toggle between checked and not checked.
+  npx shadcn@latest add sumitttt4/glazeui/switch#main
+- table: A responsive table for rows of data.
+  npx shadcn@latest add sumitttt4/glazeui/table#main
+- tabs: Layered sections of content, shown one at a time.
+  npx shadcn@latest add sumitttt4/glazeui/tabs#main
+- tag: A file or reference attached to a message. While it uploads, the tag fills up as a progress bar.
+  npx shadcn@latest add sumitttt4/glazeui/tag#main
+- task-notice: A notice that a background task has finished: a status dot and a line saying what it was.
+  npx shadcn@latest add sumitttt4/glazeui/task-notice#main
+- textarea: Displays a form textarea or a component that looks like a textarea.
+  npx shadcn@latest add sumitttt4/glazeui/textarea#main
+- toast: A succinct message that is displayed temporarily.
+  npx shadcn@latest add sumitttt4/glazeui/toast#main
+- toggle: A two-state button that can be either on or off.
+  npx shadcn@latest add sumitttt4/glazeui/toggle#main
+- toggle-group: A set of two-state buttons that can be toggled on or off.
+  npx shadcn@latest add sumitttt4/glazeui/toggle-group#main
+- token-counter: Context window usage as a small ring that opens into a breakdown and estimated cost. Warns at 70% and 90%.
+  npx shadcn@latest add sumitttt4/glazeui/token-counter#main
+- tone-badge: Label a category with a named color role and a paired foreground.
+  npx shadcn@latest add sumitttt4/glazeui/tone-badge#main
+- tool-steps: A run of tool calls collapsed into one line that expands to show each step.
+  npx shadcn@latest add sumitttt4/glazeui/tool-steps#main
+- tooltip: A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.
+  npx shadcn@latest add sumitttt4/glazeui/tooltip#main
+- turn-status: The status line under a running reply: what it is doing, for how long and how much it has written.
+  npx shadcn@latest add sumitttt4/glazeui/turn-status#main
+- voice-input: Press to talk: a microphone button with a live waveform, timer and transcript that hands back text.
+  npx shadcn@latest add sumitttt4/glazeui/voice-input#main
+- voice-orb: A living orb for a voice assistant: it breathes when idle, swells with a voice and swirls while thinking.
+  npx shadcn@latest add sumitttt4/glazeui/voice-orb#main
+
+## Blocks
+
+- agent-workspace: A workspace where an agent works: sessions, the thread, files and background tasks
+  npx shadcn@latest add sumitttt4/glazeui/agent-workspace#main

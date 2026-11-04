@@ -8,3 +8,4 @@ src/docs/generated.json
 # rendered video and audio
 video/*.mp4
 video/*.wav
+.wrangler/

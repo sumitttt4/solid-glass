@@ -13,7 +13,7 @@ const ANSWERS: [RegExp, string][] = [
   [/glass|material|frost|aurora/i, "Glass works best with something behind it: a soft gradient, a photo, or light that moves. Set data-material=\"glass\" on the page, or on just one section, and every component inside takes the finish. Keep long text on the thicker panes so it stays easy to read."],
   [/email|write|draft/i, "Here's a short draft:\n\nHi Maya,\n\nThanks for the walkthrough today. I've attached the updated designs with the glass material applied. Could you take a look before Thursday's review?\n\nBest,\nSam"],
   [/plan|trip|week/i, "A simple plan:\n\n1. Monday: settle the scope and the three things that matter most.\n2. Midweek: build the smallest version end to end.\n3. Friday: show it to someone, write down what confused them, fix the top issue."],
-  [/code|react|component/i, "Install one component and use it like any other:\n\nnpx shadcn@latest add sumitttt4/solid-glass/chat-window#main\n\n<ChatWindow respond={async (messages) => callYourModel(messages)} />\n\nReturn a string, or an async iterable of chunks to stream."],
+  [/code|react|component/i, "Install one component and use it like any other:\n\nnpx shadcn@latest add sumitttt4/glazeui/chat-window#main\n\n<ChatWindow respond={async (messages) => callYourModel(messages)} />\n\nReturn a string, or an async iterable of chunks to stream."],
 ]
 
 /** A pretend model: picks an answer by keyword, after a short think. */

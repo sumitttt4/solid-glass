@@ -1,64 +1,48 @@
-name: Bug report / 报告问题
-description: Something looks wrong, or does not install. 某处看起来不对，或者装不上。
+name: Bug report
+description: Something looks wrong, behaves wrong, or does not install.
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        English or 中文, either is fine.
-
-        Title: one sentence that says what happens, e.g. "The select's menu lets the page show through in the light theme".
-        A security problem goes to the address in [SECURITY.md](https://github.com/deeplethe/solid-glass/blob/main/SECURITY.md), not here.
+        Title: one sentence that says what happens, e.g. "The select menu lets the page show through in light mode".
+        Security problems go through [SECURITY.md](https://github.com/sumitttt4/glazeui/blob/main/SECURITY.md), not here.
   - type: textarea
     id: what
     attributes:
-      label: What happens, and what you expected / 现象与预期
-      description: >-
-        A screenshot says most of it. Which component, and what is wrong with how it looks or behaves.
-        截图最有用；请说明是哪个组件、哪里不对。
+      label: What happens, and what you expected
+      description: A screenshot helps most. Which component, and what is wrong with how it looks or behaves.
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
-      label: How to see it / 怎么复现
-      description: >-
-        A page of the site, or the smallest piece of markup that shows it in your project.
-        站点上的某个页面，或者在你的项目里能复现的最小代码。
+      label: How to reproduce it
+      description: A page on glazeui.xyz, or the smallest piece of code that shows it in your project.
     validations:
       required: true
   - type: dropdown
     id: where
     attributes:
-      label: Where / 出现在哪里
+      label: Where
       options:
-        - On the site (deeplethe.github.io/solid-glass)
-        - In my project, with the stylesheet installed
+        - On glazeui.xyz
+        - In my project
         - While installing (shadcn add)
     validations:
       required: true
   - type: dropdown
-    id: theme
+    id: finish
     attributes:
-      label: Theme / 主题
+      label: Finish
       options:
-        - Dark
-        - Light
-        - Both
-    validations:
-      required: true
+        - Normal
+        - Glass
+        - Frost
+        - Aurora
+        - All of them
   - type: input
-    id: version
+    id: browser
     attributes:
-      label: Version / 版本
-      description: >-
-        The commit of this repository, or the date you installed the stylesheet. 本仓库的 commit，或安装样式表的日期。
-      placeholder: main @ 4976402, or installed 2026-10-13
-  - type: input
-    id: environment
-    attributes:
-      label: Browser, and your shadcn/ui setup / 浏览器与 shadcn/ui 配置
-      description: >-
-        Browser and version; in your own project, the `style` in components.json and whether the
-        component is stock. 浏览器及版本；在自己的项目里，请写 components.json 的 style，以及组件是否为原版。
-      placeholder: Chrome 141; base-nova, stock select
+      label: Browser and OS
+      placeholder: Safari 19, macOS 16

@@ -32,7 +32,7 @@ import { ACCENT_KEY, applyAccent } from "@/site/accent"
 import catalog from "@/site/catalog.generated.json"
 import { useMaterial } from "@/site/material"
 import { ShaderStage } from "@/site/shader-stage"
-import { GitHubButton } from "@/site/github"
+import { addCommand, GitHubButton, REPO_URL } from "@/site/github"
 import "./home.css"
 
 const count = (category: string) => catalog.filter((e) => e.category === category).length
@@ -314,9 +314,9 @@ function InstallSection() {
         </div>
       </div>
       <div className="flex min-w-0 flex-col gap-3">
-        <CopySnippet label="Theme and materials" code="npx shadcn@latest add sumitttt4/solid-glass/glaze#main" />
-        <CopySnippet label="Any component" code="npx shadcn@latest add sumitttt4/solid-glass/chat-window#main" />
-        <CopySnippet label="Or tell your agent" code={'Use the Glaze registry (github.com/sumitttt4/solid-glass) for UI.\nAdd components with: npx shadcn@latest add sumitttt4/solid-glass/<name>#main\nUse data-material="glass" on <html> for the glass finish.'} />
+        <CopySnippet label="Theme and materials" code={addCommand("glaze")} />
+        <CopySnippet label="Any component" code={addCommand("chat-window")} />
+        <CopySnippet label="Or tell your agent" code={`Use Glaze (${REPO_URL}) for UI. Read https://glazeui.xyz/llms.txt for the component list.\nAdd the theme once: ${addCommand("glaze")}\nAdd components with: ${addCommand("<name>")}\nUse data-material="glass" on <html> for the glass finish.`} />
       </div>
     </section>
   )

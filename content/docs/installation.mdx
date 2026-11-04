@@ -11,7 +11,7 @@ React 19, Tailwind CSS 4 and Base UI. Type is Manrope throughout (`npm i @fontso
 ## 1. Add the theme
 
 ```bash
-npx shadcn@latest add sumitttt4/solid-glass/glaze#main
+npx shadcn@latest add sumitttt4/glazeui/glaze#main
 ```
 
 This copies three stylesheets: `glaze.css` (colors, type, controls), `materials.css` (Glass, Frost and Aurora) and `solid-glass.css` (the foundation both build on). Import them after Tailwind:
@@ -31,9 +31,9 @@ This copies three stylesheets: `glaze.css` (colors, type, controls), `materials.
 Any component, by name. Its dependencies come with it.
 
 ```bash
-npx shadcn@latest add sumitttt4/solid-glass/chat-window#main
-npx shadcn@latest add sumitttt4/solid-glass/animated-icons#main
-npx shadcn@latest add sumitttt4/solid-glass/button#main
+npx shadcn@latest add sumitttt4/glazeui/chat-window#main
+npx shadcn@latest add sumitttt4/glazeui/animated-icons#main
+npx shadcn@latest add sumitttt4/glazeui/button#main
 ```
 
 Every component page at /components has an Install tab with its command and a Code tab with the full source, if you would rather copy it.
@@ -53,19 +53,24 @@ Glass needs something behind it to read as glass. The page draws soft light of i
 
 ## Use with a coding agent
 
-Give your agent this, and it can pick and install what it needs:
+Agents can install Glaze on their own. Pick whichever fits your agent:
+
+- **Agent skill:** `npx skills add sumitttt4/glazeui` installs the Glaze skill, which tells the agent how to add the theme, pick components and set finishes. In Claude Code you can also copy [`skills/glaze`](https://github.com/sumitttt4/glazeui/tree/main/skills/glaze) into `.claude/skills/`.
+- **llms.txt:** point the agent at [glazeui.xyz/llms.txt](/llms.txt), a plain-text list of every component with its install command.
+- **A prompt:** paste this into any agent:
 
 ```text
-Use the Glaze registry (github.com/sumitttt4/solid-glass) for UI.
-Add components with: npx shadcn@latest add sumitttt4/solid-glass/<name>#main
+Use Glaze (github.com/sumitttt4/glazeui) for UI. The component list is at https://glazeui.xyz/llms.txt.
+Add the theme once: npx shadcn@latest add sumitttt4/glazeui/glaze#main
+Add components with: npx shadcn@latest add sumitttt4/glazeui/<name>#main
 Use data-material="glass" on <html> for the glass finish.
 ```
 
 ## Run this site locally
 
 ```bash
-git clone https://github.com/sumitttt4/solid-glass.git
-cd solid-glass
+git clone https://github.com/sumitttt4/glazeui.git
+cd glazeui
 npm ci
 npm run dev
 ```

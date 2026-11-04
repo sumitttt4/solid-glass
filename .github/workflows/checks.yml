@@ -2,9 +2,7 @@ name: CI
 
 on:
   push:
-    # dev as well as main: a pull request can read the caches of its base branch, and the merged
-    # dev should have been built by something before it is merged on into main.
-    branches: [main, dev]
+    branches: [main]
   pull_request:
 
 # Read-only, said here so that it does not depend on what the repository's default is.
