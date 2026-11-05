@@ -141,7 +141,7 @@ const add = (name) => `npx shadcn@latest add ${repo}/${name}#${ref}`
 const line = (item) => `- ${item.name}: ${about.get(item.name) ?? item.description ?? item.title}\n  ${add(item.name)}`
 const llms = `# Glaze
 
-> Free React components (${origin}): interface components, AI and voice components, animated icons and blocks, each in four finishes (Normal, Glass, Frost, Aurora). Built on shadcn/ui, Base UI and Tailwind CSS 4. MIT licensed. Source: https://github.com/${repo}
+> Free React components (${origin}): interface components, AI and voice components, animated icons and blocks, each in four finishes (Normal, Glass, Frost, Aurora). Built on shadcn/ui, Base UI and Tailwind CSS 4. Apache-2.0 licensed: free to copy, modify and redistribute. Source: https://github.com/${repo}
 
 ## Set up (once)
 

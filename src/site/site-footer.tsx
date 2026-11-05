@@ -15,7 +15,7 @@ export function SiteFooter() {
             <SolidGlassMark className="size-5" />
             Glaze
           </Link>
-          <p className="leading-relaxed text-muted-foreground">Free React components, solid or glass. MIT licensed.</p>
+          <p className="leading-relaxed text-muted-foreground">Free React components, solid or glass. Apache 2.0 licensed.</p>
           <p className="text-foreground">
             Made by{" "}
             <a href={PORTFOLIO} target="_blank" rel="noreferrer" className="font-medium underline decoration-foreground/30 underline-offset-4 transition-colors hover:decoration-foreground">

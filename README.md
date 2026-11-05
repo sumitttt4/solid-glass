@@ -73,4 +73,4 @@ Glaze is built with [shadcn/ui](https://github.com/shadcn-ui/ui), [Base UI](http
 
 ## License
 
-MIT. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md), and keep both with redistributed source.
+[Apache License 2.0](LICENSE). Copy it, change it, build on it and ship it, in personal or commercial work. If you redistribute the source, keep `LICENSE` and [`NOTICE.md`](NOTICE.md) with it and note what you changed. Parts that come from shadcn/ui and Solid Glass also remain available under their original MIT terms.
