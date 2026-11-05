@@ -1,6 +1,6 @@
 # Contributing to Glaze
 
-Thanks for helping. Glaze is maintained by [Sumit Sharma](https://sumitsharma.pro).
+Thanks for helping make Glaze UI better.
 
 ## Before you start
 

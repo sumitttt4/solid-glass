@@ -4,4 +4,4 @@ Glaze follows the [Contributor Covenant](https://www.contributor-covenant.org/ve
 
 Be kind, assume good intent, and keep discussion about the work. Harassment, insults and personal attacks are not accepted in issues, pull requests or anywhere else the project lives.
 
-Report unacceptable behavior to the maintainer, [Sumit Sharma](https://sumitsharma.pro), privately. Reports are reviewed promptly and kept confidential.
+Report unacceptable behavior to the maintainer privately, through a [GitHub security advisory](https://github.com/sumitttt4/glazeui/security/advisories/new) or the contact on the maintainer's GitHub profile. Reports are reviewed promptly and kept confidential.

@@ -2,9 +2,9 @@
 
 **React components, solid or glass.** · [glazeui.xyz](https://glazeui.xyz)
 
-Glaze is a free React component library by [Sumit Sharma](https://sumitsharma.pro): interface components, AI and voice components, and animated icons, designed together and each available in four finishes. Copy a component, install it with one command, or hand it to your coding agent. No pro tier. **Alpha.**
+Glaze UI is a free React component library: interface components, AI and voice components, and animated icons, designed together and each available in four finishes. Copy a component, install it with one command, or hand it to your coding agent. No pro tier. **Alpha.**
 
-![Glaze](docs/screenshots/glaze-home.png)
+![Glaze](docs/screenshots/glaze-home-v2.webp)
 
 ## What's inside
 
@@ -69,10 +69,8 @@ The site is static. `npm run build` writes `dist/`, including the registry at `d
 
 ## Credits
 
-Glaze is built with [shadcn/ui](https://github.com/shadcn-ui/ui), [Base UI](https://github.com/mui/base-ui), [Solid Glass](https://github.com/deeplethe/solid-glass), [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss), [Hugeicons](https://github.com/hugeicons), [Lucide](https://github.com/lucide-icons/lucide) and [Paper Shaders](https://github.com/paper-design/shaders), among others. The full list is on the [Credits](https://glazeui.xyz/docs/credits) page.
+Glaze is built with [shadcn/ui](https://github.com/shadcn-ui/ui), [Base UI](https://github.com/mui/base-ui), [Solid Glass](https://github.com/deeplethe/solid-glass), [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss), [Hugeicons](https://github.com/hugeicons), [Lucide](https://github.com/lucide-icons/lucide) and [Paper Shaders](https://github.com/paper-design/shaders), among others. The full list is on the [About Glaze UI](https://glazeui.xyz/docs/about) page.
 
 ## License
 
 MIT. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md), and keep both with redistributed source.
-
-Made by [Sumit Sharma](https://sumitsharma.pro).

@@ -1,6 +1,6 @@
 ---
 name: glaze
-description: Build React UI with Glaze (glazeui.xyz), a free shadcn-compatible component library by Sumit Sharma with interface, AI chat and voice components, animated icons and four finishes (Normal, Glass, Frost, Aurora). Use when the user asks for Glaze components, glass or frosted UI, an AI chat window, model picker, token counter, voice input or transcript, or animated icons in a React + Tailwind project.
+description: Build React UI with Glaze (glazeui.xyz), a free shadcn-compatible component library with interface, AI chat and voice components, animated icons and four finishes (Normal, Glass, Frost, Aurora). Use when the user asks for Glaze components, glass or frosted UI, an AI chat window, model picker, token counter, voice input or transcript, or animated icons in a React + Tailwind project.
 ---
 
 # Glaze

@@ -29,7 +29,7 @@ export function SiteFooter() {
           <Link className={link} to="/components?filter=Icons&component=animated-icons">Animated icons</Link>
           <Link className={link} to="/blocks">Blocks</Link>
           <Link className={link} to="/docs/installation">Installation</Link>
-          <Link className={link} to="/docs/credits">Credits</Link>
+          <Link className={link} to="/docs/about">About</Link>
           <a className={link} href={REPO_URL} target="_blank" rel="noreferrer">GitHub</a>
           <a className={link} href={PORTFOLIO} target="_blank" rel="noreferrer">sumitsharma.pro</a>
         </nav>
@@ -40,7 +40,7 @@ export function SiteFooter() {
         <a className="underline underline-offset-2 hover:text-foreground" href="https://github.com/mui/base-ui" target="_blank" rel="noreferrer">Base UI</a>,{" "}
         <a className="underline underline-offset-2 hover:text-foreground" href="https://github.com/deeplethe/solid-glass" target="_blank" rel="noreferrer">Solid Glass</a> and{" "}
         <a className="underline underline-offset-2 hover:text-foreground" href="https://github.com/hugeicons" target="_blank" rel="noreferrer">Hugeicons</a>.{" "}
-        <Link className="underline underline-offset-2 hover:text-foreground" to="/docs/credits">Full credits</Link>
+        <Link className="underline underline-offset-2 hover:text-foreground" to="/docs/about">Full credits</Link>
       </p>
     </footer>
   )
